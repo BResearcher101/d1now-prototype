@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +6,57 @@
   <title>Welcome to D1 Now - Homepage</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #F6F6F6;
+    }
+    header {
+      background: #4B2E83;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header img {
+      height: 40px;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
     .hero {
       background-color: #B2E3D1;
-      padding: 40px;
-      text-align: center;
+      padding: 40px 20px;
     }
-    .hero h1 {
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+    .hero-text h1 {
       font-size: 36px;
       color: #2B2B2B;
     }
-    .hero p {
+    .hero-text p {
       font-size: 18px;
     }
-    .hero a {
+    .hero-text a {
       display: inline-block;
       background: #4B2E83;
       color: white;
@@ -28,11 +65,22 @@
       text-decoration: none;
       margin-top: 20px;
     }
+    .hero-image {
+      flex: 1;
+      min-width: 200px;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 300px;
+      object-fit: contain;
+    }
     .tiles {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       padding: 40px;
+      max-width: 960px;
+      margin: auto;
     }
     .tile {
       background: #FFF;
@@ -52,15 +100,39 @@
     .testimonial {
       background: #D3EAF7;
       padding: 30px;
-      margin: 40px;
+      margin: 40px auto;
+      max-width: 960px;
       border-radius: 10px;
       font-style: italic;
       color: #2B2B2B;
     }
+    footer {
+      background-color: #4B2E83;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer .footer-left {
+      font-weight: bold;
+    }
+    footer .footer-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+
   <header>
+    <img src="images/d1now-logo.png" alt="D1 Now logo" />
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -68,23 +140,23 @@
       <a href="participants.html">Participants</a>
       <a href="clinics.html">Clinics</a>
       <a href="living.html">Living</a>
-      <a href="publications.html">Publications</a>
+      <a href="blog.html">Blog</a>
     </nav>
   </header>
 
   <main>
-<section class="hero">
-  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 40px;">
-    <div style="flex: 1; min-width: 280px;">
-      <h1>Welcome!</h1>
-      <p>The D1 Now study is for young adults living with Type 1 Diabetes – built with you, for you.</p>
-      <a href="participants.html">Get Involved</a>
-    </div>
-    <div style="flex: 1; min-width: 200px;">
-      <img src="images/hero.png" alt="Illustration of young person waving" style="width: 100%; max-width: 300px; object-fit: contain;" />
-    </div>
-  </div>
-</section>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1>Welcome!</h1>
+          <p>The D1 Now study is for young adults living with Type 1 Diabetes – built with you, for you.</p>
+          <a href="participants.html">Get Involved</a>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero.png" alt="Illustration of young person waving" />
+        </div>
+      </div>
+    </section>
 
     <section class="tiles">
       <a class="tile" href="about.html">
@@ -107,8 +179,8 @@
         <img src="images/living.png" alt="Living with T1D icon" />
         <div>Living with T1D</div>
       </a>
-      <a class="tile" href="publications.html">
-        <img src="images/publications.png" alt="publications icon" />
+      <a class="tile" href="blog.html">
+        <img src="images/blog.png" alt="Blog icon" />
         <div>Publications</div>
       </a>
     </section>
@@ -121,9 +193,12 @@
   <footer>
     <div class="footer-left">D1 NOW</div>
     <div class="footer-right">
-      <a href="#">Give feedback</a> |
+      <a href="#">Give feedback</a>
       <a href="#">Privacy policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Contact us</a>
     </div>
   </footer>
+
 </body>
 </html>
