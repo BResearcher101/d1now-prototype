@@ -116,7 +116,13 @@
       align-items: center;
     }
     footer .footer-left {
-      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    footer .footer-left img {
+      height: 30px;
+      margin-right: 10px;
     }
     footer .footer-right {
       display: flex;
@@ -140,7 +146,7 @@
       <a href="participants.html">Participants</a>
       <a href="clinics.html">Clinics</a>
       <a href="living.html">Living</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Publications</a>
     </nav>
   </header>
 
@@ -180,18 +186,25 @@
         <div>Living with T1D</div>
       </a>
       <a class="tile" href="blog.html">
-        <img src="images/blog.png" alt="Blog icon" />
+        <img src="images/publications.png" alt="Publications icon" />
         <div>Publications</div>
       </a>
     </section>
 
     <section class="testimonial">
-      “Taking part has been a really rewarding experience.” – YAP member
+      “A  sample quote like ... Taking part has been a really rewarding experience.” – YAP member
     </section>
   </main>
 
   <footer>
-    <div class="footer-left">D1 NOW</div>
+    <div class="footer-left">
+      <div>
+        <img src="images/hrb-logo.png" alt="HRB Logo" />
+        <img src="images/nuig-logo.png" alt="NUIG Logo" />
+      </div>
+      <div>D1 NOW</div>
+      <small>Website built using HRB funding</small>
+    </div>
     <div class="footer-right">
       <a href="#">Give feedback</a>
       <a href="#">Privacy policy</a>
@@ -202,4 +215,3 @@
 
 </body>
 </html>
-
