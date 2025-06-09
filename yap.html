@@ -61,6 +61,25 @@
       font-size: 16px;
       line-height: 1.6;
     }
+    .benefit-line {
+      font-size: 16px;
+      margin-top: 10px;
+      font-weight: 500;
+      color: #4B2E83;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .carousel img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
     .tiles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -68,12 +87,11 @@
       margin-top: 20px;
     }
     .tile {
-      background: #FFFFFF;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       text-align: center;
       color: #2B2B2B;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .tile img {
       width: 48px;
@@ -81,13 +99,32 @@
       object-fit: contain;
       margin-bottom: 10px;
     }
+    .testimonial-video {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px auto;
+      max-width: 960px;
+      padding: 0 20px;
+    }
     .testimonial {
+      flex: 1;
       background: #DBD7EC;
       padding: 30px;
       font-style: italic;
       border-radius: 10px;
-      margin: 40px 20px;
-      max-width: 960px;
+      min-width: 280px;
+    }
+    .video-placeholder {
+      flex: 1;
+      background: #DDD;
+      height: 200px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 200px;
+      color: #666;
+      font-weight: 500;
+      min-width: 280px;
     }
     .join-banner {
       background: #B2E3D1;
@@ -141,11 +178,11 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="yap.html">YAP</a>
+      <a href="yap.html">Young Adult Panel</a>
       <a href="participants.html">Participants</a>
-      <a href="clinics.html">Clinics</a>
-      <a href="living.html">Living</a>
-      <a href="blog.html">Publications</a>
+      <a href="clinics.html">Study Sites</a>
+      <a href="living.html">T1D Resources</a>
+      <a href="publications.html">Publications</a>
     </nav>
   </header>
 
@@ -158,6 +195,14 @@
   <section class="section">
     <h2>What is the YAP?</h2>
     <p>We're a network of young adults with lived experience of Type 1 Diabetes. Co-design is at the heart of the D1 Now study – our voices and experiences help shape the research.</p>
+    <div class="benefit-line">It’s a chance to learn, lead, connect and make real impact.</div>
+
+    <div class="carousel">
+      <img src="images/yap/member1.png" alt="YAP member 1" title="YAP Member 1" />
+      <img src="images/yap/member2.png" alt="YAP member 2" title="YAP Member 2" />
+      <img src="images/yap/member3.png" alt="YAP member 3" title="YAP Member 3" />
+      <img src="images/yap/member4.png" alt="YAP member 4" title="YAP Member 4" />
+    </div>
   </section>
 
   <section class="section">
@@ -182,8 +227,13 @@
     </div>
   </section>
 
-  <section class="testimonial">
-    “The YAP sessions are laid-back and flexible, I really feel heard and supported.” – YAP member
+  <section class="testimonial-video">
+    <div class="testimonial">
+      “The YAP sessions are laid-back and flexible, I really feel heard and supported.” – YAP member
+    </div>
+    <div class="video-placeholder">
+      [ Embedded Video Here ]
+    </div>
   </section>
 
   <section class="join-banner">
@@ -192,7 +242,7 @@
     <a href="#">Register interest</a>
   </section>
 
-<footer>
+  <footer>
     <div class="footer-left">
       <div>
         <img src="images/hrb-logo.png" alt="HRB Logo" />
@@ -208,5 +258,6 @@
       <a href="#">Contact us</a>
     </div>
   </footer>
+
 </body>
 </html>
