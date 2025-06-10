@@ -28,24 +28,31 @@
       margin: 0 10px;
     }
     .hero {
-      background: url('images/yap-banner.png') no-repeat center/cover, #E3D5F4;
-      padding: 60px 40px;
+      background: #E3D5F4 url('images/yap-banner.png') no-repeat center/cover;
+      padding: 60px 20px;
       text-align: center;
-      color: #2B2B2B;
     }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
+    .hero-inner {
+      background: white;
+      display: inline-block;
+      max-width: 720px;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
-    .hero p {
-      font-size: 18px;
+    .hero-inner h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .hero-inner p {
+      font-size: 16px;
       margin-bottom: 20px;
     }
-    .hero a {
+    .hero-inner a {
       background: #4B2E83;
       color: white;
       text-decoration: none;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 6px;
       font-weight: bold;
     }
@@ -68,24 +75,6 @@
       font-weight: 500;
       color: #4B2E83;
     }
-    .carousel-strip {
-      display: flex;
-      overflow-x: auto;
-      gap: 16px;
-      margin-top: 30px;
-      padding-bottom: 10px;
-    }
-    .carousel-strip::-webkit-scrollbar {
-      display: none;
-    }
-    .carousel-strip img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      cursor: pointer;
-      flex: 0 0 auto;
-    }
     .tiles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -104,6 +93,9 @@
       height: 48px;
       object-fit: contain;
       margin-bottom: 10px;
+    }
+    .benefit-tiles {
+      margin-top: 30px;
     }
     .testimonial-video {
       display: flex;
@@ -177,22 +169,17 @@
   </header>
 
   <section class="hero">
-    <h1>Young Adult Panel (YAP)</h1>
-    <p>The YAP is a group of young adults living with Type 1 Diabetes, co-designing and shaping the D1 Now study.</p>
-    <a href="#">Interested in joining?</a>
+    <div class="hero-inner">
+      <h1>Young Adult Panel (YAP)</h1>
+      <p>The YAP is a group of young adults living with Type 1 Diabetes, co-designing and shaping the D1 Now study.</p>
+      <a href="#">Interested in joining?</a>
+    </div>
   </section>
 
   <section class="section">
     <h2>What is the YAP?</h2>
     <p>We're a network of young adults with lived experience of Type 1 Diabetes. Co-design is at the heart of the D1 Now study – our voices and experiences help shape the research.</p>
     <div class="benefit-line">It’s a chance to learn, lead, connect and make real impact.</div>
-
-    <div class="carousel-strip">
-      <img src="images/yap/member1.png" alt="YAP member 1" />
-      <img src="images/yap/member2.png" alt="YAP member 2" />
-      <img src="images/yap/member3.png" alt="YAP member 3" />
-      <img src="images/yap/member4.png" alt="YAP member 4" />
-    </div>
   </section>
 
   <section class="section">
@@ -213,6 +200,24 @@
       <div class="tile" style="background:#FFE1D9;">
         <img src="images/yap/payment.png" alt="Payment icon" />
         <div>Paid for your time and input</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefit-tiles">
+    <h2>Why join the YAP?</h2>
+    <div class="tiles">
+      <div class="tile" style="background:#C1E2F7;">
+        <div>Build leadership skills</div>
+      </div>
+      <div class="tile" style="background:#CDEED9;">
+        <div>Connect with others who “get it”</div>
+      </div>
+      <div class="tile" style="background:#FDE2DC;">
+        <div>Learn about research and design</div>
+      </div>
+      <div class="tile" style="background:#EBDCF5;">
+        <div>Make a real impact in T1D care</div>
       </div>
     </div>
   </section>
