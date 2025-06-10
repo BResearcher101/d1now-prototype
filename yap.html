@@ -28,13 +28,14 @@
       margin: 0 10px;
     }
     .hero {
-      background-color: #E3D5F4;
-      padding: 60px 20px;
+      background: url('images/yap-banner.png') no-repeat center/cover, #E3D5F4;
+      padding: 60px 40px;
       text-align: center;
+      color: #2B2B2B;
     }
     .hero h1 {
       font-size: 36px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .hero p {
       font-size: 18px;
@@ -67,18 +68,23 @@
       font-weight: 500;
       color: #4B2E83;
     }
-    .carousel {
+    .carousel-strip {
       display: flex;
       overflow-x: auto;
       gap: 16px;
       margin-top: 30px;
+      padding-bottom: 10px;
     }
-    .carousel img {
+    .carousel-strip::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-strip img {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      cursor: pointer;
       object-fit: cover;
+      cursor: pointer;
+      flex: 0 0 auto;
     }
     .tiles {
       display: grid;
@@ -115,16 +121,15 @@
       border-radius: 10px;
       min-width: 280px;
     }
-    .video-placeholder {
+    .video-embed {
       flex: 1;
-      background: #DDD;
+      min-width: 280px;
+    }
+    .video-embed iframe {
+      width: 100%;
       height: 200px;
       border-radius: 10px;
-      text-align: center;
-      line-height: 200px;
-      color: #666;
-      font-weight: 500;
-      min-width: 280px;
+      border: none;
     }
     .join-banner {
       background: #B2E3D1;
@@ -143,31 +148,16 @@
       font-weight: bold;
     }
     footer {
-      background-color: #4B2E83;
+      background: #4B2E83;
       color: white;
       padding: 20px 40px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-    }
-    footer .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    footer .footer-left img {
-      height: 30px;
-      margin-right: 10px;
-    }
-    footer .footer-right {
-      display: flex;
       flex-wrap: wrap;
-      gap: 15px;
     }
     footer a {
       color: white;
-      text-decoration: none;
+      margin-left: 15px;
     }
   </style>
 </head>
@@ -178,11 +168,11 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="yap.html">Young Adult Panel</a>
+      <a href="yap.html">YAP</a>
       <a href="participants.html">Participants</a>
-      <a href="clinics.html">Study Sites</a>
-      <a href="living.html">T1D Resources</a>
-      <a href="publications.html">Publications</a>
+      <a href="clinics.html">Clinics</a>
+      <a href="living.html">Living</a>
+      <a href="blog.html">Publications</a>
     </nav>
   </header>
 
@@ -197,11 +187,11 @@
     <p>We're a network of young adults with lived experience of Type 1 Diabetes. Co-design is at the heart of the D1 Now study – our voices and experiences help shape the research.</p>
     <div class="benefit-line">It’s a chance to learn, lead, connect and make real impact.</div>
 
-    <div class="carousel">
-      <img src="images/yap/member1.png" alt="YAP member 1" title="YAP Member 1" />
-      <img src="images/yap/member2.png" alt="YAP member 2" title="YAP Member 2" />
-      <img src="images/yap/member3.png" alt="YAP member 3" title="YAP Member 3" />
-      <img src="images/yap/member4.png" alt="YAP member 4" title="YAP Member 4" />
+    <div class="carousel-strip">
+      <img src="images/yap/member1.png" alt="YAP member 1" />
+      <img src="images/yap/member2.png" alt="YAP member 2" />
+      <img src="images/yap/member3.png" alt="YAP member 3" />
+      <img src="images/yap/member4.png" alt="YAP member 4" />
     </div>
   </section>
 
@@ -231,8 +221,8 @@
     <div class="testimonial">
       “The YAP sessions are laid-back and flexible, I really feel heard and supported.” – YAP member
     </div>
-    <div class="video-placeholder">
-      [ https://www.youtube.com/watch?v=6QfDVa3N39I ]
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/6QfDVa3Neoeo" allowfullscreen></iframe>
     </div>
   </section>
 
@@ -243,15 +233,11 @@
   </section>
 
   <footer>
-    <div class="footer-left">
-      <div>
-        <img src="images/hrb-logo.png" alt="HRB Logo" />
-        <img src="images/nuig-logo.png" alt="NUIG Logo" />
-      </div>
-      <div>  </div>
+    <div>
+      <strong>D1 NOW</strong><br>
       <small>Website built using HRB funding</small>
     </div>
-    <div class="footer-right">
+    <div>
       <a href="#">Give feedback</a>
       <a href="#">Privacy policy</a>
       <a href="#">Accessibility</a>
