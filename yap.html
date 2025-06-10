@@ -140,16 +140,31 @@
       font-weight: bold;
     }
     footer {
-      background: #4B2E83;
+      background-color: #4B2E83;
       color: white;
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    footer .footer-left img {
+      height: 30px;
+      margin-right: 10px;
+    }
+    footer .footer-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
     }
     footer a {
       color: white;
-      margin-left: 15px;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -160,18 +175,18 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="yap.html">YAP</a>
+      <a href="yap.html">Young Adult Panel</a>
       <a href="participants.html">Participants</a>
-      <a href="clinics.html">Clinics</a>
-      <a href="living.html">Living</a>
-      <a href="blog.html">Publications</a>
+      <a href="clinics.html">Study Sites</a>
+      <a href="living.html">T1D Resources</a>
+      <a href="publications.html">Publications</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-inner">
       <h1>Young Adult Panel (YAP)</h1>
-      <p>The YAP is a group of young adults living with Type 1 Diabetes, co-designing and shaping the D1 Now study.</p>
+      <p>The Young Adult Panel is a group of young adults living with Type 1 Diabetes, co-designing and shaping the D1 Now study.</p>
       <a href="#">Interested in joining?</a>
     </div>
   </section>
@@ -211,7 +226,7 @@
         <div>Build leadership skills</div>
       </div>
       <div class="tile" style="background:#CDEED9;">
-        <div>Connect with others who “get it”</div>
+        <div>Connect with like minded”</div>
       </div>
       <div class="tile" style="background:#FDE2DC;">
         <div>Learn about research and design</div>
@@ -224,7 +239,7 @@
 
   <section class="testimonial-video">
     <div class="testimonial">
-      “The YAP sessions are laid-back and flexible, I really feel heard and supported.” – YAP member
+      “quote                                                    quote” – YAP member
     </div>
     <div class="video-embed">
       <iframe src="https://www.youtube.com/embed/6QfDVa3Neoeo" allowfullscreen></iframe>
@@ -238,11 +253,15 @@
   </section>
 
   <footer>
-    <div>
-      <strong>D1 NOW</strong><br>
+    <div class="footer-left">
+      <div>
+        <img src="images/hrb-logo.png" alt="HRB Logo" />
+        <img src="images/nuig-logo.png" alt="NUIG Logo" />
+      </div>
+      <div>  </div>
       <small>Website built using HRB funding</small>
     </div>
-    <div>
+    <div class="footer-right">
       <a href="#">Give feedback</a>
       <a href="#">Privacy policy</a>
       <a href="#">Accessibility</a>
