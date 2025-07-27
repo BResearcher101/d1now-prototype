@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D1 Now – Youth Homepage Mockup</title>
+  <!-- GOOGLE FONTS FOR MODERN, YOUTHFUL LOOK -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #3058FF;
+      --pink: #FF388E;
+      --yellow: #FFDF1B;
+      --green: #31C48D;
+      --footer-blue: #144182;
+      --white: #FFF;
+      --black: #111;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--blue);
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+    }
+    /* ---- LOGO ---- */
+    .logo {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      /* You can swap in your actual logo img here */
+    }
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.8;
+    }
+    /* ---- MAIN SECTION LAYOUT ---- */
+    .main-content {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+      width: 100%;
+      background: linear-gradient(90deg, var(--pink) 0% 65%, var(--green) 100%);
+    }
+    /* ---- IMAGE AREA ---- */
+    .img-col {
+      flex: 7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pink);
+      min-width: 0;
+      position: relative;
+    }
+    .main-img-placeholder {
+      background: var(--yellow);
+      width: 82%;
+      max-width: 440px;
+      min-height: 420px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+      text-align: center;
+      box-shadow: 0 6px 32px 0 rgba(0,0,0,0.06);
+    }
+    /* ---- TEXT, CTA BUTTONS, HAND ---- */
+    .cta-col {
+      flex: 4;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 56px 28px 0 28px;
+      min-width: 0;
+      position: relative;
+    }
+    .main-headline {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--black);
+      line-height: 1.2;
+      max-width: 330px;
+    }
+    .main-subline {
+      font-size: 1.08rem;
+      color: #123;
+      margin-bottom: 38px;
+      max-width: 320px;
+    }
+    .cta-btns {
+      width: 100%;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .cta-btn {
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 18px 0;
+      margin: 0;
+      cursor: pointer;
+      box-shadow: 0 4px 18px 0 rgba(0,0,0,0.09);
+      transition: filter 0.18s, transform 0.15s;
+      outline: none;
+    }
+    .cta-btn.btn-yellow { background: var(--yellow); color: var(--black);}
+    .cta-btn.btn-pink { background: var(--pink); color: var(--white);}
+    .cta-btn.btn-blue { background: var(--blue); color: var(--white);}
+    .cta-btn:active { filter: brightness(0.92); transform: scale(0.98);}
+    /* ---- HAND SVG ON THE RIGHT ---- */
+    .hand-svg-holder {
+      width: 130px;
+      margin-top: 18px;
+      align-self: flex-end; /* Right-align the hand below buttons */
+    }
+    /* ---- FOOTER ---- */
+    footer {
+      width: 100%;
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 36px 10px 36px;
+      font-size: 1rem;
+      min-height: 58px;
+      box-sizing: border-box;
+    }
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-logos img {
+      height: 32px;
+      width: auto;
+      margin-right: 7px;
+      vertical-align: middle;
+      /* Replace src with actual logo images */
+    }
+    .footer-fund-text {
+      font-size: 1rem;
+      color: #DAE2FF;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0.92;
+      transition: opacity 0.16s;
+    }
+    .footer-links a:hover { opacity: 0.7;}
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) {
+      .main-content { flex-direction: column; }
+      .img-col, .cta-col { width: 100%; flex: unset; min-height: 260px;}
+      .cta-col { align-items: center; padding: 36px 6vw 18px 6vw;}
+      .main-headline, .main-subline { max-width: 98vw;}
+      .main-img-placeholder { max-width: 70vw; min-height: 210px;}
+      .hand-svg-holder { margin-top: 10px; width: 90px;}
+    }
+    @media (max-width: 700px) {
+      header, footer { padding-left: 10px; padding-right: 10px;}
+      .main-content { min-height: unset;}
+      .main-img-placeholder { min-height: 110px;}
+      .cta-btns { margin-bottom: 20px;}
+      .hand-svg-holder { width: 70px;}
+      .footer-logos img { height: 20px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER & NAV ========== -->
+  <header>
+    <span class="logo">D1 Now</span>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Young Adults (YAP)</a>
+      <a href="#">Trial Sites</a>
+      <a href="#">Publications</a>
+    </nav>
+  </header>
+
+  <!-- ========== MAIN AREA ========== -->
+  <main class="main-content">
+    <!-- ==== Main Image (left, wide) ==== -->
+    <div class="img-col">
+      <!-- Swap out for real photo/illustration -->
+      <div class="main-img-placeholder">
+        YOUR<br>IMAGE<br>HERE
+      </div>
+    </div>
+    <!-- ==== CTA, Text, Hand (right) ==== -->
+    <div class="cta-col">
+      <div class="main-headline">
+        A community for young adults with Type 1 Diabetes in Ireland.
+      </div>
+      <div class="main-subline">
+        Built by and for you. Find support, join research, shape change.
+      </div>
+      <div class="cta-btns">
+        <button class="cta-btn btn-yellow">BUTTON 1</button>
+        <button class="cta-btn btn-pink">BUTTON 2</button>
+        <button class="cta-btn btn-blue">BUTTON 3</button>
+      </div>
+      <!-- ==== Hand SVG Placeholder ==== -->
+      <div class="hand-svg-holder">
+        <!-- Hand illustration SVG – edit or swap for another SVG as needed -->
+        <svg width="130" height="75" viewBox="0 0 130 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M27 71C32 67 34 65 39 60C43 55 46 51 47 46C49 34 27 43 30 51C33 59 64 55 80 54C96 53 112 42 121 34" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M98 59C100 56 110 37 110 37" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M113 62C115 60 126 46 126 46" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M31 65C29 53 28 30 28 24C28 17 31 9 37 10C43 11 43 21 44 35C45 49 46 56 46 56" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <!-- You can replace the SVG code above with your preferred hand icon! -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-logos">
+      <!-- HRB logo placeholder (swap src with real logo) -->
+      <span class="footer-fund-text">Funded by</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
+      <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
+    </div>
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Subscribe</a>
+    </div>
+  </footer>
+</body>
+</html>
