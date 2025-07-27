@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>D1 Now – Youth Homepage Mockup</title>
-  <!-- GOOGLE FONTS FOR MODERN, YOUTHFUL LOOK -->
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -37,12 +36,10 @@
       padding: 0 40px;
       height: 64px;
     }
-    /* ---- LOGO ---- */
     .logo {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: 1px;
-      /* You can swap in your actual logo img here */
     }
     nav {
       display: flex;
@@ -58,15 +55,14 @@
     nav a:hover {
       opacity: 0.8;
     }
-    /* ---- MAIN SECTION LAYOUT ---- */
     .main-content {
       flex: 1;
       display: flex;
-      min-height: 0;
       width: 100%;
-      background: linear-gradient(90deg, var(--pink) 0% 65%, var(--green) 100%);
+      background: linear-gradient(90deg, var(--pink) 0% 72%, var(--green) 100%);
+      min-height: 0;
     }
-    /* ---- IMAGE AREA ---- */
+    /* IMAGE AREA */
     .img-col {
       flex: 7;
       display: flex;
@@ -77,23 +73,30 @@
       position: relative;
     }
     .main-img-placeholder {
-      background: var(--yellow);
-      width: 82%;
-      max-width: 440px;
-      min-height: 420px;
-      border-radius: 22px;
+      width: 96%;
+      height: 90%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--black);
-      text-align: center;
-      box-shadow: 0 6px 32px 0 rgba(0,0,0,0.06);
+      background: var(--yellow);
+      border-radius: 24px;
+      box-shadow: 0 6px 32px 0 rgba(0,0,0,0.08);
+      overflow: hidden;
+      position: relative;
     }
-    /* ---- TEXT, CTA BUTTONS, HAND ---- */
+    .main-img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      /* min-height and min-width to make it always fill the yellow area */
+      min-height: 280px;
+      min-width: 250px;
+      background: #eee;
+    }
+    /* CTA, TEXT, HAND */
     .cta-col {
-      flex: 4;
+      flex: 3;
       background: var(--green);
       display: flex;
       flex-direction: column;
@@ -102,6 +105,7 @@
       padding: 56px 28px 0 28px;
       min-width: 0;
       position: relative;
+      z-index: 2;
     }
     .main-headline {
       font-size: 1.65rem;
@@ -141,13 +145,22 @@
     .cta-btn.btn-pink { background: var(--pink); color: var(--white);}
     .cta-btn.btn-blue { background: var(--blue); color: var(--white);}
     .cta-btn:active { filter: brightness(0.92); transform: scale(0.98);}
-    /* ---- HAND SVG ON THE RIGHT ---- */
-    .hand-svg-holder {
-      width: 130px;
-      margin-top: 18px;
-      align-self: flex-end; /* Right-align the hand below buttons */
+    /* HAND IMAGE ON RIGHT BELOW BUTTONS */
+    .hand-img-holder {
+      width: 120px;
+      margin-top: 24px;
+      align-self: flex-end; /* right-align */
+      /* For accessibility: add alt text and outline for focus if needed */
     }
-    /* ---- FOOTER ---- */
+    .hand-img-holder img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+      background: var(--yellow);
+      /* Edit or remove bg as needed for your SVG or PNG */
+    }
+    /* FOOTER */
     footer {
       width: 100%;
       background: var(--footer-blue);
@@ -170,7 +183,6 @@
       width: auto;
       margin-right: 7px;
       vertical-align: middle;
-      /* Replace src with actual logo images */
     }
     .footer-fund-text {
       font-size: 1rem;
@@ -191,27 +203,28 @@
       transition: opacity 0.16s;
     }
     .footer-links a:hover { opacity: 0.7;}
-    /* ---- RESPONSIVE ---- */
+    /* RESPONSIVE */
     @media (max-width: 1000px) {
       .main-content { flex-direction: column; }
       .img-col, .cta-col { width: 100%; flex: unset; min-height: 260px;}
       .cta-col { align-items: center; padding: 36px 6vw 18px 6vw;}
       .main-headline, .main-subline { max-width: 98vw;}
       .main-img-placeholder { max-width: 70vw; min-height: 210px;}
-      .hand-svg-holder { margin-top: 10px; width: 90px;}
+      .main-img-placeholder img { min-height: 150px; }
+      .hand-img-holder { margin-top: 12px; width: 80px;}
     }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
-      .main-img-placeholder { min-height: 110px;}
-      .cta-btns { margin-bottom: 20px;}
-      .hand-svg-holder { width: 70px;}
-      .footer-logos img { height: 20px;}
+      .main-img-placeholder { min-height: 90px;}
+      .cta-btns { margin-bottom: 16px;}
+      .hand-img-holder { width: 58px;}
+      .footer-logos img { height: 18px;}
     }
   </style>
 </head>
 <body>
-  <!-- ========== HEADER & NAV ========== -->
+  <!-- HEADER & NAV -->
   <header>
     <span class="logo">D1 Now</span>
     <nav>
@@ -222,16 +235,16 @@
     </nav>
   </header>
 
-  <!-- ========== MAIN AREA ========== -->
+  <!-- MAIN AREA -->
   <main class="main-content">
-    <!-- ==== Main Image (left, wide) ==== -->
+    <!-- Main Image (left, wide) -->
     <div class="img-col">
-      <!-- Swap out for real photo/illustration -->
       <div class="main-img-placeholder">
-        YOUR<br>IMAGE<br>HERE
+        <!-- IMAGE PLACEHOLDER: Replace the src below with your actual image link -->
+        <img src="https://placehold.co/600x400?text=Your+Image+Here" alt="Main page visual placeholder">
       </div>
     </div>
-    <!-- ==== CTA, Text, Hand (right) ==== -->
+    <!-- CTA, Text, Hand (right) -->
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
@@ -244,21 +257,14 @@
         <button class="cta-btn btn-pink">BUTTON 2</button>
         <button class="cta-btn btn-blue">BUTTON 3</button>
       </div>
-      <!-- ==== Hand SVG Placeholder ==== -->
-      <div class="hand-svg-holder">
-        <!-- Hand illustration SVG – edit or swap for another SVG as needed -->
-        <svg width="130" height="75" viewBox="0 0 130 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M27 71C32 67 34 65 39 60C43 55 46 51 47 46C49 34 27 43 30 51C33 59 64 55 80 54C96 53 112 42 121 34" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
-          <path d="M98 59C100 56 110 37 110 37" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
-          <path d="M113 62C115 60 126 46 126 46" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
-          <path d="M31 65C29 53 28 30 28 24C28 17 31 9 37 10C43 11 43 21 44 35C45 49 46 56 46 56" stroke="#FFDF1B" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-        <!-- You can replace the SVG code above with your preferred hand icon! -->
+      <!-- HAND IMAGE PLACEHOLDER: Replace the src below with your preferred hand SVG/PNG -->
+      <div class="hand-img-holder">
+        <img src="https://placehold.co/120x70?text=Hand+Here" alt="Inviting hand illustration placeholder">
       </div>
     </div>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-logos">
       <!-- HRB logo placeholder (swap src with real logo) -->
