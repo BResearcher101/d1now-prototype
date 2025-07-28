@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>D1 Now – Youth Homepage Mockup</title>
+  <title>D1 Now – Homepage</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --blue: #3058FF;
-      --pink: #FF388E;
-      --yellow: #FFDF1B;
+      --pink: #FFDF1B;
+      --yellow: #FF388E;
       --green: #31C48D;
       --footer-blue: #144182;
       --white: #FFF;
@@ -34,107 +34,130 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 40px;
-      height: 64px;
+      height: 68px;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
     }
     .logo {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: 1px;
+      margin-right: 32px;
     }
     nav {
       display: flex;
-      gap: 32px;
+      flex: 1;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     nav a {
       color: var(--white);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       transition: opacity 0.2s;
+      letter-spacing: 0.2px;
+      padding: 6px 16px;
+      border-radius: 6px;
     }
     nav a:hover {
-      opacity: 0.8;
+      background: rgba(255,255,255,0.08);
+      opacity: 0.82;
     }
+
     .main-content {
       flex: 1;
       display: flex;
       width: 100%;
-      background: linear-gradient(90deg, var(--pink) 0% 72%, var(--green) 100%);
       min-height: 0;
+      background: var(--green);
     }
     /* IMAGE AREA */
     .img-col {
-      flex: 7;
+      flex: 2.6;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--pink);
       min-width: 0;
       position: relative;
+      min-height: 420px;
     }
     .main-img-placeholder {
-      width: 96%;
-      height: 90%;
+      width: 97%;
+      height: 92%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--yellow);
-      border-radius: 24px;
+      background: var(--pink);
+      border-radius: 28px;
       box-shadow: 0 6px 32px 0 rgba(0,0,0,0.08);
       overflow: hidden;
       position: relative;
+      min-height: 340px;
+      min-width: 300px;
+      max-width: 850px;
+      max-height: 720px;
     }
     .main-img-placeholder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 24px;
-      /* min-height and min-width to make it always fill the yellow area */
-      min-height: 280px;
-      min-width: 250px;
+      border-radius: 28px;
       background: #eee;
+      display: block;
     }
     /* CTA, TEXT, HAND */
     .cta-col {
-      flex: 3;
+      flex: 1.1;
       background: var(--green);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 56px 28px 0 28px;
+      padding: 56px 32px 0 32px;
       min-width: 0;
       position: relative;
       z-index: 2;
+      min-height: 420px;
     }
     .main-headline {
-      font-size: 1.65rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 13px;
       color: var(--black);
-      line-height: 1.2;
-      max-width: 330px;
+      line-height: 1.18;
+      max-width: 100%;
+      text-align: left;
     }
     .main-subline {
-      font-size: 1.08rem;
+      font-size: 1.13rem;
       color: #123;
-      margin-bottom: 38px;
-      max-width: 320px;
+      margin-bottom: 36px;
+      max-width: 100%;
+      text-align: left;
     }
     .cta-btns {
       width: 100%;
       margin-bottom: 36px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
       align-items: stretch;
     }
     .cta-btn {
       border: none;
       border-radius: 10px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      padding: 18px 0;
+      padding: 19px 0;
       margin: 0;
       cursor: pointer;
       box-shadow: 0 4px 18px 0 rgba(0,0,0,0.09);
@@ -142,23 +165,25 @@
       outline: none;
     }
     .cta-btn.btn-yellow { background: var(--yellow); color: var(--black);}
-    .cta-btn.btn-pink { background: var(--pink); color: var(--white);}
     .cta-btn.btn-blue { background: var(--blue); color: var(--white);}
     .cta-btn:active { filter: brightness(0.92); transform: scale(0.98);}
-    /* HAND IMAGE ON RIGHT BELOW BUTTONS */
+    /* HAND IMAGE ON RIGHT, LARGE AND OVERLAPPING */
     .hand-img-holder {
-      width: 120px;
-      margin-top: 24px;
-      align-self: flex-end; /* right-align */
-      /* For accessibility: add alt text and outline for focus if needed */
+      position: absolute;
+      right: -60px;  /* overlaps out of the CTA column */
+      bottom: 22px;
+      width: 200px;
+      z-index: 3;
+      pointer-events: none; /* Not clickable, just visual */
     }
     .hand-img-holder img {
       width: 100%;
       height: auto;
+      max-width: 210px;
       display: block;
-      border-radius: 22px;
+      border-radius: 20px;
       background: var(--yellow);
-      /* Edit or remove bg as needed for your SVG or PNG */
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
     }
     /* FOOTER */
     footer {
@@ -203,48 +228,105 @@
       transition: opacity 0.16s;
     }
     .footer-links a:hover { opacity: 0.7;}
+    /* POPUP MODAL */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.45);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal-popup {
+      background: #fff;
+      border-radius: 22px;
+      padding: 26px 22px 22px 22px;
+      max-width: 98vw;
+      max-height: 98vh;
+      box-shadow: 0 10px 60px rgba(70,0,70,0.16);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .modal-popup img {
+      display: block;
+      max-width: 65vw;
+      max-height: 74vh;
+      border-radius: 18px;
+      background: #f2f2f2;
+      margin-bottom: 4px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 9px; right: 13px;
+      font-size: 1.65rem;
+      color: #444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+      z-index: 120;
+    }
+    .modal-close:hover { opacity: 1; }
     /* RESPONSIVE */
+    @media (max-width: 1150px) {
+      nav { max-width: 97vw; gap: 8px; }
+    }
     @media (max-width: 1000px) {
       .main-content { flex-direction: column; }
       .img-col, .cta-col { width: 100%; flex: unset; min-height: 260px;}
       .cta-col { align-items: center; padding: 36px 6vw 18px 6vw;}
       .main-headline, .main-subline { max-width: 98vw;}
-      .main-img-placeholder { max-width: 70vw; min-height: 210px;}
+      .main-img-placeholder { max-width: 80vw; min-height: 210px;}
       .main-img-placeholder img { min-height: 150px; }
-      .hand-img-holder { margin-top: 12px; width: 80px;}
+      .hand-img-holder { margin-top: 12px; width: 90px; right: -30px;}
     }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
       .main-img-placeholder { min-height: 90px;}
       .cta-btns { margin-bottom: 16px;}
-      .hand-img-holder { width: 58px;}
+      .hand-img-holder { width: 50vw; max-width:120px; right:-20px;}
       .footer-logos img { height: 18px;}
+      nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
     }
   </style>
 </head>
 <body>
-  <!-- HEADER & NAV -->
+  <!-- ========== HEADER & NAV ========== -->
   <header>
-    <span class="logo">D1 Now</span>
-    <nav>
-      <a href="#">About</a>
-      <a href="#">Young Adults (YAP)</a>
-      <a href="#">Trial Sites</a>
-      <a href="#">Publications</a>
-    </nav>
+    <div class="header-container">
+      <span class="logo">D1 Now</span>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Young Adults (YAP)</a>
+        <a href="#">Trial Participants</a>
+        <a href="#">Trial Sites</a>
+        <a href="#">Publications</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- MAIN AREA -->
+  <!-- ========== MAIN AREA ========== -->
   <main class="main-content">
-    <!-- Main Image (left, wide) -->
+    <!-- ==== Main Image (left, very wide) ==== -->
     <div class="img-col">
       <div class="main-img-placeholder">
-        <!-- IMAGE PLACEHOLDER: Replace the src below with your actual image link -->
-        <img src="https://raw.githack.com/BResearcher101/d1now-prototype/blob/main/images/home.jpg/" alt="Main page visual placeholder">
+        <!-- 
+          MAIN IMAGE PLACEHOLDER: 
+          Replace the src below with your actual RAW GitHub image link 
+          e.g. https://raw.githubusercontent.com/youruser/yourrepo/main/images/your-image.png 
+        -->
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png" alt="Main page visual">
       </div>
     </div>
-    <!-- CTA, Text, Hand (right) -->
+    <!-- ==== CTA, Text, Hand (right) ==== -->
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
@@ -254,20 +336,23 @@
       </div>
       <div class="cta-btns">
         <button class="cta-btn btn-yellow">BUTTON 1</button>
-        <button class="cta-btn btn-pink">BUTTON 2</button>
-        <button class="cta-btn btn-blue">BUTTON 3</button>
+        <button class="cta-btn btn-blue">BUTTON 2</button>
       </div>
-      <!-- HAND IMAGE PLACEHOLDER: Replace the src below with your preferred hand SVG/PNG -->
+      <!-- 
+        HAND IMAGE PLACEHOLDER: 
+        Replace the src below with your preferred hand SVG/PNG RAW link 
+        e.g. https://raw.githubusercontent.com/youruser/yourrepo/main/images/hand.png 
+      -->
       <div class="hand-img-holder">
-        <img src="https://raw.githack.com/BResearcher101/d1now-prototype/blob/main/images/hand.png/" alt="Inviting hand illustration placeholder">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/hand.png" alt="Inviting hand illustration">
       </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ========== FOOTER ========== -->
   <footer>
     <div class="footer-logos">
-      <!-- HRB logo placeholder (swap src with real logo) -->
+      <!-- HRB logo placeholder (swap src with real logo if needed) -->
       <span class="footer-fund-text">Funded by</span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
       <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
@@ -278,5 +363,23 @@
       <a href="#">Subscribe</a>
     </div>
   </footer>
+
+  <!-- ========== POPUP RECRUITMENT POSTER ========== -->
+  <div class="modal-bg" id="recruitmentModal">
+    <div class="modal-popup">
+      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
+      <!-- 
+        RECRUITMENT POSTER IMAGE:
+        Replace the src below with your recruitment poster RAW github link
+      -->
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
+    </div>
+  </div>
+  <script>
+    // Show popup on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('recruitmentModal').classList.add('active');
+    });
+  </script>
 </body>
 </html>
