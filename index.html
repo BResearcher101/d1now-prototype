@@ -8,8 +8,8 @@
   <style>
     :root {
       --blue: #3058FF;
-      --pink: #FFDF1B;
-      --yellow: #FF388E;
+      --pink: #FF388E;
+      --yellow: #FFDF1B;
       --green: #31C48D;
       --footer-blue: #144182;
       --white: #FFF;
@@ -71,13 +71,14 @@
       background: rgba(255,255,255,0.08);
       opacity: 0.82;
     }
-
     .main-content {
       flex: 1;
       display: flex;
       width: 100%;
       min-height: 0;
       background: var(--green);
+      position: relative;
+      overflow: visible;
     }
     /* IMAGE AREA */
     .img-col {
@@ -89,6 +90,7 @@
       min-width: 0;
       position: relative;
       min-height: 420px;
+      overflow: visible;
     }
     .main-img-placeholder {
       width: 97%;
@@ -127,6 +129,7 @@
       position: relative;
       z-index: 2;
       min-height: 420px;
+      overflow: visible;
     }
     .main-headline {
       font-size: 1.8rem;
@@ -170,16 +173,18 @@
     /* HAND IMAGE ON RIGHT, LARGE AND OVERLAPPING */
     .hand-img-holder {
       position: absolute;
-      right: -60px;  /* overlaps out of the CTA column */
+      right: -100px;    /* Overlaps further out! */
       bottom: 22px;
-      width: 200px;
+      width: 220px;
+      min-width: 180px;
+      max-width: 270px;
       z-index: 3;
-      pointer-events: none; /* Not clickable, just visual */
+      pointer-events: none;
     }
     .hand-img-holder img {
       width: 100%;
+      min-width: 180px;
       height: auto;
-      max-width: 210px;
       display: block;
       border-radius: 20px;
       background: var(--yellow);
