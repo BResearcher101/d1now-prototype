@@ -165,7 +165,7 @@
       width: 25px; height: 25px;
       pointer-events: none;
     }
-    /* CTA, TEXT, FAQ BUBBLE */
+    /* CTA, TEXT, FAQ IMAGE */
     .cta-col {
       flex: 1.1;
       background: var(--green);
@@ -236,49 +236,40 @@
       filter: brightness(0.98);
       transform: scale(0.97);
     }
-    /* --- Speech Bubble FAQ Background --- */
-    .speechbubble-faq-bg {
-      width: 99%;
-      max-width: 370px;
-      min-width: 150px;
-      min-height: 180px;
-      margin: 0 auto;
-      position: relative;
+    /* --- FAQ IMAGE LINK, BOUNCE EFFECT --- */
+    .faq-img-link {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      margin-top: 18px;
+      text-decoration: none;
+      position: relative;
+      width: 150px;
+      transition: filter 0.18s;
     }
-    .speechbubble-img {
-      width: 100%;
-      max-width: 370px;
-      height: auto;
+    .faq-img-link:hover, .faq-img-link:focus {
+      filter: brightness(1.08) saturate(1.1);
+    }
+    .faq-img-animated {
+      width: 120px;
+      max-width: 96vw;
+      animation: hand-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+      box-shadow: 0 4px 22px 0 rgba(48,88,255,0.13);
+      border-radius: 18px;
+      background: var(--yellow);
       display: block;
-      object-fit: contain;
-      z-index: 1;
-      background: none;
     }
-    .faq-in-bubble {
-      position: absolute;
-      left: 50%; top: 56%;
-      transform: translate(-50%, -50%);
-      font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      padding: 18px 44px;
-      border: none;
-      border-radius: 999px;
-      background: var(--blue);
-      color: #fff;
-      letter-spacing: 0.3px;
-      box-shadow: 0 5px 22px 0 rgba(48,88,255,0.13);
-      cursor: pointer;
-      z-index: 2;
-      transition: background 0.18s, transform 0.13s;
+    @keyframes hand-bounce {
+      0%, 100% { transform: translateY(0) scale(1);}
+      12% { transform: translateY(-9px) scale(1.07);}
+      18% { transform: translateY(-14px) scale(1.10);}
+      23% { transform: translateY(-11px) scale(1.09);}
+      28% { transform: translateY(-6px) scale(1.04);}
+      40% { transform: translateY(0) scale(1);}
     }
-    .faq-in-bubble:hover, .faq-in-bubble:focus {
-      background: var(--pink);
-      color: var(--black);
-      transform: translate(-50%, -50%) scale(1.07);
+    @media (max-width: 600px) {
+      .faq-img-link { width: 94vw; }
+      .faq-img-animated { width: 90vw; }
     }
     /* FOOTER */
     footer {
@@ -370,7 +361,7 @@
     .modal-close:hover { opacity: 1; }
     /* RESPONSIVE */
     @media (max-width: 1300px) {
-      .speechbubble-faq-bg, .speechbubble-img { max-width: 260px;}
+      .faq-img-link { max-width: 260px;}
     }
     @media (max-width: 1000px) {
       .main-content { flex-direction: column; }
@@ -379,7 +370,7 @@
       .main-headline, .main-subline { max-width: 98vw;}
       .main-img-placeholder { max-width: 80vw; min-height: 210px;}
       .main-img-placeholder img { min-height: 150px; }
-      .speechbubble-faq-bg, .speechbubble-img { margin-top: 10px; max-width: 98vw; }
+      .faq-img-link { margin-top: 10px; max-width: 98vw; }
     }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
@@ -388,8 +379,7 @@
       .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
-      .speechbubble-faq-bg, .speechbubble-img { font-size: 1rem; max-width: 98vw;}
-      .faq-in-bubble { font-size: 1rem; padding: 12px 12vw;}
+      .faq-img-link { font-size: 1rem; max-width: 98vw;}
     }
   </style>
 </head>
@@ -416,7 +406,7 @@
       <div class="main-img-placeholder" style="position:relative;">
         <!-- Carousel images, only one is visible at a time (fade animation) -->
         <img id="mainCarouselImage"
-             src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png"
+             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
              alt="Main page visual"
              class="main-carousel-img"
              style="position:relative;"/>
@@ -431,7 +421,7 @@
         </button>
       </div>
     </div>
-    <!-- ==== CTA, Text, Speech Bubble FAQ (right) ==== -->
+    <!-- ==== CTA, Text, FAQ image (right) ==== -->
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
@@ -443,11 +433,12 @@
         <button class="cta-btn pill">Join YAP</button>
         <button class="cta-btn pill blue">Join Trial</button>
       </div>
-      <!-- Speech bubble image with FAQ button centered inside -->
-      <div class="speechbubble-faq-bg">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/cloud.png" alt="Speech Bubble" class="speechbubble-img">
-        <button class="faq-in-bubble" onclick="window.location.href='#';">FAQ</button>
-      </div>
+      <!-- Clickable FAQ image with bounce effect -->
+      <a href="faq.html" class="faq-img-link" title="Read our FAQ">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/cloud.png"
+             alt="FAQ"
+             class="faq-img-animated">
+      </a>
     </div>
   </main>
 
@@ -475,9 +466,13 @@
   <script>
     // --- Main image carousel/slideshow with fade ---
     const mainImageUrls = [
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-2.png",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-3.png"
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
       // Add more image URLs as needed
     ];
     let mainImgIndex = 0;
