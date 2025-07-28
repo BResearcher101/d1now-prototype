@@ -199,71 +199,108 @@
       max-width: 100%;
       text-align: left;
     }
-    /* Globe-style split buttons */
-    .cta-globe-btns {
+    /* --- Floating Sticker Buttons --- */
+    .cta-sticker-btns {
       display: flex;
       flex-direction: row;
-      width: 220px; /* Adjust as needed */
-      margin-bottom: 44px;
-      margin-top: 8px;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
+      gap: 28px;
+      margin-bottom: 22px;
+      margin-top: 10px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      z-index: 5;
       position: relative;
-      z-index: 4;
     }
-    .cta-btn.cta-half {
-      width: 50%;
-      min-width: 108px;
-      height: 90px;
-      border: none;
+    .cta-btn.sticker {
       font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      font-size: 1.16rem;
+      font-size: 1.18rem;
       font-weight: 700;
-      color: #222;
-      cursor: pointer;
-      transition: filter 0.17s, transform 0.16s, box-shadow 0.18s;
-      margin: 0;
-      border-radius: 0 0 0 0;
-      box-shadow: 0 6px 18px 0 rgba(0,0,0,0.10);
-      outline: none;
-      position: relative;
-      top: 0;
-      z-index: 4;
-      overflow: hidden;
-    }
-    .cta-btn.cta-half.left {
-      border-radius: 0 0 0 100px;
-      background: linear-gradient(120deg, var(--yellow) 70%, var(--pink) 100%);
-      border-right: 2px solid #fff;
+      padding: 26px 40px 23px 40px;
+      border-radius: 34px 38px 38px 37px / 44px 40px 44px 39px;
+      border: none;
+      background: var(--yellow);
       color: var(--black);
+      box-shadow:
+        0 12px 40px 0 rgba(255,56,142,0.18),
+        0 2px 14px 0 rgba(48,88,255,0.08);
+      outline: none;
+      cursor: pointer;
+      will-change: transform;
+      transform: rotate(-3deg) translateY(0);
+      transition:
+        box-shadow 0.18s,
+        filter 0.13s,
+        transform 0.13s,
+        background 0.18s;
+      margin: 0;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 2;
     }
-    .cta-btn.cta-half.right {
-      border-radius: 0 0 100px 0;
-      background: linear-gradient(-120deg, var(--blue) 60%, var(--green) 100%);
-      border-left: 2px solid #fff;
+    .cta-btn.sticker.right {
+      background: linear-gradient(90deg, var(--blue) 8%, var(--green) 94%);
       color: #fff;
+      transform: rotate(4deg) translateY(10px);
+      box-shadow:
+        0 8px 28px 0 rgba(49,196,141,0.14),
+        0 2px 14px 0 rgba(48,88,255,0.11);
     }
-    .cta-btn.cta-half:hover, .cta-btn.cta-half:focus {
-      filter: brightness(1.07) saturate(1.16);
-      transform: scale(1.06) translateY(-2px);
-      box-shadow: 0 16px 32px 0 rgba(0,0,0,0.14);
+    .cta-btn.sticker:hover, .cta-btn.sticker:focus {
+      filter: brightness(1.09) saturate(1.16);
+      box-shadow: 0 18px 48px 0 rgba(255,56,142,0.22), 0 7px 24px 0 rgba(48,88,255,0.13);
+      transform: scale(1.08) rotate(-6deg);
     }
-    .cta-btn.cta-half:active {
-      filter: brightness(0.96);
-      transform: scale(0.98) translateY(0);
-      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.07);
+    .cta-btn.sticker.right:hover, .cta-btn.sticker.right:focus {
+      transform: scale(1.08) rotate(8deg) translateY(6px);
     }
-    @media (max-width: 600px) {
-      .cta-globe-btns {
-        width: 90vw;
-        min-width: 180px;
-      }
-      .cta-btn.cta-half {
-        min-width: 85px;
-        font-size: 1rem;
-        height: 68px;
-      }
+    .cta-btn.sticker:active {
+      filter: brightness(0.97);
+      transform: scale(0.97) rotate(-1.5deg);
+    }
+    /* --- Speech Bubble FAQ --- */
+    .speech-faq {
+      display: inline-block;
+      position: relative;
+      background: #fff;
+      color: var(--blue);
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.07rem;
+      border-radius: 34px;
+      padding: 14px 28px 14px 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 3px 16px 0 rgba(48,88,255,0.13);
+      margin-left: 2px;
+      margin-top: 0;
+      min-width: 110px;
+      max-width: 300px;
+      z-index: 7;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      transition: background 0.15s, color 0.15s, box-shadow 0.17s, transform 0.13s;
+    }
+    .speech-faq:hover, .speech-faq:focus {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 10px 40px 0 rgba(48,88,255,0.15), 0 2px 8px rgba(255,56,142,0.08);
+      transform: scale(1.05) rotate(-2deg);
+    }
+    .speech-faq::after {
+      content: '';
+      position: absolute;
+      left: 22px;
+      bottom: -14px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 2px 3px 8px 0 rgba(48,88,255,0.12);
+      transform: rotate(18deg);
+      z-index: 2;
+    }
+    .speech-faq:hover::after, .speech-faq:focus::after {
+      background: var(--blue);
     }
     /* HAND IMAGE ON RIGHT, EVEN LARGER AND OVERLAPPING */
     .hand-img-holder {
@@ -390,10 +427,11 @@
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
       .main-img-placeholder { min-height: 90px;}
-      .cta-globe-btns { margin-bottom: 18px;}
+      .cta-sticker-btns { margin-bottom: 15px; gap: 11px;}
       .hand-img-holder { width: 50vw; max-width:120px; right:-10px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
+      .speech-faq { font-size: 1rem; max-width: 98vw; }
     }
   </style>
 </head>
@@ -420,7 +458,7 @@
       <div class="main-img-placeholder" style="position:relative;">
         <!-- Carousel images, only one is visible at a time (fade animation) -->
         <img id="mainCarouselImage"
-             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
+             src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png"
              alt="Main page visual"
              class="main-carousel-img"
              style="position:relative;"/>
@@ -443,13 +481,15 @@
       <div class="main-subline">
         Built by and for you. Find support, join research, shape change.
       </div>
-      <div class="cta-globe-btns">
-        <button class="cta-btn cta-half left">Join Now</button>
-        <button class="cta-btn cta-half right">Learn More</button>
+      <div class="cta-sticker-btns">
+        <button class="cta-btn sticker left">Join YAP</button>
+        <button class="cta-btn sticker right">Join Trial</button>
       </div>
-      <!-- HAND IMAGE PLACEHOLDER -->
+      <div class="speech-faq" tabindex="0" onclick="window.location.href='#';">
+        FAQ
+      </div>
       <div class="hand-img-holder">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/hand.png" alt="Inviting hand illustration">
+        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/hand-image.png" alt="Inviting hand illustration">
       </div>
     </div>
   </main>
@@ -472,19 +512,15 @@
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup">
       <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
+      <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/recruitment-poster.png" alt="Recruitment Poster">
     </div>
   </div>
   <script>
     // --- Main image carousel/slideshow with fade ---
     const mainImageUrls = [
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png",
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-2.png",
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-3.png"
       // Add more image URLs as needed
     ];
     let mainImgIndex = 0;
