@@ -165,7 +165,7 @@
       width: 25px; height: 25px;
       pointer-events: none;
     }
-    /* CTA, TEXT, HAND */
+    /* CTA, TEXT, FAQ BUBBLE */
     .cta-col {
       flex: 1.1;
       background: var(--green);
@@ -199,128 +199,86 @@
       max-width: 100%;
       text-align: left;
     }
-    /* --- Floating Sticker Buttons --- */
-    .cta-sticker-btns {
+    .cta-vertical-btns {
       display: flex;
-      flex-direction: row;
-      gap: 28px;
-      margin-bottom: 22px;
-      margin-top: 10px;
-      align-items: flex-start;
-      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
       width: 100%;
-      z-index: 5;
-      position: relative;
+      margin-bottom: 46px;
     }
-    .cta-btn.sticker {
-      font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      font-size: 1.18rem;
-      font-weight: 700;
-      padding: 26px 40px 23px 40px;
-      border-radius: 34px 38px 38px 37px / 44px 40px 44px 39px;
+    .cta-btn.pill {
       border: none;
-      background: var(--yellow);
-      color: var(--black);
-      box-shadow:
-        0 12px 40px 0 rgba(255,56,142,0.18),
-        0 2px 14px 0 rgba(48,88,255,0.08);
-      outline: none;
-      cursor: pointer;
-      will-change: transform;
-      transform: rotate(-3deg) translateY(0);
-      transition:
-        box-shadow 0.18s,
-        filter 0.13s,
-        transform 0.13s,
-        background 0.18s;
-      margin: 0;
-      letter-spacing: 0.5px;
-      position: relative;
-      z-index: 2;
-    }
-    .cta-btn.sticker.right {
-      background: linear-gradient(90deg, var(--blue) 8%, var(--green) 94%);
-      color: #fff;
-      transform: rotate(4deg) translateY(10px);
-      box-shadow:
-        0 8px 28px 0 rgba(49,196,141,0.14),
-        0 2px 14px 0 rgba(48,88,255,0.11);
-    }
-    .cta-btn.sticker:hover, .cta-btn.sticker:focus {
-      filter: brightness(1.09) saturate(1.16);
-      box-shadow: 0 18px 48px 0 rgba(255,56,142,0.22), 0 7px 24px 0 rgba(48,88,255,0.13);
-      transform: scale(1.08) rotate(-6deg);
-    }
-    .cta-btn.sticker.right:hover, .cta-btn.sticker.right:focus {
-      transform: scale(1.08) rotate(8deg) translateY(6px);
-    }
-    .cta-btn.sticker:active {
-      filter: brightness(0.97);
-      transform: scale(0.97) rotate(-1.5deg);
-    }
-    /* --- Speech Bubble FAQ --- */
-    .speech-faq {
-      display: inline-block;
-      position: relative;
-      background: #fff;
-      color: var(--blue);
+      border-radius: 999px;
       font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 1.19rem;
       font-weight: 700;
-      font-size: 1.07rem;
-      border-radius: 34px;
-      padding: 14px 28px 14px 32px;
-      margin-bottom: 30px;
-      box-shadow: 0 3px 16px 0 rgba(48,88,255,0.13);
-      margin-left: 2px;
-      margin-top: 0;
-      min-width: 110px;
-      max-width: 300px;
-      z-index: 7;
+      padding: 22px 0;
+      margin: 0;
       cursor: pointer;
-      letter-spacing: 0.2px;
-      transition: background 0.15s, color 0.15s, box-shadow 0.17s, transform 0.13s;
-    }
-    .speech-faq:hover, .speech-faq:focus {
-      background: var(--blue);
-      color: #fff;
-      box-shadow: 0 10px 40px 0 rgba(48,88,255,0.15), 0 2px 8px rgba(255,56,142,0.08);
-      transform: scale(1.05) rotate(-2deg);
-    }
-    .speech-faq::after {
-      content: '';
-      position: absolute;
-      left: 22px;
-      bottom: -14px;
-      width: 20px;
-      height: 20px;
-      background: #fff;
-      border-radius: 0 0 18px 18px;
-      box-shadow: 2px 3px 8px 0 rgba(48,88,255,0.12);
-      transform: rotate(18deg);
-      z-index: 2;
-    }
-    .speech-faq:hover::after, .speech-faq:focus::after {
-      background: var(--blue);
-    }
-    /* HAND IMAGE ON RIGHT, EVEN LARGER AND OVERLAPPING */
-    .hand-img-holder {
-      position: absolute;
-      right: -130px;
-      bottom: 22px;
-      width: 286px;
-      min-width: 200px;
-      max-width: 320px;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .hand-img-holder img {
+      background: linear-gradient(90deg, var(--yellow) 5%, var(--pink) 100%);
+      color: var(--black);
+      box-shadow: 0 8px 32px 0 rgba(255,56,142,0.11), 0 2px 8px rgba(48, 88, 255, 0.10);
+      transition: filter 0.15s, transform 0.13s, box-shadow 0.13s, background 0.22s;
       width: 100%;
-      min-width: 200px;
+      letter-spacing: 0.4px;
+    }
+    .cta-btn.pill.blue {
+      background: linear-gradient(90deg, var(--blue) 15%, var(--green) 100%);
+      color: #fff;
+      box-shadow: 0 8px 32px 0 rgba(49,196,141,0.12), 0 2px 8px rgba(48, 88, 255, 0.10);
+    }
+    .cta-btn.pill:hover, .cta-btn.pill:focus {
+      filter: brightness(1.12) saturate(1.18);
+      box-shadow: 0 18px 36px 0 rgba(255,56,142,0.13), 0 8px 20px 0 rgba(48,88,255,0.11);
+      transform: scale(1.04);
+    }
+    .cta-btn.pill:active {
+      filter: brightness(0.98);
+      transform: scale(0.97);
+    }
+    /* --- Speech Bubble FAQ Background --- */
+    .speechbubble-faq-bg {
+      width: 99%;
+      max-width: 370px;
+      min-width: 150px;
+      min-height: 180px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .speechbubble-img {
+      width: 100%;
+      max-width: 370px;
       height: auto;
       display: block;
-      border-radius: 22px;
-      background: var(--yellow);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      object-fit: contain;
+      z-index: 1;
+      background: none;
+    }
+    .faq-in-bubble {
+      position: absolute;
+      left: 50%; top: 56%;
+      transform: translate(-50%, -50%);
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 18px 44px;
+      border: none;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      letter-spacing: 0.3px;
+      box-shadow: 0 5px 22px 0 rgba(48,88,255,0.13);
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.18s, transform 0.13s;
+    }
+    .faq-in-bubble:hover, .faq-in-bubble:focus {
+      background: var(--pink);
+      color: var(--black);
+      transform: translate(-50%, -50%) scale(1.07);
     }
     /* FOOTER */
     footer {
@@ -412,7 +370,7 @@
     .modal-close:hover { opacity: 1; }
     /* RESPONSIVE */
     @media (max-width: 1300px) {
-      .hand-img-holder { right: -60px; width: 200px;}
+      .speechbubble-faq-bg, .speechbubble-img { max-width: 260px;}
     }
     @media (max-width: 1000px) {
       .main-content { flex-direction: column; }
@@ -421,17 +379,17 @@
       .main-headline, .main-subline { max-width: 98vw;}
       .main-img-placeholder { max-width: 80vw; min-height: 210px;}
       .main-img-placeholder img { min-height: 150px; }
-      .hand-img-holder { margin-top: 12px; width: 120px; right: -20px;}
+      .speechbubble-faq-bg, .speechbubble-img { margin-top: 10px; max-width: 98vw; }
     }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
       .main-img-placeholder { min-height: 90px;}
-      .cta-sticker-btns { margin-bottom: 15px; gap: 11px;}
-      .hand-img-holder { width: 50vw; max-width:120px; right:-10px;}
+      .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
-      .speech-faq { font-size: 1rem; max-width: 98vw; }
+      .speechbubble-faq-bg, .speechbubble-img { font-size: 1rem; max-width: 98vw;}
+      .faq-in-bubble { font-size: 1rem; padding: 12px 12vw;}
     }
   </style>
 </head>
@@ -473,7 +431,7 @@
         </button>
       </div>
     </div>
-    <!-- ==== CTA, Text, Hand (right) ==== -->
+    <!-- ==== CTA, Text, Speech Bubble FAQ (right) ==== -->
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
@@ -481,15 +439,14 @@
       <div class="main-subline">
         Built by and for you. Find support, join research, shape change.
       </div>
-      <div class="cta-sticker-btns">
-        <button class="cta-btn sticker left">Join YAP</button>
-        <button class="cta-btn sticker right">Join Trial</button>
+      <div class="cta-vertical-btns">
+        <button class="cta-btn pill">Join YAP</button>
+        <button class="cta-btn pill blue">Join Trial</button>
       </div>
-      <div class="speech-faq" tabindex="0" onclick="window.location.href='#';">
-        FAQ
-      </div>
-      <div class="hand-img-holder">
-        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/hand-image.png" alt="Inviting hand illustration">
+      <!-- Speech bubble image with FAQ button centered inside -->
+      <div class="speechbubble-faq-bg">
+        <img src="/mnt/data/11adcd50-bb7a-4b97-9009-84f3d4affe70.webp" alt="Speech Bubble" class="speechbubble-img">
+        <button class="faq-in-bubble" onclick="window.location.href='#';">FAQ</button>
       </div>
     </div>
   </main>
