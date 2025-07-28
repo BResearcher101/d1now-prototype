@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>D1 Now – Homepage</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --blue: #3058FF;
@@ -48,6 +49,7 @@
       font-size: 2rem;
       letter-spacing: 1px;
       margin-right: 32px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
     nav {
       display: flex;
@@ -57,6 +59,7 @@
       gap: 22px;
       max-width: 1000px;
       margin: 0 auto;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
     nav a {
       color: var(--white);
@@ -178,8 +181,10 @@
       overflow: visible;
     }
     .main-headline {
-      font-size: 1.8rem;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 2.15rem;
       font-weight: 700;
+      letter-spacing: -0.5px;
       margin-bottom: 13px;
       color: var(--black);
       line-height: 1.18;
@@ -187,65 +192,78 @@
       text-align: left;
     }
     .main-subline {
-      font-size: 1.13rem;
-      color: #123;
+      font-size: 1.2rem;
+      color: #222;
+      font-family: 'Inter', Arial, sans-serif;
       margin-bottom: 36px;
       max-width: 100%;
       text-align: left;
     }
-    .cta-btns {
-      width: 100%;
-      margin-bottom: 36px;
+    /* Globe-style split buttons */
+    .cta-globe-btns {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: stretch;
-    }
-    .cta-btn {
-      border: none;
-      border-radius: 17px;
-      font-size: 1.19rem;
-      font-weight: 700;
-      padding: 22px 0;
-      margin: 0;
-      cursor: pointer;
-      box-shadow: 0 8px 26px 0 rgba(0,0,0,0.13), 0 2px 8px rgba(255, 56, 142, 0.11);
-      transition: 
-        filter 0.17s, 
-        transform 0.16s, 
-        box-shadow 0.2s,
-        background 0.27s;
-      outline: none;
-      background: linear-gradient(90deg, var(--yellow) 5%, var(--pink) 100%);
-      color: var(--black);
-      letter-spacing: 0.5px;
+      flex-direction: row;
+      width: 220px; /* Adjust as needed */
+      margin-bottom: 44px;
+      margin-top: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
       position: relative;
+      z-index: 4;
+    }
+    .cta-btn.cta-half {
+      width: 50%;
+      min-width: 108px;
+      height: 90px;
+      border: none;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 1.16rem;
+      font-weight: 700;
+      color: #222;
+      cursor: pointer;
+      transition: filter 0.17s, transform 0.16s, box-shadow 0.18s;
+      margin: 0;
+      border-radius: 0 0 0 0;
+      box-shadow: 0 6px 18px 0 rgba(0,0,0,0.10);
+      outline: none;
+      position: relative;
+      top: 0;
+      z-index: 4;
       overflow: hidden;
-      will-change: transform;
-      /* fun micro jiggle effect on hover (via keyframes below) */
     }
-    .cta-btn.btn-blue {
-      background: linear-gradient(90deg, var(--blue) 15%, var(--green) 95%);
+    .cta-btn.cta-half.left {
+      border-radius: 0 0 0 100px;
+      background: linear-gradient(120deg, var(--yellow) 70%, var(--pink) 100%);
+      border-right: 2px solid #fff;
+      color: var(--black);
+    }
+    .cta-btn.cta-half.right {
+      border-radius: 0 0 100px 0;
+      background: linear-gradient(-120deg, var(--blue) 60%, var(--green) 100%);
+      border-left: 2px solid #fff;
       color: #fff;
-      box-shadow: 0 8px 28px 0 rgba(48,88,255,0.14), 0 2px 8px rgba(49,196,141, 0.07);
     }
-    .cta-btn:hover, .cta-btn:focus {
-      filter: brightness(1.06) saturate(1.2);
-      box-shadow: 0 12px 36px 0 rgba(0,0,0,0.16), 0 4px 12px rgba(255, 56, 142, 0.11);
-      transform: scale(1.07) rotate(-1.3deg);
-      animation: btn-jiggle 0.25s linear;
-      z-index: 1;
+    .cta-btn.cta-half:hover, .cta-btn.cta-half:focus {
+      filter: brightness(1.07) saturate(1.16);
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 16px 32px 0 rgba(0,0,0,0.14);
     }
-    .cta-btn:active {
-      filter: brightness(0.98);
-      transform: scale(0.98) rotate(0.5deg);
-      box-shadow: 0 3px 12px 0 rgba(0,0,0,0.10);
+    .cta-btn.cta-half:active {
+      filter: brightness(0.96);
+      transform: scale(0.98) translateY(0);
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.07);
     }
-    @keyframes btn-jiggle {
-      0% { transform: scale(1.07) rotate(-1deg);}
-      40% { transform: scale(0.97) rotate(1deg);}
-      80% { transform: scale(1.04) rotate(-2deg);}
-      100% { transform: scale(1.07) rotate(-1.3deg);}
+    @media (max-width: 600px) {
+      .cta-globe-btns {
+        width: 90vw;
+        min-width: 180px;
+      }
+      .cta-btn.cta-half {
+        min-width: 85px;
+        font-size: 1rem;
+        height: 68px;
+      }
     }
     /* HAND IMAGE ON RIGHT, EVEN LARGER AND OVERLAPPING */
     .hand-img-holder {
@@ -372,7 +390,7 @@
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
       .main-img-placeholder { min-height: 90px;}
-      .cta-btns { margin-bottom: 16px;}
+      .cta-globe-btns { margin-bottom: 18px;}
       .hand-img-holder { width: 50vw; max-width:120px; right:-10px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
@@ -425,9 +443,9 @@
       <div class="main-subline">
         Built by and for you. Find support, join research, shape change.
       </div>
-      <div class="cta-btns">
-        <button class="cta-btn btn-yellow">Join Now</button>
-        <button class="cta-btn btn-blue">Learn More</button>
+      <div class="cta-globe-btns">
+        <button class="cta-btn cta-half left">Join Now</button>
+        <button class="cta-btn cta-half right">Learn More</button>
       </div>
       <!-- HAND IMAGE PLACEHOLDER -->
       <div class="hand-img-holder">
