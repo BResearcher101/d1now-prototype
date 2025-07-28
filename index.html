@@ -14,6 +14,7 @@
       --footer-blue: #144182;
       --white: #FFF;
       --black: #111;
+      --shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
     }
     html, body {
       height: 100%;
@@ -91,6 +92,8 @@
       position: relative;
       min-height: 420px;
       overflow: visible;
+      flex-direction: column;
+      gap: 0.8rem;
     }
     .main-img-placeholder {
       width: 97%;
@@ -100,7 +103,7 @@
       justify-content: center;
       background: var(--pink);
       border-radius: 28px;
-      box-shadow: 0 6px 32px 0 rgba(0,0,0,0.08);
+      box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
       min-height: 340px;
@@ -108,14 +111,56 @@
       max-width: 850px;
       max-height: 720px;
     }
-    .main-img-placeholder img {
+    .main-carousel-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 28px;
       background: #eee;
       display: block;
-      transition: opacity 0.5s;
+      opacity: 1;
+      transition: opacity 0.7s cubic-bezier(.61,-0.06,.57,1.18);
+      position: absolute;
+      left: 0; top: 0;
+    }
+    .main-carousel-img.fading {
+      opacity: 0;
+      pointer-events: none;
+    }
+    /* Carousel Controls */
+    .carousel-controls {
+      margin-top: 12px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel-btn {
+      border: none;
+      background: linear-gradient(90deg, var(--yellow) 20%, var(--pink) 100%);
+      color: var(--black);
+      font-size: 1.9rem;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px 0 rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: background 0.22s, box-shadow 0.18s, transform 0.16s;
+      outline: none;
+      opacity: 0.92;
+    }
+    .carousel-btn:active, .carousel-btn:focus {
+      background: var(--yellow);
+      box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15);
+      opacity: 1;
+      transform: scale(1.06) rotate(-6deg);
+    }
+    .carousel-btn svg {
+      width: 25px; height: 25px;
+      pointer-events: none;
     }
     /* CTA, TEXT, HAND */
     .cta-col {
@@ -158,25 +203,56 @@
     }
     .cta-btn {
       border: none;
-      border-radius: 10px;
-      font-size: 1.15rem;
-      font-weight: 600;
-      padding: 19px 0;
+      border-radius: 17px;
+      font-size: 1.19rem;
+      font-weight: 700;
+      padding: 22px 0;
       margin: 0;
       cursor: pointer;
-      box-shadow: 0 4px 18px 0 rgba(0,0,0,0.09);
-      transition: filter 0.18s, transform 0.15s;
+      box-shadow: 0 8px 26px 0 rgba(0,0,0,0.13), 0 2px 8px rgba(255, 56, 142, 0.11);
+      transition: 
+        filter 0.17s, 
+        transform 0.16s, 
+        box-shadow 0.2s,
+        background 0.27s;
       outline: none;
+      background: linear-gradient(90deg, var(--yellow) 5%, var(--pink) 100%);
+      color: var(--black);
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      /* fun micro jiggle effect on hover (via keyframes below) */
     }
-    .cta-btn.btn-yellow { background: var(--yellow); color: var(--black);}
-    .cta-btn.btn-blue { background: var(--blue); color: var(--white);}
-    .cta-btn:active { filter: brightness(0.92); transform: scale(0.98);}
+    .cta-btn.btn-blue {
+      background: linear-gradient(90deg, var(--blue) 15%, var(--green) 95%);
+      color: #fff;
+      box-shadow: 0 8px 28px 0 rgba(48,88,255,0.14), 0 2px 8px rgba(49,196,141, 0.07);
+    }
+    .cta-btn:hover, .cta-btn:focus {
+      filter: brightness(1.06) saturate(1.2);
+      box-shadow: 0 12px 36px 0 rgba(0,0,0,0.16), 0 4px 12px rgba(255, 56, 142, 0.11);
+      transform: scale(1.07) rotate(-1.3deg);
+      animation: btn-jiggle 0.25s linear;
+      z-index: 1;
+    }
+    .cta-btn:active {
+      filter: brightness(0.98);
+      transform: scale(0.98) rotate(0.5deg);
+      box-shadow: 0 3px 12px 0 rgba(0,0,0,0.10);
+    }
+    @keyframes btn-jiggle {
+      0% { transform: scale(1.07) rotate(-1deg);}
+      40% { transform: scale(0.97) rotate(1deg);}
+      80% { transform: scale(1.04) rotate(-2deg);}
+      100% { transform: scale(1.07) rotate(-1.3deg);}
+    }
     /* HAND IMAGE ON RIGHT, EVEN LARGER AND OVERLAPPING */
     .hand-img-holder {
       position: absolute;
-      right: -130px;    /* More overlap */
+      right: -130px;
       bottom: 22px;
-      width: 286px;     /* 30% bigger than 220px */
+      width: 286px;
       min-width: 200px;
       max-width: 320px;
       z-index: 3;
@@ -323,14 +399,22 @@
   <main class="main-content">
     <!-- ==== Main Image (left, very wide, with carousel) ==== -->
     <div class="img-col">
-      <div class="main-img-placeholder">
-        <!-- 
-          MAIN IMAGE CAROUSEL: 
-          The JS below will rotate through all URLs in the array.
-        -->
+      <div class="main-img-placeholder" style="position:relative;">
+        <!-- Carousel images, only one is visible at a time (fade animation) -->
         <img id="mainCarouselImage"
              src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
-             alt="Main page visual">
+             alt="Main page visual"
+             class="main-carousel-img"
+             style="position:relative;"/>
+      </div>
+      <!-- Carousel Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" title="Previous image" aria-label="Previous image">
+          <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button class="carousel-btn" id="nextBtn" title="Next image" aria-label="Next image">
+          <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
     <!-- ==== CTA, Text, Hand (right) ==== -->
@@ -342,14 +426,10 @@
         Built by and for you. Find support, join research, shape change.
       </div>
       <div class="cta-btns">
-        <button class="cta-btn btn-yellow">BUTTON 1</button>
-        <button class="cta-btn btn-blue">BUTTON 2</button>
+        <button class="cta-btn btn-yellow">Join Now</button>
+        <button class="cta-btn btn-blue">Learn More</button>
       </div>
-      <!-- 
-        HAND IMAGE PLACEHOLDER: 
-        Replace the src below with your preferred hand SVG/PNG RAW link 
-        e.g. https://raw.githubusercontent.com/youruser/yourrepo/main/images/hand.png 
-      -->
+      <!-- HAND IMAGE PLACEHOLDER -->
       <div class="hand-img-holder">
         <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/hand.png" alt="Inviting hand illustration">
       </div>
@@ -359,7 +439,6 @@
   <!-- ========== FOOTER ========== -->
   <footer>
     <div class="footer-logos">
-      <!-- HRB logo placeholder (swap src with real logo if needed) -->
       <span class="footer-fund-text">Funded by</span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
       <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
@@ -375,15 +454,11 @@
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup">
       <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
-      <!-- 
-        RECRUITMENT POSTER IMAGE:
-        Replace the src below with your recruitment poster RAW github link
-      -->
       <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
     </div>
   </div>
   <script>
-    // --- Main image carousel/slideshow ---
+    // --- Main image carousel/slideshow with fade ---
     const mainImageUrls = [
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
@@ -394,16 +469,43 @@
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
       // Add more image URLs as needed
     ];
-
     let mainImgIndex = 0;
+    let autoInterval = null;
     const mainImgElem = document.getElementById("mainCarouselImage");
-
-    function showNextMainImg() {
-      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
-      mainImgElem.src = mainImageUrls[mainImgIndex];
+    function showMainImg(index, fade=true) {
+      if (fade) {
+        mainImgElem.classList.add('fading');
+        setTimeout(() => {
+          mainImgElem.src = mainImageUrls[index];
+          mainImgElem.classList.remove('fading');
+        }, 400);
+      } else {
+        mainImgElem.src = mainImageUrls[index];
+      }
     }
-
-    setInterval(showNextMainImg, 3000);
+    function showNextMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function showPrevMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex - 1 + mainImageUrls.length) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function startAutoCarousel() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(() => showNextMainImg(true), 3000);
+    }
+    document.getElementById("prevBtn").onclick = function() {
+      showPrevMainImg(true);
+      startAutoCarousel();
+    };
+    document.getElementById("nextBtn").onclick = function() {
+      showNextMainImg(true);
+      startAutoCarousel();
+    };
+    // Initial setup
+    mainImgElem.src = mainImageUrls[mainImgIndex];
+    startAutoCarousel();
 
     // Show popup on page load
     window.addEventListener('DOMContentLoaded', function() {
