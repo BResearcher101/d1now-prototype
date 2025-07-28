@@ -115,6 +115,7 @@
       border-radius: 28px;
       background: #eee;
       display: block;
+      transition: opacity 0.5s;
     }
     /* CTA, TEXT, HAND */
     .cta-col {
@@ -170,23 +171,23 @@
     .cta-btn.btn-yellow { background: var(--yellow); color: var(--black);}
     .cta-btn.btn-blue { background: var(--blue); color: var(--white);}
     .cta-btn:active { filter: brightness(0.92); transform: scale(0.98);}
-    /* HAND IMAGE ON RIGHT, LARGE AND OVERLAPPING */
+    /* HAND IMAGE ON RIGHT, EVEN LARGER AND OVERLAPPING */
     .hand-img-holder {
       position: absolute;
-      right: -100px;    /* Overlaps further out! */
+      right: -130px;    /* More overlap */
       bottom: 22px;
-      width: 220px;
-      min-width: 180px;
-      max-width: 270px;
+      width: 286px;     /* 30% bigger than 220px */
+      min-width: 200px;
+      max-width: 320px;
       z-index: 3;
       pointer-events: none;
     }
     .hand-img-holder img {
       width: 100%;
-      min-width: 180px;
+      min-width: 200px;
       height: auto;
       display: block;
-      border-radius: 20px;
+      border-radius: 22px;
       background: var(--yellow);
       box-shadow: 0 2px 12px rgba(0,0,0,0.13);
     }
@@ -279,8 +280,8 @@
     }
     .modal-close:hover { opacity: 1; }
     /* RESPONSIVE */
-    @media (max-width: 1150px) {
-      nav { max-width: 97vw; gap: 8px; }
+    @media (max-width: 1300px) {
+      .hand-img-holder { right: -60px; width: 200px;}
     }
     @media (max-width: 1000px) {
       .main-content { flex-direction: column; }
@@ -289,14 +290,14 @@
       .main-headline, .main-subline { max-width: 98vw;}
       .main-img-placeholder { max-width: 80vw; min-height: 210px;}
       .main-img-placeholder img { min-height: 150px; }
-      .hand-img-holder { margin-top: 12px; width: 90px; right: -30px;}
+      .hand-img-holder { margin-top: 12px; width: 120px; right: -20px;}
     }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
       .main-img-placeholder { min-height: 90px;}
       .cta-btns { margin-bottom: 16px;}
-      .hand-img-holder { width: 50vw; max-width:120px; right:-20px;}
+      .hand-img-holder { width: 50vw; max-width:120px; right:-10px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
     }
@@ -320,15 +321,16 @@
 
   <!-- ========== MAIN AREA ========== -->
   <main class="main-content">
-    <!-- ==== Main Image (left, very wide) ==== -->
+    <!-- ==== Main Image (left, very wide, with carousel) ==== -->
     <div class="img-col">
       <div class="main-img-placeholder">
         <!-- 
-          MAIN IMAGE PLACEHOLDER: 
-          Replace the src below with your actual RAW GitHub image link 
-          e.g. https://raw.githubusercontent.com/youruser/yourrepo/main/images/your-image.png 
+          MAIN IMAGE CAROUSEL: 
+          The JS below will rotate through all URLs in the array.
         -->
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png" alt="Main page visual">
+        <img id="mainCarouselImage"
+             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
+             alt="Main page visual">
       </div>
     </div>
     <!-- ==== CTA, Text, Hand (right) ==== -->
@@ -381,6 +383,28 @@
     </div>
   </div>
   <script>
+    // --- Main image carousel/slideshow ---
+    const mainImageUrls = [
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
+      // Add more image URLs as needed
+    ];
+
+    let mainImgIndex = 0;
+    const mainImgElem = document.getElementById("mainCarouselImage");
+
+    function showNextMainImg() {
+      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
+      mainImgElem.src = mainImageUrls[mainImgIndex];
+    }
+
+    setInterval(showNextMainImg, 3000);
+
     // Show popup on page load
     window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('recruitmentModal').classList.add('active');
