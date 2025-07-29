@@ -9,11 +9,9 @@
   <style>
     :root {
       --blue: #3058FF;
-      --pink: #FF388E;
-      --yellow: #FFDF1B;
-      --green: #31C48D;
       --footer-blue: #144182;
       --white: #FFF;
+      --light: #f6f8fa;
       --black: #111;
       --shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
     }
@@ -22,15 +20,16 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', Arial, sans-serif;
-      background: var(--blue);
+      background: var(--footer-blue);
     }
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      background: var(--footer-blue);
     }
     header {
-      background: var(--blue);
+      background: var(--footer-blue);
       color: var(--white);
       display: flex;
       align-items: center;
@@ -72,7 +71,7 @@
       border-radius: 6px;
     }
     nav a:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.09);
       opacity: 0.82;
     }
     .main-content {
@@ -80,7 +79,7 @@
       display: flex;
       width: 100%;
       min-height: 0;
-      background: var(--green);
+      background: var(--light);
       position: relative;
       overflow: visible;
     }
@@ -91,7 +90,7 @@
       flex-direction: column;
       align-items: stretch;
       justify-content: center;
-      background: var(--pink);
+      background: var(--white);
       min-width: 0;
       min-height: 420px;
       overflow: hidden;
@@ -134,8 +133,8 @@
     }
     .carousel-btn {
       border: none;
-      background: linear-gradient(90deg, var(--yellow) 20%, var(--pink) 100%);
-      color: var(--black);
+      background: var(--footer-blue);
+      color: var(--white);
       font-size: 1.9rem;
       border-radius: 50%;
       width: 45px;
@@ -150,7 +149,7 @@
       opacity: 0.92;
     }
     .carousel-btn:active, .carousel-btn:focus {
-      background: var(--yellow);
+      background: var(--blue);
       box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15);
       opacity: 1;
       transform: scale(1.06) rotate(-6deg);
@@ -162,7 +161,7 @@
     /* CTA, TEXT */
     .cta-col {
       flex: 1.1;
-      background: var(--green);
+      background: var(--light);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -180,14 +179,14 @@
       font-weight: 700;
       letter-spacing: -0.5px;
       margin-bottom: 13px;
-      color: var(--black);
+      color: var(--footer-blue);
       line-height: 1.18;
       max-width: 100%;
       text-align: left;
     }
     .main-subline {
       font-size: 1.2rem;
-      color: #222;
+      color: #232f49;
       font-family: 'Inter', Arial, sans-serif;
       margin-bottom: 36px;
       max-width: 100%;
@@ -209,32 +208,29 @@
       padding: 22px 0;
       margin: 0;
       cursor: pointer;
-      background: linear-gradient(90deg, var(--yellow) 5%, var(--pink) 100%);
-      color: var(--black);
-      box-shadow: 0 8px 32px 0 rgba(255,56,142,0.11), 0 2px 8px rgba(48, 88, 255, 0.10);
+      background: var(--footer-blue);
+      color: #fff;
+      box-shadow: 0 6px 18px 0 rgba(20,65,130,0.10), 0 2px 8px rgba(48,88,255,0.10);
       transition: filter 0.15s, transform 0.13s, box-shadow 0.13s, background 0.22s;
       width: 100%;
       letter-spacing: 0.4px;
     }
-    .cta-btn.pill.blue {
-      background: linear-gradient(90deg, var(--blue) 15%, var(--green) 100%);
-      color: #fff;
-      box-shadow: 0 8px 32px 0 rgba(49,196,141,0.12), 0 2px 8px rgba(48, 88, 255, 0.10);
-    }
     .cta-btn.pill:hover, .cta-btn.pill:focus {
-      filter: brightness(1.12) saturate(1.18);
-      box-shadow: 0 18px 36px 0 rgba(255,56,142,0.13), 0 8px 20px 0 rgba(48,88,255,0.11);
+      background: var(--blue);
+      color: #fff;
+      filter: brightness(1.09) saturate(1.10);
       transform: scale(1.04);
+      box-shadow: 0 16px 28px 0 rgba(20,65,130,0.12), 0 8px 18px 0 rgba(48,88,255,0.08);
     }
     .cta-btn.pill:active {
-      filter: brightness(0.98);
+      filter: brightness(0.97);
       transform: scale(0.97);
     }
     /* --- Floating FAQ Image/Button --- */
     .floating-faq-img-link {
       position: fixed;
       right: 36px;
-      bottom: 90px;  /* Just above the footer */
+      bottom: 90px;
       z-index: 100;
       display: flex;
       align-items: center;
@@ -251,9 +247,9 @@
       width: 72px;
       height: 72px;
       animation: hand-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
-      box-shadow: 0 4px 18px 0 rgba(48,88,255,0.13);
+      box-shadow: 0 4px 18px 0 rgba(20,65,130,0.14);
       border-radius: 14px;
-      background: var(--yellow);
+      background: var(--white);
       display: block;
     }
     @keyframes hand-bounce {
@@ -392,7 +388,7 @@
 
   <!-- ========== MAIN AREA ========== -->
   <main class="main-content">
-    <!-- ==== Main Image (fills pink area) ==== -->
+    <!-- ==== Main Image (fills left area) ==== -->
     <div class="img-col">
       <img id="mainCarouselImage"
            src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
@@ -401,10 +397,10 @@
       <!-- Carousel Controls -->
       <div class="carousel-controls">
         <button class="carousel-btn" id="prevBtn" title="Previous image" aria-label="Previous image">
-          <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
         </button>
         <button class="carousel-btn" id="nextBtn" title="Next image" aria-label="Next image">
-          <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
@@ -418,7 +414,7 @@
       </div>
       <div class="cta-vertical-btns">
         <button class="cta-btn pill">Join YAP</button>
-        <button class="cta-btn pill blue">Join Trial</button>
+        <button class="cta-btn pill">Join Trial</button>
       </div>
     </div>
   </main>
@@ -461,7 +457,6 @@
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
       "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
-      // Add more image URLs as needed
     ];
     let mainImgIndex = 0;
     let autoInterval = null;
