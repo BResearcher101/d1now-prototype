@@ -88,55 +88,49 @@
     .img-col {
       flex: 2.6;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: stretch;
       justify-content: center;
       background: var(--pink);
       min-width: 0;
-      position: relative;
       min-height: 420px;
-      overflow: visible;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-    .main-img-placeholder {
-      width: 97%;
-      height: 92%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--pink);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
-      min-height: 340px;
-      min-width: 300px;
-      max-width: 850px;
-      max-height: 720px;
+      padding: 0;
     }
-    .main-carousel-img {
+    .main-carousel-img.big {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 28px;
       background: #eee;
       display: block;
+      flex: 1 1 auto;
+      min-height: 340px;
+      min-width: 300px;
+      max-width: none;
+      max-height: none;
+      border-radius: 0;
       opacity: 1;
       transition: opacity 0.7s cubic-bezier(.61,-0.06,.57,1.18);
       position: absolute;
-      left: 0; top: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
     }
-    .main-carousel-img.fading {
+    .main-carousel-img.big.fading {
       opacity: 0;
       pointer-events: none;
     }
-    /* Carousel Controls */
     .carousel-controls {
-      margin-top: 12px;
+      margin-top: 0;
+      margin-bottom: 16px;
       display: flex;
       gap: 18px;
       justify-content: center;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
     .carousel-btn {
       border: none;
@@ -165,7 +159,7 @@
       width: 25px; height: 25px;
       pointer-events: none;
     }
-    /* CTA, TEXT, FAQ IMAGE */
+    /* CTA, TEXT */
     .cta-col {
       flex: 1.1;
       background: var(--green);
@@ -236,26 +230,29 @@
       filter: brightness(0.98);
       transform: scale(0.97);
     }
-    /* --- FAQ IMAGE LINK, BOUNCE EFFECT --- */
-    .faq-img-link {
+    /* --- Floating FAQ Image/Button --- */
+    .floating-faq-img-link {
+      position: fixed;
+      right: 36px;
+      bottom: 90px;  /* Just above the footer */
+      z-index: 100;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      margin-top: 18px;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
       text-decoration: none;
-      position: relative;
-      width: 150px;
       transition: filter 0.18s;
     }
-    .faq-img-link:hover, .faq-img-link:focus {
-      filter: brightness(1.08) saturate(1.1);
+    .floating-faq-img-link:hover, .floating-faq-img-link:focus {
+      filter: brightness(1.10) saturate(1.12);
     }
-    .faq-img-animated {
-      width: 120px;
-      max-width: 96vw;
+    .faq-img-animated-small {
+      width: 72px;
+      height: 72px;
       animation: hand-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
-      box-shadow: 0 4px 22px 0 rgba(48,88,255,0.13);
-      border-radius: 18px;
+      box-shadow: 0 4px 18px 0 rgba(48,88,255,0.13);
+      border-radius: 14px;
       background: var(--yellow);
       display: block;
     }
@@ -266,10 +263,6 @@
       23% { transform: translateY(-11px) scale(1.09);}
       28% { transform: translateY(-6px) scale(1.04);}
       40% { transform: translateY(0) scale(1);}
-    }
-    @media (max-width: 600px) {
-      .faq-img-link { width: 94vw; }
-      .faq-img-animated { width: 90vw; }
     }
     /* FOOTER */
     footer {
@@ -360,26 +353,24 @@
     }
     .modal-close:hover { opacity: 1; }
     /* RESPONSIVE */
-    @media (max-width: 1300px) {
-      .faq-img-link { max-width: 260px;}
-    }
-    @media (max-width: 1000px) {
-      .main-content { flex-direction: column; }
-      .img-col, .cta-col { width: 100%; flex: unset; min-height: 260px;}
-      .cta-col { align-items: center; padding: 36px 6vw 18px 6vw;}
-      .main-headline, .main-subline { max-width: 98vw;}
-      .main-img-placeholder { max-width: 80vw; min-height: 210px;}
-      .main-img-placeholder img { min-height: 150px; }
-      .faq-img-link { margin-top: 10px; max-width: 98vw; }
-    }
     @media (max-width: 700px) {
       header, footer { padding-left: 10px; padding-right: 10px;}
       .main-content { min-height: unset;}
-      .main-img-placeholder { min-height: 90px;}
+      .img-col { min-height: 200px;}
+      .main-carousel-img.big { min-height: 110px; }
       .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
       .footer-logos img { height: 18px;}
       nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
-      .faq-img-link { font-size: 1rem; max-width: 98vw;}
+      .floating-faq-img-link {
+        right: 8vw;
+        bottom: 74px;
+        width: 52px;
+        height: 52px;
+      }
+      .faq-img-animated-small {
+        width: 52px;
+        height: 52px;
+      }
     }
   </style>
 </head>
@@ -401,16 +392,12 @@
 
   <!-- ========== MAIN AREA ========== -->
   <main class="main-content">
-    <!-- ==== Main Image (left, very wide, with carousel) ==== -->
+    <!-- ==== Main Image (fills pink area) ==== -->
     <div class="img-col">
-      <div class="main-img-placeholder" style="position:relative;">
-        <!-- Carousel images, only one is visible at a time (fade animation) -->
-        <img id="mainCarouselImage"
-             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
-             alt="Main page visual"
-             class="main-carousel-img"
-             style="position:relative;"/>
-      </div>
+      <img id="mainCarouselImage"
+           src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png"
+           alt="Main page visual"
+           class="main-carousel-img big"/>
       <!-- Carousel Controls -->
       <div class="carousel-controls">
         <button class="carousel-btn" id="prevBtn" title="Previous image" aria-label="Previous image">
@@ -421,7 +408,7 @@
         </button>
       </div>
     </div>
-    <!-- ==== CTA, Text, FAQ image (right) ==== -->
+    <!-- ==== CTA, Text (right) ==== -->
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
@@ -433,12 +420,6 @@
         <button class="cta-btn pill">Join YAP</button>
         <button class="cta-btn pill blue">Join Trial</button>
       </div>
-      <!-- Clickable FAQ image with bounce effect -->
-      <a href="faq.html" class="faq-img-link" title="Read our FAQ">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq0.png"
-             alt="FAQ"
-             class="faq-img-animated">
-      </a>
     </div>
   </main>
 
@@ -456,23 +437,26 @@
     </div>
   </footer>
 
+  <!-- ========== FLOATING FAQ IMAGE BUTTON ========== -->
+  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
+    <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/hand-image.png"
+         alt="FAQ"
+         class="faq-img-animated-small">
+  </a>
+
   <!-- ========== POPUP RECRUITMENT POSTER ========== -->
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup">
       <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
+      <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/recruitment-poster.png" alt="Recruitment Poster">
     </div>
   </div>
   <script>
     // --- Main image carousel/slideshow with fade ---
     const mainImageUrls = [
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.png",
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-2.png",
+      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-3.png"
       // Add more image URLs as needed
     ];
     let mainImgIndex = 0;
