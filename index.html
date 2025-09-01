@@ -28,62 +28,77 @@
       min-height: 100vh;
       background: var(--footer-blue);
     }
+
+    /* ===== Header (kept dark blue) ===== */
     header {
       background: var(--footer-blue);
       color: var(--white);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
+      justify-content: center;
+      padding: 0 16px;
       height: 68px;
     }
     .header-container {
+      width: 100%;
+      max-width: 1200px;   /* tighter header width */
       display: flex;
       align-items: center;
-      width: 100%;
       justify-content: space-between;
+      gap: 12px;
     }
     .logo {
       font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 1px;
-      margin-right: 32px;
+      font-size: 1.6rem;   /* slightly smaller to reduce visual noise */
+      letter-spacing: 0.5px;
       font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      color: #fff;
+      white-space: nowrap;
     }
-    nav {
-      display: flex;
-      flex: 1;
-      justify-content: space-between;
-      align-items: center;
-      gap: 22px;
-      max-width: 1000px;
-      margin: 0 auto;
-      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+
+    /* ===== Reduced top-level nav + dropdowns ===== */
+    nav { position: relative; }
+    .nav-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex; align-items: center; gap: 6px;
     }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.08rem;
-      transition: opacity 0.2s;
-      letter-spacing: 0.2px;
-      padding: 6px 16px;
-      border-radius: 6px;
+    .nav-item { position: relative; }
+    .nav-link {
+      color: #fff; text-decoration: none;
+      font-weight: 600; font-family: 'Poppins','Inter',sans-serif;
+      font-size: 1rem; letter-spacing: 0.2px;
+      padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center;
     }
-    nav a:hover {
-      background: rgba(255,255,255,0.09);
-      opacity: 0.82;
+    .nav-link:hover { background: rgba(255,255,255,0.09); }
+
+    /* Dropdown */
+    .dropdown {
+      position: absolute; left: 0; top: 100%;
+      min-width: 230px; background: #fff; color: var(--black);
+      border-radius: 12px; box-shadow: var(--shadow);
+      padding: 8px; margin-top: 8px; display: none; z-index: 20;
     }
+    .dropdown a {
+      display: block; text-decoration: none; color: var(--black);
+      padding: 10px 12px; border-radius: 8px; font-weight: 600;
+    }
+    .dropdown a:hover { background: #f0f3f9; }
+    .nav-item:focus-within .dropdown,
+    .nav-item:hover .dropdown { display: block; }
+
+    /* ===== Main (unchanged layout & colours) ===== */
     .main-content {
       flex: 1;
       display: flex;
       width: 100%;
       min-height: 0;
-      background: var(--yellow);
+      background: var(--yellow); /* keep yellow panel */
       position: relative;
       overflow: visible;
     }
-    /* IMAGE AREA */
+
+    /* IMAGE AREA (left) */
     .img-col {
       flex: 2.6;
       display: flex;
@@ -111,16 +126,10 @@
       border-radius: 0;
       opacity: 1;
       transition: opacity 0.7s cubic-bezier(.61,-0.06,.57,1.18);
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+      position: absolute; inset: 0;
     }
-    .main-carousel-img.big.fading {
-      opacity: 0;
-      pointer-events: none;
-    }
+    .main-carousel-img.big.fading { opacity: 0; pointer-events: none; }
+
     .carousel-controls {
       margin-top: 0;
       margin-bottom: 16px;
@@ -154,11 +163,9 @@
       opacity: 1;
       transform: scale(1.06) rotate(-6deg);
     }
-    .carousel-btn svg {
-      width: 25px; height: 25px;
-      pointer-events: none;
-    }
-    /* CTA, TEXT */
+    .carousel-btn svg { width: 25px; height: 25px; pointer-events: none; }
+
+    /* CTA, TEXT (right) */
     .cta-col {
       flex: 1.1;
       background: var(--yellow);
@@ -175,27 +182,27 @@
     }
     .main-headline {
       font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      font-size: 2.15rem;
+      font-size: 2.05rem; /* slightly smaller to feel calmer */
       font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 13px;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
       color: var(--footer-blue);
-      line-height: 1.18;
+      line-height: 1.22;
       max-width: 100%;
       text-align: left;
     }
     .main-subline {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #232f49;
       font-family: 'Inter', Arial, sans-serif;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
       max-width: 100%;
       text-align: left;
     }
     .cta-vertical-btns {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       width: 100%;
       margin-bottom: 46px;
     }
@@ -203,30 +210,49 @@
       border: none;
       border-radius: 999px;
       font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      font-size: 1.19rem;
+      font-size: 1.12rem;
       font-weight: 700;
-      padding: 22px 0;
-      margin: 0;
+      padding: 16px 0;
       cursor: pointer;
       background: var(--footer-blue);
       color: #fff;
       box-shadow: 0 6px 18px 0 rgba(20,65,130,0.10), 0 2px 8px rgba(48,88,255,0.10);
       transition: filter 0.15s, transform 0.13s, box-shadow 0.13s, background 0.22s;
       width: 100%;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
     }
     .cta-btn.pill:hover, .cta-btn.pill:focus {
       background: var(--blue);
       color: #fff;
-      filter: brightness(1.09) saturate(1.10);
-      transform: scale(1.04);
+      transform: scale(1.03);
       box-shadow: 0 16px 28px 0 rgba(20,65,130,0.12), 0 8px 18px 0 rgba(48,88,255,0.08);
     }
-    .cta-btn.pill:active {
-      filter: brightness(0.97);
-      transform: scale(0.97);
+
+    /* FOOTER (unchanged) */
+    footer {
+      width: 100%;
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      min-height: 58px;
+      box-sizing: border-box;
+      padding: 12px 16px 10px 16px;
     }
-    /* --- Floating FAQ Image/Button --- */
+    .footer-inner {
+      width: 100%; max-width: 1200px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logos { display: flex; align-items: center; gap: 14px; }
+    .footer-logos img { height: 32px; width: auto; margin-right: 7px; vertical-align: middle; }
+    .footer-fund-text { font-size: 1rem; color: #DAE2FF; margin-right: 4px; vertical-align: middle; }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a { color: var(--white); text-decoration: none; font-weight: 400; font-size: 1rem; opacity: 0.92; transition: opacity 0.16s; }
+    .footer-links a:hover { opacity: 0.7; }
+
+    /* Floating FAQ image button (kept) */
     .floating-faq-img-link {
       position: fixed;
       right: 36px;
@@ -260,50 +286,8 @@
       28% { transform: translateY(-6px) scale(1.04);}
       40% { transform: translateY(0) scale(1);}
     }
-    /* FOOTER */
-    footer {
-      width: 100%;
-      background: var(--footer-blue);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 36px 10px 36px;
-      font-size: 1rem;
-      min-height: 58px;
-      box-sizing: border-box;
-    }
-    .footer-logos {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .footer-logos img {
-      height: 32px;
-      width: auto;
-      margin-right: 7px;
-      vertical-align: middle;
-    }
-    .footer-fund-text {
-      font-size: 1rem;
-      color: #DAE2FF;
-      margin-right: 4px;
-      vertical-align: middle;
-    }
-    .footer-links {
-      display: flex;
-      gap: 32px;
-    }
-    .footer-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 1rem;
-      opacity: 0.92;
-      transition: opacity 0.16s;
-    }
-    .footer-links a:hover { opacity: 0.7;}
-    /* POPUP MODAL */
+
+    /* Recruitment modal (added sign-up button) */
     .modal-bg {
       display: none;
       position: fixed;
@@ -313,60 +297,67 @@
       background: rgba(0,0,0,0.45);
       align-items: center;
       justify-content: center;
+      padding: 12px;
     }
     .modal-bg.active { display: flex; }
     .modal-popup {
       background: #fff;
       border-radius: 22px;
-      padding: 26px 22px 22px 22px;
+      padding: 16px 16px 14px 16px;
       max-width: 98vw;
       max-height: 98vh;
       box-shadow: 0 10px 60px rgba(70,0,70,0.16);
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: stretch;
+      gap: 12px;
     }
     .modal-popup img {
       display: block;
       max-width: 65vw;
-      max-height: 74vh;
-      border-radius: 18px;
+      max-height: 70vh;
+      border-radius: 14px;
       background: #f2f2f2;
-      margin-bottom: 4px;
+      margin: 0 auto;
     }
+    .modal-actions {
+      display: flex; justify-content: flex-end; gap: 10px;
+    }
+    .modal-signup {
+      background: var(--footer-blue); color: #fff; text-decoration: none;
+      padding: 10px 14px; border-radius: 12px; font-weight: 700; font-family: Poppins, Inter, sans-serif;
+    }
+    .modal-signup:hover { background: var(--blue); }
     .modal-close {
       position: absolute;
-      top: 9px; right: 13px;
+      top: 6px; right: 10px;
       font-size: 1.65rem;
       color: #444;
       background: none;
       border: none;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.8;
       transition: opacity 0.18s;
       z-index: 120;
     }
     .modal-close:hover { opacity: 1; }
-    /* RESPONSIVE */
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      .header-container { padding: 0 4px; }
+      .logo { font-size: 1.4rem; }
+      .nav-link { padding: 7px 10px; }
+    }
     @media (max-width: 700px) {
-      header, footer { padding-left: 10px; padding-right: 10px;}
-      .main-content { min-height: unset;}
+      header, footer { padding-left: 0; padding-right: 0;}
       .img-col { min-height: 200px;}
       .main-carousel-img.big { min-height: 110px; }
-      .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
+      .cta-vertical-btns { margin-bottom: 18px; gap: 12px;}
       .footer-logos img { height: 18px;}
-      nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
-      .floating-faq-img-link {
-        right: 8vw;
-        bottom: 74px;
-        width: 52px;
-        height: 52px;
-      }
-      .faq-img-animated-small {
-        width: 52px;
-        height: 52px;
-      }
+      .floating-faq-img-link { right: 8vw; bottom: 74px; width: 52px; height: 52px; }
+      .faq-img-animated-small { width: 52px; height: 52px; }
+      /* Dropdowns still work via focus-within (tap) */
     }
   </style>
 </head>
@@ -375,23 +366,64 @@
   <header>
     <div class="header-container">
       <span class="logo">D1 Now</span>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Young Adults (YAP)</a>
-        <a href="#">Trial Participants</a>
-        <a href="#">Trial Sites</a>
-        <a href="#">Publications</a>
+
+      <!-- NEW: Reduced nav with dropdowns, incl. Home -->
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About D1 Now</a>
+            <div class="dropdown" role="menu" aria-label="About submenu">
+              <a href="#">What is D1 Now?</a>
+              <a href="#">Our Approach</a>
+              <a href="#">Research & Team</a>
+              <a href="#">Governance Team</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Young Adult Panel (YAP)</a>
+            <div class="dropdown" role="menu" aria-label="YAP submenu">
+              <a href="#">What is YAP?</a>
+              <a href="#">Meet the Members</a>
+              <a href="#">Get Involved</a>
+              <a href="#">Testimonials & Video</a>
+              <a href="#">YAP Impact</a>
+              <a href="#">Blogs</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="#">Trial Information</a>
+              <a href="#">Trial Participants</a>
+              <a href="#">Trial Sites</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Resources</a>
+            <div class="dropdown" role="menu" aria-label="Resources submenu">
+              <a href="#">YAP Resources</a>
+              <a href="#">Trial Resources</a>
+              <a href="#">Research Resources (Publications, Videos, Downloads)</a>
+            </div>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ========== MAIN AREA ========== -->
+  <!-- ========== MAIN AREA (unchanged) ========== -->
   <main class="main-content">
     <!-- ==== Main Image (fills left area) ==== -->
     <div class="img-col">
       <img id="mainCarouselImage"
-           src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
+           src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home.png"
            alt="Main page visual"
            class="main-carousel-img big"/>
       <!-- Carousel Controls -->
@@ -404,6 +436,7 @@
         </button>
       </div>
     </div>
+
     <!-- ==== CTA, Text (right) ==== -->
     <div class="cta-col">
       <div class="main-headline">
@@ -419,44 +452,51 @@
     </div>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========== FOOTER (unchanged content) ========== -->
   <footer>
-    <div class="footer-logos">
-      <span class="footer-fund-text">Funded by</span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
-      <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
-    </div>
-    <div class="footer-links">
-      <a href="#">FAQ</a>
-      <a href="#">Contact</a>
-      <a href="#">Subscribe</a>
+    <div class="footer-inner">
+      <div class="footer-logos">
+        <span class="footer-fund-text">Funded by</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
+        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
+      </div>
+      <div class="footer-links">
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+        <a href="#">Subscribe</a>
+      </div>
     </div>
   </footer>
 
-  <!-- ========== FLOATING FAQ IMAGE BUTTON ========== -->
+  <!-- ========== FLOATING FAQ IMAGE BUTTON (kept) ========== -->
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
-    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq2.png"
+    <img src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/faq2.png"
          alt="FAQ"
          class="faq-img-animated-small">
   </a>
 
-  <!-- ========== POPUP RECRUITMENT POSTER ========== -->
+  <!-- ========== POPUP RECRUITMENT POSTER (now with sign-up link) ========== -->
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup">
       <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
+      <img src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/rec.png" alt="Recruitment Poster">
+      <div class="modal-actions">
+        <!-- TODO: point to your real sign-up/consent form -->
+        <a class="modal-signup" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
+      </div>
     </div>
   </div>
+
   <script>
     // --- Main image carousel/slideshow with fade ---
     const mainImageUrls = [
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home3.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home4.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home5.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home6.png"
     ];
     let mainImgIndex = 0;
     let autoInterval = null;
