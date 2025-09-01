@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:600,700;display=swap" rel="stylesheet">
   <style>
+<<<<<<< HEAD
     :root{
       --footer-blue:#144182;
       --blue:#3058FF;
@@ -46,6 +47,37 @@
       display:inline-flex;align-items:center;gap:6px;
       color:#fff;text-decoration:none;font-weight:600;
       padding:8px 12px;border-radius:8px;font-family:Poppins,Inter,sans-serif;
+=======
+    :root {
+      --blue: #3058FF;
+      --footer-blue: #144182;
+      --white: #FFF;
+      --light: #FFDF1B;
+      --black: #111;
+      --shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--footer-blue);
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: var(--footer-blue);
+    }
+    header {
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
     .nav-link:hover{background:rgba(255,255,255,.09)}
     /* Dropdowns */
@@ -73,6 +105,7 @@
     .hero-img img{
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s;
     }
+<<<<<<< HEAD
     .hero-controls{
       position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
       display:flex;gap:12px;background:rgba(20,65,130,.12);padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)
@@ -120,12 +153,98 @@
     /* Newsletter teaser (subtle) */
     .newsletter{
       max-width:1200px;margin:16px auto 24px auto;padding:0 18px;
+=======
+    nav a:hover {
+      background: rgba(255,255,255,0.09);
+      opacity: 0.82;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      width: 100%;
+      min-height: 0;
+      background: var(--light);
+      position: relative;
+      overflow: visible;
+    }
+    /* IMAGE AREA */
+    .img-col {
+      flex: 2.6;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      background: var(--white);
+      min-width: 0;
+      min-height: 420px;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+    }
+    .main-carousel-img.big {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #eee;
+      display: block;
+      flex: 1 1 auto;
+      min-height: 340px;
+      min-width: 300px;
+      max-width: none;
+      max-height: none;
+      border-radius: 0;
+      opacity: 1;
+      transition: opacity 0.7s cubic-bezier(.61,-0.06,.57,1.18);
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .main-carousel-img.big.fading {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .carousel-controls {
+      margin-top: 0;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .carousel-btn {
+      border: none;
+      background: var(--footer-blue);
+      color: var(--white);
+      font-size: 1.9rem;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px 0 rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: background 0.22s, box-shadow 0.18s, transform 0.16s;
+      outline: none;
+      opacity: 0.92;
+    }
+    .carousel-btn:active, .carousel-btn:focus {
+      background: var(--blue);
+      box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15);
+      opacity: 1;
+      transform: scale(1.06) rotate(-6deg);
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
     .nl-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
     .nl-wrap form{display:flex;gap:8px}
     .nl-wrap input{
       padding:12px 14px;border:1px solid #e2e6f1;border-radius:10px;min-width:220px;outline:none
     }
+<<<<<<< HEAD
     .nl-wrap button{background:var(--footer-blue);color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
     .nl-wrap button:hover{background:var(--blue)}
 
@@ -167,6 +286,217 @@
       .hero-cta{min-height:auto;padding:28px 18px}
       .hero-img{min-height:320px}
       nav{display:none} .head-actions{display:flex;gap:10px}
+=======
+    /* CTA, TEXT */
+    .cta-col {
+      flex: 1.1;
+      background: var(--light);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 56px 32px 0 32px;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+      min-height: 420px;
+      overflow: visible;
+    }
+    .main-headline {
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 13px;
+      color: var(--footer-blue);
+      line-height: 1.18;
+      max-width: 100%;
+      text-align: left;
+    }
+    .main-subline {
+      font-size: 1.2rem;
+      color: #232f49;
+      font-family: 'Inter', Arial, sans-serif;
+      margin-bottom: 36px;
+      max-width: 100%;
+      text-align: left;
+    }
+    .cta-vertical-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 46px;
+    }
+    .cta-btn.pill {
+      border: none;
+      border-radius: 999px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 1.19rem;
+      font-weight: 700;
+      padding: 22px 0;
+      margin: 0;
+      cursor: pointer;
+      background: var(--footer-blue);
+      color: #fff;
+      box-shadow: 0 6px 18px 0 rgba(20,65,130,0.10), 0 2px 8px rgba(48,88,255,0.10);
+      transition: filter 0.15s, transform 0.13s, box-shadow 0.13s, background 0.22s;
+      width: 100%;
+      letter-spacing: 0.4px;
+    }
+    .cta-btn.pill:hover, .cta-btn.pill:focus {
+      background: var(--blue);
+      color: #fff;
+      filter: brightness(1.09) saturate(1.10);
+      transform: scale(1.04);
+      box-shadow: 0 16px 28px 0 rgba(20,65,130,0.12), 0 8px 18px 0 rgba(48,88,255,0.08);
+    }
+    .cta-btn.pill:active {
+      filter: brightness(0.97);
+      transform: scale(0.97);
+    }
+    /* --- Floating FAQ Image/Button --- */
+    .floating-faq-img-link {
+      position: fixed;
+      right: 36px;
+      bottom: 90px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      text-decoration: none;
+      transition: filter 0.18s;
+    }
+    .floating-faq-img-link:hover, .floating-faq-img-link:focus {
+      filter: brightness(1.10) saturate(1.12);
+    }
+    .faq-img-animated-small {
+      width: 72px;
+      height: 72px;
+      animation: hand-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+      box-shadow: 0 4px 18px 0 rgba(20,65,130,0.14);
+      border-radius: 14px;
+      background: var(--white);
+      display: block;
+    }
+    @keyframes hand-bounce {
+      0%, 100% { transform: translateY(0) scale(1);}
+      12% { transform: translateY(-9px) scale(1.07);}
+      18% { transform: translateY(-14px) scale(1.10);}
+      23% { transform: translateY(-11px) scale(1.09);}
+      28% { transform: translateY(-6px) scale(1.04);}
+      40% { transform: translateY(0) scale(1);}
+    }
+    /* FOOTER */
+    footer {
+      width: 100%;
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 36px 10px 36px;
+      font-size: 1rem;
+      min-height: 58px;
+      box-sizing: border-box;
+    }
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-logos img {
+      height: 32px;
+      width: auto;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    .footer-fund-text {
+      font-size: 1rem;
+      color: #DAE2FF;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0.92;
+      transition: opacity 0.16s;
+    }
+    .footer-links a:hover { opacity: 0.7;}
+    /* POPUP MODAL */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.45);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal-popup {
+      background: #fff;
+      border-radius: 22px;
+      padding: 26px 22px 22px 22px;
+      max-width: 98vw;
+      max-height: 98vh;
+      box-shadow: 0 10px 60px rgba(70,0,70,0.16);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .modal-popup img {
+      display: block;
+      max-width: 65vw;
+      max-height: 74vh;
+      border-radius: 18px;
+      background: #f2f2f2;
+      margin-bottom: 4px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 9px; right: 13px;
+      font-size: 1.65rem;
+      color: #444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+      z-index: 120;
+    }
+    .modal-close:hover { opacity: 1; }
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      header, footer { padding-left: 10px; padding-right: 10px;}
+      .main-content { min-height: unset;}
+      .img-col { min-height: 200px;}
+      .main-carousel-img.big { min-height: 110px; }
+      .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
+      .footer-logos img { height: 18px;}
+      nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
+      .floating-faq-img-link {
+        right: 8vw;
+        bottom: 74px;
+        width: 52px;
+        height: 52px;
+      }
+      .faq-img-animated-small {
+        width: 52px;
+        height: 52px;
+      }
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
   </style>
 </head>
@@ -230,6 +560,7 @@
     </div>
   </header>
 
+<<<<<<< HEAD
   <!-- MAIN -->
   <main>
     <section class="main">
@@ -268,6 +599,30 @@
           </div>
         </div>
         <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
+=======
+  <!-- ========== MAIN AREA ========== -->
+  <main class="main-content">
+    <!-- ==== Main Image (fills left area) ==== -->
+    <div class="img-col">
+      <img id="mainCarouselImage"
+           src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
+           alt="Main page visual"
+           class="main-carousel-img big"/>
+      <!-- Carousel Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" title="Previous image" aria-label="Previous image">
+          <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button class="carousel-btn" id="nextBtn" title="Next image" aria-label="Next image">
+          <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- ==== CTA, Text (right) ==== -->
+    <div class="cta-col">
+      <div class="main-headline">
+        A community for young adults with Type 1 Diabetes in Ireland.
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
       </div>
     </section>
 
@@ -280,7 +635,15 @@
           <button type="submit">Subscribe</button>
         </form>
       </div>
+<<<<<<< HEAD
     </section>
+=======
+      <div class="cta-vertical-btns">
+        <button class="cta-btn pill">Join YAP</button>
+        <button class="cta-btn pill">Join Trial</button>
+      </div>
+    </div>
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
   </main>
 
   <!-- FOOTER -->
@@ -299,6 +662,7 @@
     </div>
   </footer>
 
+<<<<<<< HEAD
   <!-- Floating FAQ image button (small) -->
   <a class="floating-faq" href="faq.html" title="Read our FAQ">
     <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/faq-icon.png" alt="FAQ">
@@ -314,6 +678,70 @@
       </div>
     </div>
   </div>
+=======
+  <!-- ========== FLOATING FAQ IMAGE BUTTON ========== -->
+  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq2.png"
+         alt="FAQ"
+         class="faq-img-animated-small">
+  </a>
+
+  <!-- ========== POPUP RECRUITMENT POSTER ========== -->
+  <div class="modal-bg" id="recruitmentModal">
+    <div class="modal-popup">
+      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="Recruitment Poster">
+    </div>
+  </div>
+  <script>
+    // --- Main image carousel/slideshow with fade ---
+    const mainImageUrls = [
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home4.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home5.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home6.png"
+    ];
+    let mainImgIndex = 0;
+    let autoInterval = null;
+    const mainImgElem = document.getElementById("mainCarouselImage");
+    function showMainImg(index, fade=true) {
+      if (fade) {
+        mainImgElem.classList.add('fading');
+        setTimeout(() => {
+          mainImgElem.src = mainImageUrls[index];
+          mainImgElem.classList.remove('fading');
+        }, 400);
+      } else {
+        mainImgElem.src = mainImageUrls[index];
+      }
+    }
+    function showNextMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function showPrevMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex - 1 + mainImageUrls.length) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function startAutoCarousel() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(() => showNextMainImg(true), 3000);
+    }
+    document.getElementById("prevBtn").onclick = function() {
+      showPrevMainImg(true);
+      startAutoCarousel();
+    };
+    document.getElementById("nextBtn").onclick = function() {
+      showNextMainImg(true);
+      startAutoCarousel();
+    };
+    // Initial setup
+    mainImgElem.src = mainImageUrls[mainImgIndex];
+    startAutoCarousel();
+>>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
 
   <script>
     // ---- HERO IMAGE CAROUSEL ----
