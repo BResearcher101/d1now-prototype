@@ -16,63 +16,36 @@
       --shadow: 0 6px 28px rgba(0,0,0,0.08);
       --maxw: 1200px;
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--footer-blue);
-      color: var(--black);
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    html, body { height: 100%; margin: 0; padding: 0; font-family: 'Inter', Arial, sans-serif; background: var(--footer-blue); color: var(--black); }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
 
-    /* ===== HEADER (same height/feel) ===== */
+    /* ===== HEADER (same height) ===== */
     header {
-      background: var(--footer-blue);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 68px;              /* do not change header height */
-      padding: 0 16px;
+      background: var(--footer-blue); color: var(--white);
+      display:flex; align-items:center; justify-content:center;
+      height:68px; padding:0 16px;
     }
     .header-container {
-      width: 100%;
-      max-width: var(--maxw);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      width:100%; max-width:var(--maxw);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .logo {
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 1px;
-      font-family: 'Poppins', 'Inter', Arial, sans-serif;
-      color: #fff;
-      white-space: nowrap;
-    }
+    .logo { font-weight:700; font-size:2rem; letter-spacing:1px; font-family:'Poppins','Inter',sans-serif; color:#fff; white-space:nowrap; }
 
-    /* ===== NAV with dropdowns (no footprint change) ===== */
-    nav { display:flex; align-items:center; }
-    .nav-list { list-style:none; display:flex; gap:18px; margin:0; padding:0; }
+    /* ===== NAV (4 tabs + dropdowns) ===== */
+    nav { display:flex; align-items:center; gap:18px; }
+    .nav-list { list-style:none; display:flex; gap:10px; margin:0; padding:0; }
     .nav-item { position:relative; }
     .nav-link {
-      color:#fff; text-decoration:none; font-weight:500; font-size:1.08rem;
-      letter-spacing:.2px; padding:6px 16px; border-radius:6px; display:inline-flex; align-items:center;
+      color:#fff; text-decoration:none; font-weight:600; font-size:1.05rem;
+      letter-spacing:.2px; padding:6px 14px; border-radius:8px; display:inline-flex; align-items:center;
       transition: background .2s, opacity .2s;
     }
-    .nav-link:hover { background:rgba(255,255,255,.09); opacity:.92; }
+    .nav-link:hover { background:rgba(255,255,255,.09); opacity:.95; }
 
-    /* Dropdown */
     .dropdown {
       position:absolute; left:0; top:100%;
       min-width:230px; background:#fff; color:var(--black);
-      border-radius:12px; box-shadow: var(--shadow);
+      border-radius:12px; box-shadow:var(--shadow);
       padding:8px; margin-top:8px; display:none; z-index:20;
     }
     .dropdown a {
@@ -80,157 +53,106 @@
       padding:10px 12px; border-radius:8px; font-weight:600;
     }
     .dropdown a:hover { background:#f0f3f9; }
-    .nav-item:focus-within .dropdown,
-    .nav-item:hover .dropdown { display:block; }
+    .nav-item:focus-within .dropdown, .nav-item:hover .dropdown { display:block; }
 
-    /* ===== MAIN HERO (unchanged sizing/layout) ===== */
-    .main-content {
-      flex: 1;
-      display: flex;
-      width: 100%;
-      background: var(--yellow);
-      justify-content: center;
+    /* Small header CTA (keeps height) */
+    .header-cta {
+      text-decoration:none; color:#fff; background:var(--blue);
+      padding:8px 14px; border-radius:999px; font-weight:700; font-family:'Poppins','Inter',sans-serif;
+      box-shadow:0 6px 18px rgba(48,88,255,.18);
+      transition:filter .15s;
     }
-    .main-inner {
-      width: 100%;
-      max-width: var(--maxw);
-      display: grid;
-      grid-template-columns: 2.6fr 1.1fr; /* keep exact ratio */
-      gap: 0;
-      min-height: 420px;                 /* keep your hero height */
-    }
+    .header-cta:hover { filter:brightness(1.06); }
 
-    /* Left: image area */
-    .img-col {
-      position: relative;
-      background: var(--white);
-      min-height: 420px;
-      overflow: hidden;
-    }
-    .main-carousel-img.big {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: opacity .6s;
-    }
-    .main-carousel-img.big.fading { opacity: 0; pointer-events:none; }
+    /* ===== HERO (unchanged sizing/layout) ===== */
+    .main-content { flex:1; display:flex; width:100%; background:var(--yellow); justify-content:center; }
+    .main-inner { width:100%; max-width:var(--maxw); display:grid; grid-template-columns:2.6fr 1.1fr; gap:0; min-height:420px; }
+
+    .img-col { position:relative; background:#fff; min-height:420px; overflow:hidden; }
+    .main-carousel-img.big { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .6s; }
+    .main-carousel-img.big.fading { opacity:0; pointer-events:none; }
     .carousel-controls {
-      position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
-      display: flex; gap: 18px; align-items: center; justify-content: center;
-      background: rgba(20,65,130,.12); padding: 6px 10px; border-radius: 999px; backdrop-filter: blur(4px);
+      position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+      display:flex; gap:18px; align-items:center; justify-content:center;
+      background:rgba(20,65,130,.12); padding:6px 10px; border-radius:999px; backdrop-filter:blur(4px);
     }
     .carousel-btn {
-      border: none; width: 45px; height: 45px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--footer-blue); color: #fff; cursor: pointer;
-      font-size: 1.2rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,.08);
-      transition: transform .16s, background .22s;
+      border:none; width:45px; height:45px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--footer-blue); color:#fff; cursor:pointer;
+      font-size:1.2rem; box-shadow:0 3px 10px rgba(0,0,0,.08); transition:transform .16s, background .22s;
     }
-    .carousel-btn:active { transform: scale(.97); }
-    .carousel-btn svg { width: 25px; height: 25px; }
+    .carousel-btn:active { transform:scale(.97); }
+    .carousel-btn svg { width:25px; height:25px; }
 
-    /* Right: CTA panel */
-    .cta-col {
-      background: var(--yellow);
-      padding: 56px 32px 0 32px;
-      min-height: 420px;              /* unchanged */
-      position: relative;
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .main-headline {
-      font-family: 'Poppins','Inter',sans-serif;
-      font-size: 2.15rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1.18;
-      color: var(--footer-blue); margin: 0 0 13px 0;
-    }
-    .main-subline {
-      font-size: 1.2rem; color: #232f49; margin: 0 0 36px 0;
-    }
+    .cta-col { background:var(--yellow); padding:56px 32px 0 32px; min-height:420px; position:relative; display:flex; flex-direction:column; align-items:flex-start; }
+    .main-headline { font-family:'Poppins','Inter',sans-serif; font-size:2.15rem; font-weight:700; letter-spacing:-.5px; line-height:1.18; color:var(--footer-blue); margin:0 0 13px 0; }
+    .main-subline { font-size:1.2rem; color:#232f49; margin:0 0 36px 0; }
     .cta-vertical-btns { display:flex; flex-direction:column; gap:20px; width:100%; margin-bottom:46px; }
     .cta-btn {
-      border: none; border-radius: 999px; width: 100%;
-      font-family: 'Poppins','Inter',sans-serif; font-weight:700; font-size:1.19rem; letter-spacing:.4px;
-      padding: 22px 0; cursor: pointer; background: var(--footer-blue); color:#fff;
-      box-shadow: 0 6px 18px rgba(20,65,130,.10);
-      transition: transform .13s, background .22s, box-shadow .13s;
+      border:none; border-radius:999px; width:100%;
+      font-family:'Poppins','Inter',sans-serif; font-weight:700; font-size:1.19rem; letter-spacing:.4px;
+      padding:22px 0; cursor:pointer; background:var(--footer-blue); color:#fff;
+      box-shadow:0 6px 18px rgba(20,65,130,.10); transition:transform .13s, background .22s, box-shadow .13s;
     }
-    .cta-btn:hover { background: var(--blue); transform: scale(1.03); }
+    .cta-btn:hover { background:var(--blue); transform:scale(1.03); }
 
-    /* NEW: YAP-designed badge (absolute; no reflow) */
-    .add-yap-badge{
+    /* YAP-designed badge (absolute; no reflow) */
+    .add-yap-badge {
       position:absolute; top:12px; right:16px;
       background:#fff; border:1px solid #e5e9f5; color:var(--footer-blue);
       font-family:Poppins,Inter,sans-serif; font-weight:700; font-size:.9rem;
-      padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.04);
-      pointer-events:none;
+      padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.04); pointer-events:none;
     }
 
-    /* ===== BELOW-HERO (additions only) ===== */
+    /* ===== BELOW-HERO ADDITIONS ===== */
     .add-wrap { display:flex; justify-content:center; background:#fff; }
     .add-inner { width:100%; max-width:var(--maxw); padding:22px 18px; }
 
-    /* Testimonials (compact) */
-    .add-testimonials{
-      background:#fff; border-radius:14px; box-shadow: var(--shadow); padding:16px;
-    }
-    .add-testi-row{
-      display:grid; grid-template-columns:56px 1fr 56px;
-      align-items:center; gap:10px; min-height:72px;
-    }
-    .add-testi-btn{
-      width:40px; height:40px; border:none; border-radius:50%;
-      background:var(--footer-blue); color:#fff; cursor:pointer;
-    }
-    .add-testi-card{ display:flex; align-items:center; gap:14px; }
-    .add-testi-card img{ width:56px; height:56px; border-radius:50%; object-fit:cover; }
-    .add-testi-quote{ font-weight:600; }
-    .add-testi-name{ font-size:.9rem; color:#6b7aa5; }
+    /* Testimonials */
+    .add-testimonials { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:16px; }
+    .add-testi-row { display:grid; grid-template-columns:56px 1fr 56px; align-items:center; gap:10px; min-height:72px; }
+    .add-testi-btn { width:40px; height:40px; border:none; border-radius:50%; background:var(--footer-blue); color:#fff; cursor:pointer; }
+    .add-testi-card { display:flex; align-items:center; gap:14px; }
+    .add-testi-card img { width:56px; height:56px; border-radius:50%; object-fit:cover; }
+    .add-testi-quote { font-weight:600; }
+    .add-testi-name { font-size:.9rem; color:#6b7aa5; }
 
-    /* Newsletter (simple bar) */
-    .add-newsletter{
-      background:#fff; border-radius:14px; box-shadow: var(--shadow);
-      padding:16px; margin-top:16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    /* Newsletter */
+    .add-newsletter {
+      background:#fff; border-radius:14px; box-shadow:var(--shadow);
+      padding:16px; margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .add-newsletter form{ display:flex; gap:8px; margin:0; }
-    .add-newsletter input{
-      padding:12px 14px; border:1px solid #e2e6f1; border-radius:10px; min-width:220px; outline:none;
-    }
-    .add-newsletter button{
-      background:var(--footer-blue); color:#fff; border:none; border-radius:10px;
-      padding:12px 16px; font-weight:700; cursor:pointer;
-    }
-    .add-newsletter button:hover{ background:var(--blue); }
+    .add-newsletter form { display:flex; gap:8px; margin:0; }
+    .add-newsletter input { padding:12px 14px; border:1px solid #e2e6f1; border-radius:10px; min-width:220px; outline:none; }
+    .add-newsletter button { background:var(--footer-blue); color:#fff; border:none; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer; }
+    .add-newsletter button:hover { background:var(--blue); }
 
     /* ===== FOOTER (unchanged) ===== */
-    footer {
-      width: 100%;
-      background: var(--footer-blue);
-      color: var(--white);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 36px 10px 36px; font-size: 1rem; min-height: 58px; box-sizing: border-box;
-    }
+    footer { width:100%; background:var(--footer-blue); color:#fff; display:flex; align-items:center; justify-content:space-between; padding:12px 36px 10px 36px; font-size:1rem; min-height:58px; box-sizing:border-box; }
     .footer-logos { display:flex; align-items:center; gap:14px; }
-    .footer-logos img { height: 32px; width:auto; margin-right:7px; vertical-align: middle; }
+    .footer-logos img { height:32px; width:auto; margin-right:7px; vertical-align:middle; }
     .footer-fund-text { color:#DAE2FF; }
     .footer-links { display:flex; gap:32px; }
     .footer-links a { color:#fff; text-decoration:none; opacity:.92; }
     .footer-links a:hover { opacity:.72; }
 
-    /* Floating FAQ (unchanged if you already use it) */
+    /* Floating FAQ button (restored) */
     .floating-faq-img-link {
       position: fixed; right: 36px; bottom: 90px; z-index: 100;
-      display: flex; align-items: center; justify-content: center;
-      width: 72px; height: 72px; text-decoration: none;
+      display:flex; align-items:center; justify-content:center; width:72px; height:72px; text-decoration:none;
+      transition: filter .18s;
     }
+    .floating-faq-img-link:hover { filter: brightness(1.08) saturate(1.06); }
     .faq-img-animated-small {
-      width: 72px; height: 72px; border-radius: 14px; display: block;
-      box-shadow: 0 4px 18px rgba(20,65,130,.14);
-      animation: add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+      width:72px; height:72px; border-radius:14px; display:block;
+      box-shadow:0 4px 18px rgba(20,65,130,.14);
+      animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+      background:#fff; /* in case image has transparent edges */
     }
-    @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
+    @keyframes add-bounce { 0%,100%{transform:translateY(0)} 18%{transform:translateY(-10px)} 34%{transform:translateY(-4px)} }
 
-    /* Modal (kept if you have it) */
+    /* Modal (if you use it) */
     .modal-bg { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.45); align-items:center; justify-content:center; }
     .modal-bg.active { display:flex; }
     .modal-popup { background:#fff; border-radius:22px; padding:20px; max-width:98vw; max-height:98vh; box-shadow:0 10px 60px rgba(70,0,70,.16); position:relative; }
@@ -244,13 +166,13 @@
     <div class="header-container">
       <div class="logo">D1 Now</div>
 
-      <!-- Existing nav items, now with dropdowns (hover/focus) -->
+      <!-- Streamlined 4-tab nav + dropdowns -->
       <nav aria-label="Primary">
         <ul class="nav-list">
           <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">About D1 Now</a>
             <div class="dropdown" role="menu" aria-label="About submenu">
               <a href="#">What is D1 Now?</a>
               <a href="#">Our Approach</a>
@@ -260,7 +182,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Young Adults (YAP)</a>
+            <a class="nav-link" href="#">Young Adult Panel (YAP)</a>
             <div class="dropdown" role="menu" aria-label="YAP submenu">
               <a href="#">What is YAP?</a>
               <a href="#">Meet the Members</a>
@@ -271,12 +193,28 @@
             </div>
           </li>
 
-          <li class="nav-item"><a class="nav-link" href="#">Trial Participants</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Trial Sites</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="#">Trial Information</a>
+              <a href="#">Trial Participants</a>
+              <a href="#">Trial Sites</a>
+            </div>
+          </li>
 
-          <li class="nav-item"><a class="nav-link" href="#">Publications</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Resources</a>
+            <div class="dropdown" role="menu" aria-label="Resources submenu">
+              <a href="#">YAP Resources</a>
+              <a href="#">Trial Resources</a>
+              <a href="#">Research Resources (Publications, Videos, Downloads)</a>
+            </div>
+          </li>
         </ul>
       </nav>
+
+      <!-- Header recruitment CTA (keeps 68px height) -->
+      <a class="header-cta" href="#">Join Trial</a>
     </div>
   </header>
 
@@ -313,7 +251,7 @@
     </div>
   </main>
 
-  <!-- ===== ADDITIONS BELOW HERO (scroll to see) ===== -->
+  <!-- ===== BELOW-HERO ADDITIONS ===== -->
   <section class="add-wrap">
     <div class="add-inner">
       <!-- Testimonials -->
@@ -356,25 +294,15 @@
     </div>
   </footer>
 
-  <!-- Optional floating FAQ image (keep if you already have it) -->
-  <!--
+  <!-- ===== FLOATING FAQ BUTTON (restored) ===== -->
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
     <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/faq-icon.png" alt="FAQ" class="faq-img-animated-small">
   </a>
-  -->
 
-  <!-- Optional recruitment modal (kept if needed) -->
-  <!--
-  <div class="modal-bg" id="recruitmentModal">
-    <div class="modal-popup">
-      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
-      <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/recruitment-poster.jpg" alt="Recruitment Poster">
-    </div>
-  </div>
-  -->
+  <!-- (Optional) Recruitment modal blocks could be here -->
 
   <script>
-    /* ===== EXISTING HERO IMAGE CAROUSEL ===== */
+    /* ===== HERO IMAGE CAROUSEL ===== */
     const mainImageUrls = [
       "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/home.png",
       "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/home1.png",
@@ -382,7 +310,6 @@
       "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/home3.png"
     ];
     let mainImgIndex = 0;
-    let autoInterval = null;
     const mainImgElem = document.getElementById("mainCarouselImage");
     function showMainImg(index, fade=true) {
       if (fade) {
@@ -392,21 +319,12 @@
         mainImgElem.src = mainImageUrls[index];
       }
     }
-    function showNextMainImg(fade=true) {
-      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
-      showMainImg(mainImgIndex, fade);
-    }
-    function showPrevMainImg(fade=true) {
-      mainImgIndex = (mainImgIndex - 1 + mainImageUrls.length) % mainImageUrls.length;
-      showMainImg(mainImgIndex, fade);
-    }
-    document.getElementById("nextBtn").onclick = function(){ showNextMainImg(true); restartAuto(); };
-    document.getElementById("prevBtn").onclick = function(){ showPrevMainImg(true); restartAuto(); };
-    function startAuto(){ autoInterval = setInterval(()=>showNextMainImg(true), 3000); }
-    function restartAuto(){ if(autoInterval) clearInterval(autoInterval); startAuto(); }
-    mainImgElem.src = mainImageUrls[mainImgIndex]; startAuto();
+    function showNextMainImg(fade=true) { mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length; showMainImg(mainImgIndex, fade); }
+    function showPrevMainImg(fade=true) { mainImgIndex = (mainImgIndex - 1 + mainImageUrls.length) % mainImageUrls.length; showMainImg(mainImgIndex, fade); }
+    document.getElementById("nextBtn").onclick = function(){ showNextMainImg(true); };
+    document.getElementById("prevBtn").onclick = function(){ showPrevMainImg(true); };
 
-    /* ===== ADD-ON: TESTIMONIALS CAROUSEL (independent) ===== */
+    /* ===== TESTIMONIALS CAROUSEL ===== */
     (function(){
       const testimonials = [
         {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-1.jpg"},
@@ -418,7 +336,7 @@
       const q = document.getElementById('addTestiQuote');
       const n = document.getElementById('addTestiName');
       const p = document.getElementById('addTestiPhoto');
-      function show(idx){ const t = testimonials[idx]; q.textContent=t.quote; n.textContent=t.name; p.src=t.photo; }
+      function show(idx){ const t=testimonials[idx]; q.textContent=t.quote; n.textContent=t.name; p.src=t.photo; }
       document.getElementById('addNextTesti').onclick = ()=>{ i=(i+1)%testimonials.length; show(i); };
       document.getElementById('addPrevTesti').onclick = ()=>{ i=(i-1+testimonials.length)%testimonials.length; show(i); };
       setInterval(()=>{ i=(i+1)%testimonials.length; show(i); }, 5000);
