@@ -1,216 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>D1 Now – Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <title>D1 Now – Homepage</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --footer-blue:#144182;  /* shared header/footer */
-      --blue:#3058FF;
-      --white:#FFF;
-      --yellow:#FFDF1B;
-      --ink:#232f49;
-      --muted:#6b7aa5;
-      --shadow:0 6px 28px rgba(0,0,0,0.08);
-      --radius:14px;
-      --maxw:1200px;
+    :root {
+      --blue: #3058FF;
+      --footer-blue: #144182;
+      --white: #FFF;
+      --yellow: #FFDF1B;
+      --black: #111;
+      --shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
+      --maxw: 1200px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--footer-blue);color:var(--ink);}
-
-    /* ===== Header (kept minimal, same size) ===== */
-    header{
-      background:var(--footer-blue); color:#fff;
-      height:68px; display:flex; align-items:center; justify-content:center;
-      padding:0 16px;
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--footer-blue);
     }
-    .head-wrap{width:100%; max-width:var(--maxw); display:flex; align-items:center; justify-content:space-between; gap:12px;}
-    .logo{font-family:Poppins,Inter,sans-serif; font-weight:700; font-size:1.6rem; letter-spacing:.5px;}
-
-    /* (Simple placeholder nav to keep current size/feel) */
-    nav ul{list-style:none; display:flex; gap:10px; margin:0; padding:0;}
-    nav a{color:#fff; text-decoration:none; font-family:Poppins,Inter,sans-serif; font-weight:600; padding:8px 12px; border-radius:8px;}
-    nav a:hover{background:rgba(255,255,255,.09)}
-
-    /* ===== Main hero (kept SAME size & structure) ===== */
-    .main-content{
-      background:var(--yellow);
-      display:flex; justify-content:center;
-    }
-    .main-wrap{
-      width:100%; max-width:var(--maxw);
-      display:grid; grid-template-columns:1.8fr 1fr; gap:0;
-      min-height:440px;  /* keep the height you liked */
-    }
-    /* Left: full image area (unchanged fill) */
-    .img-col{
-      position:relative; background:#fff; min-height:440px; overflow:hidden;
-    }
-    .hero-img{
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit:cover; transition:opacity .6s;
-    }
-    .hero-controls{
-      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-      display:flex; gap:12px; background:rgba(20,65,130,.12);
-      padding:6px 10px; border-radius:999px; backdrop-filter:blur(4px);
-    }
-    .hero-btn{
-      width:42px; height:42px; border:none; border-radius:50%;
-      background:var(--footer-blue); color:#fff; cursor:pointer;
-    }
-    .hero-btn:active{transform:scale(.97)}
-
-    /* Right: headline + two blue buttons (unchanged sizing) */
-    .cta-col{
-      background:var(--yellow);
-      padding:56px 32px 0 32px;
-      display:flex; flex-direction:column; justify-content:flex-start; align-items:flex-start; position:relative;
-      min-height:440px;  /* keep height */
-    }
-    /* YAP-designed badge (added, small; doesn't change layout size) */
-    .yap-badge{
-      position:absolute; top:16px; right:16px;
-      background:#fff; border:1px solid #e5e9f5; color:var(--footer-blue);
-      font-family:Poppins,Inter,sans-serif; font-weight:700; font-size:.85rem;
-      padding:6px 10px; border-radius:999px;
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: var(--footer-blue);
     }
 
-    .main-headline{
-      font-family:Poppins,Inter,sans-serif; color:var(--footer-blue);
-      font-size:2.05rem; font-weight:700; line-height:1.22; letter-spacing:-.4px; margin:0 0 12px 0;
+    /* ====== HEADER (unchanged size) ====== */
+    header {
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
     }
-    .main-subline{
-      font-size:1.1rem; color:#232f49; margin:0 0 30px 0;
+    .header-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      max-width: var(--maxw);
+      margin: 0 auto;
     }
-    .cta-vertical-btns{display:flex; flex-direction:column; gap:16px; width:100%; margin-bottom:46px;}
-    .cta-btn{
-      background:var(--footer-blue); color:#fff; border:none; border-radius:999px;
-      font-family:Poppins,Inter,sans-serif; font-weight:700; letter-spacing:.3px;
-      padding:16px 0; width:100%; cursor:pointer; box-shadow:0 6px 18px rgba(20,65,130,.10);
+    .logo {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin-right: 32px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
-    .cta-btn:hover{background:var(--blue)}
 
-    /* ===== NEW: Testimonials (below hero; compact; doesn't change hero size) ===== */
-    .section-shell{display:flex; justify-content:center; background:#fff;}
-    .section-inner{width:100%; max-width:var(--maxw); padding:22px 18px;}
-    .testimonials{
-      background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:16px;
+    /* ====== NAV (added dropdowns, keeps footprint) ====== */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
-    .testi-row{
-      display:grid; grid-template-columns:56px 1fr 56px; align-items:center; gap:10px; min-height:72px;
+    .nav-list { display:flex; gap:10px; list-style:none; margin:0; padding:0; }
+    .nav-item { position: relative; }
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.08rem;
+      transition: background 0.2s, opacity 0.2s;
+      letter-spacing: 0.2px;
+      padding: 6px 16px;
+      border-radius: 6px;
+      display: inline-flex; align-items:center;
     }
-    .testi-btn{
-      width:40px; height:40px; border:none; border-radius:50%; background:var(--footer-blue); color:#fff; cursor:pointer;
-    }
-    .testi-card{display:flex; align-items:center; gap:14px;}
-    .testi-card img{width:56px; height:56px; border-radius:50%; object-fit:cover}
-    .testi-quote{font-weight:600}
-    .testi-name{font-size:.9rem; color:var(--muted)}
+    .nav-link:hover { background: rgba(255,255,255,0.09); opacity: 0.92; }
 
-    /* ===== NEW: Newsletter (below testimonials; compact) ===== */
-    .newsletter{
-      background:#fff; border-radius:14px; box-shadow:var(--shadow);
-      padding:16px; margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+    /* Dropdown styling (desktop hover / keyboard focus) */
+    .dropdown {
+      position: absolute; left: 0; top: 100%;
+      min-width: 230px; background: #fff; color: var(--black);
+      border-radius: 12px; box-shadow: var(--shadow);
+      padding: 8px; margin-top: 8px; display: none; z-index: 20;
     }
-    .newsletter form{display:flex; gap:8px; margin:0}
-    .newsletter input{
-      padding:12px 14px; border:1px solid #e2e6f1; border-radius:10px; min-width:220px; outline:none;
+    .dropdown a {
+      display:block; text-decoration:none; color: var(--black);
+      padding:10px 12px; border-radius:8px; font-weight:600;
     }
-    .newsletter button{
-      background:var(--footer-blue); color:#fff; border:none; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer;
-    }
-    .newsletter button:hover{background:var(--blue)}
+    .dropdown a:hover { background:#f0f3f9; }
+    .nav-item:focus-within .dropdown,
+    .nav-item:hover .dropdown { display: block; }
 
-    /* ===== Footer (unchanged content/size) ===== */
-    footer{background:var(--footer-blue); color:#fff; display:flex; justify-content:center;}
-    .foot-wrap{width:100%; max-width:var(--maxw); display:flex; justify-content:space-between; align-items:center; padding:12px 18px;}
-    .foot-logos{display:flex; align-items:center; gap:10px}
-    .foot-logos img{height:30px}
-    .foot-links{display:flex; gap:28px}
-    .foot-links a{color:#fff; text-decoration:none; opacity:.92}
-    .foot-links a:hover{opacity:.75}
-
-    /* Floating FAQ image button (kept) */
-    .floating-faq{
-      position:fixed; right:28px; bottom:84px; z-index:60; display:flex; align-items:center; justify-content:center;
-      width:64px; height:64px; box-shadow:0 6px 18px rgba(20,65,130,.2); border-radius:14px; background:#fff;
-      animation:bounce 1.6s infinite cubic-bezier(.65,1.7,.53,.67);
+    /* ====== MAIN (unchanged sizes/layout) ====== */
+    .main-content {
+      flex: 1;
+      display: flex;
+      width: 100%;
+      min-height: 0;
+      background: var(--yellow);
+      position: relative;
+      overflow: visible;
+      justify-content: center;
     }
-    .floating-faq img{width:100%; height:100%; object-fit:cover; border-radius:14px}
-    @keyframes bounce{0%,100%{transform:translateY(0)} 18%{transform:translateY(-10px)} 34%{transform:translateY(-4px)}}
+    .main-inner {
+      width: 100%;
+      max-width: var(--maxw);
+      display: grid;
+      grid-template-columns: 2.6fr 1.1fr; /* same ratio as before */
+      gap: 0;
+    }
 
-    /* Recruitment modal (kept; unchanged size) */
-    .modal-bg{display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:80; align-items:center; justify-content:center; padding:12px}
-    .modal-bg.active{display:flex}
-    .modal{background:#fff; border-radius:16px; padding:14px; max-width:92vw; max-height:92vh; box-shadow:var(--shadow); position:relative}
-    .modal img{max-width:82vw; max-height:70vh; display:block; border-radius:12px}
-    .modal .modal-actions{display:flex; justify-content:flex-end; gap:10px; margin-top:10px}
-    .modal a.sign-btn{background:var(--footer-blue); color:#fff; text-decoration:none; padding:10px 14px; border-radius:10px; font-weight:700}
-    .modal a.sign-btn:hover{background:var(--blue)}
-    .modal button.close{position:absolute; top:6px; right:8px; border:none; background:transparent; font-size:1.8rem; cursor:pointer; color:#333}
+    /* IMAGE AREA (unchanged) */
+    .img-col {
+      flex: 2.6;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      background: var(--white);
+      min-width: 0;
+      min-height: 420px;
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+    }
+    .main-carousel-img.big {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #eee;
+      display: block;
+      flex: 1 1 auto;
+      min-height: 340px;
+      min-width: 300px;
+      max-width: none;
+      max-height: none;
+      border-radius: 0;
+      opacity: 1;
+      transition: opacity 0.7s cubic-bezier(.61,-0.06,.57,1.18);
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+    }
+    .main-carousel-img.big.fading {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .carousel-controls {
+      margin-top: 0;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .carousel-btn {
+      border: none;
+      background: var(--footer-blue);
+      color: var(--white);
+      font-size: 1.9rem;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px 0 rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: background 0.22s, box-shadow 0.18s, transform 0.16s;
+      outline: none;
+      opacity: 0.92;
+    }
+    .carousel-btn:active, .carousel-btn:focus {
+      background: var(--blue);
+      box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15);
+      opacity: 1;
+      transform: scale(1.06) rotate(-6deg);
+    }
+    .carousel-btn svg {
+      width: 25px; height: 25px;
+      pointer-events: none;
+    }
+
+    /* CTA, TEXT (unchanged) */
+    .cta-col {
+      flex: 1.1;
+      background: var(--yellow);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 56px 32px 0 32px;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+      min-height: 420px;
+      overflow: visible;
+    }
+    .main-headline {
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 13px;
+      color: var(--footer-blue);
+      line-height: 1.18;
+      max-width: 100%;
+      text-align: left;
+    }
+    .main-subline {
+      font-size: 1.2rem;
+      color: #232f49;
+      font-family: 'Inter', Arial, sans-serif;
+      margin-bottom: 36px;
+      max-width: 100%;
+      text-align: left;
+    }
+    .cta-vertical-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 46px;
+    }
+    .cta-btn.pill {
+      border: none;
+      border-radius: 999px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
+      font-size: 1.19rem;
+      font-weight: 700;
+      padding: 22px 0;
+      margin: 0;
+      cursor: pointer;
+      background: var(--footer-blue);
+      color: #fff;
+      box-shadow: 0 6px 18px 0 rgba(20,65,130,0.10), 0 2px 8px rgba(48, 88, 255, 0.10);
+      transition: filter 0.15s, transform 0.13s, box-shadow 0.13s, background 0.22s;
+      width: 100%;
+      letter-spacing: 0.4px;
+    }
+    .cta-btn.pill:hover, .cta-btn.pill:focus {
+      background: var(--blue);
+      color: #fff;
+      filter: brightness(1.09) saturate(1.10);
+      transform: scale(1.04);
+      box-shadow: 0 16px 28px 0 rgba(20,65,130,0.12), 0 8px 18px 0 rgba(48,88,255,0.08);
+    }
+    .cta-btn.pill:active {
+      filter: brightness(0.97);
+      transform: scale(0.97);
+    }
+
+    /* NEW: YAP-designed badge (small, absolute; no layout change) */
+    .yap-badge {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      background: #fff;
+      border: 1px solid #e5e9f5;
+      color: var(--footer-blue);
+      font-family: 'Poppins','Inter',sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    /* --- Floating FAQ Image/Button (kept) --- */
+    .floating-faq-img-link {
+      position: fixed;
+      right: 36px;
+      bottom: 90px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      text-decoration: none;
+      transition: filter 0.18s;
+    }
+    .floating-faq-img-link:hover, .floating-faq-img-link:focus {
+      filter: brightness(1.10) saturate(1.12);
+    }
+    .faq-img-animated-small {
+      width: 72px;
+      height: 72px;
+      animation: hand-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+      box-shadow: 0 4px 18px 0 rgba(20,65,130,0.14);
+      border-radius: 14px;
+      background: var(--white);
+      display: block;
+    }
+    @keyframes hand-bounce {
+      0%, 100% { transform: translateY(0) scale(1);}
+      12% { transform: translateY(-9px) scale(1.07);}
+      18% { transform: translateY(-14px) scale(1.10);}
+      23% { transform: translateY(-11px) scale(1.09);}
+      28% { transform: translateY(-6px) scale(1.04);}
+      40% { transform: translateY(0) scale(1);}
+    }
+
+    /* ====== BELOW-HERO ADD-ONS (no impact on hero size) ====== */
+    .below-hero-shell {
+      display: flex; justify-content: center;
+      background: #fff;
+    }
+    .below-hero {
+      width: 100%; max-width: var(--maxw);
+      padding: 22px 18px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 16px;
+    }
+    .testi-row {
+      display: grid; grid-template-columns: 56px 1fr 56px;
+      align-items: center; gap: 10px; min-height: 72px;
+    }
+    .testi-btn {
+      width: 40px; height: 40px; border: none; border-radius: 50%;
+      background: var(--footer-blue); color: #fff; cursor: pointer;
+    }
+    .testi-card { display: flex; align-items: center; gap: 14px; }
+    .testi-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+    .testi-quote { font-weight: 600; }
+    .testi-name { font-size: .9rem; color: #6b7aa5; }
+
+    /* Newsletter */
+    .newsletter {
+      background: #fff; border-radius: 14px; box-shadow: var(--shadow);
+      padding: 16px; margin-top: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .newsletter form { display: flex; gap: 8px; margin: 0; }
+    .newsletter input {
+      padding: 12px 14px; border: 1px solid #e2e6f1; border-radius: 10px; min-width: 220px; outline: none;
+    }
+    .newsletter button {
+      background: var(--footer-blue); color: #fff; border: none; border-radius: 10px;
+      padding: 12px 16px; font-weight: 700; cursor: pointer;
+    }
+    .newsletter button:hover { background: var(--blue); }
+
+    /* FOOTER (unchanged) */
+    footer {
+      width: 100%;
+      background: var(--footer-blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 36px 10px 36px;
+      font-size: 1rem;
+      min-height: 58px;
+      box-sizing: border-box;
+    }
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-logos img {
+      height: 32px;
+      width: auto;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    .footer-fund-text {
+      font-size: 1rem;
+      color: #DAE2FF;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0.92;
+      transition: opacity 0.16s;
+    }
+    .footer-links a:hover { opacity: 0.7;}
+
+    /* POPUP MODAL (kept) */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.45);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-bg.active { display: flex; }
+    .modal-popup {
+      background: #fff;
+      border-radius: 22px;
+      padding: 26px 22px 22px 22px;
+      max-width: 98vw;
+      max-height: 98vh;
+      box-shadow: 0 10px 60px rgba(70,0,70,0.16);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .modal-popup img {
+      display: block;
+      max-width: 65vw;
+      max-height: 74vh;
+      border-radius: 18px;
+      background: #f2f2f2;
+      margin-bottom: 4px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 9px; right: 13px;
+      font-size: 1.65rem;
+      color: #444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+      z-index: 120;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    @media (max-width: 700px) {
+      header, footer { padding-left: 10px; padding-right: 10px;}
+      .main-content { min-height: unset;}
+      .img-col { min-height: 200px;}
+      .main-carousel-img.big { min-height: 110px; }
+      .cta-vertical-btns { margin-bottom: 18px; gap: 11px;}
+      .footer-logos img { height: 18px;}
+      nav { flex-wrap: wrap; justify-content: center; gap: 5px;}
+      .floating-faq-img-link {
+        right: 8vw; bottom: 74px; width: 52px; height: 52px;
+      }
+      .faq-img-animated-small { width: 52px; height: 52px; }
+    }
   </style>
 </head>
 <body>
-
-  <!-- ===== HEADER (unchanged size) ===== -->
+  <!-- ========== HEADER & NAV (with dropdowns) ========== -->
   <header>
-    <div class="head-wrap">
-      <div class="logo">D1 Now</div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About D1 Now</a></li>
-          <li><a href="#">YAP</a></li>
-          <li><a href="#">D1 Trial</a></li>
-          <li><a href="#">Resources</a></li>
+    <div class="header-container">
+      <span class="logo">D1 Now</span>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+            <div class="dropdown" role="menu" aria-label="About submenu">
+              <a href="#">What is D1 Now?</a>
+              <a href="#">Our Approach</a>
+              <a href="#">Research & Team</a>
+              <a href="#">Governance Team</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Young Adults (YAP)</a>
+            <div class="dropdown" role="menu" aria-label="YAP submenu">
+              <a href="#">What is YAP?</a>
+              <a href="#">Meet the Members</a>
+              <a href="#">Get Involved</a>
+              <a href="#">Testimonials & Video</a>
+              <a href="#">YAP Impact</a>
+              <a href="#">Blogs</a>
+            </div>
+          </li>
+
+          <!-- Keeping Trial Participants & Trial Sites as they exist to avoid header size changes -->
+          <li class="nav-item"><a class="nav-link" href="#">Trial Participants</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Trial Sites</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Publications</a>
+            <!-- Optional: add a dropdown later for types of publications -->
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ===== HERO (kept identical size/layout) ===== -->
+  <!-- ========== MAIN AREA (unchanged layout & size) ========== -->
   <main class="main-content">
-    <div class="main-wrap">
-      <!-- Left: image carousel (unchanged) -->
+    <div class="main-inner">
+      <!-- ==== Main Image (fills left area) ==== -->
       <div class="img-col">
-        <img id="heroImage" class="hero-img"
-             src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.jpg"
-             alt="Young adults community">
-        <div class="hero-controls" aria-label="Hero image controls">
-          <button class="hero-btn" id="prevHero" aria-label="Previous image">‹</button>
-          <button class="hero-btn" id="nextHero" aria-label="Next image">›</button>
+        <img id="mainCarouselImage"
+             src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home.png"
+             alt="Main page visual"
+             class="main-carousel-img big"/>
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" title="Previous image" aria-label="Previous image">
+            <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          </button>
+          <button class="carousel-btn" id="nextBtn" title="Next image" aria-label="Next image">
+            <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          </button>
         </div>
       </div>
 
-      <!-- Right: headline + two blue buttons (unchanged) -->
+      <!-- ==== CTA, Text (right) ==== -->
       <div class="cta-col">
-        <!-- NEW: YAP-designed badge (small, non-intrusive) -->
+        <!-- NEW: YAP-designed badge (non-intrusive) -->
         <div class="yap-badge" title="Co-designed with the Young Adult Panel">YAP-designed</div>
 
-        <h1 class="main-headline">A community for young adults with Type 1 Diabetes in Ireland.</h1>
-        <p class="main-subline">Built by and for you. Find support, join research, shape change.</p>
-
+        <div class="main-headline">
+          A community for young adults with Type 1 Diabetes in Ireland.
+        </div>
+        <div class="main-subline">
+          Built by and for you. Find support, join research, shape change.
+        </div>
         <div class="cta-vertical-btns">
-          <button class="cta-btn">Join YAP</button>
-          <button class="cta-btn">Join Trial</button>
+          <button class="cta-btn pill">Join YAP</button>
+          <button class="cta-btn pill">Join Trial</button>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- ===== NEW: BELOW-HERO CONTENT (scroll to see) ===== -->
-  <section class="section-shell">
-    <div class="section-inner">
-      <!-- Testimonials carousel -->
+  <!-- ===== NEW: BELOW-HERO (scroll to see) ===== -->
+  <section class="below-hero-shell">
+    <div class="below-hero">
+      <!-- Testimonials -->
       <div class="testimonials" aria-label="What young adults say">
         <div class="testi-row">
           <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
           <div class="testi-card">
-            <img id="testiPhoto" src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-1.jpg" alt="Portrait">
+            <img id="testiPhoto" src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/testi-1.jpg" alt="Portrait">
             <div>
               <div class="testi-quote" id="testiQuote">“Being part of D1 Now feels like my real life is finally in the design.”</div>
               <div class="testi-name" id="testiName">Aoife, 21</div>
@@ -231,62 +565,89 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER (unchanged size) ===== -->
+  <!-- ========== FOOTER (unchanged) ========== -->
   <footer>
-    <div class="foot-wrap">
-      <div class="foot-logos">
-        <span>Funded by</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB logo" style="background:#fff;border-radius:3px;padding:2px 4px;">
-        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway logo">
-      </div>
-      <div class="foot-links">
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-        <a href="#">Subscribe</a>
-      </div>
+    <div class="footer-logos">
+      <span class="footer-fund-text">Funded by</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
+      <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
+    </div>
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Subscribe</a>
     </div>
   </footer>
 
-  <!-- Floating FAQ image button (kept) -->
-  <a class="floating-faq" href="faq.html" title="Read our FAQ">
-    <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/faq-icon.png" alt="FAQ">
+  <!-- ========== FLOATING FAQ IMAGE BUTTON (kept) ========== -->
+  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
+    <img src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/faq2.png"
+         alt="FAQ"
+         class="faq-img-animated-small">
   </a>
 
-  <!-- Recruitment poster modal (kept) -->
-  <div class="modal-bg" id="recruitModal">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Recruitment poster">
-      <button class="close" aria-label="Close poster" onclick="document.getElementById('recruitModal').classList.remove('active')">×</button>
-      <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/recruitment-poster.jpg" alt="D1 Now recruitment poster">
-      <div class="modal-actions">
-        <a class="sign-btn" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
-      </div>
+  <!-- ========== POPUP RECRUITMENT POSTER (kept) ========== -->
+  <div class="modal-bg" id="recruitmentModal">
+    <div class="modal-popup">
+      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">&times;</button>
+      <img src="https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/rec.png" alt="Recruitment Poster">
     </div>
   </div>
 
   <script>
-    /* === HERO IMAGE CAROUSEL (unchanged behavior) === */
-    const heroImages = [
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.jpg",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-2.jpg",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-3.jpg"
+    // --- Main image carousel/slideshow with fade (unchanged) ---
+    const mainImageUrls = [
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home3.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home4.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home5.png",
+      "https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/home6.png"
     ];
-    let heroIdx = 0;
-    const heroImgEl = document.getElementById('heroImage');
-    function swapHero(next=true){
-      heroIdx = (heroIdx + (next?1:-1) + heroImages.length) % heroImages.length;
-      heroImgEl.style.opacity = 0;
-      setTimeout(()=>{ heroImgEl.src = heroImages[heroIdx]; heroImgEl.style.opacity = 1; }, 200);
+    let mainImgIndex = 0;
+    let autoInterval = null;
+    const mainImgElem = document.getElementById("mainCarouselImage");
+    function showMainImg(index, fade=true) {
+      if (fade) {
+        mainImgElem.classList.add('fading');
+        setTimeout(() => {
+          mainImgElem.src = mainImageUrls[index];
+          mainImgElem.classList.remove('fading');
+        }, 400);
+      } else {
+        mainImgElem.src = mainImageUrls[index];
+      }
     }
-    document.getElementById('nextHero').onclick = ()=> swapHero(true);
-    document.getElementById('prevHero').onclick = ()=> swapHero(false);
-    setInterval(()=>swapHero(true), 3500);
+    function showNextMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex + 1) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function showPrevMainImg(fade=true) {
+      mainImgIndex = (mainImgIndex - 1 + mainImageUrls.length) % mainImageUrls.length;
+      showMainImg(mainImgIndex, fade);
+    }
+    function startAutoCarousel() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(() => showNextMainImg(true), 3000);
+    }
+    document.getElementById("prevBtn").onclick = function() {
+      showPrevMainImg(true);
+      startAutoCarousel();
+    };
+    document.getElementById("nextBtn").onclick = function() {
+      showNextMainImg(true);
+      startAutoCarousel();
+    };
+    mainImgElem.src = mainImageUrls[mainImgIndex];
+    startAutoCarousel();
 
-    /* === TESTIMONIALS CAROUSEL (compact, photos + quotes) === */
+    // --- Testimonials carousel (compact; sits below hero) ---
     const testimonials = [
-      {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-1.jpg"},
-      {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-2.jpg"},
-      {quote:"“Clear info and kind people. That’s why I signed up.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-3.jpg"},
-      {quote:"“Short, clear steps made joining easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-4.jpg"}
+      {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/testi-1.jpg"},
+      {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/testi-2.jpg"},
+      {quote:"“Clear info and kind people. That’s why I signed up.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/testi-3.jpg"},
+      {quote:"“Short, clear steps made joining easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/trialuser101/site-prototype/main/images/testi-4.jpg"}
     ];
     let tIdx = 0;
     const tQuote = document.getElementById('testiQuote');
@@ -302,9 +663,9 @@
     document.getElementById('prevTesti').onclick = ()=>{ tIdx = (tIdx-1+testimonials.length)%testimonials.length; showTestimonial(tIdx); };
     setInterval(()=>{ tIdx = (tIdx+1)%testimonials.length; showTestimonial(tIdx); }, 5000);
 
-    /* === OPTIONAL: Show recruitment modal on load (keep or remove) === */
-    window.addEventListener('DOMContentLoaded', ()=>{
-      // document.getElementById('recruitModal').classList.add('active');
+    // Show popup on page load (kept)
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('recruitmentModal').classList.add('active');
     });
   </script>
 </body>
