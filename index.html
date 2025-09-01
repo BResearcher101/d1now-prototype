@@ -1,53 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>D1 Now – Home</title>
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:600,700;display=swap" rel="stylesheet">
+  <title>D1 Now – Homepage</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
   <style>
-<<<<<<< HEAD
-    :root{
-      --footer-blue:#144182;
-      --blue:#3058FF;
-      --white:#FFF;
-      --light:#F6F8FA;
-      --ink:#232f49;
-      --muted:#6b7aa5;
-      --shadow:0 6px 28px rgba(0,0,0,0.08);
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--light);color:var(--ink);}
-
-    /* Header */
-    header{
-      background:var(--footer-blue);
-      color:var(--white);
-      position:sticky;top:0;z-index:50;
-      box-shadow:0 1px 0 rgba(255,255,255,0.06);
-    }
-    .head-wrap{
-      max-width:1200px;margin:0 auto;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 18px;
-    }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-    .brand img{height:34px;width:auto;display:block}
-    .brand .logotxt{font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:.2px}
-
-    /* Nav */
-    nav{display:flex;align-items:center;gap:18px}
-    .nav-list{display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none}
-    .nav-item{position:relative}
-    .nav-link{
-      display:inline-flex;align-items:center;gap:6px;
-      color:#fff;text-decoration:none;font-weight:600;
-      padding:8px 12px;border-radius:8px;font-family:Poppins,Inter,sans-serif;
-=======
     :root {
       --blue: #3058FF;
       --footer-blue: #144182;
@@ -77,83 +36,40 @@
       justify-content: space-between;
       padding: 0 40px;
       height: 68px;
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
-    .nav-link:hover{background:rgba(255,255,255,.09)}
-    /* Dropdowns */
-    .dropdown{position:absolute;left:0;top:100%;min-width:220px;background:#fff;color:var(--ink);
-      border-radius:12px;box-shadow:var(--shadow);padding:8px;margin-top:8px;display:none}
-    .dropdown a{
-      display:block;color:var(--ink);text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600
+    .header-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
     }
-    .dropdown a:hover{background:#f0f3f9}
-    .nav-item:focus-within .dropdown,.nav-item:hover .dropdown{display:block}
-
-    /* Header CTA */
-    .header-cta{
-      background:var(--blue);color:#fff;border:none;border-radius:999px;
-      padding:10px 16px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(48,88,255,.18);
-      font-family:Poppins,Inter,sans-serif;
+    .logo {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      margin-right: 32px;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
-    .header-cta:hover{filter:brightness(1.05)}
-
-    /* Main layout */
-    .main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr;gap:0}
-    .hero-img{
-      background:#fff;position:relative;min-height:440px;overflow:hidden;
+    nav {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family: 'Poppins', 'Inter', Arial, sans-serif;
     }
-    .hero-img img{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s;
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.08rem;
+      transition: opacity 0.2s;
+      letter-spacing: 0.2px;
+      padding: 6px 16px;
+      border-radius: 6px;
     }
-<<<<<<< HEAD
-    .hero-controls{
-      position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
-      display:flex;gap:12px;background:rgba(20,65,130,.12);padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)
-    }
-    .hero-btn{
-      width:42px;height:42px;border:none;border-radius:50%;cursor:pointer;
-      background:var(--footer-blue);color:#fff;display:flex;align-items:center;justify-content:center;
-    }
-    .hero-btn:active{transform:scale(.97)}
-
-    .hero-cta{
-      background:var(--light);padding:42px 28px 28px 28px;position:relative;min-height:440px;
-      display:flex;flex-direction:column;justify-content:center;gap:16px
-    }
-    .yap-badge{
-      position:absolute;top:16px;right:16px;background:#fff;border:1px solid #e5e9f5;
-      border-radius:999px;padding:6px 10px;font-weight:700;font-family:Poppins,Inter,sans-serif;color:var(--footer-blue);
-    }
-    h1{
-      font-family:Poppins,Inter,sans-serif;font-size:2rem;line-height:1.2;margin:0 0 6px 0;color:var(--footer-blue)
-    }
-    .sub{color:var(--muted);margin:0 0 18px 0}
-    .cta-stack{display:flex;flex-direction:column;gap:12px}
-    .btn{
-      background:var(--footer-blue);color:#fff;border:none;border-radius:999px;padding:16px 18px;
-      font-weight:700;cursor:pointer;font-family:Poppins,Inter,sans-serif;box-shadow:0 8px 24px rgba(20,65,130,.16);
-      width:100%;
-    }
-    .btn:hover{background:var(--blue)}
-
-    /* Testimonials (compact) */
-    .testimonials{
-      max-width:1200px;margin:26px auto 10px auto;padding:0 18px;
-    }
-    .testi-wrap{
-      background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:16px 16px;
-      display:grid;grid-template-columns:56px 1fr 56px;align-items:center;gap:10px;
-    }
-    .testi-btn{width:40px;height:40px;border:none;border-radius:50%;background:var(--footer-blue);color:#fff;cursor:pointer}
-    .testi-card{display:flex;align-items:center;gap:14px;min-height:72px}
-    .testi-card img{width:56px;height:56px;border-radius:50%;object-fit:cover}
-    .testi-quote{font-weight:600}
-    .testi-name{font-size:.9rem;color:var(--muted)}
-
-    /* Newsletter teaser (subtle) */
-    .newsletter{
-      max-width:1200px;margin:16px auto 24px auto;padding:0 18px;
-=======
     nav a:hover {
       background: rgba(255,255,255,0.09);
       opacity: 0.82;
@@ -237,56 +153,11 @@
       box-shadow: 0 2px 14px 0 rgba(0,0,0,0.15);
       opacity: 1;
       transform: scale(1.06) rotate(-6deg);
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
-    .nl-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
-    .nl-wrap form{display:flex;gap:8px}
-    .nl-wrap input{
-      padding:12px 14px;border:1px solid #e2e6f1;border-radius:10px;min-width:220px;outline:none
+    .carousel-btn svg {
+      width: 25px; height: 25px;
+      pointer-events: none;
     }
-<<<<<<< HEAD
-    .nl-wrap button{background:var(--footer-blue);color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
-    .nl-wrap button:hover{background:var(--blue)}
-
-    /* Footer */
-    footer{background:var(--footer-blue);color:#fff}
-    .foot-wrap{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 18px}
-    .foot-logos{display:flex;align-items:center;gap:10px}
-    .foot-logos img{height:30px}
-    .foot-links{display:flex;gap:28px}
-    .foot-links a{color:#fff;text-decoration:none;opacity:.92}
-    .foot-links a:hover{opacity:.75}
-
-    /* Floating FAQ image button */
-    .floating-faq{
-      position:fixed;right:28px;bottom:84px;z-index:60;display:flex;align-items:center;justify-content:center;
-      width:64px;height:64px;animation:bounce 1.6s infinite cubic-bezier(.65,1.7,.53,.67);
-      box-shadow:0 6px 18px rgba(20,65,130,.2);border-radius:14px;background:#fff;
-    }
-    .floating-faq img{width:100%;height:100%;object-fit:cover;border-radius:14px}
-    @keyframes bounce{
-      0%,100%{transform:translateY(0)}
-      18%{transform:translateY(-10px)}
-      34%{transform:translateY(-4px)}
-    }
-
-    /* Modal (recruitment poster with link) */
-    .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:80;align-items:center;justify-content:center}
-    .modal-bg.active{display:flex}
-    .modal{background:#fff;border-radius:16px;padding:14px;max-width:92vw;max-height:92vh;box-shadow:var(--shadow);position:relative}
-    .modal img{max-width:82vw;max-height:70vh;display:block;border-radius:12px}
-    .modal .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}
-    .modal a.sign-btn{background:var(--footer-blue);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
-    .modal a.sign-btn:hover{background:var(--blue)}
-    .modal button.close{position:absolute;top:6px;right:8px;border:none;background:transparent;font-size:1.8rem;cursor:pointer;color:#333}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .main{grid-template-columns:1fr}
-      .hero-cta{min-height:auto;padding:28px 18px}
-      .hero-img{min-height:320px}
-      nav{display:none} .head-actions{display:flex;gap:10px}
-=======
     /* CTA, TEXT */
     .cta-col {
       flex: 1.1;
@@ -496,110 +367,25 @@
         width: 52px;
         height: 52px;
       }
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+  <!-- ========== HEADER & NAV ========== -->
   <header>
-    <div class="head-wrap">
-      <a class="brand" href="#">
-        <!-- Replace with white/mono logo if you have one -->
-        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/d1now-logo-white.png" alt="D1 Now logo">
-        <span class="logotxt">D1 Now</span>
-      </a>
-
-      <!-- Reduced Nav (dropdowns) -->
-      <nav aria-label="Primary">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-            <div class="dropdown" role="menu" aria-label="About submenu">
-              <a href="#">The Study</a>
-              <a href="#">Team</a>
-              <a href="#">Recruitment Journey</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">YAP</a>
-            <div class="dropdown" role="menu" aria-label="YAP submenu">
-              <a href="#">What is YAP?</a>
-              <a href="#">Meet the Panel</a>
-              <a href="#">Blogs</a>
-              <a href="#">Join YAP</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Resources</a>
-            <div class="dropdown" role="menu" aria-label="Resources submenu">
-              <a href="#">Publications</a>
-              <a href="#">Videos</a>
-              <a href="#">Downloads</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">For Sites</a>
-            <div class="dropdown" role="menu" aria-label="For Sites submenu">
-              <a href="#">Site Hub</a>
-              <a href="#">Materials</a>
-              <a href="#">Contact Study Team</a>
-            </div>
-          </li>
-        </ul>
+    <div class="header-container">
+      <span class="logo">D1 Now</span>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Young Adults (YAP)</a>
+        <a href="#">Trial Participants</a>
+        <a href="#">Trial Sites</a>
+        <a href="#">Publications</a>
       </nav>
-
-      <!-- Header CTA: focus on recruitment -->
-      <div class="head-actions">
-        <a class="header-cta" href="#">Join Trial</a>
-      </div>
     </div>
   </header>
 
-<<<<<<< HEAD
-  <!-- MAIN -->
-  <main>
-    <section class="main">
-      <!-- Hero Image (full column) -->
-      <div class="hero-img">
-        <img id="heroImage" src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.jpg" alt="Young adults community">
-        <div class="hero-controls" aria-label="Hero image controls">
-          <button class="hero-btn" id="prevHero" aria-label="Previous image">‹</button>
-          <button class="hero-btn" id="nextHero" aria-label="Next image">›</button>
-        </div>
-      </div>
-
-      <!-- Hero CTA + YAP tone -->
-      <div class="hero-cta">
-        <div class="yap-badge" title="Co-designed with the Young Adult Panel">
-          YAP-designed
-        </div>
-        <h1>Shaping better Type 1 Diabetes care, together.</h1>
-        <p class="sub">Co-designed with the Young Adult Panel (YAP). Join the research, share your voice, and access practical resources for you and your clinic.</p>
-        <div class="cta-stack">
-          <a class="btn" href="#">Join Trial</a>
-          <a class="btn" href="#">Join YAP</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials (compact carousel) -->
-    <section class="testimonials" aria-label="What young adults say">
-      <div class="testi-wrap">
-        <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
-        <div class="testi-card">
-          <img id="testiPhoto" src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-1.jpg" alt="Testimonial portrait">
-          <div>
-            <div class="testi-quote" id="testiQuote">“Being part of D1 Now feels like my real life is finally in the design.”</div>
-            <div class="testi-name" id="testiName">Aoife, 21</div>
-          </div>
-        </div>
-        <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
-=======
   <!-- ========== MAIN AREA ========== -->
   <main class="main-content">
     <!-- ==== Main Image (fills left area) ==== -->
@@ -622,63 +408,31 @@
     <div class="cta-col">
       <div class="main-headline">
         A community for young adults with Type 1 Diabetes in Ireland.
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
       </div>
-    </section>
-
-    <!-- Newsletter (light touch) -->
-    <section class="newsletter" aria-label="Subscribe for updates">
-      <div class="nl-wrap">
-        <div><strong>Stay in the loop.</strong> Get updates on study progress & opportunities.</div>
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="you@example.com" aria-label="Email address">
-          <button type="submit">Subscribe</button>
-        </form>
+      <div class="main-subline">
+        Built by and for you. Find support, join research, shape change.
       </div>
-<<<<<<< HEAD
-    </section>
-=======
       <div class="cta-vertical-btns">
         <button class="cta-btn pill">Join YAP</button>
         <button class="cta-btn pill">Join Trial</button>
       </div>
     </div>
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
   </main>
 
-  <!-- FOOTER -->
+  <!-- ========== FOOTER ========== -->
   <footer>
-    <div class="foot-wrap">
-      <div class="foot-logos">
-        <span>Funded by</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB logo" style="background:#fff;border-radius:3px;padding:2px 4px;">
-        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway logo">
-      </div>
-      <div class="foot-links">
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-        <a href="#">Subscribe</a>
-      </div>
+    <div class="footer-logos">
+      <span class="footer-fund-text">Funded by</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB Logo" style="background:white;border-radius:3px;padding:2px 4px;">
+      <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway Logo">
+    </div>
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Subscribe</a>
     </div>
   </footer>
 
-<<<<<<< HEAD
-  <!-- Floating FAQ image button (small) -->
-  <a class="floating-faq" href="faq.html" title="Read our FAQ">
-    <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/faq-icon.png" alt="FAQ">
-  </a>
-
-  <!-- Recruitment Poster Modal (with sign-up link) -->
-  <div class="modal-bg" id="recruitModal">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Recruitment poster">
-      <button class="close" aria-label="Close poster" onclick="document.getElementById('recruitModal').classList.remove('active')">×</button>
-      <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/recruitment-poster.jpg" alt="D1 Now recruitment poster">
-      <div class="modal-actions">
-        <a class="sign-btn" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
-      </div>
-    </div>
-  </div>
-=======
   <!-- ========== FLOATING FAQ IMAGE BUTTON ========== -->
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
     <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq2.png"
@@ -741,46 +495,10 @@
     // Initial setup
     mainImgElem.src = mainImageUrls[mainImgIndex];
     startAutoCarousel();
->>>>>>> 968b61e281037a1d1e8a72cbff62b4dee80efb05
 
-  <script>
-    // ---- HERO IMAGE CAROUSEL ----
-    const heroImages = [
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-1.jpg",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-2.jpg",
-      "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/main-image-3.jpg"
-    ];
-    let heroIdx = 0;
-    const heroImgEl = document.getElementById('heroImage');
-    const nextHero = () => { heroIdx = (heroIdx + 1) % heroImages.length; heroImgEl.style.opacity = 0; setTimeout(()=>{ heroImgEl.src = heroImages[heroIdx]; heroImgEl.style.opacity = 1;}, 200); }
-    const prevHero = () => { heroIdx = (heroIdx - 1 + heroImages.length) % heroImages.length; heroImgEl.style.opacity = 0; setTimeout(()=>{ heroImgEl.src = heroImages[heroIdx]; heroImgEl.style.opacity = 1;}, 200); }
-    document.getElementById('nextHero').onclick = ()=>{ nextHero(); };
-    document.getElementById('prevHero').onclick = ()=>{ prevHero(); };
-    setInterval(nextHero, 3500);
-
-    // ---- TESTIMONIALS CAROUSEL (compact) ----
-    const testimonials = [
-      {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-1.jpg"},
-      {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-2.jpg"},
-      {quote:"“Clear info and kind people. That’s why I signed up.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/images/testi-3.jpg"}
-    ];
-    let tIdx = 0;
-    const tQuote = document.getElementById('testiQuote');
-    const tName  = document.getElementById('testiName');
-    const tPhoto = document.getElementById('testiPhoto');
-    function showTestimonial(i){
-      const t = testimonials[i];
-      tQuote.textContent = t.quote;
-      tName.textContent  = t.name;
-      tPhoto.src = t.photo;
-    }
-    document.getElementById('nextTesti').onclick = ()=>{ tIdx = (tIdx+1)%testimonials.length; showTestimonial(tIdx); };
-    document.getElementById('prevTesti').onclick = ()=>{ tIdx = (tIdx-1+testimonials.length)%testimonials.length; showTestimonial(tIdx); };
-    setInterval(()=>{ tIdx = (tIdx+1)%testimonials.length; showTestimonial(tIdx); }, 5000);
-
-    // ---- POP-UP RECRUITMENT POSTER (with sign-up link) ----
-    window.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('recruitModal').classList.add('active');
+    // Show popup on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('recruitmentModal').classList.add('active');
     });
   </script>
 </body>
