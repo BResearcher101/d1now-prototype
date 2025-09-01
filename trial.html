@@ -10,6 +10,18 @@
     --blue:#3058FF;
     --header-blue:#144182;         /* match site header/footer */
     --yellow:#FFDF1B;
+    --ink:#0b2b62;<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – D1 Trial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3058FF;
+    --header-blue:#144182;         /* match site header/footer */
+    --yellow:#FFDF1B;
     --ink:#0b2b62;
     --muted:#6b7aa5;
     --light:#f6f8fa;
@@ -86,20 +98,40 @@
   /* ===== Section wrapper ===== */
   .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px}
 
-  /* About + Trial at a glance (infographic cards) */
+  /* About + TRIAL AT A GLANCE (now uses lively tile style) */
   .lead{max-width:880px; color:#223; margin-top:6px}
-  .glance{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:14px}
-  .card{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px}
-  .card h4{margin-bottom:6px}
-  .chip{display:inline-block; background:var(--yellow); color:#0b2b62; font-weight:700; padding:6px 10px; border-radius:999px; margin-bottom:8px}
-  .bullets{margin:8px 0 0 0; padding-left:18px}
-  .bullets li{margin:8px 0}
-
-  /* Key Facts (intervention) — lively tiles */
-  .interv{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px}
+  .glance-tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px}
   .tile{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:18px; display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; position:relative; overflow:hidden}
   .tile::after{content:""; position:absolute; right:-40px; bottom:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,223,27,.35)}
-  .icon-bubble{width:82px; height:82px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#0b2b62; font-weight:700; box-shadow:0 6px 16px rgba(255,223,27,.35)}
+  .icon-bubble{width:82px; height:82px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:#0b2b62; font-weight:700; box-shadow:0 6px 16px rgba(255,223,27,.35)}
+  .tile h4{margin:0}
+  .tile p{margin:6px 0 0 0; color:#445}
+
+  /* INTERVENTION COMPONENTS — emphasized band with outlined feature cards */
+  .comp-band{
+    margin-top:22px;
+    background:linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+  }
+  .comp-header{display:flex; align-items:center; gap:10px; margin-bottom:12px}
+  .comp-chip{display:inline-block; background:#e8efff; color:var(--header-blue); font-weight:800; padding:6px 10px; border-radius:999px; font-size:.85rem}
+  .comp-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .comp-card{
+    background:#fff;
+    border:2px solid var(--header-blue);
+    border-radius:16px;
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .comp-card::after{content:""; position:absolute; right:-46px; bottom:-46px; width:200px; height:200px; border-radius:50%; background:rgba(255,223,27,.25)}
+  .comp-head{display:flex; gap:14px; align-items:center; margin-bottom:8px}
+  .comp-head .icon-bubble{box-shadow:none}
+  .comp-card h3{margin:0}
+  .comp-points{margin:8px 0 0 0; padding-left:18px}
+  .comp-points li{margin:8px 0}
 
   /* How it works (journey tabs) */
   .journey{margin-top:26px}
@@ -121,8 +153,8 @@
 
   @media (max-width:1000px){
     .hero-inner{grid-template-columns:1fr}
-    .glance{grid-template-columns:1fr}
-    .interv{grid-template-columns:1fr}
+    .glance-tiles{grid-template-columns:1fr}
+    .comp-grid{grid-template-columns:1fr}
     .journey-wrap{grid-template-columns:1fr}
     .j-pane{grid-template-columns:1fr}
     .aud{grid-template-columns:1fr}
@@ -192,7 +224,7 @@
   </div>
 </section>
 
-<!-- ===== ABOUT + TRIAL AT A GLANCE ===== -->
+<!-- ===== ABOUT + TRIAL AT A GLANCE (uses lively tiles) ===== -->
 <section class="wrap">
   <h2>About the D1 Now Definitive Trial</h2>
   <p class="lead">
@@ -200,53 +232,68 @@
     boost self-management confidence, and improve outcomes that matter to young adults.
   </p>
 
-  <div class="glance">
-    <div class="card">
-      <span class="chip">Trial at a glance</span>
-      <h4>12 centres across Ireland</h4>
-      <ul class="bullets">
-        <li>Recruiting across the Republic of Ireland and Northern Ireland.</li>
-      </ul>
+  <div class="glance-tiles">
+    <div class="tile">
+      <div class="icon-bubble">📍</div>
+      <div>
+        <h4>12 centres across Ireland</h4>
+        <p>Recruiting across the Republic of Ireland and Northern Ireland.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="chip">Trial at a glance</span>
-      <h4>29 participants per site (18–25)</h4>
-      <ul class="bullets">
-        <li>Young adults with T1D aged 18–25.</li>
-      </ul>
+    <div class="tile">
+      <div class="icon-bubble">👥</div>
+      <div>
+        <h4>29 participants per site (18–25)</h4>
+        <p>Young adults with T1D aged 18–25 at each centre.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="chip">Trial at a glance</span>
-      <h4>12-month study</h4>
-      <ul class="bullets">
-        <li>Data at baseline, 6 months, and 12 months.</li>
-      </ul>
+    <div class="tile">
+      <div class="icon-bubble">🗓</div>
+      <div>
+        <h4>12-month study</h4>
+        <p>Data at baseline, 6 months, and 12 months.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== KEY FACTS (Intervention Components) ===== -->
-<section class="wrap">
-  <h2>Key Facts</h2>
-  <div class="interv">
-    <div class="tile">
-      <div class="icon-bubble">🤝</div>
-      <div>
+<!-- ===== INTERVENTION COMPONENTS (emphasized band) ===== -->
+<section class="wrap comp-band">
+  <div class="comp-header">
+    <span class="comp-chip">Core intervention</span>
+    <h2 style="margin:0">Intervention Components</h2>
+  </div>
+
+  <div class="comp-grid">
+    <!-- Support Worker -->
+    <div class="comp-card">
+      <div class="comp-head">
+        <div class="icon-bubble">🤝</div>
         <h3>Support Worker</h3>
-        <p>Assigned to intervention centres to assist young adults with goal-setting, engagement, and managing their diabetes care.</p>
       </div>
+      <ul class="comp-points">
+        <li>Assigned to intervention centres to assist young adults.</li>
+        <li>Focus on goal-setting, engagement and navigating care.</li>
+        <li>Bridges between clinic visits for continuity.</li>
+      </ul>
     </div>
-    <div class="tile">
-      <div class="icon-bubble">📝</div>
-      <div>
+
+    <!-- Agenda-Setting Tool -->
+    <div class="comp-card">
+      <div class="comp-head">
+        <div class="icon-bubble">📝</div>
         <h3>Agenda-Setting Tool</h3>
-        <p>Empowers young adults to set the agenda for clinic visits, ensuring their concerns and priorities are addressed.</p>
       </div>
+      <ul class="comp-points">
+        <li>Lets young adults set priorities for each clinic visit.</li>
+        <li>Ensures their concerns are heard and addressed.</li>
+        <li>Makes appointments feel more useful and person-centred.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS (Journey) ===== -->
+<!-- ===== HOW IT WORKS (Journey tabs) ===== -->
 <section class="wrap journey" id="journey">
   <h2>How it works</h2>
   <div class="journey-wrap">
@@ -269,48 +316,45 @@
 
 <!-- ===== AUDIENCE TILES ===== -->
 <section class="wrap aud">
-  <div class="tile">
+  <div class="tile" style="grid-template-columns:1fr auto">
     <div>
       <h3>For Participants</h3>
       <p>Who can join, what to expect, time commitment & mini-FAQ.</p>
     </div>
     <a class="btn" href="trial-participants.html">Learn more</a>
   </div>
-  <div class="tile">
+  <div class="tile" style="grid-template-columns:1fr auto">
     <div>
       <h3>For Trial Sites</h3>
       <p>Responsibilities, timelines, downloads and key contacts.</p>
     </div>
-    <a class="btn" href="trial-sites.html" style="background:var(--blue)">Open site hub</a>
+    <a class="btn secondary" href="trial-sites.html">Open site hub</a>
   </div>
 </section>
 
 <!-- ===== TEAM + DOWNLOADS ===== -->
 <section class="wrap">
-  <div class="interv" style="grid-template-columns:1.3fr 1fr">
+  <div class="dl-grid" style="grid-template-columns:1.3fr 1fr; gap:18px">
     <!-- Team -->
-    <div class="tile" style="grid-template-columns:1fr; align-items:stretch">
-      <div>
-        <h2>Meet the Team</h2>
-        <div class="bullets" style="margin-top:10px">
-          <li>Dr. [Name] — Chief Investigator</li>
-          <li>[Name] — Research Nurse</li>
-          <li>[Name] — YAP Lead</li>
-          <li>[Name] — Site Coordinator</li>
-        </div>
-        <p style="margin-top:10px;color:#1f3472;font-weight:600">“Short, clear steps made joining easy.” — YAP member</p>
-      </div>
+    <div class="dl-card" style="padding:18px">
+      <h2>Meet the Team</h2>
+      <ul class="bullets" style="margin-top:10px">
+        <li>Dr. [Name] — Chief Investigator</li>
+        <li>[Name] — Research Nurse</li>
+        <li>[Name] — YAP Lead</li>
+        <li>[Name] — Site Coordinator</li>
+      </ul>
+      <p style="margin-top:10px;color:#1f3472;font-weight:600">“Short, clear steps made joining easy.” — YAP member</p>
     </div>
+
     <!-- Downloads -->
-    <div class="tile" style="grid-template-columns:1fr; align-items:stretch">
-      <div>
-        <h2>Downloads</h2>
-        <div class="bullets" style="margin-top:10px">
-          <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Participant summary (PDF)</a> — 1-page overview of what to expect.</li>
-          <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Recruitment poster</a> — Share with friends or your clinic.</li>
-          <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Detailed info sheet</a> — Full details for those who want more depth.</li>
-        </div>
-      </div>
+    <div class="dl-card" style="padding:18px">
+      <h2>Downloads</h2>
+      <ul class="bullets" style="margin-top:10px">
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Participant summary (PDF)</a> — 1-page overview of what to expect.</li>
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Recruitment poster</a> — Share with friends or your clinic.</li>
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Detailed info sheet</a> — Full details for those who want more depth.</li>
+      </ul>
     </div>
   </div>
 </section>
