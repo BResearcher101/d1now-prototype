@@ -5,26 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>D1 Now – D1 Trial</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-
 <style>
   :root{
     --blue:#3058FF;
-    --header-blue:#144182;
+    --header-blue:#144182;           /* same as your site header/footer blue */
     --yellow:#FFDF1B;
     --ink:#0b2b62;
     --muted:#6b7aa5;
     --light:#f6f8fa;
     --white:#fff;
-    --shadow:0 8px 28px rgba(0,0,0,.10);
+    --shadow:0 10px 30px rgba(0,0,0,.10);
     --maxw:1200px;
     --radius:16px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:#fff;color:#111;font-family:Inter,system-ui,Arial,sans-serif}
-  a{text-decoration:none}
   h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;color:var(--ink);margin:0}
+  a{text-decoration:none}
 
-  /* Header bar (kept slim; mirror site) */
+  /* ===== Header stub (remove if you include the global header) ===== */
   header{background:var(--header-blue);color:#fff;height:68px;display:flex;align-items:center;justify-content:center;padding:0 16px}
   .head{max-width:var(--maxw);width:100%;display:flex;align-items:center;justify-content:space-between}
   .brand{font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:1.6rem}
@@ -33,75 +32,114 @@
   nav a:hover{background:rgba(255,255,255,.1)}
   .head-cta{background:var(--blue);color:#fff;padding:8px 14px;border-radius:999px;font-weight:700}
 
-  /* Hero carousel with half-split look */
-  .hero{background:var(--blue);color:#fff;position:relative;overflow:hidden}
-  .hero-wrap{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:0;min-height:420px}
-  .hero-copy{padding:38px 22px 24px 22px;display:flex;flex-direction:column;justify-content:center}
-  .hero-copy h1{font-size:2.6rem;line-height:1.1;color:#fff}
-  .hero-stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
-  .stat{min-width:160px;border-left:2px solid rgba(255,255,255,.35);padding-left:16px}
-  .stat .num{font-size:2rem;font-weight:700}
-  .stat .lbl{opacity:.9}
-  .hero-art{position:relative;min-height:420px;background:#000}
-  .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.86}
-  .hero-controls{position:absolute;right:18px;bottom:16px;display:flex;gap:10px;z-index:2}
-  .hbtn{width:42px;height:42px;border:none;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;font-weight:700}
-  .hbtn:active{transform:scale(.96)}
-
-  /* Intro “what the trial is” (style like your ref 1/2) */
-  .intro{max-width:var(--maxw);margin:26px auto 2px auto;padding:0 18px}
-  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
-  .prob{background:var(--light);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
-  .prob .icon{width:42px;height:42px;border-radius:50%;background:#9bf1e0;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px}
-  .prob p{margin:0;color:#223}
-  .solv{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:22px;align-items:center}
-  .sol-tile{display:flex;flex-direction:column;gap:6px}
-  .sol-tile a{color:var(--header-blue);font-weight:700}
-
-  /* Journey (tabs on left like your ref 4) */
-  .journey{max-width:var(--maxw);margin:28px auto;padding:0 18px}
-  .journey-wrap{display:grid;grid-template-columns:340px 1fr;gap:18px}
-  .j-tabs{display:flex;flex-direction:column;gap:10px}
-  .j-tab{background:#e9eefc;border:2px solid transparent;border-radius:12px;padding:14px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;color:#1f3472}
-  .j-tab.active{background:#cfe0ff;border-color:#1f3472}
-  .j-pane{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;min-height:220px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
-  .j-pane img{width:100%;height:100%;object-fit:cover;border-radius:12px;background:#f2f2f2}
-  .j-pane h3{margin-bottom:6px}
-
-  /* Two big tiles */
-  .aud{max-width:var(--maxw);margin:0 auto;padding:0 18px 8px 18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .tile{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;display:flex;justify-content:space-between;align-items:center}
-  .tile p{margin:6px 0 0 0;color:#445}
-  .btn{background:var(--header-blue);color:#fff;padding:12px 16px;border-radius:12px;font-weight:700}
+  /* ===== HERO — hard-matched to Home (2.6 / 1.1, 420px min) ===== */
+  .hero{
+    background: var(--yellow);
+    position: relative;
+    overflow: hidden;
+    display:flex; justify-content:center;
+    border-bottom:8px solid rgba(20,65,130,.06);
+  }
+  /* subtle dots to add life */
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto auto; height:320px; width:320px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+    transform: rotate(16deg);
+  }
+  .hero-inner{
+    width:100%; max-width:var(--maxw);
+    display:grid; grid-template-columns:2.6fr 1.1fr;   /* EXACTLY like Home */
+    gap:0; min-height:420px;                           /* EXACTLY like Home */
+  }
+  .hero-left{position:relative; background:#fff; min-height:420px; overflow:hidden}
+  .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .hero-gradient{position:absolute; inset:0; background: linear-gradient(90deg, rgba(20,65,130,.45), rgba(20,65,130,0) 55%); mix-blend: multiply}
+  .hero-controls{
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+    display:flex; gap:18px; align-items:center; justify-content:center;
+    background:rgba(20,65,130,.12); padding:6px 10px; border-radius:999px; backdrop-filter:blur(4px); z-index:2
+  }
+  .hero-btn{
+    border:none; width:45px; height:45px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--header-blue); color:#fff; cursor:pointer; font-size:1.2rem;
+    box-shadow:0 3px 10px rgba(0,0,0,.08); transition:transform .16s, background .22s;
+  }
+  .hero-btn:active{transform:scale(.97)}
+  .hero-right{
+    background:var(--yellow);
+    padding:56px 32px 22px 32px; position:relative; color:var(--ink);
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+  }
+  .yap-badge{
+    position:absolute; top:12px; right:16px; background:#fff; border:1px solid #e5e9f5; color:var(--header-blue);
+    font-family:Poppins,Inter,sans-serif; font-weight:700; font-size:.9rem; padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.04)
+  }
+  .hero-title{font-size:2.15rem; line-height:1.18; color:var(--header-blue); margin:0 0 12px 0}
+  .hero-sub{font-size:1.12rem; color:#233048; margin:0 0 16px 0}
+  .stats{display:flex; gap:26px; flex-wrap:wrap; margin:16px 0 20px 0}
+  .stat{min-width:160px; border-left:2px solid rgba(20,65,130,.25); padding-left:12px}
+  .stat .num{font-size:2rem; font-weight:700; color:var(--header-blue)}
+  .stat .lbl{color:#223}
+  .hero-ctas{display:flex; gap:12px}
+  .btn{background:var(--header-blue); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700}
   .btn.secondary{background:var(--blue)}
 
-  /* Team strip + quotes */
-  .team{max-width:var(--maxw);margin:24px auto;padding:0 18px}
-  .team-box{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:16px}
-  .team-row{display:flex;gap:12px;overflow:auto}
-  .chip{background:#eef2fb;border-radius:999px;padding:8px 12px;white-space:nowrap}
-  .quote{margin-top:12px;color:#1f3472;font-weight:600}
+  /* ===== Section wrapper ===== */
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px}
 
-  /* Downloads row */
-  .dl{max-width:var(--maxw);margin:22px auto 30px auto;padding:0 18px}
-  .dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:16px}
-  .card p{margin:6px 0;color:#445}
-  .card a{color:var(--header-blue);font-weight:700}
+  /* Overview + Study Scope cards */
+  .lead{max-width:880px; color:#223; margin-top:6px}
+  .overview{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:14px}
+  .card{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px}
+  .card h4{margin-bottom:6px}
+  .chip{display:inline-block; background:var(--yellow); color:#0b2b62; font-weight:700; padding:6px 10px; border-radius:999px; margin-bottom:8px}
+  .bullets{margin:8px 0 0 0; padding-left:18px}
+  .bullets li{margin:8px 0}
+
+  /* Intervention Components — lively tiles */
+  .interv{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px}
+  .tile{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:18px; display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; position:relative; overflow:hidden}
+  .tile::after{content:""; position:absolute; right:-40px; bottom:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,223,27,.35)}
+  .icon-bubble{width:82px; height:82px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#0b2b62; font-weight:700; box-shadow:0 6px 16px rgba(255,223,27,.35)}
+
+  /* Journey tabs */
+  .journey{margin-top:26px}
+  .journey-wrap{display:grid; grid-template-columns:340px 1fr; gap:18px}
+  .j-tabs{display:flex; flex-direction:column; gap:10px}
+  .j-tab{background:#e9eefc; border:2px solid transparent; border-radius:12px; padding:14px; display:flex; gap:8px; font-weight:700; color:#1f3472; cursor:pointer}
+  .j-tab.active{background:#cfe0ff; border-color:#1f3472}
+  .j-pane{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:18px; min-height:220px; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center}
+  .j-pane img{width:100%; height:100%; object-fit:cover; border-radius:12px; background:#f2f2f2}
+
+  /* Why this study matters */
+  .why{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px; margin-top:22px}
+  .why-list{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:10px}
+  .why-item{background:#f6f8fa; border-radius:12px; padding:12px}
+
+  /* Audience tiles + Downloads */
+  .aud{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px}
+  .aud .tile{grid-template-columns:1fr auto}
+  .dl{margin-top:22px}
+  .dl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .dl-card{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px}
+  .dl-card p{margin:6px 0}
+  .dl-card a{color:var(--header-blue); font-weight:700}
 
   @media (max-width:1000px){
-    .hero-wrap{grid-template-columns:1fr}
+    .hero-inner{grid-template-columns:1fr}
+    .overview{grid-template-columns:1fr}
+    .interv{grid-template-columns:1fr}
     .journey-wrap{grid-template-columns:1fr}
     .j-pane{grid-template-columns:1fr}
+    .why-list{grid-template-columns:1fr}
     .aud{grid-template-columns:1fr}
-    .solv{grid-template-columns:1fr}
-    .prob-grid{grid-template-columns:1fr}
+    .dl-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
-<!-- Header (match your site header if you prefer to include it) -->
 <header>
   <div class="head">
     <div class="brand">D1 Now</div>
@@ -109,7 +147,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a style="background:rgba(255,255,255,.12)" href="trial.html">D1 Trial</a></li>
+        <li><a style="background:rgba(255,255,255,.12)">D1 Trial</a></li>
         <li><a href="#">YAP</a></li>
         <li><a href="#">Resources</a></li>
       </ul>
@@ -118,13 +156,28 @@
   </div>
 </header>
 
-<!-- HERO: Big half-split carousel + counters -->
+<!-- ===== HERO (same footprint as Home) ===== -->
 <section class="hero">
-  <div class="hero-wrap">
-    <div class="hero-copy">
-      <h1>D1 Now Definitive Trial</h1>
-      <p style="opacity:.95">A multi-centre study co-designed with young adults to improve Type 1 Diabetes care across Ireland.</p>
-      <div class="hero-stats">
+  <div class="hero-inner">
+    <!-- Left: big image carousel -->
+    <div class="hero-left">
+      <img id="heroImg" class="hero-img"
+           src="https://images.unsplash.com/photo-1576765974230-ccb4b9419f2e?q=80&w=1600&auto=format&fit=crop"
+           alt="Clinic team">
+      <div class="hero-gradient"></div>
+      <div class="hero-controls">
+        <button class="hero-btn" id="prevH" aria-label="Previous image">‹</button>
+        <button class="hero-btn" id="nextH" aria-label="Next image">›</button>
+      </div>
+    </div>
+
+    <!-- Right: title, counters, CTAs -->
+    <div class="hero-right">
+      <div class="yap-badge">YAP-designed</div>
+      <h1 class="hero-title">D1 Now Definitive Trial</h1>
+      <p class="hero-sub">A multi-centre study co-designed with young adults to improve Type 1 Diabetes care across Ireland.</p>
+
+      <div class="stats">
         <div class="stat">
           <div class="num" id="stat-centres">0</div>
           <div class="lbl">Centres Recruited</div>
@@ -138,50 +191,68 @@
           <div class="lbl">Participants Recruited</div>
         </div>
       </div>
-    </div>
 
-    <div class="hero-art">
-      <img id="heroImg" src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1600&auto=format&fit=crop" alt="Clinic team">
-      <div class="hero-controls">
-        <button class="hbtn" id="prevH">‹</button>
-        <button class="hbtn" id="nextH">›</button>
+      <div class="hero-ctas">
+        <a class="btn" href="#">Join Trial</a>
+        <a class="btn secondary" href="#journey">See the journey</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTRO: What the trial is (ref 1/2 style) -->
-<section class="intro">
-  <h2>What the trial is</h2>
-  <p style="max-width:850px;margin-top:6px;color:#223">We’re testing a youth-friendly way of delivering Type 1 Diabetes support in real clinics. The aim is to make appointments more useful, boost confidence with self-management, and improve outcomes that matter to young adults.</p>
+<!-- ===== OVERVIEW + STUDY SCOPE ===== -->
+<section class="wrap">
+  <h2>Overview of the D1 Now Definitive Trial</h2>
+  <p class="lead">
+    We’re testing a youth-friendly way of delivering T1D support in real clinics. The aim: make appointments more useful,
+    boost self-management confidence, and improve outcomes that matter to young adults.
+  </p>
 
-  <div class="prob-grid">
-    <div class="prob">
-      <div class="icon">⏱</div>
-      <p>Appointments can feel rushed and not tailored to real life.</p>
+  <div class="overview">
+    <div class="card">
+      <span class="chip">Study Scope</span>
+      <h4>Number of Centres</h4>
+      <ul class="bullets">
+        <li>We are recruiting <strong>12 centres</strong> across the Republic of Ireland and Northern Ireland.</li>
+      </ul>
     </div>
-    <div class="prob">
-      <div class="icon">❓</div>
-      <p>It’s hard to know what to expect from a research trial or how to join.</p>
+    <div class="card">
+      <span class="chip">Study Scope</span>
+      <h4>Target Participants</h4>
+      <ul class="bullets">
+        <li>Each centre will enrol <strong>29 young adults</strong> aged <strong>18–25</strong> with T1D.</li>
+      </ul>
     </div>
-    <div class="prob">
-      <div class="icon">$</div>
-      <p>Delays in recruitment slow research progress and add cost.</p>
+    <div class="card">
+      <span class="chip">Study Scope</span>
+      <h4>Study Duration</h4>
+      <ul class="bullets">
+        <li><strong>12 months</strong> with data collection at <strong>baseline</strong>, <strong>6 months</strong>, and <strong>12 months</strong>.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="solv">
-    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" alt="Research support" style="width:100%;border-radius:14px;box-shadow:var(--shadow)">
-    <div class="sol-tile">
-      <h3>Our approach</h3>
-      <p>We co-designed the trial with the YAP to make information simple, steps clear, and support more human. Clinics get practical tools; young people get clarity and choice.</p>
-      <a href="#">Read the plain-English summary →</a>
+  <h2 style="margin-top:22px">Intervention Components</h2>
+  <div class="interv">
+    <div class="tile">
+      <div class="icon-bubble">🤝</div>
+      <div>
+        <h3>Support Worker</h3>
+        <p>Assigned to intervention centres to assist young adults with goal-setting, engagement, and managing their diabetes care.</p>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="icon-bubble">📝</div>
+      <div>
+        <h3>Agenda-Setting Tool</h3>
+        <p>Empowers young adults to set the agenda for their clinic visits, so their concerns and priorities are addressed.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- JOURNEY: Consent → Baseline → Sample → Visits → Final (tabbed like your ref 4) -->
-<section class="journey">
+<!-- ===== JOURNEY (Consent → Baseline → Sample → Visits → Final) ===== -->
+<section class="wrap journey" id="journey">
   <h2>Your journey at a glance</h2>
   <div class="journey-wrap">
     <div class="j-tabs" id="jTabs">
@@ -191,8 +262,7 @@
       <button class="j-tab" data-pane="visits">🏥 Visits</button>
       <button class="j-tab" data-pane="final">✅ Final</button>
     </div>
-
-    <div class="j-pane" id="jPane">
+    <div class="j-pane">
       <div>
         <h3 id="jTitle">Consent</h3>
         <p id="jText">We explain the study in simple language and answer your questions. You choose to take part and can leave at any time.</p>
@@ -202,8 +272,20 @@
   </div>
 </section>
 
-<!-- Two big tiles: For Participants / For Trial Sites -->
-<section class="aud">
+<!-- ===== WHY THIS STUDY MATTERS ===== -->
+<section class="wrap">
+  <div class="why">
+    <h2>Why this study matters</h2>
+    <div class="why-list">
+      <div class="why-item"><strong>Enhance engagement.</strong> Strengthen patient engagement and self-management strategies.</div>
+      <div class="why-item"><strong>Shape the future.</strong> Contribute to research that could guide T1D care for young adults.</div>
+      <div class="why-item"><strong>Structured support.</strong> Sites receive tools and resources to implement the intervention.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Audience tiles ===== -->
+<section class="wrap aud">
   <div class="tile">
     <div>
       <h3>For Participants</h3>
@@ -211,117 +293,94 @@
     </div>
     <a class="btn" href="trial-participants.html">Learn more</a>
   </div>
-
   <div class="tile">
     <div>
       <h3>For Trial Sites</h3>
-      <p>Responsibilities, timelines, training, downloads and contacts.</p>
+      <p>Responsibilities, timelines, downloads and key contacts.</p>
     </div>
     <a class="btn secondary" href="trial-sites.html">Open site hub</a>
   </div>
 </section>
 
-<!-- Meet the Team + quotes -->
-<section class="team">
-  <div class="team-box">
-    <h2>Meet the team</h2>
-    <div class="team-row" style="margin-top:10px">
-      <div class="chip">Dr. [Name] – Chief Investigator</div>
-      <div class="chip">[Name] – Research Nurse</div>
-      <div class="chip">[Name] – YAP Lead</div>
-      <div class="chip">[Name] – Site Coordinator</div>
-      <div class="chip">[Name] – Data Manager</div>
-    </div>
-    <div class="quote">“Short, clear steps made joining easy.” — YAP member</div>
-  </div>
-</section>
-
-<!-- Downloads row -->
-<section class="dl">
+<!-- ===== Downloads ===== -->
+<section class="wrap dl">
   <h2>Downloads</h2>
   <div class="dl-grid" style="margin-top:12px">
-    <div class="card">
+    <div class="dl-card">
       <h4>Participant summary (PDF)</h4>
-      <p>1-page overview of what to expect in the trial.</p>
+      <p>1-page overview of what to expect.</p>
       <a href="#" download>Download</a>
     </div>
-    <div class="card">
+    <div class="dl-card">
       <h4>Recruitment poster</h4>
-      <p>Share with friends or your clinic to spread the word.</p>
+      <p>Share with friends or your clinic.</p>
       <a href="#" target="_blank">Open poster</a>
     </div>
-    <div class="card">
+    <div class="dl-card">
       <h4>Detailed info sheet</h4>
-      <p>All the details for anyone who wants to go deeper.</p>
+      <p>All the details for those who want more depth.</p>
       <a href="#" target="_blank">Read online</a>
     </div>
   </div>
 </section>
 
 <script>
-  /* ===== HERO CAROUSEL (images + manual controls) ===== */
+  /* ===== HERO CAROUSEL ===== */
   const heroImages = [
-    "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1600&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1576765974230-ccb4b9419f2e?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1600&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop"
   ];
-  let hIndex = 0;
-  const heroImg = document.getElementById("heroImg");
+  let hIdx = 0;
+  const hImg = document.getElementById('heroImg');
   function swapHero(next=true){
-    hIndex = (hIndex + (next?1:-1) + heroImages.length) % heroImages.length;
-    heroImg.style.opacity = .1;
-    setTimeout(()=>{ heroImg.src = heroImages[hIndex]; heroImg.style.opacity = .86; }, 180);
+    hIdx = (hIdx + (next?1:-1) + heroImages.length) % heroImages.length;
+    hImg.style.opacity = .08;
+    setTimeout(()=>{ hImg.src = heroImages[hIdx]; hImg.style.opacity = 1; }, 180);
   }
-  document.getElementById("nextH").onclick = ()=> swapHero(true);
-  document.getElementById("prevH").onclick = ()=> swapHero(false);
-  setInterval(()=>swapHero(true), 5000);
+  document.getElementById('nextH').onclick = ()=> swapHero(true);
+  document.getElementById('prevH').onclick = ()=> swapHero(false);
+  setInterval(()=>swapHero(true), 4500);
 
-  /* ===== COUNTERS (animated on load; replace with real numbers) ===== */
-  const targets = { centres: 12, onboard: 58, participants: 139 }; // <-- update with real values
+  /* ===== COUNTERS (update when you have live numbers) ===== */
+  const targets = { centres: 12, onboard: 58, participants: 12*29 }; // 12 centres × 29 each
   function animateCount(id, target, dur=900){
-    const el=document.getElementById(id); let start=0; const t0=performance.now();
-    function step(ts){ const p=Math.min((ts-t0)/dur,1); el.textContent=Math.floor(p*target); if(p<1) requestAnimationFrame(step); }
+    const el=document.getElementById(id); const startTime=performance.now();
+    function step(ts){
+      const p=Math.min((ts-startTime)/dur,1);
+      el.textContent = Math.floor(p*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
+    }
     requestAnimationFrame(step);
   }
   window.addEventListener('DOMContentLoaded', ()=>{
-    animateCount('stat-centres', targets.centres);
-    animateCount('stat-onboard', targets.onboard);
+    animateCount('stat-centres', targets.centres, 800);
+    animateCount('stat-onboard', targets.onboard, 900);
     animateCount('stat-participants', targets.participants, 1100);
   });
 
   /* ===== JOURNEY TABS ===== */
   const panes = {
-    consent: {
-      title:"Consent",
+    consent:{ title:"Consent",
       text:"We explain the study in simple language and answer your questions. You choose to take part and can leave at any time.",
-      img:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop"
-    },
-    baseline: {
-      title:"Baseline data",
-      text:"A quick questionnaire and short chat about your current routine so we can understand your starting point.",
-      img:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
-    },
-    sample: {
-      title:"Small blood sample",
+      img:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" },
+    baseline:{ title:"Baseline data",
+      text:"A quick questionnaire and short chat about your current routine so we understand your starting point.",
+      img:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop" },
+    sample:{ title:"Small blood sample",
       text:"A routine sample taken safely by trained staff. No extra clinic trips just for this.",
-      img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
-    },
-    visits: {
-      title:"Clinic visits",
-      text:"Regular check-ins with supportive tools designed with the YAP to make appointments feel more useful.",
-      img:"https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1200&auto=format&fit=crop"
-    },
-    final: {
-      title:"Final test & interview",
-      text:"We wrap up with final measures and a friendly interview about your experience to help improve future care.",
-      img:"https://images.unsplash.com/photo-1582719478185-2c1b38a66b0b?q=80&w=1200&auto=format&fit=crop"
-    }
+      img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" },
+    visits:{ title:"Clinic visits",
+      text:"Regular check-ins using tools co-designed with the YAP so appointments feel more useful.",
+      img:"https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1200&auto=format&fit=crop" },
+    final:{ title:"Final test & interview",
+      text:"We wrap up with final measures and a friendly interview about your experience to improve future care.",
+      img:"https://images.unsplash.com/photo-1582719478185-2c1b38a66b0b?q=80&w=1200&auto=format&fit=crop" }
   };
   const tabs = document.querySelectorAll('.j-tab');
   const jTitle = document.getElementById('jTitle');
   const jText  = document.getElementById('jText');
   const jImg   = document.getElementById('jImg');
-
   tabs.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       tabs.forEach(b=>b.classList.remove('active'));
