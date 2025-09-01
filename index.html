@@ -1,326 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>D1 Now – Homepage</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --blue:#3058FF;
-      --footer-blue:#144182;
-      --white:#FFF;
-      --yellow:#FFDF1B;
-      --ink:#232f49;
-      --muted:#6b7aa5;
-      --shadow:0 6px 28px rgba(0,0,0,0.08);
-      --maxw:1200px;
-    }
-    html,body{height:100%;margin:0;padding:0;background:var(--footer-blue);color:#111;font-family:Inter,Arial,sans-serif}
-    body{display:flex;flex-direction:column;min-height:100vh}
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – D1 Trial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3058FF;
+    --header-blue:#144182;         /* match site header/footer */
+    --yellow:#FFDF1B;
+    --ink:#0b2b62;
+    --muted:#6b7aa5;
+    --light:#f6f8fa;
+    --white:#fff;
+    --shadow:0 10px 30px rgba(0,0,0,.10);
+    --maxw:1200px;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:#111;font-family:Inter,system-ui,Arial,sans-serif}
+  h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;color:var(--ink);margin:0}
+  a{text-decoration:none}
 
-    /* ===== Header (same height) ===== */
-    header{background:var(--footer-blue);color:#fff;display:flex;align-items:center;justify-content:center;height:68px;padding:0 16px}
-    .header-container{width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo{font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:2rem;letter-spacing:1px;color:#fff;white-space:nowrap}
+  /* ===== Header stub (remove if you import your global header) ===== */
+  header{background:var(--header-blue);color:#fff;height:68px;display:flex;align-items:center;justify-content:center;padding:0 16px}
+  .head{max-width:var(--maxw);width:100%;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:1.6rem}
+  nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+  nav a{color:#fff;padding:6px 12px;border-radius:8px;font-weight:600}
+  nav a:hover{background:rgba(255,255,255,.1)}
+  .head-cta{background:var(--blue);color:#fff;padding:8px 14px;border-radius:999px;font-weight:700}
 
-    /* Nav (4 tabs + dropdowns) */
-    nav{display:flex;align-items:center;gap:18px}
-    .nav-list{list-style:none;display:flex;gap:10px;margin:0;padding:0}
-    .nav-item{position:relative}
-    .nav-link{color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;letter-spacing:.2px;padding:6px 14px;border-radius:8px;display:inline-flex;align-items:center;transition:background .2s,opacity .2s}
-    .nav-link:hover{background:rgba(255,255,255,.09);opacity:.95}
-    .dropdown{position:absolute;left:0;top:100%;min-width:230px;background:#fff;color:#111;border-radius:12px;box-shadow:var(--shadow);padding:8px;margin-top:8px;display:none;z-index:20}
-    .dropdown a{display:block;text-decoration:none;color:#111;padding:10px 12px;border-radius:8px;font-weight:600}
-    .dropdown a:hover{background:#f0f3f9}
-    .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:block}
-    .header-cta{display:inline-block;text-decoration:none;color:#fff;background:var(--blue);padding:8px 14px;border-radius:999px;font-weight:700;font-family:Poppins,Inter,sans-serif;box-shadow:0 6px 18px rgba(48,88,255,.18)}
-    .header-cta:hover{filter:brightness(1.06)}
+  /* ===== HERO — same size/ratio as Home (2.6 / 1.1, min-height 420) ===== */
+  .hero{
+    background: var(--yellow);
+    position: relative; overflow: hidden;
+    display:flex; justify-content:center;
+    border-bottom:8px solid rgba(20,65,130,.06);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto auto; height:320px; width:320px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+    transform: rotate(16deg);
+  }
+  .hero-inner{
+    width:100%; max-width:var(--maxw);
+    display:grid; grid-template-columns:2.6fr 1.1fr;   /* EXACT like Home */
+    gap:0; min-height:420px;                           /* EXACT like Home */
+  }
+  .hero-left{position:relative; background:#fff; min-height:420px; overflow:hidden}
+  .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .hero-gradient{position:absolute; inset:0; background: linear-gradient(90deg, rgba(20,65,130,.45), rgba(20,65,130,0) 55%); mix-blend:multiply}
+  .hero-controls{
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+    display:flex; gap:18px; align-items:center; justify-content:center;
+    background:rgba(20,65,130,.12); padding:6px 10px; border-radius:999px; backdrop-filter:blur(4px); z-index:2
+  }
+  .hero-btn{
+    border:none; width:45px; height:45px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--header-blue); color:#fff; cursor:pointer; font-size:1.2rem;
+    box-shadow:0 3px 10px rgba(0,0,0,.08); transition:transform .16s, background .22s;
+  }
+  .hero-btn:active{transform:scale(.97)}
+  .hero-right{
+    background:var(--yellow);
+    padding:56px 32px 22px 32px; position:relative; color:var(--ink);
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+  }
+  .yap-badge{
+    position:absolute; top:12px; right:16px; background:#fff; border:1px solid #e5e9f5; color:var(--header-blue);
+    font-family:Poppins,Inter,sans-serif; font-weight:700; font-size:.9rem; padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.04)
+  }
+  .hero-title{font-size:2.15rem; line-height:1.18; color:var(--header-blue); margin:0 0 12px 0}
+  .hero-sub{font-size:1.12rem; color:#233048; margin:0 0 16px 0}
+  .stats{display:flex; gap:26px; flex-wrap:wrap; margin:16px 0 20px 0}
+  .stat{min-width:160px; border-left:2px solid rgba(20,65,130,.25); padding-left:12px}
+  .stat .num{font-size:2rem; font-weight:700; color:var(--header-blue)}
+  .stat .lbl{color:#223}
+  .hero-ctas{display:flex; gap:12px}
+  .btn{background:var(--header-blue); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700}
+  .btn.secondary{background:var(--blue)}
 
-    /* ===== Hero (unchanged sizes/layout) ===== */
-    .main-content{flex:1;display:flex;width:100%;background:var(--yellow);justify-content:center}
-    .main-inner{width:100%;max-width:var(--maxw);display:grid;grid-template-columns:2.6fr 1.1fr;gap:0;min-height:420px}
-    .img-col{position:relative;background:#fff;min-height:420px;overflow:hidden}
-    .main-carousel-img.big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s}
-    .main-carousel-img.big.fading{opacity:0;pointer-events:none}
-    .carousel-controls{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:18px;align-items:center;justify-content:center;background:rgba(20,65,130,.12);padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)}
-    .carousel-btn{border:none;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--footer-blue);color:#fff;cursor:pointer;font-size:1.2rem;box-shadow:0 3px 10px rgba(0,0,0,.08)}
-    .cta-col{background:var(--yellow);padding:56px 32px 0 32px;min-height:420px;position:relative;display:flex;flex-direction:column;align-items:flex-start}
-    .main-headline{font-family:Poppins,Inter,sans-serif;font-size:2.15rem;font-weight:700;letter-spacing:-.5px;line-height:1.18;color:var(--footer-blue);margin:0 0 13px 0}
-    .main-subline{font-size:1.2rem;color:#232f49;margin:0 0 36px 0}
-    .cta-vertical-btns{display:flex;flex-direction:column;gap:20px;width:100%;margin-bottom:46px}
-    .cta-btn{border:none;border-radius:999px;width:100%;font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:1.19rem;letter-spacing:.4px;padding:22px 0;cursor:pointer;background:var(--footer-blue);color:#fff;box-shadow:0 6px 18px rgba(20,65,130,.10)}
-    .cta-btn:hover{background:var(--blue);transform:scale(1.03)}
-    .add-yap-badge{position:absolute;top:12px;right:16px;background:#fff;border:1px solid #e5e9f5;color:var(--footer-blue);font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:.9rem;padding:6px 10px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.04);pointer-events:none}
+  /* ===== Section wrapper ===== */
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px}
 
-    /* ===== Below-hero additions ===== */
-    .add-wrap{display:flex;justify-content:center;background:#fff}
-    .add-inner{width:100%;max-width:var(--maxw);padding:22px 18px}
+  /* About + TRIAL AT A GLANCE (now uses lively tile style) */
+  .lead{max-width:880px; color:#223; margin-top:6px}
+  .glance-tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px}
+  .tile{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:18px; display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; position:relative; overflow:hidden}
+  .tile::after{content:""; position:absolute; right:-40px; bottom:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,223,27,.35)}
+  .icon-bubble{width:82px; height:82px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:#0b2b62; font-weight:700; box-shadow:0 6px 16px rgba(255,223,27,.35)}
+  .tile h4{margin:0}
+  .tile p{margin:6px 0 0 0; color:#445}
 
-    /* Yellow cards for Testimonials + Newsletter */
-    .add-card{background:var(--yellow);border-radius:16px;box-shadow:var(--shadow);padding:16px}
-    .add-testimonials .add-testi-row{display:grid;grid-template-columns:56px 1fr 56px;align-items:center;gap:10px;min-height:72px}
-    .add-testi-btn{width:40px;height:40px;border:none;border-radius:50%;background:var(--footer-blue);color:#fff;cursor:pointer}
-    .add-testi-card{display:flex;align-items:center;gap:14px}
-    .add-testi-card img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid #fff}
-    .add-testi-quote{font-weight:700;color:#0b2b62}
-    .add-testi-name{font-size:.9rem;color:#2a3f74}
-    .add-newsletter{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
-    .add-newsletter form{display:flex;gap:8px;margin:0}
-    .add-newsletter input{padding:12px 14px;border:2px solid #0b2b62;border-radius:12px;min-width:220px;outline:none}
-    .add-newsletter button{background:var(--footer-blue);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
-    .add-newsletter button:hover{background:var(--blue)}
+  /* INTERVENTION COMPONENTS — emphasized band with outlined feature cards */
+  .comp-band{
+    margin-top:22px;
+    background:linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+  }
+  .comp-header{display:flex; align-items:center; gap:10px; margin-bottom:12px}
+  .comp-chip{display:inline-block; background:#e8efff; color:var(--header-blue); font-weight:800; padding:6px 10px; border-radius:999px; font-size:.85rem}
+  .comp-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .comp-card{
+    background:#fff;
+    border:2px solid var(--header-blue);
+    border-radius:16px;
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .comp-card::after{content:""; position:absolute; right:-46px; bottom:-46px; width:200px; height:200px; border-radius:50%; background:rgba(255,223,27,.25)}
+  .comp-head{display:flex; gap:14px; align-items:center; margin-bottom:8px}
+  .comp-head .icon-bubble{box-shadow:none}
+  .comp-card h3{margin:0}
+  .comp-points{margin:8px 0 0 0; padding-left:18px}
+  .comp-points li{margin:8px 0}
 
-    /* ===== Expanded Footer ===== */
-    footer{background:var(--footer-blue);color:#fff}
-    .foot-top{max-width:var(--maxw);margin:0 auto;padding:26px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-    .foot-col h4{margin:0 0 10px 0;font-family:Poppins,Inter,sans-serif;font-weight:700}
-    .foot-col a{display:block;color:#e9f0ff;text-decoration:none;margin:6px 0}
-    .foot-col a:hover{color:#cfe0ff}
-    .foot-logos{background:#133a72;display:flex;justify-content:center}
-    .foot-logos-inner{max-width:var(--maxw);width:100%;padding:12px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center}
-    .foot-logos-inner img{height:36px;background:#fff;border-radius:4px;padding:3px 6px}
-    .foot-bottom{max-width:var(--maxw);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
-    .foot-social{display:flex;gap:10px}
-    .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none}
+  /* How it works (journey tabs) */
+  .journey{margin-top:26px}
+  .journey-wrap{display:grid; grid-template-columns:340px 1fr; gap:18px}
+  .j-tabs{display:flex; flex-direction:column; gap:10px}
+  .j-tab{background:#e9eefc; border:2px solid transparent; border-radius:12px; padding:14px; display:flex; gap:8px; font-weight:700; color:#1f3472; cursor:pointer}
+  .j-tab.active{background:#cfe0ff; border-color:#1f3472}
+  .j-pane{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:18px; min-height:220px; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center}
+  .j-pane img{width:100%; height:100%; object-fit:cover; border-radius:12px; background:#f2f2f2}
 
-    /* Floating FAQ */
-    .floating-faq-img-link{position:fixed;right:36px;bottom:90px;z-index:100;display:flex;align-items:center;justify-content:center;width:72px;height:72px;text-decoration:none}
-    .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
-    @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
+  /* Audience tiles + Downloads */
+  .aud{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px}
+  .aud .tile{grid-template-columns:1fr auto}
+  .dl{margin-top:22px}
+  .dl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .dl-card{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px}
+  .dl-card p{margin:6px 0}
+  .dl-card a{color:var(--header-blue); font-weight:700}
 
-    /* Recruitment modal */
-    .modal-bg{display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.45);align-items:center;justify-content:center;padding:12px}
-    .modal-bg.active{display:flex}
-    .modal-popup{background:#fff;border-radius:22px;padding:20px;max-width:92vw;max-height:92vh;box-shadow:0 10px 60px rgba(0,0,0,.18);position:relative}
-    .modal-popup img{display:block;max-width:70vw;max-height:70vh;border-radius:16px;background:#f2f2f2}
-    .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}
-    .modal-sign{background:var(--footer-blue);color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:700}
-    .modal-close{position:absolute;top:10px;right:14px;font-size:1.6rem;border:none;background:transparent;cursor:pointer;color:#333}
-  </style>
+  @media (max-width:1000px){
+    .hero-inner{grid-template-columns:1fr}
+    .glance-tiles{grid-template-columns:1fr}
+    .comp-grid{grid-template-columns:1fr}
+    .journey-wrap{grid-template-columns:1fr}
+    .j-pane{grid-template-columns:1fr}
+    .aud{grid-template-columns:1fr}
+    .dl-grid{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="header-container">
-      <div class="logo">D1 Now</div>
-      <nav aria-label="Primary">
-        <ul class="nav-list">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">About D1 Now</a>
-            <div class="dropdown">
-              <a href="#">What is D1 Now?</a>
-              <a href="#">Our Approach</a>
-              <a href="#">Research & Team</a>
-              <a href="#">Governance Team</a>
-            </div>
-          </li>
+<header>
+  <div class="head">
+    <div class="brand">D1 Now</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a style="background:rgba(255,255,255,.12)">D1 Trial</a></li>
+        <li><a href="#">YAP</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </nav>
+    <a class="head-cta" href="#">Join Trial</a>
+  </div>
+</header>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Young Adult Panel (YAP)</a>
-            <div class="dropdown">
-              <a href="#">What is YAP?</a>
-              <a href="#">Meet the Members</a>
-              <a href="#">Get Involved</a>
-              <a href="#">Testimonials & Video</a>
-              <a href="#">YAP Impact</a>
-              <a href="#">Blogs</a>
-            </div>
-          </li>
-		<li class="nav-item">
-		  <a class="nav-link" href="trial.html">D1 Trial</a>
-		  <div class="dropdown" role="menu" aria-label="Trial submenu">
-			<a href="trial-participants.html">For Participants</a>
-			<a href="trial-sites.html">For Trial Sites</a>
-		  </div>
-		</li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Resources</a>
-            <div class="dropdown">
-              <a href="#">YAP Resources</a>
-              <a href="#">Trial Resources</a>
-              <a href="#">Research Resources (Publications, Videos, Downloads)</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      <a class="header-cta" href="#">Join Trial</a>
+<!-- ===== HERO (same footprint as Home) ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- Left: big image carousel -->
+    <div class="hero-left">
+      <img id="heroImg" class="hero-img"
+           src="https://images.unsplash.com/photo-1576765974230-ccb4b9419f2e?q=80&w=1600&auto=format&fit=crop"
+           alt="Clinic team">
+      <div class="hero-gradient"></div>
+      <div class="hero-controls">
+        <button class="hero-btn" id="prevH" aria-label="Previous image">‹</button>
+        <button class="hero-btn" id="nextH" aria-label="Next image">›</button>
+      </div>
     </div>
-  </header>
 
-  <!-- ===== Hero (unchanged sizes) ===== -->
-  <main class="main-content">
-    <div class="main-inner">
-      <div class="img-col">
-        <img id="mainCarouselImage"
-             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
-             alt="Main page visual"
-             class="main-carousel-img big">
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevBtn" aria-label="Previous image">
-            <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-          </button>
-          <button class="carousel-btn" id="nextBtn" aria-label="Next image">
-            <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-          </button>
+    <!-- Right: title, counters, CTAs -->
+    <div class="hero-right">
+      <div class="yap-badge">YAP-designed</div>
+      <h1 class="hero-title">D1 Now Definitive Trial</h1>
+      <p class="hero-sub">A multi-centre study co-designed with young adults to improve Type 1 Diabetes care across Ireland.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="num" id="stat-centres">0</div>
+          <div class="lbl">Centres Recruited</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-onboard">0</div>
+          <div class="lbl">Onboardings Completed</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-participants">0</div>
+          <div class="lbl">Participants Recruited</div>
         </div>
       </div>
 
-      <div class="cta-col">
-        <div class="add-yap-badge" title="Co-designed with the Young Adult Panel">YAP-designed</div>
-        <div class="main-headline">A community for young adults with Type 1 Diabetes in Ireland.</div>
-        <div class="main-subline">Built by and for you. Find support, join research, shape change.</div>
-        <div class="cta-vertical-btns">
-          <button class="cta-btn">Join YAP</button>
-          <button class="cta-btn">Join Trial</button>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- ===== Below-hero additions (yellow cards) ===== -->
-  <section class="add-wrap">
-    <div class="add-inner">
-      <!-- Testimonials -->
-      <section class="add-testimonials add-card" aria-label="What young adults say">
-        <div class="add-testi-row">
-          <button class="add-testi-btn" id="addPrevTesti" aria-label="Previous testimonial">‹</button>
-          <div class="add-testi-card">
-            <img id="addTestiPhoto" src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png" alt="Testimonial portrait">
-            <div>
-              <div class="add-testi-quote" id="addTestiQuote">“Being part of D1 Now feels like my real life is finally in the design.”</div>
-              <div class="add-testi-name" id="addTestiName">Aoife, 21</div>
-            </div>
-          </div>
-          <button class="add-testi-btn" id="addNextTesti" aria-label="Next testimonial">›</button>
-        </div>
-      </section>
-
-      <!-- Newsletter -->
-      <section class="add-newsletter add-card" aria-label="Subscribe for updates">
-        <div><strong>Stay in the loop.</strong> Get updates on study progress & opportunities.</div>
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </section>
-    </div>
-  </section>
-
-  <!-- ===== Expanded Footer ===== -->
-  <footer>
-    <!-- top columns -->
-    <div class="foot-top">
-      <div class="foot-col">
-        <h4>Get Help & Info</h4>
-        <a href="#">Join the Trial</a>
-        <a href="#">Join YAP</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact the Team</a>
-      </div>
-      <div class="foot-col">
-        <h4>Policies</h4>
-        <a href="#">Privacy & Data Protection</a>
-        <a href="#">Cookies</a>
-        <a href="#">GDPR & Consent</a>
-        <a href="#">Accessibility</a>
-      </div>
-      <div class="foot-col">
-        <h4>General</h4>
-        <a href="#">Latest News</a>
-        <a href="#">Publications</a>
-        <a href="#">For Trial Sites</a>
-        <a href="#">Newsletter</a>
-      </div>
-    </div>
-
-    <!-- logos strip -->
-    <div class="foot-logos">
-      <div class="foot-logos-inner">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
-        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
-        <!-- Add more partner/funder logos as needed -->
-      </div>
-    </div>
-
-    <!-- bottom bar -->
-    <div class="foot-bottom">
-      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
-      <div class="foot-social">
-        <a class="soc" href="#" aria-label="Facebook">f</a>
-        <a class="soc" href="#" aria-label="X">x</a>
-        <a class="soc" href="#" aria-label="Instagram">ig</a>
-        <a class="soc" href="#" aria-label="LinkedIn">in</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating FAQ -->
-  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
-    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
-  </a>
-
-  <!-- Recruitment Modal (restored) -->
-  <div class="modal-bg" id="recruitmentModal">
-    <div class="modal-popup" role="dialog" aria-modal="true" aria-label="Recruitment poster">
-      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">×</button>
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="D1 Now recruitment poster">
-      <div class="modal-actions">
-        <a class="modal-sign" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
+      <div class="hero-ctas">
+        <a class="btn" href="#">Join Trial</a>
+        <a class="btn secondary" href="#journey">See the journey</a>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+<!-- ===== ABOUT + TRIAL AT A GLANCE (uses lively tiles) ===== -->
+<section class="wrap">
+  <h2>About the D1 Now Definitive Trial</h2>
+  <p class="lead">
+    We’re testing a youth-friendly way of delivering T1D support in real clinics. The aim: make appointments more useful,
+    boost self-management confidence, and improve outcomes that matter to young adults.
+  </p>
 
-    // Hero carousel (unchanged)
-    const mainImageUrls = [
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
-      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png"
-    ];
-    let mainImgIndex = 0;
-    const mainImgElem = document.getElementById("mainCarouselImage");
-    function showMainImg(index, fade=true) {
-      if (fade) {
-        mainImgElem.classList.add('fading');
-        setTimeout(() => { mainImgElem.src = mainImageUrls[index]; mainImgElem.classList.remove('fading'); }, 300);
-      } else {
-        mainImgElem.src = mainImageUrls[index];
-      }
+  <div class="glance-tiles">
+    <div class="tile">
+      <div class="icon-bubble">📍</div>
+      <div>
+        <h4>12 centres across Ireland</h4>
+        <p>Recruiting across the Republic of Ireland and Northern Ireland.</p>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="icon-bubble">👥</div>
+      <div>
+        <h4>29 participants per site (18–25)</h4>
+        <p>Young adults with T1D aged 18–25 at each centre.</p>
+      </div>
+    </div>
+    <div class="tile">
+      <div class="icon-bubble">🗓</div>
+      <div>
+        <h4>12-month study</h4>
+        <p>Data at baseline, 6 months, and 12 months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERVENTION COMPONENTS (emphasized band) ===== -->
+<section class="wrap comp-band">
+  <div class="comp-header">
+    <span class="comp-chip">Core intervention</span>
+    <h2 style="margin:0">Intervention Components</h2>
+  </div>
+
+  <div class="comp-grid">
+    <!-- Support Worker -->
+    <div class="comp-card">
+      <div class="comp-head">
+        <div class="icon-bubble">🤝</div>
+        <h3>Support Worker</h3>
+      </div>
+      <ul class="comp-points">
+        <li>Assigned to intervention centres to assist young adults.</li>
+        <li>Focus on goal-setting, engagement and navigating care.</li>
+        <li>Bridges between clinic visits for continuity.</li>
+      </ul>
+    </div>
+
+    <!-- Agenda-Setting Tool -->
+    <div class="comp-card">
+      <div class="comp-head">
+        <div class="icon-bubble">📝</div>
+        <h3>Agenda-Setting Tool</h3>
+      </div>
+      <ul class="comp-points">
+        <li>Lets young adults set priorities for each clinic visit.</li>
+        <li>Ensures their concerns are heard and addressed.</li>
+        <li>Makes appointments feel more useful and person-centred.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS (Journey tabs) ===== -->
+<section class="wrap journey" id="journey">
+  <h2>How it works</h2>
+  <div class="journey-wrap">
+    <div class="j-tabs" id="jTabs">
+      <button class="j-tab active" data-pane="consent">🖊 Consent</button>
+      <button class="j-tab" data-pane="baseline">🧾 Baseline</button>
+      <button class="j-tab" data-pane="sample">🩸 Sample</button>
+      <button class="j-tab" data-pane="visits">🏥 Visits</button>
+      <button class="j-tab" data-pane="final">✅ Final</button>
+    </div>
+    <div class="j-pane">
+      <div>
+        <h3 id="jTitle">Consent</h3>
+        <p id="jText">We explain the study in simple language and answer your questions. You choose to take part and can leave at any time.</p>
+      </div>
+      <img id="jImg" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="Consent">
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUDIENCE TILES ===== -->
+<section class="wrap aud">
+  <div class="tile" style="grid-template-columns:1fr auto">
+    <div>
+      <h3>For Participants</h3>
+      <p>Who can join, what to expect, time commitment & mini-FAQ.</p>
+    </div>
+    <a class="btn" href="trial-participants.html">Learn more</a>
+  </div>
+  <div class="tile" style="grid-template-columns:1fr auto">
+    <div>
+      <h3>For Trial Sites</h3>
+      <p>Responsibilities, timelines, downloads and key contacts.</p>
+    </div>
+    <a class="btn secondary" href="trial-sites.html">Open site hub</a>
+  </div>
+</section>
+
+<!-- ===== TEAM + DOWNLOADS ===== -->
+<section class="wrap">
+  <div class="dl-grid" style="grid-template-columns:1.3fr 1fr; gap:18px">
+    <!-- Team -->
+    <div class="dl-card" style="padding:18px">
+      <h2>Meet the Team</h2>
+      <ul class="bullets" style="margin-top:10px">
+        <li>Dr. [Name] — Chief Investigator</li>
+        <li>[Name] — Research Nurse</li>
+        <li>[Name] — YAP Lead</li>
+        <li>[Name] — Site Coordinator</li>
+      </ul>
+      <p style="margin-top:10px;color:#1f3472;font-weight:600">“Short, clear steps made joining easy.” — YAP member</p>
+    </div>
+
+    <!-- Downloads -->
+    <div class="dl-card" style="padding:18px">
+      <h2>Downloads</h2>
+      <ul class="bullets" style="margin-top:10px">
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Participant summary (PDF)</a> — 1-page overview of what to expect.</li>
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Recruitment poster</a> — Share with friends or your clinic.</li>
+        <li><a href="#" target="_blank" style="color:var(--header-blue);font-weight:700">Detailed info sheet</a> — Full details for those who want more depth.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* ===== HERO CAROUSEL ===== */
+  const heroImages = [
+    "https://images.unsplash.com/photo-1576765974230-ccb4b9419f2e?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop"
+  ];
+  let hIdx = 0;
+  const hImg = document.getElementById('heroImg');
+  function swapHero(next=true){
+    hIdx = (hIdx + (next?1:-1) + heroImages.length) % heroImages.length;
+    hImg.style.opacity = .08;
+    setTimeout(()=>{ hImg.src = heroImages[hIdx]; hImg.style.opacity = 1; }, 180);
+  }
+  document.getElementById('nextH').onclick = ()=> swapHero(true);
+  document.getElementById('prevH').onclick = ()=> swapHero(false);
+  setInterval(()=>swapHero(true), 4500);
+
+  /* ===== COUNTERS (update with real values) ===== */
+  const targets = { centres: 12, onboard: 58, participants: 12*29 }; // 12 centres × 29 each
+  function animateCount(id, target, dur=900){
+    const el=document.getElementById(id); const t0=performance.now();
+    function step(ts){
+      const p=Math.min((ts-t0)/dur,1);
+      el.textContent = Math.floor(p*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
     }
-    document.getElementById("nextBtn").onclick = function(){ mainImgIndex=(mainImgIndex+1)%mainImageUrls.length; showMainImg(mainImgIndex,true); };
-    document.getElementById("prevBtn").onclick = function(){ mainImgIndex=(mainImgIndex-1+mainImageUrls.length)%mainImageUrls.length; showMainImg(mainImgIndex,true); };
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('DOMContentLoaded', ()=>{
+    animateCount('stat-centres', targets.centres, 800);
+    animateCount('stat-onboard', targets.onboard, 900);
+    animateCount('stat-participants', targets.participants, 1100);
+  });
 
-    // Testimonials carousel
-    (function(){
-      const testimonials = [
-        {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"},
-        {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png"},
-        {quote:"“Clear info and kind people. That’s why I signed up.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-3.png"},
-        {quote:"“Short, clear steps made joining easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png"}
-      ];
-      let i=0;
-      const q = document.getElementById('addTestiQuote');
-      const n = document.getElementById('addTestiName');
-      const p = document.getElementById('addTestiPhoto');
-      function show(idx){ const t=testimonials[idx]; q.textContent=t.quote; n.textContent=t.name; p.src=t.photo; }
-      document.getElementById('addNextTesti').onclick = ()=>{ i=(i+1)%testimonials.length; show(i); };
-      document.getElementById('addPrevTesti').onclick = ()=>{ i=(i-1+testimonials.length)%testimonials.length; show(i); };
-      setInterval(()=>{ i=(i+1)%testimonials.length; show(i); }, 5000);
-    })();
-
-    // Show recruitment modal on load
-    window.addEventListener('DOMContentLoaded', ()=> {
-      document.getElementById('recruitmentModal').classList.add('active');
+  /* ===== JOURNEY TABS ===== */
+  const panes = {
+    consent:{ title:"Consent",
+      text:"We explain the study in simple language and answer your questions. You choose to take part and can leave at any time.",
+      img:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" },
+    baseline:{ title:"Baseline data",
+      text:"A quick questionnaire and short chat about your current routine so we understand your starting point.",
+      img:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop" },
+    sample:{ title:"Small blood sample",
+      text:"A routine sample taken safely by trained staff. No extra clinic trips just for this.",
+      img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" },
+    visits:{ title:"Clinic visits",
+      text:"Regular check-ins using tools co-designed with the YAP so appointments feel more useful.",
+      img:"https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1200&auto=format&fit=crop" },
+    final:{ title:"Final test & interview",
+      text:"We wrap up with final measures and a friendly interview about your experience to improve future care.",
+      img:"https://images.unsplash.com/photo-1582719478185-2c1b38a66b0b?q=80&w=1200&auto=format&fit=crop" }
+  };
+  const tabs = document.querySelectorAll('.j-tab');
+  const jTitle = document.getElementById('jTitle');
+  const jText  = document.getElementById('jText');
+  const jImg   = document.getElementById('jImg');
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabs.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const k = btn.dataset.pane;
+      jTitle.textContent = panes[k].title;
+      jText.textContent  = panes[k].text;
+      jImg.src           = panes[k].img;
     });
-  </script>
+  });
+</script>
 </body>
 </html>
