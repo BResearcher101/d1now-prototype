@@ -5,10 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About D1 Now</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #F9FAFB;
+    }
+    .hero {
+      background-color: #B2E3D1;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2B2B2B;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #333;
+      max-width: 720px;
+      margin: auto;
+    }
+    .info-block {
+      padding: 40px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+    .info-block h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #4B2E83;
+    }
+    .info-block p, .info-block ul {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    .info-block ul {
+      padding-left: 20px;
+    }
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+    .tile {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      text-decoration: none;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+    .tile:hover {
+      transform: translateY(-5px);
+    }
+    .tile img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #4B2E83;
+      color: white;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    footer img {
+      height: 30px;
+      margin-right: 10px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="images/d1now-logo.png" alt="D1 Now logo" />
+    <img src="images/d1now-logo.png" alt="D1 Now logo">
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -22,62 +105,60 @@
 
   <main>
     <section class="hero">
-      <div class="hero-container">
-        <div class="hero-text">
-          <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
-          <p>D1 Now is a research programme co-created with young adults in Ireland, shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
-        </div>
-      </div>
+      <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
+      <p>D1 Now is a research programme co-created with young adults in Ireland. We're shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
     </section>
 
     <section class="info-block">
       <h2>What is D1 Now?</h2>
-      <p>The D1 Now study is a youth-led research programme supporting young adults (18–25) living with Type 1 Diabetes. We’re working with 12 clinical sites across Ireland to run a Randomised Controlled Trial (RCT) involving 348 participants, exploring how care can be improved by integrating young adult voices and new tools.</p>
+      <p>D1 Now supports young adults (18–25) living with Type 1 Diabetes. Through a co-designed national trial across 12 clinical sites in Ireland, we’re testing tools and approaches that improve real-world care.</p>
     </section>
 
     <section class="info-block">
       <h2>Why it Matters</h2>
-      <p>Young adults often face barriers in diabetes care. D1 Now is addressing this through tailored support, shared decision-making, and a national co-designed trial. We’re creating resources, building trust, and amplifying youth perspectives in healthcare.</p>
+      <p>Young adulthood is a time of change—and diabetes care doesn’t always keep up. D1 Now brings youth voices into the design of services to make them more responsive, empowering, and relevant.</p>
     </section>
 
     <section class="info-block">
       <h2>How It Was Built</h2>
       <ul>
-        <li><strong>2016–2019:</strong> Pilot phase and early co-design work</li>
-        <li><strong>2020–2023:</strong> Young Adult Panel (YAP) launched, intervention refined</li>
-        <li><strong>2023–2025:</strong> National RCT and website co-design with YAP</li>
+        <li><strong>2016–2019:</strong> Early pilot phase and listening sessions</li>
+        <li><strong>2020–2023:</strong> Young Adult Panel formed; co-design intensifies</li>
+        <li><strong>2023–2025:</strong> Launch of RCT, digital tools, and this site</li>
       </ul>
     </section>
 
     <section class="tiles">
       <a class="tile" href="trial.html">
-        <img src="images/intervention.png" alt="Intervention icon" />
+        <img src="images/intervention.png" alt="Intervention icon">
         <div>The D1 Now Intervention</div>
       </a>
       <a class="tile" href="team.html">
-        <img src="images/team.png" alt="Team icon" />
+        <img src="images/team.png" alt="Team icon">
         <div>Meet the Team</div>
       </a>
       <a class="tile" href="yap.html">
-        <img src="images/codesign.png" alt="Co-design icon" />
+        <img src="images/codesign.png" alt="Co-design icon">
         <div>Co-Design in Action</div>
       </a>
       <a class="tile" href="publications.html">
-        <img src="images/publications.png" alt="Publications icon" />
+        <img src="images/publications.png" alt="Publications icon">
         <div>Publications & Outputs</div>
       </a>
     </section>
 
     <section class="info-block">
       <h2>FAQs & Glossary</h2>
-      <p>Curious about how clinical trials work? Want to know what 'co-design' means? Check out our <a href="learn.html">Learn About Trials</a> page or visit the glossary.</p>
+      <p>Want to know more about clinical trials or co-design? Visit our <a href="learn.html">Learn About Trials</a> page or explore the glossary.</p>
     </section>
   </main>
 
   <footer>
     <div class="footer-left">
-      <img src="images/hrb-logo.png" alt="HRB Logo" />
-      <img src="images/nuig-logo.png" alt="NUIG Logo" />
+      <div>
+        <img src="images/hrb-logo.png" alt="HRB Logo">
+        <img src="images/nuig-logo.png" alt="NUIG Logo">
+      </div>
       <small>Website built using HRB funding</small>
     </div>
     <div class="footer-right">
