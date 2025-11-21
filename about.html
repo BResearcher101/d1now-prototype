@@ -68,23 +68,25 @@
     }
     .hero-about-wrapper {
       background: var(--yellow);
-      padding: 80px 20px;
+      padding: 60px 20px;
+      position: relative;
     }
     .hero-about {
       max-width: var(--maxw);
-      background: var(--white);
-      border-radius: 40px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      align-items: flex-end;
       position: relative;
-      overflow: visible;
-      padding: 40px;
-      box-shadow: var(--shadow);
+      gap: 40px;
     }
     .hero-text {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 50px 40px;
+      box-shadow: var(--shadow);
       flex: 1;
-      padding-right: 30px;
+      z-index: 2;
+      position: relative;
     }
     .hero-text h1 {
       font-family: Poppins, Inter, sans-serif;
@@ -116,30 +118,77 @@
       transform: translateY(-2px);
     }
     .hero-image {
-      flex: 1;
+      position: absolute;
+      right: 0;
+      bottom: -30px;
+      top: -30px;
+      z-index: 1;
+      max-width: 50%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      position: relative;
-      margin-top: -40px;
-      margin-bottom: -40px;
+      justify-content: center;
     }
     .hero-image img {
-      width: auto;
-      height: 100%;
-      max-height: 500px;
+      width: 100%;
+      height: auto;
       object-fit: cover;
-      border-radius: 40px;
+      border-radius: 32px;
       box-shadow: var(--shadow);
     }
-    @media (max-width: 992px) {
-      .hero-about {
-        flex-direction: column;
-      }
-      .hero-image {
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
+    .mission-section {
+      background: var(--soft-bg);
+      padding: 60px 20px;
+    }
+    .mission-container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .mission-section h2 {
+      color: var(--footer-blue);
+      font-family: Poppins, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .mission-section p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+    .mission-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    .mission-image {
+      flex: 1 1 300px;
+    }
+    .mission-image img {
+      width: 100%;
+      border-radius: 24px;
+    }
+    .mission-text {
+      flex: 2 1 500px;
+      text-align: left;
+    }
+    .mission-text ul {
+      padding-left: 20px;
+    }
+    .mission-btn {
+      margin-top: 20px;
+      display: inline-block;
+      background: linear-gradient(to right, #3058FF, #47B881);
+      color: white;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -171,6 +220,29 @@
         </div>
         <div class="hero-image">
           <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Young adult enjoying greenery">
+        </div>
+      </div>
+    </section>
+
+    <section class="mission-section">
+      <div class="mission-container">
+        <h2>Our Mission</h2>
+        <div class="mission-content">
+          <div class="mission-image">
+            <img src="/mnt/data/65c81226-abd2-4eee-ae83-8dd581c25c6d.png" alt="Teamwork illustration">
+          </div>
+          <div class="mission-text">
+            <h3>About D1 Now</h3>
+            <p>D1 Now is a research project funded by the Health Research Board. We are based at NUI Galway and the Centre for Diabetes, Endocrinology and Metabolism at University Hospital Galway. D1 Now aims to improve engagement between young adults with Type 1 Diabetes (T1D) and their healthcare providers and ultimately improve their self management and diabetes-related health outcomes. The D1 Now intervention is co-designed by researchers and young adults living with T1D.</p>
+            <p>The chosen name for the brand is D1Now as it is easy to remember and represents many of the areas of the study well. It also avoids labeling people as Type One Diabetics which is often an issue with intervention schemes.</p>
+            <ul>
+              <li><strong>D</strong> – The D represents Diabetes</li>
+              <li><strong>1</strong> – The 1 is representative of Type 1 Diabetes which this intervention is concerned with. We have purposely not made any reference to Young Adults as much of the information will benefit all T1D patients</li>
+              <li><strong>Now</strong> – This is a critical element of the name. The now does not stand for an abbreviation of anything. The NOW represents the need to act immediately.</li>
+            </ul>
+            <p>By acting now, we can look to improve the health of young adults in Ireland through enhancing their self-management abilities. We cannot wait until they are in their late 20’s or early 30’s as long term damage is done by then. By acting now to implement a better system of patient care delivery, we can drastically improve the long-term prospects of many young adults with Type one diabetes.</p>
+            <a href="#intervention" class="mission-btn">More About the Intervention</a>
+          </div>
         </div>
       </div>
     </section>
