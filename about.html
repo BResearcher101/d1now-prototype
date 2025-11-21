@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About D1 Now</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
 
@@ -34,7 +36,7 @@
       color: var(--soft-ink);
     }
 
-    /* Header */
+    /* ---------------- HEADER ---------------- */
     header {
       background: var(--footer-blue);
       color: white;
@@ -73,16 +75,16 @@
       color: white;
     }
 
-    /* Hero */
+    /* ---------------- HERO ---------------- */
     .hero-about-wrapper {
       background: var(--yellow);
-      padding: 80px 20px 60px;
+      padding: 50px 20px 40px;
     }
     .hero-about {
       max-width: var(--maxw);
       background: white;
       border-radius: var(--radius-xl);
-      padding: 40px;
+      padding: 28px 32px;
       margin: 0 auto;
       display: flex;
       gap: 30px;
@@ -90,24 +92,25 @@
     }
     .hero-text h1 {
       font-family: Poppins, sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       color: var(--footer-blue);
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .hero-text p {
       font-size: 1.05rem;
       line-height: 1.6;
+      max-width: 520px;
     }
     .hero-image img {
-      max-height: 480px;
+      max-height: 420px;
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
     }
 
-    /* Jump navigation */
+    /* ---------------- JUMP NAV ---------------- */
     .about-nav {
       max-width: var(--maxw);
-      margin: -20px auto 40px auto;
+      margin: -12px auto 40px auto;
       background: white;
       border-radius: 999px;
       box-shadow: var(--shadow);
@@ -126,11 +129,11 @@
     }
     .about-nav a:hover { background: rgba(48,88,255,0.1); color: var(--footer-blue); }
 
-    /* Sections */
+    /* ---------------- SECTIONS ---------------- */
     .section {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 40px 20px 20px;
+      padding: 40px 20px 10px;
     }
     .section-title {
       font-family: Poppins, sans-serif;
@@ -141,30 +144,33 @@
     .section-intro {
       font-size: 1.05rem;
       line-height: 1.7;
-      max-width: 800px;
+      max-width: 760px;
     }
 
-    /* Why It Matters cards */
+    /* ---------------- PILL GRID ---------------- */
     .pill-grid {
+      max-width: 1000px;
+      margin: 32px auto 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      gap: 24px;
     }
+
     .pill-card {
-      background: white;
-      padding: 20px;
+      background: var(--yellow);
+      padding: 22px 26px;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
     }
+
     .pill-title {
       font-family: Poppins, sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 6px;
       color: var(--footer-blue);
     }
 
-    /* Stay in the loop */
+    /* ---------------- NEWSLETTER ---------------- */
     .newsletter-box {
       background: var(--yellow);
       padding: 30px;
@@ -194,6 +200,11 @@
       cursor: pointer;
     }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+    }
   </style>
 </head>
 
@@ -215,135 +226,148 @@
   </div>
 </header>
 
-<main>
 
-  <!-- HERO -->
+<!-- ---------------- HERO ---------------- -->
+<main>
   <section class="hero-about-wrapper">
     <div class="hero-about">
       <div class="hero-text">
         <p style="color: var(--blue); font-weight:600;">D1 Now • Youth-Centred Diabetes Research</p>
-        <h1>A new approach to supporting young adults with Type 1 Diabetes.</h1>
+
+        <h1>Transforming Type 1 Diabetes Care</h1>
+
         <p>
-          D1 Now is a multi-year research programme in Ireland co-created with young adults living with Type 1 Diabetes.
-          We work across clinical care, co-design, and real-world research to create practical ways to make diabetes
-          care feel more supportive, connected, and relevant.
+          D1 Now is a youth-led research programme in Ireland developing practical ways to support
+          young adults living with Type 1 Diabetes through everyday life and routine diabetes care.
         </p>
       </div>
+
       <div class="hero-image">
         <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" />
       </div>
     </div>
   </section>
 
-  <!-- Jump Navigation -->
-  <nav class="about-nav">
-    <a href="#what">What is D1 Now?</a>
-    <a href="#why">Why It Matters</a>
-    <a href="#approach">Our Approach</a>
-    <a href="#whatwedo">What We Do</a>
-    <a href="#newsletter">Stay in the Loop</a>
-  </nav>
 
-  <!-- WHAT IS D1 NOW -->
-  <section id="what" class="section">
-    <h2 class="section-title">What is D1 Now?</h2>
-    <p class="section-intro">
-      D1 Now is a research and innovation programme focused on improving care and support for young adults aged 18–25
-      living with Type 1 Diabetes. The programme brings together young adults, researchers, and clinicians to develop
-      tools, resources, and models of care that make diabetes services more person-centred.
-    </p>
-  </section>
+<!-- ---------------- NAV ---------------- -->
+<nav class="about-nav">
+  <a href="#what">What is D1 Now?</a>
+  <a href="#why">Why It Matters</a>
+  <a href="#approach">Our Approach</a>
+  <a href="#whatwedo">What We Do</a>
+  <a href="#newsletter">Stay in the Loop</a>
+</nav>
 
-  <!-- WHY IT MATTERS -->
-  <section id="why" class="section">
-    <h2 class="section-title">Why It Matters</h2>
-    <p class="section-intro">
-      Young adulthood is a time of huge change — moving out, college or work, new routines, new independence.
-      Diabetes doesn’t pause during these transitions. D1 Now focuses on supporting young adults during this important stage.
-    </p>
 
-    <div class="pill-grid">
-      <div class="pill-card">
-        <h3 class="pill-title">Life changes, care needs change</h3>
-        <p>Many young adults find traditional clinic structures hard to fit into busy, shifting lives. We explore how care can work better.</p>
-      </div>
+<!-- ---------------- WHAT IS D1 NOW ---------------- -->
+<section id="what" class="section">
+  <h2 class="section-title">What is D1 Now?</h2>
+  <p class="section-intro">
+    D1 Now is a multi-year programme focused on improving support for young adults aged 18–25
+    living with Type 1 Diabetes in Ireland. We bring together young adults, clinicians,
+    and researchers to redesign how diabetes care feels and works during young adulthood.
+  </p>
+</section>
 
-      <div class="pill-card">
-        <h3 class="pill-title">Lived experience matters</h3>
-        <p>Youth voice is central to the programme, shaping language, resources, and priorities across all our work.</p>
-      </div>
 
-      <div class="pill-card">
-        <h3 class="pill-title">Better support for the future</h3>
-        <p>The insights from D1 Now aim to inform long-term improvements in diabetes services across Ireland and beyond.</p>
-      </div>
+<!-- ---------------- WHY IT MATTERS ---------------- -->
+<section id="why" class="section">
+  <h2 class="section-title">Why It Matters</h2>
+
+  <p class="section-intro">
+    Young adulthood is a time of huge change — moving out, college or work, new routines, new
+    independence. Diabetes doesn’t pause during these transitions. D1 Now focuses on supporting
+    young adults during this important stage.
+  </p>
+
+  <div class="pill-grid">
+    <div class="pill-card">
+      <h3 class="pill-title">Life changes, care needs change</h3>
+      <p>Care needs evolve as young adults navigate busy, shifting lives. We explore how care can adapt.</p>
     </div>
-  </section>
 
-  <!-- OUR APPROACH -->
-  <section id="approach" class="section">
-    <h2 class="section-title">Our Approach</h2>
-    <p class="section-intro">
-      We combine research, co-design, and clinical insight to create practical solutions for real-world diabetes care.
-    </p>
-
-    <div class="pill-grid">
-      <div class="pill-card">
-        <h3 class="pill-title">Youth-centred</h3>
-        <p>Young adults with T1D guide our direction and shape our tools and resources.</p>
-      </div>
-
-      <div class="pill-card">
-        <h3 class="pill-title">Evidence-informed</h3>
-        <p>Our work is grounded in behavioural science, real-world data, and clinical expertise.</p>
-      </div>
-
-      <div class="pill-card">
-        <h3 class="pill-title">Collaborative</h3>
-        <p>We work closely with diabetes teams and research partners across Ireland.</p>
-      </div>
+    <div class="pill-card">
+      <h3 class="pill-title">Lived experience matters</h3>
+      <p>Youth voice is central to the programme, shaping language, priorities, and resources.</p>
     </div>
-  </section>
 
-  <!-- WHAT WE DO -->
-  <section id="whatwedo" class="section">
-    <h2 class="section-title">What We Do</h2>
-    <p class="section-intro">
-      The D1 Now programme includes several connected strands that work together to support young adults.
-    </p>
-
-    <div class="pill-grid">
-      <div class="pill-card">
-        <h3 class="pill-title">Young Adult Panel (YAP)</h3>
-        <p>A group of young adults who co-design tools, content, and service ideas. <a href="yap.html" style="color:var(--blue);">Learn more →</a></p>
-      </div>
-
-      <div class="pill-card">
-        <h3 class="pill-title">Intervention development</h3>
-        <p>Creating person-centred ways of delivering diabetes care.</p>
-      </div>
-
-      <div class="pill-card">
-        <h3 class="pill-title">Research & knowledge sharing</h3>
-        <p>Producing resources, publications, and tools for clinics and communities.</p>
-      </div>
+    <div class="pill-card">
+      <h3 class="pill-title">Better support for the future</h3>
+      <p>Insights from D1 Now aim to inform long-term improvements to diabetes services across Ireland.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- NEWSLETTER -->
-  <section id="newsletter" class="section">
-    <h2 class="section-title">Stay in the Loop</h2>
 
-    <div class="newsletter-box">
-      <p><strong>Get updates on our work, events, and new resources.</strong></p>
-      <input type="email" placeholder="you@example.com">
-      <button>Subscribe</button>
+<!-- ---------------- OUR APPROACH ---------------- -->
+<section id="approach" class="section">
+  <h2 class="section-title">Our Approach</h2>
+  <p class="section-intro">
+    We combine research, co-production, and clinical insight to design tools and ideas that fit real life.
+  </p>
+
+  <div class="pill-grid">
+    <div class="pill-card">
+      <h3 class="pill-title">Youth-centred</h3>
+      <p>Young adults help guide direction, language, and the development of tools and supports.</p>
     </div>
-  </section>
+
+    <div class="pill-card">
+      <h3 class="pill-title">Evidence-informed</h3>
+      <p>Our work is shaped by behavioural science, research evidence, and clinical expertise.</p>
+    </div>
+
+    <div class="pill-card">
+      <h3 class="pill-title">Collaborative</h3>
+      <p>We work with diabetes teams and partners nationally to support meaningful change.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ---------------- WHAT WE DO ---------------- -->
+<section id="whatwedo" class="section">
+  <h2 class="section-title">What We Do</h2>
+  <p class="section-intro">
+    The programme includes several connected strands working together to improve experiences of care.
+  </p>
+
+  <div class="pill-grid">
+    <div class="pill-card">
+      <h3 class="pill-title">Young Adult Panel (YAP)</h3>
+      <p>
+        A group of young adults who co-design tools, language, and ideas.
+        <a href="yap.html" style="color:var(--blue); font-weight:600;">Learn more →</a>
+      </p>
+    </div>
+
+    <div class="pill-card">
+      <h3 class="pill-title">Intervention development</h3>
+      <p>Creating person-centred supports and ways of working in diabetes clinics.</p>
+    </div>
+
+    <div class="pill-card">
+      <h3 class="pill-title">Research & knowledge sharing</h3>
+      <p>Producing resources, publications, and community-focused tools.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ---------------- NEWSLETTER ---------------- -->
+<section id="newsletter" class="section">
+  <h2 class="section-title">Stay in the Loop</h2>
+
+  <div class="newsletter-box">
+    <p><strong>Get updates on our work, events, and new resources.</strong></p>
+    <input type="email" placeholder="you@example.com">
+    <button>Subscribe</button>
+  </div>
+</section>
 
 </main>
 
-<footer style="text-align:center; padding:20px; color:var(--muted);">
+<footer>
   © D1 Now <span id="year"></span>. Co-designed with the Young Adult Panel.
 </footer>
 
