@@ -25,8 +25,49 @@
       background-color: var(--soft-bg);
       color: var(--soft-ink);
     }
+    header {
+      background: var(--footer-blue);
+      color: white;
+      padding: 0;
+    }
+    .header-container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: Poppins, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .header-cta {
+      background: #3058FF;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: Poppins, Inter, sans-serif;
+    }
     .hero-about {
-      background: #ffffff;
+      background: linear-gradient(to right, #fdfdfd, #f4f7ff);
       border-radius: 32px;
       margin: 40px auto;
       padding: 60px 40px;
@@ -74,8 +115,20 @@
   </style>
 </head>
 <body>
-  <header style="background: var(--footer-blue); color: white; padding: 20px; text-align: center;">
-    <h2>D1 Now</h2>
+  <header>
+    <div class="header-container">
+      <div class="logo">D1 Now</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About D1 Now</a></li>
+          <li><a href="#">Young Adult Panel (YAP)</a></li>
+          <li><a href="#">D1 Trial</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#" class="header-cta">Join Trial</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -87,7 +140,7 @@
         <a href="#about" class="hero-btn">Learn more ↓</a>
       </div>
       <div class="hero-image">
-        <img src="/mnt/data/3e9e6e76-1f14-45cb-b2c8-c64e495216e4.png" alt="Young adult enjoying greenery">
+        <img src="/mnt/data/10d50d13-1ac2-4f47-922f-6282c0b30d5d.png" alt="Young adult enjoying greenery">
       </div>
     </section>
   </main>
