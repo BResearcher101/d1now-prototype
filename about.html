@@ -10,8 +10,8 @@
     :root {
       --blue: #3058FF;
       --footer-blue: #144182;
-      --white: #FFDF1B;
-      --yellow: #FFF6D8;
+      --white: #FFF;
+      --yellow: #FFDF1B;
       --ink: #232f49;
       --muted: #6b7aa5;
       --soft-bg: #fffef7;
@@ -66,17 +66,27 @@
       text-decoration: none;
       font-family: Poppins, Inter, sans-serif;
     }
-    .hero-about {
+    .hero-about-wrapper {
       background: var(--yellow);
-      border-radius: 32px;
-      margin: 40px auto;
-      padding: 60px 40px;
+      padding: 80px 20px 60px;
+    }
+    .hero-about {
       max-width: var(--maxw);
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 40px;
       align-items: center;
+      position: relative;
+    }
+    .hero-text {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 40px;
       box-shadow: var(--shadow);
+      max-width: 700px;
+      z-index: 1;
+      position: relative;
     }
     .hero-text h1 {
       font-family: Poppins, Inter, sans-serif;
@@ -107,10 +117,27 @@
       opacity: 0.92;
       transform: translateY(-2px);
     }
+    .hero-image {
+      position: absolute;
+      top: -80px;
+      right: 0;
+      width: 50%;
+      z-index: 0;
+    }
     .hero-image img {
       width: 100%;
       border-radius: 28px;
       box-shadow: var(--shadow);
+    }
+    @media (max-width: 768px) {
+      .hero-about {
+        grid-template-columns: 1fr;
+      }
+      .hero-image {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
@@ -132,15 +159,17 @@
   </header>
 
   <main>
-    <section class="hero-about">
-      <div class="hero-text">
-        <p style="font-weight: 600; color: var(--blue); margin: 0 0 10px 0;">D1 Now • Youth-Centred Diabetes Research</p>
-        <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
-        <p>D1 Now is a research programme co-created with young adults in Ireland, shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
-        <a href="#about" class="hero-btn">Learn more ↓</a>
-      </div>
-      <div class="hero-image">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Young adult enjoying greenery">
+    <section class="hero-about-wrapper">
+      <div class="hero-about">
+        <div class="hero-text">
+          <p style="font-weight: 600; color: var(--blue); margin: 0 0 10px 0;">D1 Now • Youth-Centred Diabetes Research</p>
+          <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
+          <p>D1 Now is a research programme co-created with young adults in Ireland, shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
+          <a href="#about" class="hero-btn">Learn more ↓</a>
+        </div>
+        <div class="hero-image">
+          <img src="/mnt/data/77b08adb-27b0-41f7-8ba3-e2cb81cd2b1d.png" alt="Young adult enjoying greenery">
+        </div>
       </div>
     </section>
   </main>
