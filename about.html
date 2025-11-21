@@ -14,56 +14,62 @@
       --yellow: #FFDF1B;
       --ink: #232f49;
       --muted: #6b7aa5;
+      --soft-bg: #F4F6FB;
+      --soft-ink: #2e3b55;
       --shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
       --maxw: 1200px;
     }
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background-color: var(--white);
-      color: var(--ink);
+      background-color: var(--soft-bg);
+      color: var(--soft-ink);
     }
     .hero-about {
-      background: var(--yellow);
-      padding: 60px 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .hero-inner {
+      background: #ffffff;
+      border-radius: 32px;
+      margin: 40px auto;
+      padding: 60px 40px;
       max-width: var(--maxw);
-      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
-    }
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      box-shadow: var(--shadow);
     }
     .hero-text h1 {
       font-family: Poppins, Inter, sans-serif;
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       font-weight: 700;
+      line-height: 1.2;
       color: var(--footer-blue);
-      margin: 0;
+      margin-bottom: 20px;
     }
     .hero-text p {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: var(--ink);
-      margin: 0;
+      color: var(--soft-ink);
+      margin-bottom: 30px;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: linear-gradient(to right, #3058FF, #47B881);
+      color: white;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .hero-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
     }
     .hero-image img {
       width: 100%;
-      border-radius: 16px;
+      border-radius: 28px;
       box-shadow: var(--shadow);
-    }
-    .main-content {
-      padding: 40px 20px;
-      max-width: var(--maxw);
-      margin: auto;
     }
   </style>
 </head>
@@ -74,26 +80,16 @@
 
   <main>
     <section class="hero-about">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
-          <p>D1 Now is a research programme co-created with young adults in Ireland, shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
-        </div>
-        <div class="hero-image">
-          <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png" alt="Young adult smiling in nature">
-        </div>
+      <div class="hero-text">
+        <p style="font-weight: 600; color: var(--blue); margin: 0 0 10px 0;">D1 Now • Youth-Centred Diabetes Research</p>
+        <h1>Transforming Type 1 Diabetes Care with Young Adults</h1>
+        <p>D1 Now is a research programme co-created with young adults in Ireland, shaping a new approach to diabetes care that values lived experience and shared decision-making.</p>
+        <a href="#about" class="hero-btn">Learn more ↓</a>
+      </div>
+      <div class="hero-image">
+        <img src="/mnt/data/3e9e6e76-1f14-45cb-b2c8-c64e495216e4.png" alt="Young adult enjoying greenery">
       </div>
     </section>
-
-    <section class="main-content">
-      <!-- Add more content here as needed -->
-      <h2>What is D1 Now?</h2>
-      <p>D1 Now supports young adults (18–25) living with Type 1 Diabetes. Through a co-designed national trial across 12 clinical sites in Ireland, we’re testing tools and approaches that improve real-world care.</p>
-    </section>
   </main>
-
-  <footer style="background: var(--footer-blue); color: white; text-align: center; padding: 20px;">
-    <p>© D1 Now</p>
-  </footer>
 </body>
 </html>
