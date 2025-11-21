@@ -69,14 +69,13 @@
     .hero-about-wrapper {
       background: var(--yellow);
       padding: 60px 20px;
-      position: relative;
     }
     .hero-about {
       max-width: var(--maxw);
       margin: 0 auto;
       display: flex;
-      align-items: flex-start;
-      position: relative;
+      align-items: center;
+      justify-content: space-between;
       gap: 40px;
     }
     .hero-text {
@@ -85,8 +84,6 @@
       padding: 50px 40px;
       box-shadow: var(--shadow);
       flex: 1;
-      z-index: 2;
-      position: relative;
     }
     .hero-text h1 {
       font-family: Poppins, Inter, sans-serif;
@@ -118,9 +115,8 @@
       transform: translateY(-2px);
     }
     .hero-image {
-      flex: 0 0 40%;
-      max-width: 40%;
-      z-index: 1;
+      flex-shrink: 0;
+      width: 450px;
     }
     .hero-image img {
       width: 100%;
@@ -135,7 +131,7 @@
         align-items: center;
       }
       .hero-image {
-        max-width: 100%;
+        width: 100%;
         margin-top: 20px;
       }
     }
