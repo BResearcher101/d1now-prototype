@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About D1 Now</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
 
@@ -24,6 +23,7 @@
       --radius-xl: 36px;
       --radius-lg: 20px;
       --radius-md: 14px;
+      --content-width: 780px;
     }
 
     * { box-sizing: border-box; }
@@ -41,6 +41,7 @@
       background: var(--footer-blue);
       color: white;
     }
+
     .header-container {
       max-width: var(--maxw);
       margin: 0 auto;
@@ -49,6 +50,7 @@
       justify-content: space-between;
       align-items: center;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -56,6 +58,7 @@
       margin: 0;
       padding: 0;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -64,6 +67,7 @@
       padding: 6px 12px;
       border-radius: 999px;
     }
+
     nav a:hover { background: rgba(255,255,255,0.12); }
 
     .header-cta {
@@ -80,6 +84,7 @@
       background: var(--yellow);
       padding: 50px 20px 40px;
     }
+
     .hero-about {
       max-width: var(--maxw);
       background: white;
@@ -90,17 +95,20 @@
       gap: 30px;
       box-shadow: var(--shadow);
     }
+
     .hero-text h1 {
       font-family: Poppins, sans-serif;
       font-size: 2.3rem;
       color: var(--footer-blue);
       margin-bottom: 12px;
     }
+
     .hero-text p {
       font-size: 1.05rem;
       line-height: 1.6;
-      max-width: 520px;
+      max-width: var(--content-width);
     }
+
     .hero-image img {
       max-height: 420px;
       border-radius: var(--radius-xl);
@@ -110,7 +118,7 @@
     /* ---------------- JUMP NAV ---------------- */
     .about-nav {
       max-width: var(--maxw);
-      margin: -12px auto 40px auto;
+      margin: -12px auto 30px auto;
       background: white;
       border-radius: 999px;
       box-shadow: var(--shadow);
@@ -119,6 +127,7 @@
       justify-content: center;
       gap: 10px;
     }
+
     .about-nav a {
       text-decoration: none;
       color: var(--muted);
@@ -127,32 +136,41 @@
       padding: 8px 14px;
       border-radius: 999px;
     }
-    .about-nav a:hover { background: rgba(48,88,255,0.1); color: var(--footer-blue); }
+
+    .about-nav a:hover {
+      background: rgba(48,88,255,0.1);
+      color: var(--footer-blue);
+    }
 
     /* ---------------- SECTIONS ---------------- */
     .section {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 40px 20px 10px;
+      padding: 24px 20px 10px;
     }
+
     .section-title {
       font-family: Poppins, sans-serif;
       font-size: 1.9rem;
       color: var(--footer-blue);
       margin-bottom: 10px;
+      max-width: var(--content-width);
     }
+
     .section-intro {
       font-size: 1.05rem;
       line-height: 1.7;
-      max-width: 760px;
+      max-width: var(--content-width);
+      margin-bottom: 12px;
     }
 
-    /* ---------------- PILL GRID ---------------- */
+    /* ---------------- DESKTOP-FIRST CARD GRID ---------------- */
+    /* DEFAULT: Desktop/laptop */
     .pill-grid {
-      max-width: 1000px;
-      margin: 32px auto 0 auto;
+      max-width: var(--content-width);
+      margin: 24px 0 0 0; /* left-aligned */
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
       gap: 24px;
     }
 
@@ -170,6 +188,24 @@
       color: var(--footer-blue);
     }
 
+    /* MEDIUM SCREENS (tablets) */
+    @media (max-width: 1100px) {
+      .pill-grid {
+        max-width: 90%;
+        margin: 24px auto 0 auto;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+    }
+
+    /* SMALL SCREENS (mobile) */
+    @media (max-width: 700px) {
+      .pill-grid {
+        max-width: 100%;
+        margin: 20px auto 0 auto;
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ---------------- NEWSLETTER ---------------- */
     .newsletter-box {
       background: var(--yellow);
@@ -180,8 +216,9 @@
       flex-direction: column;
       gap: 10px;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 10px auto 0 auto;
     }
+
     .newsletter-box input {
       padding: 12px;
       border-radius: 12px;
@@ -189,6 +226,7 @@
       width: 100%;
       font-size: 1rem;
     }
+
     .newsletter-box button {
       background: var(--footer-blue);
       color: white;
@@ -200,11 +238,13 @@
       cursor: pointer;
     }
 
+    /* ---------------- FOOTER ---------------- */
     footer {
       text-align: center;
       padding: 20px;
       color: var(--muted);
     }
+
   </style>
 </head>
 
@@ -231,14 +271,15 @@
 <main>
   <section class="hero-about-wrapper">
     <div class="hero-about">
+
       <div class="hero-text">
         <p style="color: var(--blue); font-weight:600;">D1 Now • Youth-Centred Diabetes Research</p>
 
         <h1>Transforming Type 1 Diabetes Care</h1>
 
         <p>
-          D1 Now is a youth-led research programme in Ireland developing practical ways to support
-          young adults living with Type 1 Diabetes through everyday life and routine diabetes care.
+          D1 Now is a youth-led research programme in Ireland developing practical ways to support young adults
+          living with Type 1 Diabetes through everyday life and routine diabetes care.
         </p>
       </div>
 
@@ -262,6 +303,7 @@
 <!-- ---------------- WHAT IS D1 NOW ---------------- -->
 <section id="what" class="section">
   <h2 class="section-title">What is D1 Now?</h2>
+
   <p class="section-intro">
     D1 Now is a multi-year programme focused on improving support for young adults aged 18–25
     living with Type 1 Diabetes in Ireland. We bring together young adults, clinicians,
@@ -275,9 +317,9 @@
   <h2 class="section-title">Why It Matters</h2>
 
   <p class="section-intro">
-    Young adulthood is a time of huge change — moving out, college or work, new routines, new
-    independence. Diabetes doesn’t pause during these transitions. D1 Now focuses on supporting
-    young adults during this important stage.
+    Young adulthood is a time of huge change — moving out, starting college or work, forming new routines,
+    and gaining independence. Diabetes doesn’t pause during these transitions.  
+    D1 Now focuses on supporting young adults during this important stage.
   </p>
 
   <div class="pill-grid">
@@ -302,19 +344,20 @@
 <!-- ---------------- OUR APPROACH ---------------- -->
 <section id="approach" class="section">
   <h2 class="section-title">Our Approach</h2>
+
   <p class="section-intro">
-    We combine research, co-production, and clinical insight to design tools and ideas that fit real life.
+    We combine research, co-production, and clinical insight to design supports that fit real life.
   </p>
 
   <div class="pill-grid">
     <div class="pill-card">
       <h3 class="pill-title">Youth-centred</h3>
-      <p>Young adults help guide direction, language, and the development of tools and supports.</p>
+      <p>Young adults guide direction, language, and tool development.</p>
     </div>
 
     <div class="pill-card">
       <h3 class="pill-title">Evidence-informed</h3>
-      <p>Our work is shaped by behavioural science, research evidence, and clinical expertise.</p>
+      <p>Our work is shaped by behavioural science, emerging research, and clinical expertise.</p>
     </div>
 
     <div class="pill-card">
@@ -328,15 +371,16 @@
 <!-- ---------------- WHAT WE DO ---------------- -->
 <section id="whatwedo" class="section">
   <h2 class="section-title">What We Do</h2>
+
   <p class="section-intro">
-    The programme includes several connected strands working together to improve experiences of care.
+    The programme includes several connected strands working together to improve experiences of diabetes care.
   </p>
 
   <div class="pill-grid">
     <div class="pill-card">
       <h3 class="pill-title">Young Adult Panel (YAP)</h3>
       <p>
-        A group of young adults who co-design tools, language, and ideas.
+        A group of young adults who co-design tools, language, and ideas.  
         <a href="yap.html" style="color:var(--blue); font-weight:600;">Learn more →</a>
       </p>
     </div>
