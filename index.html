@@ -27,8 +27,9 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      height:68px;
+      height:102px;
       padding:0 16px;
+	  position:relative; 
     }
     .header-container{
       width:100%;
@@ -37,6 +38,7 @@
       align-items:center;
       justify-content:space-between;
       gap:14px;
+	  height:100%
     }
     .logo{
       font-family:Poppins,Inter,sans-serif;
@@ -147,7 +149,22 @@
       box-shadow:0 6px 18px rgba(20,65,130,.10);
     }
     .header-pill:hover{filter:brightness(1.06)}
-
+	
+/* Gradient strip at bottom of header */
+.header-gradient-strip{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:6px;   /* thin, subtle */
+  background:linear-gradient(
+    90deg,
+    #ff7a18 0%,     /* orange */
+    #ffd84d 35%,    /* yellow */
+    #8fd3f4 70%,    /* light blue */
+    #4facfe 100%    /* cyan */
+  );
+}
     /* Responsive: prevent crushing */
     @media (max-width: 980px){
       nav{overflow-x:auto}
@@ -278,6 +295,7 @@
         <a class="header-pill" href="#">Join Trial</a>
       </div>
     </div>
+	<div class="header-gradient-strip" aria-hidden="true"></div>
   </header>
 
   <!-- ===== Hero (unchanged sizes) ===== -->
