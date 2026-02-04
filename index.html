@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>D1 Now – Homepage</title>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
   <style>
     :root{
       --blue:#0AAFF3;
@@ -20,424 +17,450 @@
       --shadow:0 6px 28px rgba(0,0,0,0.08);
       --maxw:1200px;
     }
-
-    html,body{
-      margin:0;
-      padding:0;
-      font-family:Inter,Arial,sans-serif;
-      background:#fff;
-      color:#111;
-    }
-
+    html,body{height:100%;margin:0;padding:0;background:var(--footer-blue);color:#111;font-family:Inter,Arial,sans-serif}
     body{display:flex;flex-direction:column;min-height:100vh}
 
-    /* =================================================
-       HEADER (NEW STYLE)
-    ================================================= */
+    /* ===== Header (university-style, keep colours, keep dropdowns) ===== */
     header{
-      background:#fff;
-      color:var(--footer-blue);
+      background:var(--footer-blue);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:68px;
+      padding:0 16px;
     }
-
-    .header-strip{
-      height:6px;
-      background:linear-gradient(90deg,#ff6a00 0%,#ff2e2e 40%,#ffdf1b 70%,#0aaff3 100%);
-    }
-
     .header-container{
       width:100%;
       max-width:var(--maxw);
-      margin:0 auto;
-      padding:12px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:260px;
-    }
-
-    .brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:10px;
-      background:rgba(20,65,130,0.08);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .logo{
       font-family:Poppins,Inter,sans-serif;
-      font-weight:800;
-      color:var(--footer-blue);
+      font-weight:700;
+      font-size:2rem;
+      letter-spacing:1px;
+      color:#fff;
+      white-space:nowrap;
     }
 
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-
-    .brand-title{
-      font-family:Poppins,Inter,sans-serif;
-      font-weight:800;
-      font-size:1rem;
-    }
-
-    .brand-sub{
-      font-size:0.82rem;
-      color:#5a6b92;
-      font-weight:600;
-      margin-top:2px;
-    }
-
+    /* Left nav: uppercase + separators */
     nav{
       display:flex;
+      align-items:center;
+      gap:18px;
       flex:1;
-      justify-content:center;
+      justify-content:flex-start;
+      margin-left:12px;
     }
-
     .nav-list{
       list-style:none;
       display:flex;
-      gap:18px;
+      align-items:center;
+      gap:0;              /* separators provide spacing */
       margin:0;
       padding:0;
+      flex-wrap:nowrap;
+    }
+    .nav-item{
+      position:relative;
+      display:flex;
       align-items:center;
     }
-
-    .nav-item{position:relative}
-
-    .nav-link{
-      color:var(--footer-blue);
-      text-decoration:none;
+    .nav-item:not(:last-child)::after{
+      content:"›";
+      color:rgba(255,255,255,0.75);
       font-weight:800;
-      font-size:1.02rem;
-      padding:10px 10px;
-      border-radius:10px;
-      transition:background .2s,transform .15s;
-    }
-
-    .nav-link:hover{
-      background:rgba(20,65,130,0.08);
+      margin:0 12px;
       transform:translateY(-1px);
     }
+    .nav-link{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.98rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      padding:8px 6px;
+      border-radius:10px;
+      display:inline-flex;
+      align-items:center;
+      transition:background .2s, opacity .2s;
+    }
+    .nav-link:hover{
+      background:rgba(255,255,255,.10);
+      opacity:.98;
+    }
 
+    /* Dropdown (kept same behaviour) */
     .dropdown{
       position:absolute;
       left:0;
-      top:calc(100% + 10px);
-      min-width:240px;
+      top:100%;
+      min-width:230px;
       background:#fff;
-      border-radius:14px;
+      color:#111;
+      border-radius:12px;
       box-shadow:var(--shadow);
       padding:8px;
+      margin-top:10px;
       display:none;
       z-index:20;
-      border:1px solid rgba(20,65,130,.1);
     }
-
     .dropdown a{
       display:block;
-      padding:10px 12px;
       text-decoration:none;
       color:#111;
-      font-weight:700;
-      border-radius:10px;
+      padding:10px 12px;
+      border-radius:8px;
+      font-weight:600;
     }
-
     .dropdown a:hover{background:#f0f3f9}
-
     .nav-item:hover .dropdown,
     .nav-item:focus-within .dropdown{display:block}
 
+    /* Right CTAs: Join YAP + Join Trial (same colours family as now) */
     .header-actions{
       display:flex;
-      gap:10px;
-      min-width:220px;
-      justify-content:flex-end;
-    }
-
-    .pill-btn{
-      text-decoration:none;
-      font-family:Poppins,Inter,sans-serif;
-      font-weight:900;
-      padding:12px 18px;
-      border-radius:999px;
-      color:#fff;
-      background:#2f37ff;
-      box-shadow:0 10px 22px rgba(47,55,255,.18);
-    }
-
-    .pill-btn.secondary{
-      background:#120a6a;
-    }
-
-    .pill-btn:hover{filter:brightness(1.06)}
-
-    /* =================================================
-       HERO
-    ================================================= */
-    .main-content{
-      display:flex;
-      justify-content:center;
-      background:var(--yellow);
-    }
-
-    .main-inner{
-      width:100%;
-      max-width:var(--maxw);
-      display:grid;
-      grid-template-columns:2.6fr 1.1fr;
-      min-height:420px;
-    }
-
-    .img-col{
-      position:relative;
-      background:#fff;
-      overflow:hidden;
-    }
-
-    .main-carousel-img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:opacity .6s;
-    }
-
-    .main-carousel-img.fading{opacity:0}
-
-    .carousel-controls{
-      position:absolute;
-      left:50%;
-      bottom:16px;
-      transform:translateX(-50%);
-      display:flex;
-      gap:18px;
-      background:rgba(20,65,130,.12);
-      padding:6px 10px;
-      border-radius:999px;
-    }
-
-    .carousel-btn{
-      width:45px;
-      height:45px;
-      border-radius:50%;
-      border:none;
-      background:var(--footer-blue);
-      color:#fff;
-      cursor:pointer;
-    }
-
-    .cta-col{
-      padding:56px 32px 0;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .main-headline{
-      font-family:Poppins,Inter,sans-serif;
-      font-size:2.15rem;
-      font-weight:700;
-      color:var(--footer-blue);
-      margin-bottom:12px;
-    }
-
-    .main-subline{
-      font-size:1.2rem;
-      margin-bottom:36px;
-    }
-
-    .cta-vertical-btns{
-      display:flex;
-      flex-direction:column;
-      gap:20px;
-    }
-
-    .cta-btn{
-      border:none;
-      border-radius:999px;
-      padding:22px 0;
-      font-family:Poppins,Inter,sans-serif;
-      font-weight:700;
-      font-size:1.1rem;
-      background:var(--footer-blue);
-      color:#fff;
-      cursor:pointer;
-    }
-
-    .cta-btn:hover{background:var(--blue)}
-
-    /* =================================================
-       BELOW HERO
-    ================================================= */
-    .add-wrap{background:#fff;display:flex;justify-content:center}
-    .add-inner{max-width:var(--maxw);width:100%;padding:22px 18px}
-
-    .add-card{
-      background:var(--yellow);
-      border-radius:16px;
-      box-shadow:var(--shadow);
-      padding:16px;
-    }
-
-    /* =================================================
-       FOOTER (UNCHANGED)
-    ================================================= */
-    footer{background:var(--footer-blue);color:#fff}
-
-    .foot-top{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:26px 18px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
-    }
-
-    .foot-col h4{
-      font-family:Poppins,Inter,sans-serif;
-      font-weight:700;
-    }
-
-    .foot-col a{
-      display:block;
-      color:#e9f0ff;
-      text-decoration:none;
-      margin:6px 0;
-    }
-
-    .foot-col a:hover{color:#cfe0ff}
-
-    .foot-bottom{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:12px 18px;
-      display:flex;
-      justify-content:space-between;
       align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      white-space:nowrap;
+    }
+    .header-pill{
+      display:inline-block;
+      text-decoration:none;
+      color:#fff;
+      background:var(--blue);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-family:Poppins,Inter,sans-serif;
+      box-shadow:0 6px 18px rgba(10,175,243,.18);
+    }
+    .header-pill.secondary{
+      background:rgba(255,255,255,0.12);        /* subtle “institutional” pill */
+      border:1px solid rgba(255,255,255,0.26);
+      box-shadow:0 6px 18px rgba(20,65,130,.10);
+    }
+    .header-pill:hover{filter:brightness(1.06)}
+
+    /* Responsive: prevent crushing */
+    @media (max-width: 980px){
+      nav{overflow-x:auto}
+      .nav-item:not(:last-child)::after{margin:0 10px}
+    }
+    @media (max-width: 720px){
+      header{height:auto}
+      .header-container{flex-wrap:wrap; padding:12px 16px}
+      nav{order:3; width:100%; margin-left:0}
+      .header-actions{order:2; width:100%; justify-content:flex-end}
     }
 
+    /* ===== Hero (unchanged sizes/layout) ===== */
+    .main-content{flex:1;display:flex;width:100%;background:var(--yellow);justify-content:center}
+    .main-inner{width:100%;max-width:var(--maxw);display:grid;grid-template-columns:2.6fr 1.1fr;gap:0;min-height:420px}
+    .img-col{position:relative;background:#fff;min-height:420px;overflow:hidden}
+    .main-carousel-img.big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s}
+    .main-carousel-img.big.fading{opacity:0;pointer-events:none}
+    .carousel-controls{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:18px;align-items:center;justify-content:center;background:rgba(20,65,130,.12);padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+    .carousel-btn{border:none;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--footer-blue);color:#fff;cursor:pointer;font-size:1.2rem;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+    .cta-col{background:var(--yellow);padding:56px 32px 0 32px;min-height:420px;position:relative;display:flex;flex-direction:column;align-items:flex-start}
+    .main-headline{font-family:Poppins,Inter,sans-serif;font-size:2.15rem;font-weight:700;letter-spacing:-.5px;line-height:1.18;color:var(--footer-blue);margin:0 0 13px 0}
+    .main-subline{font-size:1.2rem;color:#232f49;margin:0 0 36px 0}
+    .cta-vertical-btns{display:flex;flex-direction:column;gap:20px;width:100%;margin-bottom:46px}
+    .cta-btn{border:none;border-radius:999px;width:100%;font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:1.19rem;letter-spacing:.4px;padding:22px 0;cursor:pointer;background:var(--footer-blue);color:#fff;box-shadow:0 6px 18px rgba(20,65,130,.10)}
+    .cta-btn:hover{background:var(--blue);transform:scale(1.03)}
+    .add-yap-badge{position:absolute;top:12px;right:16px;background:#fff;border:1px solid #e5e9f5;color:var(--footer-blue);font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:.9rem;padding:6px 10px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.04);pointer-events:none}
+
+    /* ===== Below-hero additions ===== */
+    .add-wrap{display:flex;justify-content:center;background:#fff}
+    .add-inner{width:100%;max-width:var(--maxw);padding:22px 18px}
+
+    /* Yellow cards for Testimonials + Newsletter */
+    .add-card{background:var(--yellow);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+    .add-testimonials .add-testi-row{display:grid;grid-template-columns:56px 1fr 56px;align-items:center;gap:10px;min-height:72px}
+    .add-testi-btn{width:40px;height:40px;border:none;border-radius:50%;background:var(--footer-blue);color:#fff;cursor:pointer}
+    .add-testi-card{display:flex;align-items:center;gap:14px}
+    .add-testi-card img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid #fff}
+    .add-testi-quote{font-weight:700;color:#0b2b62}
+    .add-testi-name{font-size:.9rem;color:#2a3f74}
+    .add-newsletter{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+    .add-newsletter form{display:flex;gap:8px;margin:0}
+    .add-newsletter input{padding:12px 14px;border:2px solid #0b2b62;border-radius:12px;min-width:220px;outline:none}
+    .add-newsletter button{background:var(--footer-blue);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
+    .add-newsletter button:hover{background:var(--blue)}
+
+    /* ===== Expanded Footer ===== */
+    footer{background:var(--footer-blue);color:#fff}
+    .foot-top{max-width:var(--maxw);margin:0 auto;padding:26px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+    .foot-col h4{margin:0 0 10px 0;font-family:Poppins,Inter,sans-serif;font-weight:700}
+    .foot-col a{display:block;color:#e9f0ff;text-decoration:none;margin:6px 0}
+    .foot-col a:hover{color:#cfe0ff}
+    .foot-logos{background:#133a72;display:flex;justify-content:center}
+    .foot-logos-inner{max-width:var(--maxw);width:100%;padding:12px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center}
+    .foot-logos-inner img{height:36px;background:#fff;border-radius:4px;padding:3px 6px}
+    .foot-bottom{max-width:var(--maxw);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+    .foot-social{display:flex;gap:10px}
+    .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none}
+
+    /* Floating FAQ */
+    .floating-faq-img-link{position:fixed;right:36px;bottom:90px;z-index:100;display:flex;align-items:center;justify-content:center;width:72px;height:72px;text-decoration:none}
+    .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
+    @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
+
+    /* Recruitment modal */
+    .modal-bg{display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.45);align-items:center;justify-content:center;padding:12px}
+    .modal-bg.active{display:flex}
+    .modal-popup{background:#fff;border-radius:22px;padding:20px;max-width:92vw;max-height:92vh;box-shadow:0 10px 60px rgba(0,0,0,.18);position:relative}
+    .modal-popup img{display:block;max-width:70vw;max-height:70vh;border-radius:16px;background:#f2f2f2}
+    .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}
+    .modal-sign{background:var(--footer-blue);color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:700}
+    .modal-close{position:absolute;top:10px;right:14px;font-size:1.6rem;border:none;background:transparent;cursor:pointer;color:#333}
   </style>
 </head>
-
 <body>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo">D1 Now</div>
 
-<!-- ================= HEADER ================= -->
-<header>
-  <div class="header-container">
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
 
-    <div class="brand">
-      <div class="brand-mark">D1</div>
-      <div class="brand-text">
-        <div class="brand-title">D1 Now</div>
-        <div class="brand-sub">Youth-led diabetes research (Ireland)</div>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About D1 Now</a>
+            <div class="dropdown">
+              <a href="#">What is D1 Now?</a>
+              <a href="#">Our Approach</a>
+              <a href="#">Research & Team</a>
+              <a href="#">Governance Team</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Young Adult Panel (YAP)</a>
+            <div class="dropdown">
+              <a href="#">What is YAP?</a>
+              <a href="#">Meet the Members</a>
+              <a href="#">Get Involved</a>
+              <a href="#">Testimonials & Video</a>
+              <a href="#">YAP Impact</a>
+              <a href="#">Blogs</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="trial.html">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="trial-participants.html">For Participants</a>
+              <a href="trial-sites.html">For Trial Sites</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Resources</a>
+            <div class="dropdown">
+              <a href="#">YAP Resources</a>
+              <a href="#">Trial Resources</a>
+              <a href="#">Research Resources (Publications, Videos, Downloads)</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-pill secondary" href="#">Join YAP</a>
+        <a class="header-pill" href="#">Join Trial</a>
       </div>
     </div>
+  </header>
 
-    <nav>
-      <ul class="nav-list">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-          <div class="dropdown">
-            <a href="about.html#what">What is D1 Now?</a>
-            <a href="about.html#why">Why it matters</a>
-            <a href="about.html#approach">Our approach</a>
+  <!-- ===== Hero (unchanged sizes) ===== -->
+  <main class="main-content">
+    <div class="main-inner">
+      <div class="img-col">
+        <img id="mainCarouselImage"
+             src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
+             alt="Main page visual"
+             class="main-carousel-img big">
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous image">
+            <svg viewBox="0 0 30 30"><path d="M20 5L10 15L20 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          </button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next image">
+            <svg viewBox="0 0 30 30"><path d="M10 5L20 15L10 25" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cta-col">
+        <div class="add-yap-badge" title="Co-designed with the Young Adult Panel">YAP-designed</div>
+        <div class="main-headline">A community for young adults with Type 1 Diabetes in Ireland.</div>
+        <div class="main-subline">Built by and for you. Find support, join research, shape change.</div>
+        <div class="cta-vertical-btns">
+          <button class="cta-btn">Join YAP</button>
+          <button class="cta-btn">Join Trial</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Below-hero additions (yellow cards) ===== -->
+  <section class="add-wrap">
+    <div class="add-inner">
+      <!-- Testimonials -->
+      <section class="add-testimonials add-card" aria-label="What young adults say">
+        <div class="add-testi-row">
+          <button class="add-testi-btn" id="addPrevTesti" aria-label="Previous testimonial">‹</button>
+          <div class="add-testi-card">
+            <img id="addTestiPhoto" src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Testimonial portrait">
+            <div>
+              <div class="add-testi-quote" id="addTestiQuote">“Being part of D1 Now feels like my real life is finally in the design.”</div>
+              <div class="add-testi-name" id="addTestiName">Aoife, 21</div>
+            </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="yap.html">YAP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="trial.html">Trial</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="resources.html">Resources</a>
-        </li>
-      </ul>
-    </nav>
+          <button class="add-testi-btn" id="addNextTesti" aria-label="Next testimonial">›</button>
+        </div>
+      </section>
 
-    <div class="header-actions">
-      <a class="pill-btn" href="trial.html">Join Trial</a>
-      <a class="pill-btn secondary" href="contact.html">Contact</a>
+      <!-- Newsletter -->
+      <section class="add-newsletter add-card" aria-label="Subscribe for updates">
+        <div><strong>Stay in the loop.</strong> Get updates on study progress & opportunities.</div>
+        <form action="#" method="post">
+          <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
     </div>
+  </section>
 
-  </div>
-  <div class="header-strip"></div>
-</header>
-
-<!-- ================= HERO ================= -->
-<main class="main-content">
-  <div class="main-inner">
-    <div class="img-col">
-      <img id="mainCarouselImage"
-           src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png"
-           class="main-carousel-img">
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn">‹</button>
-        <button class="carousel-btn" id="nextBtn">›</button>
+  <!-- ===== Expanded Footer ===== -->
+  <footer>
+    <!-- top columns -->
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Get Help & Info</h4>
+        <a href="#">Join the Trial</a>
+        <a href="#">Join YAP</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact the Team</a>
+      </div>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        <a href="#">Privacy & Data Protection</a>
+        <a href="#">Cookies</a>
+        <a href="#">GDPR & Consent</a>
+        <a href="#">Accessibility</a>
+      </div>
+      <div class="foot-col">
+        <h4>General</h4>
+        <a href="#">Latest News</a>
+        <a href="#">Publications</a>
+        <a href="#">For Trial Sites</a>
+        <a href="#">Newsletter</a>
       </div>
     </div>
 
-    <div class="cta-col">
-      <div class="main-headline">A community for young adults with Type 1 Diabetes in Ireland.</div>
-      <div class="main-subline">Built by and for you. Find support, join research, shape change.</div>
-      <div class="cta-vertical-btns">
-        <button class="cta-btn">Join YAP</button>
-        <button class="cta-btn">Join Trial</button>
+    <!-- logos strip -->
+    <div class="foot-logos">
+      <div class="foot-logos-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
+        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
+      </div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="foot-bottom">
+      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
+      <div class="foot-social">
+        <a class="soc" href="#" aria-label="Facebook">f</a>
+        <a class="soc" href="#" aria-label="X">x</a>
+        <a class="soc" href="#" aria-label="Instagram">ig</a>
+        <a class="soc" href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating FAQ -->
+  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
+  </a>
+
+  <!-- Recruitment Modal (restored) -->
+  <div class="modal-bg" id="recruitmentModal">
+    <div class="modal-popup" role="dialog" aria-modal="true" aria-label="Recruitment poster">
+      <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">×</button>
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="D1 Now recruitment poster">
+      <div class="modal-actions">
+        <a class="modal-sign" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
       </div>
     </div>
   </div>
-</main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="foot-top">
-    <div class="foot-col">
-      <h4>Get Help & Info</h4>
-      <a href="#">Join the Trial</a>
-      <a href="#">Join YAP</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact the Team</a>
-    </div>
-    <div class="foot-col">
-      <h4>Policies</h4>
-      <a href="#">Privacy</a>
-      <a href="#">Cookies</a>
-      <a href="#">Accessibility</a>
-    </div>
-    <div class="foot-col">
-      <h4>General</h4>
-      <a href="#">News</a>
-      <a href="#">Publications</a>
-    </div>
-  </div>
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <div class="foot-bottom">
-    <div>© D1 Now <span id="year"></span></div>
-    <div>Designed with the Young Adult Panel</div>
-  </div>
-</footer>
+    // Hero carousel
+    const mainImageUrls = [
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png",
+      "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home3.png"
+    ];
+    let mainImgIndex = 0;
+    const mainImgElem = document.getElementById("mainCarouselImage");
+    function showMainImg(index, fade=true) {
+      if (fade) {
+        mainImgElem.classList.add('fading');
+        setTimeout(() => { mainImgElem.src = mainImageUrls[index]; mainImgElem.classList.remove('fading'); }, 300);
+      } else {
+        mainImgElem.src = mainImageUrls[index];
+      }
+    }
+    document.getElementById("nextBtn").onclick = function(){
+      mainImgIndex=(mainImgIndex+1)%mainImageUrls.length; showMainImg(mainImgIndex,true);
+    };
+    document.getElementById("prevBtn").onclick = function(){
+      mainImgIndex=(mainImgIndex-1+mainImageUrls.length)%mainImageUrls.length; showMainImg(mainImgIndex,true);
+    };
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+    // Testimonials carousel
+    (function(){
+      const testimonials = [
+        {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"},
+        {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png"},
+        {quote:"“Clear info and kind people. That’s why I signed up.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-3.png"},
+        {quote:"“Short, clear steps made joining easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png"}
+      ];
+      let i=0;
+      const q = document.getElementById('addTestiQuote');
+      const n = document.getElementById('addTestiName');
+      const p = document.getElementById('addTestiPhoto');
+      function show(idx){
+        const t=testimonials[idx];
+        q.textContent=t.quote; n.textContent=t.name; p.src=t.photo;
+      }
+      document.getElementById('addNextTesti').onclick = ()=>{
+        i=(i+1)%testimonials.length; show(i);
+      };
+      document.getElementById('addPrevTesti').onclick = ()=>{
+        i=(i-1+testimonials.length)%testimonials.length; show(i);
+      };
+      setInterval(()=>{
+        i=(i+1)%testimonials.length; show(i);
+      }, 5000);
+    })();
 
-  const imgs=[
-    "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home.png",
-    "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home1.png",
-    "https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/home2.png"
-  ];
-  let i=0;
-  const img=document.getElementById("mainCarouselImage");
-  document.getElementById("nextBtn").onclick=()=>{i=(i+1)%imgs.length;img.src=imgs[i];};
-  document.getElementById("prevBtn").onclick=()=>{i=(i-1+imgs.length)%imgs.length;img.src=imgs[i];};
-</script>
-
+    // Show recruitment modal on load
+    window.addEventListener('DOMContentLoaded', ()=> {
+      document.getElementById('recruitmentModal').classList.add('active');
+    });
+  </script>
 </body>
 </html>
