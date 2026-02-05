@@ -1,423 +1,1178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About D1 Now</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --blue: #3058FF;
-      --footer-blue: #144182;
-      --white: #FFF;
-      --yellow: #FFDF1B;
-      --ink: #232f49;
-      --muted: #6b7aa5;
-      --soft-bg: #fffef7;
-      --soft-ink: #2e3b55;
-      --shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
-      --maxw: 1200px;
-      --radius-xl: 36px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --content-width: 780px;
+    :root{
+      --blue:#0AAFF3;
+      --footer-blue:#144182;
+      --white:#FFF;
+      --yellow:#FDD560;
+      --ink:#232f49;
+      --muted:#6b7aa5;
+      --shadow:0 6px 28px rgba(0,0,0,0.08);
+      --maxw:1200px;
+      --soft-bg:#fffef7;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--footer-blue);
+      color:#111;
+      font-family:Inter,Arial,sans-serif;
+      scroll-behavior:smooth;
+    }
+    body{display:flex;flex-direction:column;min-height:100vh}
 
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: var(--soft-bg);
-      color: var(--soft-ink);
+    /* ===== Header (matches homepage: university-style + gradient strip) ===== */
+    header{
+      background:var(--footer-blue);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 34px; /* taller, natural height */
+      position:relative;
+    }
+    .header-container{
+      width:100%;
+      max-width:var(--maxw);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .logo{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:700;
+      font-size:2rem;
+      letter-spacing:1px;
+      color:#fff;
+      white-space:nowrap;
     }
 
-    /* ---------------- HEADER ---------------- */
-    header {
-      background: var(--footer-blue);
-      color: white;
+    nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex:1;
+      justify-content:flex-start;
+      margin-left:12px;
+    }
+    .nav-list{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:0;
+      margin:0;
+      padding:0;
+      flex-wrap:nowrap;
+    }
+    .nav-item{
+      position:relative;
+      display:flex;
+      align-items:center;
+    }
+    .nav-item:not(:last-child)::after{
+      content:"›";
+      color:rgba(255,255,255,0.75);
+      font-weight:800;
+      margin:0 12px;
+      transform:translateY(-1px);
+    }
+    .nav-link{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.98rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      padding:8px 6px;
+      border-radius:10px;
+      display:inline-flex;
+      align-items:center;
+      transition:background .2s, opacity .2s;
+    }
+    .nav-link:hover{
+      background:rgba(255,255,255,.10);
+      opacity:.98;
+    }
+    .dropdown{
+      position:absolute;
+      left:0;
+      top:100%;
+      min-width:230px;
+      background:#fff;
+      color:#111;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      padding:8px;
+      margin-top:10px;
+      display:none;
+      z-index:20;
+    }
+    .dropdown a{
+      display:block;
+      text-decoration:none;
+      color:#111;
+      padding:10px 12px;
+      border-radius:8px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .dropdown a:hover{background:#f0f3f9}
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown{display:block}
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      white-space:nowrap;
+    }
+    .header-pill{
+      display:inline-block;
+      text-decoration:none;
+      color:#fff;
+      background:var(--blue);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-family:Poppins,Inter,sans-serif;
+      box-shadow:0 6px 18px rgba(10,175,243,.18);
+    }
+    .header-pill.secondary{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.26);
+      box-shadow:0 6px 18px rgba(20,65,130,.10);
+    }
+    .header-pill:hover{filter:brightness(1.06)}
+
+    .header-gradient-strip{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:6px;
+      background:linear-gradient(
+        90deg,
+        #ff7a18 0%,
+        #ffd84d 35%,
+        #8fd3f4 70%,
+        #4facfe 100%
+      );
     }
 
-    .header-container {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    @media (max-width:980px){
+      nav{overflow-x:auto}
+      .nav-item:not(:last-child)::after{margin:0 10px}
+    }
+    @media (max-width:720px){
+      .header-container{flex-wrap:wrap}
+      nav{order:3;width:100%;margin-left:0}
+      .header-actions{order:2;width:100%;justify-content:flex-end}
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
+    /* ===== Page layout ===== */
+    main{
+      background:var(--soft-bg);
+      flex:1;
+    }
+    section{scroll-margin-top:140px;}
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:26px 18px 10px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 6px 12px;
-      border-radius: 999px;
+    /* ===== Hero (About) ===== */
+    .about-hero-wrap{
+      background:var(--yellow);
+      padding:38px 0;
+    }
+    .about-hero{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns:1.4fr 1fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .about-hero-card{
+      background:#fff;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:28px 26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:260px;
+    }
+    .kicker{
+      font-weight:800;
+      color:var(--blue);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.85rem;
+      margin:0 0 10px 0;
+    }
+    .about-hero-title{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:700;
+      color:var(--footer-blue);
+      font-size:2.25rem;
+      line-height:1.15;
+      margin:0 0 12px 0;
+    }
+    .about-hero-sub{
+      color:#232f49;
+      font-size:1.1rem;
+      line-height:1.65;
+      margin:0 0 18px 0;
+      max-width:60ch;
+    }
+    .hero-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+    }
+    .chip{
+      background:rgba(20,65,130,.08);
+      color:var(--footer-blue);
+      font-weight:800;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:.9rem;
+      white-space:nowrap;
+    }
+    .about-hero-img{
+      background:#fff;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:260px;
+    }
+    .about-hero-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
-    nav a:hover { background: rgba(255,255,255,0.12); }
-
-    .header-cta {
-      background: var(--blue);
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-decoration: none;
-      color: white;
+    /* ===== Jump links ===== */
+    .jumpbar{
+      max-width:var(--maxw);
+      margin:-18px auto 0;
+      padding:0 18px;
+    }
+    .jumpbar-inner{
+      background:#fff;
+      box-shadow:var(--shadow);
+      border-radius:999px;
+      padding:10px 12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .jumpbar-inner a{
+      text-decoration:none;
+      font-weight:800;
+      color:var(--footer-blue);
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      font-size:.82rem;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(20,65,130,.06);
+    }
+    .jumpbar-inner a:hover{
+      background:rgba(10,175,243,.18);
     }
 
-    /* ---------------- HERO ---------------- */
-    .hero-about-wrapper {
-      background: var(--yellow);
-      padding: 50px 20px 40px;
+    /* ===== Section styling ===== */
+    .section{
+      padding:34px 0 10px;
+    }
+    .section-head{
+      max-width: clamp(720px, 85vw, 990px);
+    }
+    .h2{
+      font-family:Poppins,Inter,sans-serif;
+      color:var(--footer-blue);
+      font-weight:700;
+      font-size:1.9rem;
+      margin:0 0 10px 0;
+    }
+    .lead{
+      color:#2a3f74;
+      font-size:1.05rem;
+      line-height:1.75;
+      margin:0;
     }
 
-    .hero-about {
-      max-width: var(--maxw);
-      background: white;
-      border-radius: var(--radius-xl);
-      padding: 28px 32px;
-      margin: 0 auto;
-      display: flex;
-      gap: 30px;
-      box-shadow: var(--shadow);
+    /* ===== Card grids ===== */
+    .grid-3{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+      max-width:980px;
+    }
+    .grid-2{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      max-width:980px;
     }
 
-    .hero-text h1 {
-      font-family: Poppins, sans-serif;
-      font-size: 2.3rem;
-      color: var(--footer-blue);
-      margin-bottom: 12px;
+    .card{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:18px 18px 16px;
+      position:relative;
+    }
+    .card h3{
+      font-family:Poppins,Inter,sans-serif;
+      margin:0 0 8px 0;
+      color:var(--footer-blue);
+      font-size:1.15rem;
+    }
+    .card p{
+      margin:0;
+      color:#1f2f55;
+      line-height:1.65;
+    }
+    /* ===== UPDATED: What bullet points ===== */
+    .card ul{
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  color: #1f2f55;
+  line-height: 1.65;
+}
+
+.card ul li{
+  margin-bottom: 6px;
+}
+
+.card ul li:last-child{
+  margin-bottom: 0;
+}
+    /* ===== UPDATED: Why it matters style (white cards + yellow accent icons) ===== */
+    #why .h2{font-size:1.8rem;}
+    #why .lead{max-width:100%;}
+    #why .grid-3{ max-width: clamp(720px, 85vw, 990px);}
+    
+
+    .why-card{
+      background:#fff;
+      border:1.5px solid rgba(20,65,130,0.12);
+      box-shadow:0 8px 24px rgba(0,0,0,0.06);
+      padding:18px 18px 16px;
+      border-radius:16px;
+      position:relative;
+    }
+    .why-icon{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:var(--yellow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.35rem;
+      margin-bottom:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+    }
+    .why-card h3{
+      font-family:Poppins,Inter,sans-serif;
+      margin:0 0 8px 0;
+      color:var(--footer-blue);
+      font-size:1.15rem;
+    }
+    .why-card p{
+      margin:0;
+      color:#1f2f55;
+      line-height:1.65;
     }
 
-    .hero-text p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      max-width: var(--content-width);
+    /* Team list */
+    .team-grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
+      max-width:980px;
+    }
+    .person{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+    .avatar{
+      width:54px;height:54px;border-radius:50%;
+      background:rgba(10,175,243,.18);
+      display:flex;align-items:center;justify-content:center;
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:800;color:var(--footer-blue);
+      margin-bottom:10px;
+    }
+    .name{font-weight:800;color:var(--footer-blue);margin:0 0 3px 0}
+    .role{margin:0;color:#2a3f74;font-size:.92rem;line-height:1.4}
+
+    /* Governance list */
+    .bullets{
+      margin:12px 0 0 0;
+      padding-left:18px;
+      color:#1f2f55;
+      line-height:1.7;
     }
 
-    .hero-image img {
-      max-height: 420px;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+    /* Impact tiles */
+    .impact-grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+      max-width:980px;
+    }
+    .tile{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .tile .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:max-content;
+      background:rgba(20,65,130,.08);
+      color:var(--footer-blue);
+      border-radius:999px;
+      padding:7px 10px;
+      font-weight:800;
+      font-size:.85rem;
+      letter-spacing:.02em;
+    }
+    .tile a{
+      font-weight:800;
+      color:var(--footer-blue);
+      text-decoration:none;
+    }
+    .tile a:hover{color:var(--blue)}
+
+    /* Stay in the loop */
+    .loop{
+      margin-top:18px;
+      max-width:980px;
+      background:var(--yellow);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .loop strong{color:var(--footer-blue)}
+    .loop form{display:flex;gap:8px;margin:0;flex-wrap:wrap}
+    .loop input{
+      padding:12px 14px;
+      border:2px solid #0b2b62;
+      border-radius:12px;
+      min-width:240px;
+      outline:none;
+      background:#fff;
+    }
+    .loop button{
+      background:var(--footer-blue);
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      padding:12px 16px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .loop button:hover{background:var(--blue)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .about-hero{grid-template-columns:1fr}
+      .grid-3, .impact-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .grid-2{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .loop{flex-direction:column;align-items:flex-start}
+      #why .lead{max-width:100%;}
+    }
+    @media (max-width: 640px){
+      .grid-3, .impact-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
+      .about-hero-title{font-size:1.95rem}
+      .jumpbar-inner{border-radius:18px;justify-content:flex-start}
     }
 
-    /* ---------------- JUMP NAV ---------------- */
-    .about-nav {
-      max-width: var(--maxw);
-      margin: -12px auto 30px auto;
-      background: white;
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-      padding: 10px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+ /* Core team grid */
+.team-core-grid{
+  margin-top: 18px;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 18px;
+}
 
-    .about-nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 8px 14px;
-      border-radius: 999px;
-    }
+.person-card{
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
 
-    .about-nav a:hover {
-      background: rgba(48,88,255,0.1);
-      color: var(--footer-blue);
-    }
+.person-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
 
-    /* ---------------- SECTIONS ---------------- */
-    .section {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 24px 20px 10px;
-    }
+.person-card img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
 
-    .section-title {
-      font-family: Poppins, sans-serif;
-      font-size: 1.9rem;
-      color: var(--footer-blue);
-      margin-bottom: 10px;
-      max-width: var(--content-width);
-    }
+.person-info strong{
+  display: block;
+  color: var(--footer-blue);
+  font-weight: 800;
+}
 
-    .section-intro {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: var(--content-width);
-      margin-bottom: 12px;
-    }
+.person-info span{
+  font-size: .9rem;
+  color: #2a3f74;
+}
 
-    /* ---------------- DESKTOP-FIRST CARD GRID ---------------- */
-    /* DEFAULT: Desktop/laptop */
-    .pill-grid {
-      max-width: var(--content-width);
-      margin: 24px 0 0 0; /* left-aligned */
-      display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 24px;
-    }
+/* Modal */
+.team-modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  padding: 16px;
+}
 
-    .pill-card {
-      background: var(--yellow);
-      padding: 22px 26px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-    }
+.team-modal.active{display:flex}
 
-    .pill-title {
-      font-family: Poppins, sans-serif;
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-      color: var(--footer-blue);
-    }
+.team-modal-content{
+  background: #fff;
+  border-radius: 22px;
+  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  position: relative;
+  text-align: center;
+}
 
-    /* MEDIUM SCREENS (tablets) */
-    @media (max-width: 1100px) {
-      .pill-grid {
-        max-width: 90%;
-        margin: 24px auto 0 auto;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-    }
+.team-modal-content img{
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
 
-    /* SMALL SCREENS (mobile) */
-    @media (max-width: 700px) {
-      .pill-grid {
-        max-width: 100%;
-        margin: 20px auto 0 auto;
-        grid-template-columns: 1fr;
-      }
-    }
+.team-modal-content h3{
+  margin: 0;
+  font-family: Poppins, Inter, sans-serif;
+  color: var(--footer-blue);
+}
 
-    /* ---------------- NEWSLETTER ---------------- */
-    .newsletter-box {
-      background: var(--yellow);
-      padding: 30px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 600px;
-      margin: 10px auto 0 auto;
-    }
+.modal-role{
+  font-weight: 700;
+  color: #2a3f74;
+  margin: 4px 0 10px 0;
+}
 
-    .newsletter-box input {
-      padding: 12px;
-      border-radius: 12px;
-      border: 2px solid var(--footer-blue);
-      width: 100%;
-      font-size: 1rem;
-    }
+.team-modal-content p{
+  color: #1f2f55;
+  line-height: 1.6;
+}
 
-    .newsletter-box button {
-      background: var(--footer-blue);
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.team-modal-content a{
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 800;
+  color: var(--footer-blue);
+  text-decoration: none;
+}
 
-    /* ---------------- FOOTER ---------------- */
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: var(--muted);
-    }
+.modal-close{
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
+/* Responsive */
+@media (max-width: 980px){
+  .team-core-grid{grid-template-columns: repeat(2, 1fr);}
+}
+@media (max-width: 520px){
+  .team-core-grid{grid-template-columns: 1fr;}
+}
+
+    /* ===== Footer ===== */
+    footer{background:var(--footer-blue);color:#fff}
+    .foot-top{max-width:var(--maxw);margin:0 auto;padding:26px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+    .foot-col h4{margin:0 0 10px 0;font-family:Poppins,Inter,sans-serif;font-weight:700}
+    .foot-col a{display:block;color:#e9f0ff;text-decoration:none;margin:6px 0}
+    .foot-col a:hover{color:#cfe0ff}
+    .foot-logos{background:#133a72;display:flex;justify-content:center}
+    .foot-logos-inner{max-width:var(--maxw);width:100%;padding:12px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center}
+    .foot-logos-inner img{height:36px;background:#fff;border-radius:4px;padding:3px 6px}
+    .foot-bottom{max-width:var(--maxw);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+    .foot-social{display:flex;gap:10px}
+    .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none}
   </style>
 </head>
 
 <body>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="header-container">
+      <div class="logo">D1 Now</div>
 
-<header>
-  <div class="header-container">
-    <div class="logo">D1 Now</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="yap.html">YAP</a></li>
-        <li><a href="trial.html">Trial</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="#" class="header-cta">Join Trial</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About D1 Now</a>
+            <div class="dropdown">
+              <a href="about.html#what">What is D1 Now?</a>
+              <a href="about.html#why">Why it matters</a>
+              <a href="about.html#approach">Our Approach</a>
+              <a href="about.html#team">Research & Team</a>
+              <a href="about.html#governance">Governance Team</a>
+              <a href="about.html#impact">Outputs & Impact</a>
+            </div>
+          </li>
 
-<!-- ---------------- HERO ---------------- -->
-<main>
-  <section class="hero-about-wrapper">
-    <div class="hero-about">
+          <li class="nav-item">
+            <a class="nav-link" href="yap.html">Young Adult Panel (YAP)</a>
+            <div class="dropdown">
+              <a href="yap.html#what">What is YAP?</a>
+              <a href="yap.html#members">Meet the Members</a>
+              <a href="yap.html#getinvolved">Get Involved</a>
+              <a href="yap.html#stories">Testimonials & Video</a>
+              <a href="yap.html#impact">YAP Impact</a>
+              <a href="yap.html#blogs">Blogs</a>
+            </div>
+          </li>
 
-      <div class="hero-text">
-        <p style="color: var(--blue); font-weight:600;">D1 Now • Youth-Centred Diabetes Research</p>
+          <li class="nav-item">
+            <a class="nav-link" href="trial.html">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="trial-participants.html">For Participants</a>
+              <a href="trial-sites.html">For Trial Sites</a>
+            </div>
+          </li>
 
-        <h1>Transforming Type 1 Diabetes Care</h1>
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Resources</a>
+            <div class="dropdown">
+              <a href="resources.html#yap">YAP Resources</a>
+              <a href="resources.html#trial">Trial Resources</a>
+              <a href="resources.html#research">Research Resources (Publications, Videos, Downloads)</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
 
-        <p>
-          D1 Now is a youth-led research programme in Ireland developing practical ways to support young adults
-          living with Type 1 Diabetes through everyday life and routine diabetes care.
-        </p>
+      <div class="header-actions">
+        <a class="header-pill secondary" href="yap.html">Join YAP</a>
+        <a class="header-pill" href="trial.html">Join Trial</a>
       </div>
+    </div>
 
-      <div class="hero-image">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" />
+    <div class="header-gradient-strip" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- ===== About hero ===== -->
+    <section class="about-hero-wrap" aria-label="About D1 Now hero">
+      <div class="about-hero">
+        <div class="about-hero-card">
+          <p class="kicker">About D1 Now</p>
+          <h1 class="about-hero-title">A youth-led programme shaping better Type 1 Diabetes care.</h1>
+          <p class="about-hero-sub">
+            D1 Now is a research and innovation programme in Ireland, created with young adults living with Type 1 Diabetes.
+            We bring young adult experience, clinical practice, and research together to improve how support feels and works in real life.                                
+            
+D1 Now is advocating to removes the big barriers for these young people from accessing healthcare, enabling them to manage their health better.
+
+          </p>
+          <div class="hero-chips" aria-label="D1 Now at a glance">
+            <span class="chip">Youth-led</span>
+            <span class="chip">Ireland</span>
+            <span class="chip">Co-designed resources</span>
+            <span class="chip">Service improvement</span>
+          </div>
+        </div>
+
+        <div class="about-hero-img">
+          <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Young adult outdoors">
+        </div>
+      </div>
+    </section>
+
+    <!-- Jump bar -->
+    <div class="jumpbar" aria-label="About page jump links">
+      <div class="jumpbar-inner">
+        <a href="#what">What</a>
+        <a href="#why">Why</a>
+        <a href="#approach">Approach</a>
+        <a href="#team">Team</a>
+        <a href="#governance">Governance</a>
+        <a href="#impact">Impact</a>
+        <a href="#loop">Updates</a>
       </div>
     </div>
-  </section>
 
+    <!-- ===== WHAT ===== -->
+    <section id="what" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">What is D1 Now?</h2>
+          <p class="lead">
+            D1 Now is a national programme focused on improving care and support for young adults (18–25) living with Type 1 Diabetes in Ireland.
+            It combines youth partnership, research evidence, and clinical collaboration to develop practical tools, resources, and ways of working that fit real life.
+          </p>
+        </div>
 
-<!-- ---------------- NAV ---------------- -->
-<nav class="about-nav">
-  <a href="#what">What is D1 Now?</a>
-  <a href="#why">Why It Matters</a>
-  <a href="#approach">Our Approach</a>
-  <a href="#whatwedo">What We Do</a>
-  <a href="#newsletter">Stay in the Loop</a>
-</nav>
+        <div class="grid-2" role="list">
+          <div class="card" role="listitem">
+            <h3>What D1 Now does</h3>
+            <ul>
+      <li>Designs and tests youth-centred supports for young adults with Type 1 Diabetes.</li>
+      <li>Develops practical tools and resources that fit real life and clinic settings.</li>
+      <li>Brings together young adults, clinicians, and researchers to improve care experiences.</li>
+      <li>
+        Shares learning to inform service improvement across Ireland.
+        <a href="trial.html" style="font-weight:800;color:var(--footer-blue);text-decoration:none;">
+          Learn more about the Trial →
+        </a>
+      </li>
+    </ul>
+            </p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Who it’s for</h3>
+    <ul>
+      <li>Young adults (18–25) living with Type 1 Diabetes.</li>
+      <li>Diabetes clinics and healthcare professionals.</li>
+      <li>Researchers interested in youth-led and applied health research.</li>
+      <li>Policy makers and service leaders focused on improving diabetes care.</li>
+    </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== WHY (UPDATED STYLE) ===== -->
+    <section id="why" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Why it matters</h2>
+          <p class="lead">
+            Young adulthood is a time of huge change — moving out, college or work, new routines, and more independence.
+            Diabetes doesn’t pause during these transitions. D1 Now focuses on support that works with real life, not against it.
+          </p>
+        </div>
 
-<!-- ---------------- WHAT IS D1 NOW ---------------- -->
-<section id="what" class="section">
-  <h2 class="section-title">What is D1 Now?</h2>
+        <div class="grid-3" aria-label="Why it matters cards">
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🧭</div>
+            <h3>Life changes, care needs change</h3>
+            <p>Support needs to fit around busy, shifting lives. We explore how services can be more flexible and responsive.</p>
+          </div>
 
-  <p class="section-intro">
-    D1 Now is a multi-year programme focused on improving support for young adults aged 18–25
-    living with Type 1 Diabetes in Ireland. We bring together young adults, clinicians,
-    and researchers to redesign how diabetes care feels and works during young adulthood.
-  </p>
-</section>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🗣️</div>
+            <h3>Lived experience strengthens design</h3>
+            <p>Young adult voices shape priorities, language, and tools—so resources feel relevant and respectful.</p>
+          </div>
 
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">📈</div>
+            <h3>Better support, long-term impact</h3>
+            <p>We aim to inform service improvements that benefit young adults now and strengthen future care models.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- ---------------- WHY IT MATTERS ---------------- -->
-<section id="why" class="section">
-  <h2 class="section-title">Why It Matters</h2>
+    <!-- ===== APPROACH ===== -->
+    <section id="approach" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Our approach</h2>
+          <p class="lead">
+            D1 Now combines youth partnership, research evidence, and clinical collaboration. We keep things practical: clear language, realistic tools, and improvements that can work in everyday services.
+          </p>
+        </div>
 
-  <p class="section-intro">
-    Young adulthood is a time of huge change — moving out, starting college or work, forming new routines,
-    and gaining independence. Diabetes doesn’t pause during these transitions.  
-    D1 Now focuses on supporting young adults during this important stage.
-  </p>
+        <div class="grid-3" aria-label="Approach cards">
+          <div class="card">
+            <h3>Youth-centred</h3>
+            <p>Young adults are partners in decision-making and design. The Young Adult Panel (YAP) guides what matters most.</p>
+          </div>
+          <div class="card">
+            <h3>Evidence-informed</h3>
+            <p>We draw on behavioural science and existing research, and we evaluate what we build so lessons can be shared.</p>
+          </div>
+          <div class="card">
+            <h3>Collaborative & real-world</h3>
+            <p>We work with diabetes clinics and teams to develop approaches that are realistic and scalable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="pill-grid">
-    <div class="pill-card">
-      <h3 class="pill-title">Life changes, care needs change</h3>
-      <p>Care needs evolve as young adults navigate busy, shifting lives. We explore how care can adapt.</p>
-    </div>
-
-    <div class="pill-card">
-      <h3 class="pill-title">Lived experience matters</h3>
-      <p>Youth voice is central to the programme, shaping language, priorities, and resources.</p>
-    </div>
-
-    <div class="pill-card">
-      <h3 class="pill-title">Better support for the future</h3>
-      <p>Insights from D1 Now aim to inform long-term improvements to diabetes services across Ireland.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ---------------- OUR APPROACH ---------------- -->
-<section id="approach" class="section">
-  <h2 class="section-title">Our Approach</h2>
-
-  <p class="section-intro">
-    We combine research, co-production, and clinical insight to design supports that fit real life.
-  </p>
-
-  <div class="pill-grid">
-    <div class="pill-card">
-      <h3 class="pill-title">Youth-centred</h3>
-      <p>Young adults guide direction, language, and tool development.</p>
-    </div>
-
-    <div class="pill-card">
-      <h3 class="pill-title">Evidence-informed</h3>
-      <p>Our work is shaped by behavioural science, emerging research, and clinical expertise.</p>
-    </div>
-
-    <div class="pill-card">
-      <h3 class="pill-title">Collaborative</h3>
-      <p>We work with diabetes teams and partners nationally to support meaningful change.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ---------------- WHAT WE DO ---------------- -->
-<section id="whatwedo" class="section">
-  <h2 class="section-title">What We Do</h2>
-
-  <p class="section-intro">
-    The programme includes several connected strands working together to improve experiences of diabetes care.
-  </p>
-
-  <div class="pill-grid">
-    <div class="pill-card">
-      <h3 class="pill-title">Young Adult Panel (YAP)</h3>
-      <p>
-        A group of young adults who co-design tools, language, and ideas.  
-        <a href="yap.html" style="color:var(--blue); font-weight:600;">Learn more →</a>
+    <!-- ===== TEAM ===== -->
+ <!-- ===== Research & Team (Core people) ===== -->
+<section id="team" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Research & Team</h2>
+      <p class="lead">
+        D1 Now is delivered by a multidisciplinary team of researchers, clinicians, and young adult partners.
+        Below are members of the core team.
       </p>
     </div>
 
-    <div class="pill-card">
-      <h3 class="pill-title">Intervention development</h3>
-      <p>Creating person-centred supports and ways of working in diabetes clinics.</p>
+    <div class="team-core-grid">
+      <!-- Person 1 -->
+      <button class="person-card"
+        data-name="Dr Jane Smith"
+        data-role="Principal Investigator"
+        data-bio="Jane leads the D1 Now programme and has over 15 years’ experience in diabetes research, youth engagement, and health service improvement."
+        data-link="https://example.com"
+        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Jane Smith">
+        <div class="person-info">
+          <strong>Dr Jane Smith</strong>
+          <span>Principal Investigator</span>
+        </div>
+      </button>
+
+      <!-- Person 2 -->
+      <button class="person-card"
+        data-name="Prof John Murphy"
+        data-role="Co-Applicant"
+        data-bio="John is a consultant endocrinologist and academic, contributing clinical expertise and trial oversight to D1 Now."
+        data-link="https://example.com"
+        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Prof John Murphy">
+        <div class="person-info">
+          <strong>Prof John Murphy</strong>
+          <span>Co-Applicant</span>
+        </div>
+      </button>
+
+      <!-- Person 3 -->
+      <button class="person-card"
+        data-name="Dr Aoife Byrne"
+        data-role="Research Fellow"
+        data-bio="Aoife coordinates day-to-day delivery of the project and works closely with young adults and clinic teams."
+        data-link="https://example.com"
+        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Aoife Byrne">
+        <div class="person-info">
+          <strong>Dr Aoife Byrne</strong>
+          <span>Research Fellow</span>
+        </div>
+      </button>
+
+      <!-- Person 4 -->
+      <button class="person-card"
+        data-name="Ms Niamh O’Connor"
+        data-role="Project Manager"
+        data-bio="Niamh oversees coordination, communications, and stakeholder engagement across the D1 Now programme."
+        data-link="https://example.com"
+        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Ms Niamh O’Connor">
+        <div class="person-info">
+          <strong>Ms Niamh O’Connor</strong>
+          <span>Project Manager</span>
+        </div>
+      </button>
+      
+ <!-- Row 2 -->
+<button class="person-card"
+  data-name="Dr Mark O’Sullivan"
+  data-role="Co-Applicant"
+  data-bio="Mark contributes expertise in clinical diabetes care and implementation research."
+  data-link="https://example.com"
+  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Mark O’Sullivan">
+  <div class="person-info">
+    <strong>Dr Mark O’Sullivan</strong>
+    <span>Co-Applicant</span>
+  </div>
+</button>
+
+<button class="person-card"
+  data-name="Prof Helen Walsh"
+  data-role="Clinical Collaborator"
+  data-bio="Helen supports clinical integration of the D1 Now intervention across sites."
+  data-link="https://example.com"
+  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Prof Helen Walsh">
+  <div class="person-info">
+    <strong>Prof Helen Walsh</strong>
+    <span>Clinical Collaborator</span>
+  </div>
+</button>
+
+<button class="person-card"
+  data-name="Dr Paul Keane"
+  data-role="Health Psychologist"
+  data-bio="Paul brings behavioural science expertise to intervention development."
+  data-link="https://example.com"
+  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Paul Keane">
+  <div class="person-info">
+    <strong>Dr Paul Keane</strong>
+    <span>Health Psychologist</span>
+  </div>
+</button>
+
+<button class="person-card"
+  data-name="Ms Laura Ní Bhraonáin"
+  data-role="Research Assistant"
+  data-bio="Laura supports data collection, coordination, and participant engagement."
+  data-link="https://example.com"
+  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Ms Laura Ní Bhraonáin">
+  <div class="person-info">
+    <strong>Ms Laura Ní Bhraonáin</strong>
+    <span>Research Assistant</span>
+  </div>
+</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Team modal ===== -->
+<div class="team-modal" id="teamModal" aria-hidden="true">
+  <div class="team-modal-content" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Close">×</button>
+    <img id="modalImg" alt="">
+    <h3 id="modalName"></h3>
+    <p class="modal-role" id="modalRole"></p>
+    <p id="modalBio"></p>
+    <a id="modalLink" href="#" target="_blank" rel="noopener">View profile →</a>
+  </div>
+</div>
+
+
+    <!-- ===== GOVERNANCE ===== -->
+<section id="governance" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Governance & Oversight</h2>
+      <p class="lead">
+        D1 Now follows robust governance processes to ensure ethical conduct, participant safety,
+        and transparency across all stages of the programme.
+      </p>
     </div>
 
-    <div class="pill-card">
-      <h3 class="pill-title">Research & knowledge sharing</h3>
-      <p>Producing resources, publications, and community-focused tools.</p>
+    <div class="grid-2" aria-label="Governance groups">
+      
+
+
+      <!-- Independent Steering & Data Monitoring Group -->
+      <div class="card">
+        <h3>Independent Steering & Data Monitoring Group</h3>
+        <p>
+          An independent group provides external oversight of the programme, with a focus on
+          participant safety, study integrity, and ethical conduct.
+        </p>
+
+        <ul class="bullets">
+          <li>Dr Sarah O’Connell (Chair)</li>
+          <li>Prof Michael Byrne</li>
+          <li>Dr Aisling Walsh</li>
+          <li>Prof David Keane</li>
+          <li>Ms Fiona Ní Chathasaigh</li>
+          <li>Dr Tomás Ryan</li>
+        </ul>
+      </div>
+      <!-- Core Governance Group -->
+      <div class="card">
+        <h3>Core Governance Group</h3>
+        <p>
+          The Core Governance Group is responsible for the overall direction, delivery,
+          and accountability of the D1 Now programme.
+        </p>
+        <p>
+          This group includes all co-applicants and members of the research team, bringing
+          together expertise in diabetes care, research, youth engagement, and implementation.
+        </p>
+        <p>
+          Membership of this group is detailed in the
+          <a href="#team" style="font-weight:800;color:var(--footer-blue);text-decoration:none;">
+            Research & Team section →
+          </a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- ---------------- NEWSLETTER ---------------- -->
-<section id="newsletter" class="section">
-  <h2 class="section-title">Stay in the Loop</h2>
+    <!-- ===== IMPACT ===== -->
+    <section id="impact" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Outputs & impact</h2>
+          <p class="lead">
+            D1 Now is designed to generate practical resources and clear research learning—useful for young adults, clinics, and decision-makers.
+            This section can link to your publications and resources as they grow.
+          </p>
+        </div>
 
-  <div class="newsletter-box">
-    <p><strong>Get updates on our work, events, and new resources.</strong></p>
-    <input type="email" placeholder="you@example.com">
-    <button>Subscribe</button>
-  </div>
-</section>
+        <div class="impact-grid" aria-label="Outputs and impact tiles">
+          <div class="tile">
+            <span class="tag">Publications</span>
+            <div>Peer-reviewed papers and summaries written for wider audiences.</div>
+            <a href="resources.html#research">View research resources →</a>
+          </div>
+          <div class="tile">
+            <span class="tag">Tools & resources</span>
+            <div>Co-designed templates, guides, videos, and downloads shaped with young adults.</div>
+            <a href="resources.html">Explore resources →</a>
+          </div>
+          <div class="tile">
+            <span class="tag">Service improvement</span>
+            <div>Recommendations and approaches that can be adopted in routine diabetes care.</div>
+            <a href="#approach">See our approach →</a>
+          </div>
+        </div>
 
-</main>
+        <div id="loop" class="loop" aria-label="Stay in the loop">
+          <div><strong>Stay in the loop.</strong> Get programme updates, new resources, and opportunities.</div>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  © D1 Now <span id="year"></span>. Co-designed with the Young Adult Panel.
-</footer>
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Get Help & Info</h4>
+        <a href="trial.html">Join the Trial</a>
+        <a href="yap.html">Join YAP</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact the Team</a>
+      </div>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        <a href="privacy.html">Privacy & Data Protection</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="gdpr.html">GDPR & Consent</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+      <div class="foot-col">
+        <h4>General</h4>
+        <a href="news.html">Latest News</a>
+        <a href="publications.html">Publications</a>
+        <a href="trial-sites.html">For Trial Sites</a>
+        <a href="#loop">Newsletter</a>
+      </div>
+    </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <div class="foot-logos">
+      <div class="foot-logos-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
+        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
+      </div>
+    </div>
 
+    <div class="foot-bottom">
+      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
+      <div class="foot-social">
+        <a class="soc" href="#" aria-label="Facebook">f</a>
+        <a class="soc" href="#" aria-label="X">x</a>
+        <a class="soc" href="#" aria-label="Instagram">ig</a>
+        <a class="soc" href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+ 
+
+  const modal = document.getElementById('teamModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalName = document.getElementById('modalName');
+  const modalRole = document.getElementById('modalRole');
+  const modalBio = document.getElementById('modalBio');
+  const modalLink = document.getElementById('modalLink');
+
+  document.querySelectorAll('.person-card').forEach(card => {
+    card.addEventListener('click', () => {
+      modalImg.src = card.dataset.img;
+      modalName.textContent = card.dataset.name;
+      modalRole.textContent = card.dataset.role;
+      modalBio.textContent = card.dataset.bio;
+      modalLink.href = card.dataset.link;
+      modal.classList.add('active');
+    });
+  });
+
+  modal.addEventListener('click', e => {
+    if(e.target === modal || e.target.classList.contains('modal-close')){
+      modal.classList.remove('active');
+    }
+  });
+
+
+  </script>
 </body>
 </html>
