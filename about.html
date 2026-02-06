@@ -540,7 +540,12 @@ width: 100%;
       cursor:pointer;
     }
     .loop button:hover{background:var(--blue)}
-
+#impact .loop{
+  max-width: 980px;
+  margin: 18px auto 0;   /* centers and matches grid width */
+  width: 100%;
+  box-sizing: border-box;
+}
     /* Responsive */
     @media (max-width: 980px){
       .about-hero{grid-template-columns:1fr}
