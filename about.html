@@ -185,13 +185,19 @@
     main{
       background:var(--soft-bg);
       flex:1;
+      width: 100%;
+  margin: 0;
+  padding: 0;
     }
     section{scroll-margin-top:140px;}
 
     .wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+width: 100%;
+  max-width: var(--maxw);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 .wrap-narrow {
@@ -205,7 +211,9 @@
   margin: 0 auto;
   padding: 0 24px;
 }
-
+.section .wrap{
+  display: block;
+}
     /* ===== Hero (About) ===== */
     .about-hero-wrap{
       background:var(--yellow);
@@ -349,6 +357,14 @@
       gap:18px;
       max-width:980px;
     }
+    
+    .section-head,
+.grid-2,
+.grid-3,
+.team-core-grid{
+  margin-left: auto;
+  margin-right: auto;
+}
 
     .card{
       background:#fff;
@@ -882,7 +898,7 @@ D1 Now is advocating to removes the big barriers for these young people from acc
     <!-- ===== TEAM ===== -->
  <!-- ===== Research & Team (Core people) ===== -->
 <section id="team" class="section">
-  <div class="wrap-wide">
+  <div class="wrap">
     <div class="section-head">
       <h2 class="h2">Research & Team</h2>
       <p class="lead">
