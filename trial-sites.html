@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – D1 Trial (For Trial Sites)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#0AAFF3;
+    --footer-blue:#144182;
+    --yellow:#FDD560;
+    --ink:#0b2b62;
+    --muted:#6b7aa5;
+    --soft-bg:#fffef7;
+    --white:#fff;
+    --shadow:0 6px 28px rgba(0,0,0,0.08);
+    --maxw:1200px;
+    --radius:16px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--footer-blue);color:#111;font-family:Inter,system-ui,Arial,sans-serif;scroll-behavior:smooth}
+  main{background:var(--soft-bg)}
+  h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;color:var(--ink);margin:0}
+  p{margin:0}
+  a{text-decoration:none}
+  ul{margin:0;padding-left:18px}
+  section{scroll-margin-top:140px;}
+
+  /* ========================= HEADER ========================= */
+  header{
+    background:var(--footer-blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px 16px 34px;
+    position:relative;
+  }
+  .header-container{
+    width:100%;
+    max-width:var(--maxw);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+  .logo{
+    font-family:Poppins,Inter,sans-serif;
+    font-weight:800;
+    font-size:2rem;
+    letter-spacing:1px;
+    color:#fff;
+    white-space:nowrap;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex:1;
+    justify-content:flex-start;
+    margin-left:12px;
+  }
+  .nav-list{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:0;
+    margin:0;
+    padding:0;
+    flex-wrap:nowrap;
+  }
+  .nav-item{position:relative;display:flex;align-items:center;}
+  .nav-item:not(:last-child)::after{
+    content:"›";
+    color:rgba(255,255,255,0.75);
+    font-weight:800;
+    margin:0 12px;
+    transform:translateY(-1px);
+  }
+  .nav-link{
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    font-size:0.98rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:8px 6px;
+    border-radius:10px;
+    display:inline-flex;
+    align-items:center;
+    transition:background .2s, opacity .2s;
+    white-space:nowrap;
+  }
+  .nav-link:hover{background:rgba(255,255,255,.10);opacity:.98}
+  .nav-link.active{background:rgba(255,255,255,.14)}
+  .dropdown{
+    position:absolute;
+    left:0;
+    top:100%;
+    min-width:260px;
+    background:#fff;
+    color:#111;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:8px;
+    margin-top:10px;
+    display:none;
+    z-index:50;
+  }
+  .dropdown a{
+    display:block;
+    text-decoration:none;
+    color:#111;
+    padding:10px 12px;
+    border-radius:8px;
+    font-weight:800;
+    white-space:nowrap;
+  }
+  .dropdown a:hover{background:#f0f3f9}
+  .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:block}
+
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:flex-end;
+    white-space:nowrap;
+  }
+  .header-pill{
+    display:inline-block;
+    text-decoration:none;
+    color:#fff;
+    background:var(--blue);
+    padding:10px 16px;
+    border-radius:999px;
+    font-weight:800;
+    font-family:Poppins,Inter,sans-serif;
+    box-shadow:0 6px 18px rgba(10,175,243,.18);
+  }
+  .header-pill.secondary{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.26);
+    box-shadow:0 6px 18px rgba(20,65,130,.10);
+  }
+  .header-pill:hover{filter:brightness(1.06)}
+  .header-gradient-strip{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(90deg,#ff7a18 0%,#ffd84d 35%,#8fd3f4 70%,#4facfe 100%);
+  }
+  @media (max-width:980px){
+    nav{overflow-x:auto}
+    .nav-item:not(:last-child)::after{margin:0 10px}
+  }
+  @media (max-width:720px){
+    .header-container{flex-wrap:wrap}
+    nav{order:3;width:100%;margin-left:0}
+    .header-actions{order:2;width:100%;justify-content:flex-end}
+  }
+
+  /* ========================= HERO ========================= */
+  .hero{
+    background: var(--yellow);
+    position: relative; overflow: hidden;
+    display:flex; justify-content:center;
+    border-bottom:8px solid rgba(20,65,130,.06);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto auto; height:320px; width:320px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+    transform: rotate(16deg);
+  }
+  .hero-inner{
+    width:100%; max-width:var(--maxw);
+    display:grid; grid-template-columns:2.6fr 1.1fr;
+    gap:0; min-height:420px;
+  }
+  .hero-left{position:relative; background:#fff; min-height:420px; overflow:hidden}
+  .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .35s}
+  .hero-controls{
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%);
+    display:flex; gap:18px; align-items:center; justify-content:center;
+    background:rgba(20,65,130,.12); padding:6px 10px; border-radius:999px; backdrop-filter:blur(4px); z-index:2
+  }
+  .hero-btn{
+    border:none; width:45px; height:45px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--footer-blue); color:#fff; cursor:pointer; font-size:1.2rem;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    transition:transform .16s, filter .2s;
+  }
+  .hero-btn:active{transform:scale(.97)}
+  .hero-btn:hover{filter:brightness(1.05)}
+  .hero-right{
+    background:var(--yellow);
+    padding:56px 32px 22px 32px;
+    position:relative;
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+  }
+  .yap-badge{
+    position:absolute; top:12px; right:16px; background:#fff; border:1px solid #e5e9f5; color:var(--footer-blue);
+    font-family:Poppins,Inter,sans-serif; font-weight:800; font-size:.9rem; padding:6px 10px; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,.04)
+  }
+  .hero-title{font-size:2.15rem; line-height:1.18; color:var(--footer-blue); margin:0 0 12px 0}
+  .hero-sub{font-size:1.08rem; color:#233048; margin:0 0 16px 0; line-height:1.6}
+
+  .stats{display:flex; gap:26px; flex-wrap:wrap; margin:16px 0 18px 0}
+  .stat{min-width:160px; border-left:2px solid rgba(20,65,130,.25); padding-left:12px}
+  .stat .num{font-size:2rem; font-weight:800; color:var(--footer-blue); font-family:Poppins,Inter,sans-serif}
+  .stat .lbl{color:#223; font-weight:700}
+
+  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    background:var(--footer-blue);
+    color:#fff;
+    padding:12px 16px;
+    border-radius:999px;
+    font-weight:800;
+    font-family:Poppins,Inter,sans-serif;
+    box-shadow:0 8px 20px rgba(20,65,130,.12);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .btn:hover{background:var(--blue)}
+  .btn.secondary{
+    background:rgba(20,65,130,.08);
+    color:var(--footer-blue);
+    box-shadow:none;
+  }
+  .btn.secondary:hover{background:rgba(10,175,243,.18)}
+
+  /* ===== Wrappers ===== */
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px}
+  .lead{max-width:980px; color:#223; margin-top:8px; line-height:1.7}
+  .section-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .section-kicker{color:var(--muted);font-weight:700}
+
+  /* ===== Tile system ===== */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+  .tile{
+    background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    padding:18px;display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .tile::after{
+    content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;border-radius:50%;
+    background:rgba(253,213,96,.35)
+  }
+  .icon-bubble{
+    width:82px;height:82px;border-radius:50%;
+    background:var(--yellow);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;color:#0b2b62;font-weight:800;
+    box-shadow:0 6px 16px rgba(253,213,96,.35)
+  }
+  .tile h4{margin:0;color:var(--footer-blue);font-weight:900}
+  .tile p{margin:6px 0 0 0;color:#445;line-height:1.55}
+
+  /* ===== Card ===== */
+  .card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px}
+  .card p{color:#223;line-height:1.7}
+  .card h3{color:var(--footer-blue)}
+
+  /* ===== “How it works” tabs (participant-style) ===== */
+  .journey{margin-top:14px}
+  .journey-wrap{display:grid;grid-template-columns:420px 1fr;gap:18px;align-items:stretch}
+  .j-tabs{display:flex;flex-direction:column;gap:12px}
+  .j-tab{
+    width:100%;
+    text-align:left;
+    border:none;
+    border-radius:14px;
+    padding:16px 16px;
+    background:#e9eefc;
+    color:#1f3472;
+    font-weight:900;
+    font-family:Poppins,Inter,sans-serif;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .12s, background .2s, box-shadow .2s;
+  }
+  .j-tab:hover{transform:translateY(-1px)}
+  .j-tab.active{
+    background:#cfe0ff;
+    box-shadow:0 10px 20px rgba(20,65,130,.10);
+    outline:2px solid rgba(20,65,130,.25);
+  }
+  .j-pane{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:22px;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:18px;
+    align-items:center;
+    min-height:320px;
+  }
+  .j-pane h3{color:var(--footer-blue);font-size:1.5rem}
+  .j-pane p{margin-top:10px;color:#223;line-height:1.75;font-size:1.05rem}
+  .j-pane img{
+    width:100%;
+    height:100%;
+    min-height:260px;
+    object-fit:cover;
+    border-radius:16px;
+    background:#f2f2f2;
+  }
+
+  /* ===== Roles (more “clear responsibilities + study support”) ===== */
+  .resp-grid{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .resp-card{
+    background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    padding:18px;border:2px solid rgba(20,65,130,.10);
+  }
+  .resp-card h4{color:var(--footer-blue)}
+  .resp-card ul{margin-top:10px;color:#223;line-height:1.8}
+  .resp-card li{margin:6px 0}
+
+  /* ===== Ethics / Governance ===== */
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 10px;border-radius:999px;
+    background:#e8efff;color:var(--footer-blue);
+    font-weight:900;font-family:Poppins,Inter,sans-serif;
+    white-space:nowrap;
+  }
+  .chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+  /* ===== Participating centres as “team tiles” + modal ===== */
+  .team-grid{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .team-card{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    border:2px solid rgba(20,65,130,.08);
+    cursor:pointer;
+    transition:transform .15s, box-shadow .2s;
+    display:flex;
+    flex-direction:column;
+    min-height:280px;
+  }
+  .team-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
+  .team-photo{
+    height:160px;
+    background:linear-gradient(135deg, rgba(10,175,243,.18), rgba(253,213,96,.55));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .team-photo span{
+    width:74px;height:74px;border-radius:50%;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-family:Poppins,Inter,sans-serif;
+    color:var(--footer-blue);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+  }
+  .team-body{padding:14px 14px 16px 14px;display:flex;flex-direction:column;gap:6px}
+  .team-site{font-weight:900;color:var(--footer-blue);line-height:1.2}
+  .team-pi{color:#223;font-weight:800}
+  .team-role{color:#445}
+  .team-open{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 14px;
+    border-top:1px solid rgba(20,65,130,.10);
+    color:#1f3472;
+    font-weight:900;
+  }
+  .team-open .dot{
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(20,65,130,.08);
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Modal */
+  .modal-bg{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:200;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  .modal-bg.active{display:flex}
+  .modal{
+    width:min(860px, 96vw);
+    background:#fff;
+    border-radius:22px;
+    box-shadow:0 18px 70px rgba(0,0,0,.22);
+    overflow:hidden;
+    position:relative;
+  }
+  .modal-top{
+    background:linear-gradient(90deg, rgba(10,175,243,.18), rgba(253,213,96,.60));
+    padding:18px 18px 14px 18px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .modal-top h3{color:var(--footer-blue)}
+  .modal-close{
+    border:none;background:#fff;
+    width:40px;height:40px;border-radius:12px;
+    cursor:pointer;font-size:1.4rem;
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+  }
+  .modal-body{
+    padding:18px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:16px;
+  }
+  .modal-box{
+    border:2px solid rgba(20,65,130,.10);
+    border-radius:16px;
+    padding:14px;
+    background:#fbfcff;
+  }
+  .modal-box h4{color:var(--footer-blue);margin-bottom:8px}
+  .modal-body p{color:#223;line-height:1.7}
+  .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .mini-link{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:10px 12px;border-radius:12px;
+    background:rgba(20,65,130,.08);
+    color:var(--footer-blue);
+    font-weight:900;
+  }
+  .mini-link:hover{background:rgba(10,175,243,.18)}
+
+  /* ===== Downloads ===== */
+  .dl-grid{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .dl-card{
+    background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    padding:16px;border:2px solid rgba(20,65,130,.10);
+  }
+  .dl-card h4{color:var(--footer-blue)}
+  .dl-card p{margin-top:6px;color:#223;line-height:1.6}
+  .dl-card a{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-top:10px;padding:10px 12px;border-radius:12px;
+    background:rgba(20,65,130,.08);
+    color:var(--footer-blue);font-weight:900;
+  }
+  .dl-card a:hover{background:rgba(10,175,243,.18)}
+
+  /* ===== FAQ ===== */
+  details{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:14px 16px}
+  details + details{margin-top:10px}
+  summary{
+    cursor:pointer;
+    font-family:Poppins,Inter,sans-serif;
+    font-weight:900;color:#1f3472;
+    list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  summary::-webkit-details-marker{display:none}
+  details p{margin-top:10px;color:#223;line-height:1.7}
+
+  /* ===== Footer ===== */
+  footer{background:var(--footer-blue);color:#fff}
+  .foot-top{max-width:var(--maxw);margin:0 auto;padding:26px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .foot-col h4{margin:0 0 10px 0;font-family:Poppins,Inter,sans-serif;font-weight:800;color:#fff}
+  .foot-col a{display:block;color:#e9f0ff;text-decoration:none;margin:6px 0;font-weight:700}
+  .foot-col a:hover{color:#cfe0ff}
+  .foot-logos{background:#133a72;display:flex;justify-content:center}
+  .foot-logos-inner{max-width:var(--maxw);width:100%;padding:12px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center}
+  .foot-logos-inner img{height:36px;background:#fff;border-radius:4px;padding:3px 6px}
+  .foot-bottom{max-width:var(--maxw);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+  .foot-social{display:flex;gap:10px}
+  .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:800;text-decoration:none}
+
+  /* Floating FAQ */
+  .floating-faq-img-link{position:fixed;right:36px;bottom:90px;z-index:100;display:flex;align-items:center;justify-content:center;width:72px;height:72px;text-decoration:none}
+  .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
+  @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
+
+  @media (max-width:1100px){
+    .team-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:1000px){
+    .hero-inner{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr}
+    .grid-2{grid-template-columns:1fr}
+    .journey-wrap{grid-template-columns:1fr}
+    .j-pane{grid-template-columns:1fr}
+    .team-grid{grid-template-columns:repeat(2,1fr)}
+    .dl-grid{grid-template-columns:1fr}
+    .resp-grid{grid-template-columns:1fr}
+    .modal-body{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .team-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">D1 Now</div>
+
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About D1 Now</a>
+            <div class="dropdown">
+              <a href="about.html#what">What is D1 Now?</a>
+              <a href="about.html#why">Why it matters</a>
+              <a href="about.html#approach">Our Approach</a>
+              <a href="about.html#team">Research & Team</a>
+              <a href="about.html#governance">Governance & Oversight</a>
+              <a href="about.html#impact">Outputs & Impact</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="yap.html">Young Adult Panel (YAP)</a>
+            <div class="dropdown">
+              <a href="yap.html#what">What is YAP?</a>
+              <a href="yap.html#members">Meet the Members</a>
+              <a href="yap.html#getinvolved">Get Involved</a>
+              <a href="yap.html#stories">Testimonials & Video</a>
+              <a href="yap.html#impact">YAP Impact</a>
+              <a href="yap.html#blogs">Blogs</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="trial.html">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="trial.html">For Participants</a>
+              <a href="trial-sites.html">For Trial Sites</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Resources</a>
+            <div class="dropdown">
+              <a href="resources.html#yap">YAP Resources</a>
+              <a href="resources.html#trial">Trial Resources</a>
+              <a href="resources.html#research">Research Resources (Publications, Videos, Downloads)</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-pill secondary" href="yap.html">Join YAP</a>
+        <a class="header-pill" href="#contacts">Contact</a>
+      </div>
+    </div>
+    <div class="header-gradient-strip" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <img id="heroImg" class="hero-img"
+               src="https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1600&auto=format&fit=crop"
+               alt="Clinical team meeting">
+          <div class="hero-controls">
+            <button class="hero-btn" id="prevH" aria-label="Previous image">‹</button>
+            <button class="hero-btn" id="nextH" aria-label="Next image">›</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="yap-badge">Trial Site Hub</div>
+          <h1 class="hero-title">Let’s Build a Healthier
+& Safer World, Together </h1>
+          <p class="hero-sub">
+            Everything a clinic team needs in one place — what the trial involves, how delivery works in a cRCT,
+            who does what, and the support your site gets.
+          </p>
+
+          <div class="stats" aria-label="Trial numbers">
+            <div class="stat">
+              <div class="num" id="stat-centres">0</div>
+              <div class="lbl">Centres</div>
+            </div>
+            <div class="stat">
+              <div class="num" id="stat-participants">0</div>
+              <div class="lbl">Participants</div>
+            </div>
+          </div>
+
+          <div class="hero-ctas">
+            <a class="btn" href="#how">How it works</a>
+            <a class="btn secondary" href="#roles">Responsibilities</a>
+            <a class="btn secondary" href="#sites">Participating centres</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Friendly intro (no tiles) ===== -->
+    <section class="wrap" id="intro">
+      <div class="section-title">
+        <h2>Welcome, site teams 👋</h2>
+        <div class="section-kicker">Quick start</div>
+      </div>
+      <p class="lead">
+        This page is a central hub for clinics taking part in the D1 Now Definitive Trial — and it’s also designed
+        to work as a template for future trials. If you’re new to the clinic team, you can use this page to get up to speed fast.
+      </p>
+    </section>
+
+    <!-- ===== Overview tiles ===== -->
+    <section class="wrap" id="overview">
+      <div class="section-title">
+        <h2>Overview of the trial</h2>
+        <div class="section-kicker">Scope</div>
+      </div>
+
+      <div class="grid-3" aria-label="Trial overview tiles">
+        <div class="tile">
+          <div class="icon-bubble">🏥</div>
+          <div>
+            <h4>12 centres</h4>
+            <p>Across the Republic of Ireland and Northern Ireland.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="icon-bubble">👥</div>
+          <div>
+            <h4>348 participants</h4>
+            <p>29 young adults (18–25) per centre living with Type 1 Diabetes.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="icon-bubble">🗓</div>
+          <div>
+            <h4>12-month study</h4>
+            <p>Data collection at baseline, 6 months, and 12 months.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <p>
+          The D1 Now Definitive Trial evaluates the effectiveness and cost-effectiveness of the D1 Now intervention —
+          designed to improve engagement between young adults with Type 1 Diabetes and their healthcare teams, and to support self-management.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== How it works (participant-style tabs) ===== -->
+    <section class="wrap journey" id="how">
+      <div class="section-title">
+        <h2>How it works</h2>
+        <div class="section-kicker">At site level</div>
+      </div>
+      <p class="lead">
+        A simple overview of what delivery can look like. Your local site lead can confirm the exact workflow for your centre.
+      </p>
+
+      <div class="journey-wrap">
+        <div class="j-tabs" id="jTabs" aria-label="How it works steps">
+          <button class="j-tab active" data-pane="setup">🧩 Set-up</button>
+          <button class="j-tab" data-pane="consent">🖊 Consent</button>
+          <button class="j-tab" data-pane="baseline">🧾 Baseline</button>
+          <button class="j-tab" data-pane="delivery">🏥 Delivery</button>
+          <button class="j-tab" data-pane="followup">📍 Follow-up</button>
+          <button class="j-tab" data-pane="close">✅ Close-out</button>
+        </div>
+
+        <div class="j-pane" aria-live="polite">
+          <div>
+            <h3 id="jTitle">Set-up</h3>
+            <p id="jText">
+              Training, materials, and a simple workflow so the clinic team knows exactly what happens and who to contact.
+            </p>
+          </div>
+          <img id="jImg" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="Site set-up">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Responsibilities: Sites vs Study team ===== -->
+    <section class="wrap" id="roles">
+      <div class="section-title">
+        <h2>Responsibilities & support</h2>
+        <div class="section-kicker">Clear and practical</div>
+      </div>
+      <p class="lead">
+        The aim is to make delivery feasible in real clinics. Here’s a clear split between what sites typically do and what the study team provides.
+      </p>
+
+      <div class="resp-grid">
+        <div class="resp-card">
+          <h4>What sites usually do</h4>
+          <ul>
+            <li>Identify eligible young adults attending the clinic and share trial information.</li>
+            <li>Support consent and baseline steps as per site workflow.</li>
+            <li>Coordinate clinic delivery steps with the local trial coordinator.</li>
+            <li>Record required trial data securely and follow guidance for reporting.</li>
+            <li>Flag queries early (we’d rather answer a “small question” than fix a bigger issue later).</li>
+          </ul>
+        </div>
+
+        <div class="resp-card">
+          <h4>What the study team supports</h4>
+          <ul>
+            <li>Training and refreshers (including for new staff who join mid-trial).</li>
+            <li>Templates, scripts, checklists, posters and “how-to” guides.</li>
+            <li>Named trial contacts for coordination and troubleshooting.</li>
+            <li>Support for intervention delivery (agenda-setting tool + support worker where applicable).</li>
+            <li>Centralised lab processes (e.g., HbA1c testing) where applicable.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Ethics / legal / governance ===== -->
+    <section class="wrap" id="ethics">
+      <div class="section-title">
+        <h2>Ethics, governance & legal requirements</h2>
+        <div class="section-kicker">Safety + trust</div>
+      </div>
+
+      <div class="card">
+        <div class="chip-row">
+          <span class="chip">Ethics approval</span>
+          <span class="chip">Informed consent</span>
+          <span class="chip">Data protection</span>
+          <span class="chip">Study oversight</span>
+        </div>
+
+        <p style="margin-top:12px">
+          D1 Now is delivered with clear ethics and governance processes to protect participants and support clinic teams.
+          In practice, this means:
+        </p>
+
+        <ul style="margin-top:10px;line-height:1.9;color:#223">
+          <li><strong>Consent is always voluntary</strong> — young adults can ask questions, take time, and leave at any time.</li>
+          <li><strong>Data is handled securely</strong> and shared only through agreed trial processes.</li>
+          <li><strong>Clear oversight structures</strong> support safe delivery and consistent reporting.</li>
+          <li><strong>Templates and SOPs</strong> help keep documentation simple, consistent, and audit-ready.</li>
+        </ul>
+
+        <p style="margin-top:10px;color:#445">
+          (When you’re ready, we can add your exact ethics reference(s), approvals, and policy links here.)
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Participating centres (team-style cards + PI modal) ===== -->
+    <section class="wrap" id="sites">
+      <div class="section-title">
+        <h2>Participating centres</h2>
+        <div class="section-kicker">Click a site for PI details</div>
+      </div>
+      <p class="lead">
+        For D1 Now, centres are already recruited. For future trials, this section can show both “participating sites” and “sites interested”.
+      </p>
+
+      <div class="team-grid" id="siteGrid" aria-label="Site cards">
+        <!-- Replace with real names + PI info. Initials auto-render in circle. -->
+        <div class="team-card" role="button" tabindex="0"
+             data-site="Galway University Hospitals"
+             data-pi="Dr. [Name]"
+             data-role="Local Site PI"
+             data-bio="Local clinical lead for trial delivery at this centre. Supports implementation and oversight."
+             data-email="sitepi@hospital.ie"
+             data-link="#">
+          <div class="team-photo"><span>GUH</span></div>
+          <div class="team-body">
+            <div class="team-site">Galway University Hospitals</div>
+            <div class="team-pi">Dr. [Name]</div>
+            <div class="team-role">Local Site PI</div>
+          </div>
+          <div class="team-open">
+            <span>View details</span><span class="dot">›</span>
+          </div>
+        </div>
+
+        <div class="team-card" role="button" tabindex="0"
+             data-site="(Add Site 2)"
+             data-pi="Dr. [Name]"
+             data-role="Local Site PI"
+             data-bio="Short description of the PI role and how to contact them locally."
+             data-email="site2@hospital.ie"
+             data-link="#">
+          <div class="team-photo"><span>S2</span></div>
+          <div class="team-body">
+            <div class="team-site">(Add Site 2)</div>
+            <div class="team-pi">Dr. [Name]</div>
+            <div class="team-role">Local Site PI</div>
+          </div>
+          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+        </div>
+
+        <div class="team-card" role="button" tabindex="0"
+             data-site="(Add Site 3)"
+             data-pi="Dr. [Name]"
+             data-role="Local Site PI"
+             data-bio="Short description of the PI role and how to contact them locally."
+             data-email="site3@hospital.ie"
+             data-link="#">
+          <div class="team-photo"><span>S3</span></div>
+          <div class="team-body">
+            <div class="team-site">(Add Site 3)</div>
+            <div class="team-pi">Dr. [Name]</div>
+            <div class="team-role">Local Site PI</div>
+          </div>
+          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+        </div>
+
+        <div class="team-card" role="button" tabindex="0"
+             data-site="(Add Site 4)"
+             data-pi="Dr. [Name]"
+             data-role="Local Site PI"
+             data-bio="Short description of the PI role and how to contact them locally."
+             data-email="site4@hospital.ie"
+             data-link="#">
+          <div class="team-photo"><span>S4</span></div>
+          <div class="team-body">
+            <div class="team-site">(Add Site 4)</div>
+            <div class="team-pi">Dr. [Name]</div>
+            <div class="team-role">Local Site PI</div>
+          </div>
+          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <p>
+          Want this to scale cleanly for all 12 centres? We can generate the full set once you paste your site list + PI names.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Downloads ===== -->
+    <section class="wrap" id="downloads">
+      <div class="section-title">
+        <h2>Downloads</h2>
+        <div class="section-kicker">Site resources</div>
+      </div>
+
+      <div class="dl-grid">
+        <div class="dl-card">
+          <h4>Site Pack (PDF/ZIP)</h4>
+          <p>Workflow, SOPs, templates, quick guides.</p>
+          <a href="#" target="_blank" rel="noopener">Download site pack</a>
+        </div>
+
+        <div class="dl-card">
+          <h4>Recruitment Materials</h4>
+          <p>Posters + clinic-friendly participant information materials.</p>
+          <a href="#" target="_blank" rel="noopener">Download materials</a>
+        </div>
+
+        <div class="dl-card">
+          <h4>Training & Quick Guides</h4>
+          <p>For new staff, refreshers, and “how to deliver” checklists.</p>
+          <a href="#" target="_blank" rel="noopener">Download training</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contacts ===== -->
+    <section class="wrap" id="contacts">
+      <div class="section-title">
+        <h2>Contacts</h2>
+        <div class="section-kicker">Who to email</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-bottom:8px">Study team contacts</h3>
+          <p><strong>Trial coordination:</strong> <span style="color:#445">trial@d1now.ie (placeholder)</span></p>
+          <p style="margin-top:6px"><strong>Data & reporting:</strong> <span style="color:#445">data@d1now.ie (placeholder)</span></p>
+          <p style="margin-top:6px"><strong>Intervention support:</strong> <span style="color:#445">support@d1now.ie (placeholder)</span></p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="mailto:trial@d1now.ie">Email trial team</a>
+            <a class="btn secondary" href="#faq">Read site FAQ</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:8px">New staff joining mid-trial?</h3>
+          <p>
+            Start with the <strong>Training & Quick Guides</strong> download above. If you’re unsure who your local site
+            contact is, email the trial coordination address and we’ll route you.
+          </p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn secondary" href="#how">How it works</a>
+            <a class="btn secondary" href="#roles">Responsibilities</a>
+            <a class="btn secondary" href="#ethics">Ethics & governance</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="wrap" id="faq">
+      <div class="section-title">
+        <h2>Site FAQ</h2>
+        <div class="section-kicker">Quick answers</div>
+      </div>
+
+      <details>
+        <summary>What support is provided to sites? <span>+</span></summary>
+        <p>
+          Training, materials, and a named study contact. The goal is to reduce burden and keep delivery consistent across centres.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can centres already using an agenda-setting tool participate? <span>+</span></summary>
+        <p>
+          Potentially — it depends on how the tool aligns with the trial model and what’s needed for consistent delivery.
+          Contact the study team to discuss.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will previous involvement in the pilot affect recruitment? <span>+</span></summary>
+        <p>
+          It may shape readiness, but participation depends on the trial design and recruitment plan. The study team can advise.
+        </p>
+      </details>
+    </section>
+  </main>
+
+  <!-- ===== Site PI Modal ===== -->
+  <div class="modal-bg" id="siteModalBg" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Site details">
+      <div class="modal-top">
+        <div>
+          <h3 id="mSite">Site name</h3>
+          <p style="margin-top:6px;color:#223;font-weight:800" id="mPI">PI name</p>
+          <p style="margin-top:2px;color:#223" id="mRole">Role</p>
+        </div>
+        <button class="modal-close" id="mClose" aria-label="Close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-box">
+          <h4>About the local site lead</h4>
+          <p id="mBio">Short bio goes here.</p>
+          <div class="modal-actions">
+            <a class="mini-link" id="mEmail" href="#">Email</a>
+            <a class="mini-link" id="mProfile" href="#" target="_blank" rel="noopener">Profile</a>
+          </div>
+        </div>
+
+        <div class="modal-box">
+          <h4>Quick note for new staff</h4>
+          <p>
+            If you’ve joined the clinic mid-trial, your local site PI / coordinator can confirm the practical workflow.
+            You can also use the “How it works” section above for a quick overview.
+          </p>
+          <div class="modal-actions">
+            <a class="mini-link" href="#how">How it works</a>
+            <a class="mini-link" href="#downloads">Downloads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating FAQ -->
+  <a href="#faq" class="floating-faq-img-link" title="Jump to Site FAQ">
+    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
+  </a>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Get Help & Info</h4>
+        <a href="trial.html#join">Join the Trial</a>
+        <a href="yap.html">Join YAP</a>
+        <a href="#contacts">Contact the Team</a>
+        <a href="#downloads">Site Pack</a>
+      </div>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        <a href="privacy.html">Privacy & Data Protection</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="gdpr.html">GDPR & Consent</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+      <div class="foot-col">
+        <h4>General</h4>
+        <a href="news.html">Latest News</a>
+        <a href="publications.html">Publications</a>
+        <a href="trial.html">For Participants</a>
+        <a href="resources.html">Resources</a>
+      </div>
+    </div>
+
+    <div class="foot-logos">
+      <div class="foot-logos-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
+        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
+      <div class="foot-social">
+        <a class="soc" href="#" aria-label="Facebook">f</a>
+        <a class="soc" href="#" aria-label="X">x</a>
+        <a class="soc" href="#" aria-label="Instagram">ig</a>
+        <a class="soc" href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ===== HERO CAROUSEL ===== */
+  const heroImages = [
+    "https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1600&auto=format&fit=crop"
+  ];
+  let hIdx = 0;
+  const hImg = document.getElementById('heroImg');
+  function swapHero(next=true){
+    hIdx = (hIdx + (next?1:-1) + heroImages.length) % heroImages.length;
+    hImg.style.opacity = .08;
+    setTimeout(()=>{ hImg.src = heroImages[hIdx]; hImg.style.opacity = 1; }, 180);
+  }
+  document.getElementById('nextH').onclick = ()=> swapHero(true);
+  document.getElementById('prevH').onclick = ()=> swapHero(false);
+  setInterval(()=>swapHero(true), 5200);
+
+  /* ===== COUNTERS ===== */
+  const targets = { centres: 12, participants: 348 };
+  function animateCount(id, target, dur=900){
+    const el=document.getElementById(id); const t0=performance.now();
+    function step(ts){
+      const p=Math.min((ts-t0)/dur,1);
+      el.textContent = Math.floor(p*target).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('DOMContentLoaded', ()=>{
+    animateCount('stat-centres', targets.centres, 800);
+    animateCount('stat-participants', targets.participants, 1050);
+  });
+
+  /* ===== HOW IT WORKS TABS ===== */
+  const panes = {
+    setup:{
+      title:"Set-up",
+      text:"Training, materials, and a simple workflow so the clinic team knows what happens and who to contact. This also supports new staff joining mid-trial.",
+      img:"https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop"
+    },
+    consent:{
+      title:"Consent",
+      text:"We explain the study clearly, answer questions, and confirm that participation is voluntary. Young adults can leave at any time.",
+      img:"https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop"
+    },
+    baseline:{
+      title:"Baseline",
+      text:"Baseline data collection happens using the agreed site workflow (e.g., questionnaires and routine measures).",
+      img:"https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
+    },
+    delivery:{
+      title:"Delivery",
+      text:"Where applicable, the agenda-setting tool supports more useful visits, and the support worker helps young adults prepare and follow through on priorities.",
+      img:"https://images.unsplash.com/photo-1580281657527-47a6b0d0c7b1?q=80&w=1200&auto=format&fit=crop"
+    },
+    followup:{
+      title:"Follow-up",
+      text:"Data collection at planned timepoints (e.g., 6 months and 12 months), with clear templates and support from the study team.",
+      img:"https://images.unsplash.com/photo-1582719478140-4c3d3c2b12f7?q=80&w=1200&auto=format&fit=crop"
+    },
+    close:{
+      title:"Close-out",
+      text:"Final steps, documentation and wrap-up — plus learning about what worked well in real clinic delivery.",
+      img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
+    }
+  };
+
+  const tabs = document.querySelectorAll('.j-tab');
+  const jTitle = document.getElementById('jTitle');
+  const jText  = document.getElementById('jText');
+  const jImg   = document.getElementById('jImg');
+
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabs.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const k = btn.dataset.pane;
+      jTitle.textContent = panes[k].title;
+      jText.textContent  = panes[k].text;
+      jImg.src           = panes[k].img;
+      jImg.alt           = panes[k].title;
+    });
+  });
+
+  /* ===== SITE MODAL (PI details) ===== */
+  const modalBg = document.getElementById('siteModalBg');
+  const mClose  = document.getElementById('mClose');
+  const mSite   = document.getElementById('mSite');
+  const mPI     = document.getElementById('mPI');
+  const mRole   = document.getElementById('mRole');
+  const mBio    = document.getElementById('mBio');
+  const mEmail  = document.getElementById('mEmail');
+  const mProfile= document.getElementById('mProfile');
+
+  function openSiteModal(card){
+    mSite.textContent = card.dataset.site || "Site";
+    mPI.textContent   = card.dataset.pi || "Local PI";
+    mRole.textContent = card.dataset.role || "Local Site Lead";
+    mBio.textContent  = card.dataset.bio || "";
+    const email = card.dataset.email || "";
+    mEmail.href = email ? `mailto:${email}` : "#";
+    mEmail.textContent = email ? `Email: ${email}` : "Email";
+    mProfile.href = card.dataset.link || "#";
+
+    modalBg.classList.add('active');
+    modalBg.setAttribute('aria-hidden','false');
+    mClose.focus();
+  }
+
+  function closeSiteModal(){
+    modalBg.classList.remove('active');
+    modalBg.setAttribute('aria-hidden','true');
+  }
+
+  document.querySelectorAll('.team-card').forEach(card=>{
+    card.addEventListener('click', ()=> openSiteModal(card));
+    card.addEventListener('keydown', (e)=>{
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        openSiteModal(card);
+      }
+    });
+  });
+
+  mClose.addEventListener('click', closeSiteModal);
+  modalBg.addEventListener('click', (e)=>{
+    if(e.target === modalBg) closeSiteModal();
+  });
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === "Escape" && modalBg.classList.contains('active')) closeSiteModal();
+  });
+</script>
+</body>
+</html>
