@@ -1,273 +1,1543 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Young Adult Panel – D1 Now</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D1 Now – Young Adult Panel (YAP)</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700,500,400,800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #F6F6F6;
+    :root{
+      --blue:#0AAFF3;
+      --footer-blue:#144182;
+      --white:#FFF;
+      --yellow:#FDD560;
+      --ink:#0b2b62;
+      --muted:#6b7aa5;
+      --soft-bg:#fffef7;
+      --shadow:0 6px 28px rgba(0,0,0,0.08);
+      --maxw:1200px;
+      --radius:18px;
     }
-    header {
-      background: #4B2E83;
-      padding: 10px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;background:var(--footer-blue);color:#111;font-family:Inter,Arial,sans-serif;scroll-behavior:smooth}
+    body{display:flex;flex-direction:column;min-height:100vh}
+    main{flex:1;background:var(--soft-bg)}
+    a{text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Anchor offset (taller header) */
+    section{scroll-margin-top:140px;}
+
+    /* ===== Header (matches your latest style) ===== */
+    header{
+      background:var(--footer-blue);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 34px;
+      position:relative;
     }
-    header img {
-      height: 40px;
+    .header-container{
+      width:100%;
+      max-width:var(--maxw);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 10px;
+    .logo{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:800;
+      font-size:2rem;
+      letter-spacing:1px;
+      color:#fff;
+      white-space:nowrap;
     }
-    .hero {
-      background: #E3D5F4 url('images/home6.png') no-repeat center/cover;
-      padding: 60px 20px;
-      text-align: center;
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex:1;
+      justify-content:flex-start;
+      margin-left:12px;
+      overflow:visible;
     }
-    .hero-inner {
-      background: white;
-      display: inline-block;
-      max-width: 720px;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    .nav-list{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:0;
+      margin:0;
+      padding:0;
+      flex-wrap:nowrap;
     }
-    .hero-inner h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .nav-item{position:relative;display:flex;align-items:center;}
+    .nav-item:not(:last-child)::after{
+      content:"›";
+      color:rgba(255,255,255,0.75);
+      font-weight:800;
+      margin:0 12px;
+      transform:translateY(-1px);
     }
-    .hero-inner p {
-      font-size: 16px;
-      margin-bottom: 20px;
+    .nav-link{
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:0.98rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      padding:8px 6px;
+      border-radius:10px;
+      display:inline-flex;
+      align-items:center;
+      transition:background .2s, opacity .2s;
+      white-space:nowrap;
     }
-    .hero-inner a {
-      background: #4B2E83;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
+    .nav-link:hover{background:rgba(255,255,255,.10);opacity:.98}
+    .nav-link.active{background:rgba(255,255,255,.14)}
+
+    .dropdown{
+      position:absolute;
+      left:0;
+      top:100%;
+      min-width:260px;
+      background:#fff;
+      color:#111;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      padding:8px;
+      margin-top:10px;
+      display:none;
+      z-index:50;
     }
-    .section {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .dropdown a{
+      display:block;
+      text-decoration:none;
+      color:#111;
+      padding:10px 12px;
+      border-radius:8px;
+      font-weight:800;
+      white-space:nowrap;
     }
-    .section h2 {
-      font-size: 28px;
-      color: #2B2B2B;
+    .dropdown a:hover{background:#f0f3f9}
+    .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:block}
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      white-space:nowrap;
     }
-    .section p {
-      font-size: 16px;
-      line-height: 1.6;
+    .header-pill{
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      color:#fff;
+      background:var(--blue);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-family:Poppins,Inter,sans-serif;
+      box-shadow:0 6px 18px rgba(10,175,243,.18);
     }
-    .benefit-line {
-      font-size: 16px;
-      margin-top: 10px;
-      font-weight: 500;
-      color: #4B2E83;
+    .header-pill.secondary{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.26);
+      box-shadow:0 6px 18px rgba(20,65,130,.10);
     }
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+    .header-pill:hover{filter:brightness(1.06)}
+    .header-gradient-strip{
+      position:absolute;
+      bottom:0;left:0;width:100%;height:6px;
+      background:linear-gradient(90deg,#ff7a18 0%,#ffd84d 35%,#8fd3f4 70%,#4facfe 100%);
     }
-    .tile {
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      color: #2B2B2B;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    @media (max-width:980px){
+      nav{overflow-x:auto}
+      .nav-item:not(:last-child)::after{margin:0 10px}
     }
-    .tile img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      margin-bottom: 10px;
+    @media (max-width:720px){
+      .header-container{flex-wrap:wrap}
+      nav{order:3;width:100%;margin-left:0}
+      .header-actions{order:2;width:100%;justify-content:flex-end}
     }
-    .benefit-tiles {
-      margin-top: 30px;
+
+    /* ===== Page container ===== */
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 18px}
+
+    /* ===== Hero ===== */
+    .hero{
+      background:var(--yellow);
+      display:flex;
+      justify-content:center;
+      border-bottom:8px solid rgba(20,65,130,.06);
+      position:relative;
+      overflow:hidden;
     }
-    .testimonial-video {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 40px auto;
-      max-width: 960px;
-      padding: 0 20px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-20% -10% auto auto;
+      height:360px;
+      width:360px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+      transform: rotate(16deg);
     }
-    .testimonial {
-      flex: 1;
-      background: #DBD7EC;
-      padding: 30px;
-      font-style: italic;
-      border-radius: 10px;
-      min-width: 280px;
+    .hero-inner{
+      width:100%;
+      max-width:var(--maxw);
+      display:grid;
+      grid-template-columns:2.1fr 1.5fr;
+      gap:18px;
+      padding:26px 18px;
+      align-items:stretch;
+      min-height:420px;
     }
-    .video-embed {
-      flex: 1;
-      min-width: 280px;
+    .hero-card{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:32px;
+      position:relative;
+      overflow:hidden;
     }
-    .video-embed iframe {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      border: none;
+    .hero-kicker{
+      font-weight:900;
+      color:var(--blue);
+      letter-spacing:.02em;
+      margin-bottom:10px;
     }
-    .join-banner {
-      background: #B2E3D1;
-      text-align: center;
-      padding: 40px 20px;
+    .hero-title{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:900;
+      color:var(--footer-blue);
+      font-size:2.5rem;
+      line-height:1.12;
+      margin:0 0 12px 0;
     }
-    .join-banner h2 {
-      margin-bottom: 20px;
+    .hero-sub{
+      color:#233048;
+      font-size:1.12rem;
+      line-height:1.7;
+      margin:0 0 14px 0;
+      max-width:66ch;
     }
-    .join-banner a {
-      background: #4B2E83;
-      color: white;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
+
+    /* Stats strip (requested content) */
+    .stats{
+      margin:14px 0 16px 0;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
     }
-    footer {
-      background-color: #4B2E83;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+    .stat{
+      background:rgba(20,65,130,.06);
+      border-radius:16px;
+      padding:12px 12px;
+      border:2px solid rgba(20,65,130,.08);
+      text-align:left;
     }
-    footer .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    .stat .num{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:900;
+      color:var(--footer-blue);
+      font-size:1.55rem;
+      line-height:1.1;
     }
-    footer .footer-left img {
-      height: 30px;
-      margin-right: 10px;
+    .stat .lbl{
+      margin-top:4px;
+      color:#223;
+      font-weight:800;
+      font-size:.92rem;
     }
-    footer .footer-right {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+
+    .hero-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:12px 0 16px;
     }
-    footer a {
-      color: white;
-      text-decoration: none;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(20,65,130,.08);
+      color:var(--footer-blue);
+      font-weight:900;
+      font-size:.92rem;
+      white-space:nowrap;
+    }
+    .hero-ctas{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:900;
+      font-family:Poppins,Inter,sans-serif;
+      box-shadow:0 8px 20px rgba(20,65,130,.12);
+    }
+    .btn.primary{background:var(--footer-blue);color:#fff}
+    .btn.primary:hover{background:var(--blue)}
+    .btn.secondary{
+      background:#fff;
+      color:var(--footer-blue);
+      box-shadow:inset 0 0 0 2px rgba(20,65,130,.18);
+    }
+    .btn.secondary:hover{box-shadow:inset 0 0 0 2px rgba(10,175,243,.45)}
+
+    .hero-aside{
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:var(--shadow);
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+    }
+    .hero-aside img{
+      height:100%;
+      width:100%;
+      object-fit:cover;
+      min-height:420px;
+    }
+    .hero-aside-overlay{
+      position:absolute;
+      inset:auto 16px 16px 16px;
+      background:rgba(255,255,255,.92);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow:0 10px 22px rgba(0,0,0,.08);
+    }
+    .hero-aside-overlay strong{color:var(--footer-blue)}
+    .hero-aside-overlay p{margin:6px 0 0;color:#223;line-height:1.55}
+
+    @media(max-width:980px){
+      .hero-inner{grid-template-columns:1fr}
+      .hero-aside img{min-height:280px}
+      .hero-title{font-size:2.15rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* ===== Section headers ===== */
+    .sec-title{
+      font-family:Poppins,Inter,sans-serif;
+      font-weight:900;
+      font-size:2.05rem;
+      color:var(--footer-blue);
+      margin:0 0 10px 0;
+    }
+    .sec-lead{
+      color:#223;
+      line-height:1.75;
+      font-size:1.06rem;
+      max-width:80ch;
+      margin:0;
+    }
+
+    /* ===== Cards / grids ===== */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+    .card{
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card.soft-outline{
+      box-shadow:none;
+      border:2px solid rgba(20,65,130,.12);
+      background:#fff;
+    }
+    .card h3{
+      font-family:Poppins,Inter,sans-serif;
+      color:var(--footer-blue);
+      margin:0 0 10px 0;
+      font-weight:900;
+      font-size:1.25rem;
+    }
+    .card p{margin:0;color:#223;line-height:1.7}
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#e8efff;
+      color:var(--footer-blue);
+      font-weight:900;
+      font-size:.88rem;
+      margin-bottom:10px;
+    }
+    .icon-bubble{
+      width:56px;height:56px;border-radius:16px;
+      background:rgba(253,213,96,.65);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.4rem;
+      color:var(--footer-blue);
+      box-shadow:0 10px 20px rgba(253,213,96,.25);
+      flex:0 0 auto;
+    }
+    .card-row{display:flex;align-items:flex-start;gap:12px}
+    .bullets{margin:10px 0 0 0;padding-left:18px;color:#223;line-height:1.85}
+    .bullets li{margin:6px 0}
+    .learn{
+      margin-top:12px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      border:none;
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(20,65,130,.08);
+      color:var(--footer-blue);
+      font-family:Poppins,Inter,sans-serif;
+    }
+    .learn:hover{background:rgba(10,175,243,.18)}
+
+    @media(max-width:980px){
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    /* ===== Long-term PPI Journey (kept, but made true to 10+ years) ===== */
+    .journey{
+      margin-top:16px;
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+    }
+    .step{
+      border-radius:16px;
+      background:rgba(20,65,130,.06);
+      padding:14px;
+      position:relative;
+      min-height:140px;
+      border:2px solid rgba(20,65,130,.08);
+    }
+    .step strong{
+      display:block;
+      font-family:Poppins,Inter,sans-serif;
+      color:var(--footer-blue);
+      font-weight:900;
+      margin-bottom:6px;
+    }
+    .step p{margin:0;color:#223;line-height:1.55;font-size:.98rem}
+    .step::after{
+      content:"";
+      position:absolute;
+      right:-10px;
+      top:50%;
+      transform:translateY(-50%);
+      width:20px;
+      height:2px;
+      background:rgba(20,65,130,.18);
+    }
+    .step:last-child::after{display:none}
+    @media(max-width:980px){
+      .journey{grid-template-columns:1fr;gap:10px}
+      .step::after{display:none}
+    }
+
+    /* ===== Testimonials carousel ===== */
+    .testi-wrap{
+      margin-top:16px;
+      background:var(--yellow);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .testi-row{
+      display:grid;
+      grid-template-columns:56px 1fr 56px;
+      align-items:center;
+      gap:10px;
+    }
+    .testi-btn{
+      width:44px;height:44px;border:none;border-radius:50%;
+      background:var(--footer-blue);color:#fff;cursor:pointer;
+      box-shadow:0 6px 18px rgba(20,65,130,.14);
+      font-size:1.2rem;
+    }
+    .testi-card{
+      background:#fff;
+      border-radius:16px;
+      padding:14px 14px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      min-height:92px;
+    }
+    .testi-card img{
+      width:56px;height:56px;border-radius:50%;
+      object-fit:cover;border:3px solid #fff;
+      background:#f2f2f2;
+    }
+    .testi-quote{font-weight:900;color:var(--footer-blue);line-height:1.35}
+    .testi-name{margin-top:4px;color:#2a3f74;font-weight:800;font-size:.95rem}
+
+    /* ===== Meet the YAP (photos + click-to-open modal bio) ===== */
+    .member-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .member{
+      background:#fff;
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:2px solid rgba(20,65,130,.08);
+      display:flex;
+      flex-direction:column;
+      min-height:310px;
+      cursor:pointer;
+      transition:transform .15s, box-shadow .2s;
+    }
+    .member:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
+    .member-top{
+      height:170px;
+      position:relative;
+      background:#f2f2f2;
+      overflow:hidden;
+    }
+    .member-top img{
+      width:100%;height:100%;
+      object-fit:cover;
+    }
+    .member-tag{
+      position:absolute;
+      left:12px;top:12px;
+      background:rgba(255,255,255,.92);
+      color:var(--footer-blue);
+      font-weight:900;
+      font-family:Poppins,Inter,sans-serif;
+      padding:6px 10px;
+      border-radius:999px;
+      box-shadow:0 8px 20px rgba(0,0,0,.10);
+      font-size:.88rem;
+    }
+    .member-body{padding:14px;display:flex;flex-direction:column;gap:6px}
+    .member-name{font-weight:900;color:var(--footer-blue);line-height:1.15;font-family:Poppins,Inter,sans-serif}
+    .member-line{color:#223;font-weight:800}
+    .member-note{color:#445;line-height:1.55}
+    .member-open{
+      margin-top:auto;
+      border-top:1px solid rgba(20,65,130,.10);
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#1f3472;
+      font-weight:900;
+    }
+    .member-open .dot{
+      width:28px;height:28px;border-radius:50%;
+      background:rgba(20,65,130,.08);
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    @media(max-width:1100px){.member-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:980px){.member-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.member-grid{grid-template-columns:1fr}}
+
+    /* ===== Join strip ===== */
+    .join-strip{
+      margin-top:18px;
+      background:var(--yellow);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .join-strip strong{font-family:Poppins,Inter,sans-serif;color:var(--footer-blue);font-weight:900;font-size:1.1rem}
+    .join-strip p{margin:0;color:#223;line-height:1.6}
+    .join-strip .btn{box-shadow:none}
+
+    /* ===== Footer (same as home) ===== */
+    footer{background:var(--footer-blue);color:#fff}
+    .foot-top{max-width:var(--maxw);margin:0 auto;padding:26px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+    .foot-col h4{margin:0 0 10px 0;font-family:Poppins,Inter,sans-serif;font-weight:800}
+    .foot-col a{display:block;color:#e9f0ff;text-decoration:none;margin:6px 0;font-weight:700}
+    .foot-col a:hover{color:#cfe0ff}
+    .foot-logos{background:#133a72;display:flex;justify-content:center}
+    .foot-logos-inner{max-width:var(--maxw);width:100%;padding:12px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center}
+    .foot-logos-inner img{height:36px;background:#fff;border-radius:4px;padding:3px 6px}
+    .foot-bottom{max-width:var(--maxw);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+    .foot-social{display:flex;gap:10px}
+    .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:800;text-decoration:none}
+
+    /* Floating FAQ (same as home) */
+    .floating-faq-img-link{position:fixed;right:36px;bottom:90px;z-index:100;display:flex;align-items:center;justify-content:center;width:72px;height:72px;text-decoration:none}
+    .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
+    @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
+
+    /* ===== Modal base (used for Join + Learn More + Member Bio) ===== */
+    .modal-bg{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:200;
+      background:rgba(0,0,0,.45);
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+    .modal-bg.active{display:flex}
+    .modal{
+      width:min(920px, 96vw);
+      background:#fff;
+      border-radius:22px;
+      box-shadow:0 18px 70px rgba(0,0,0,.22);
+      overflow:hidden;
+      position:relative;
+    }
+    .modal-top{
+      background:linear-gradient(90deg, rgba(10,175,243,.18), rgba(253,213,96,.60));
+      padding:18px 18px 14px 18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .modal-top h2{
+      margin:0;
+      font-size:1.5rem;
+      color:var(--footer-blue);
+      font-weight:900;
+      font-family:Poppins,Inter,sans-serif;
+    }
+    .modal-top p{margin:6px 0 0;color:#223;line-height:1.5}
+    .modal-close{
+      border:none;background:#fff;
+      width:42px;height:42px;border-radius:12px;
+      cursor:pointer;font-size:1.5rem;
+      box-shadow:0 8px 20px rgba(0,0,0,.10);
+    }
+    .modal-body{
+      padding:18px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:16px;
+    }
+    .panel{
+      border:2px solid rgba(20,65,130,.10);
+      border-radius:16px;
+      padding:14px;
+      background:#fbfcff;
+    }
+    .panel h3{margin:0 0 10px 0;color:var(--footer-blue);font-weight:900;font-size:1.1rem;font-family:Poppins,Inter,sans-serif}
+    label{display:block;font-weight:800;color:#1f3472;margin:10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border:2px solid rgba(20,65,130,.18);
+      border-radius:12px;
+      font:inherit;
+      outline:none;
+      background:#fff;
+    }
+    input:focus, select:focus, textarea:focus{border-color:rgba(10,175,243,.65);box-shadow:0 0 0 4px rgba(10,175,243,.16)}
+    textarea{min-height:110px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .small{color:#445;font-size:.95rem;line-height:1.6}
+    .modal-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      align-items:center;
+    }
+    .btn-modal{
+      border:none;cursor:pointer;
+      padding:12px 16px;border-radius:14px;
+      font-weight:900;
+      font-family:Poppins,Inter,sans-serif;
+    }
+    .btn-modal.primary{background:var(--footer-blue);color:#fff}
+    .btn-modal.primary:hover{background:var(--blue)}
+    .btn-modal.ghost{background:rgba(20,65,130,.08);color:var(--footer-blue)}
+    .btn-modal.ghost:hover{background:rgba(10,175,243,.18)}
+    .success{
+      display:none;
+      margin-top:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      background:rgba(71,184,129,.16);
+      border:2px solid rgba(71,184,129,.28);
+      color:#0b2b62;
+      font-weight:800;
+    }
+    .success.show{display:block}
+
+    /* Learn-more modal is single-column */
+    .modal-body.single{grid-template-columns:1fr}
+
+    /* Member bio modal photo */
+    .bio-head{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .bio-avatar{
+      width:72px;height:72px;border-radius:18px;
+      overflow:hidden;
+      border:3px solid #fff;
+      box-shadow:0 10px 22px rgba(0,0,0,.10);
+      background:#f2f2f2;
+      flex:0 0 auto;
+    }
+    .bio-avatar img{width:100%;height:100%;object-fit:cover}
+    .bio-meta strong{display:block;color:var(--footer-blue);font-family:Poppins,Inter,sans-serif;font-weight:900;font-size:1.15rem}
+    .bio-meta span{display:block;color:#223;font-weight:800;margin-top:2px}
+
+    @media(max-width:980px){
+      .modal-body{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
     }
   </style>
 </head>
-<body>
 
+<body>
+  <!-- ===== Header ===== -->
   <header>
-    <img src="images/d1now-logo.png" alt="D1 Now logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="yap.html">Young Adult Panel</a>
-      <a href="participants.html">Participants</a>
-      <a href="clinics.html">Study Sites</a>
-      <a href="living.html">T1D Resources</a>
-      <a href="publications.html">Publications</a>
-    </nav>
+    <div class="header-container">
+      <div class="logo">D1 Now</div>
+
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About D1 Now</a>
+            <div class="dropdown">
+              <a href="about.html#what">What is D1 Now?</a>
+              <a href="about.html#why">Why it matters</a>
+              <a href="about.html#approach">Our Approach</a>
+              <a href="about.html#team">Research & Team</a>
+              <a href="about.html#governance">Governance & Oversight</a>
+              <a href="about.html#impact">Outputs & Impact</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="yap.html">Young Adult Panel (YAP)</a>
+            <div class="dropdown">
+              <a href="#what">What is YAP?</a>
+              <a href="#whyjoin">Why join?</a>
+              <a href="#involved">What’s involved?</a>
+              <a href="#journey">10+ year journey</a>
+              <a href="#members">Meet the YAP</a>
+              <a href="#join">How to join</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="trial.html">D1 Trial</a>
+            <div class="dropdown" role="menu" aria-label="Trial submenu">
+              <a href="trial.html">For Participants</a>
+              <a href="trial-sites.html">For Trial Sites</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Resources</a>
+            <div class="dropdown">
+              <a href="resources.html#yap">YAP Resources</a>
+              <a href="resources.html#trial">Trial Resources</a>
+              <a href="resources.html#research">Research Resources</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-pill secondary" type="button" onclick="openJoinModal()">Join YAP</button>
+        <a class="header-pill" href="trial.html#join">Join Trial</a>
+      </div>
+    </div>
+
+    <div class="header-gradient-strip" aria-hidden="true"></div>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>Young Adult Panel (YAP)</h1>
-      <p>The Young Adult Panel is a group of young adults living with Type 1 Diabetes, co-designing and shaping the D1 Now study.</p>
-      <a href="#">Interested in joining?</a>
-    </div>
-  </section>
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-label="Young Adult Panel hero">
+      <div class="hero-inner">
+        <div class="hero-card">
+          <div class="hero-kicker">Join the D1 Now Young Adult Panel</div>
+          <h1 class="hero-title">Your voice in diabetes research (for real).</h1>
+          <p class="hero-sub">
+            The YAP is a long-term PPI partnership — active since 2014 — shaping D1 Now through intervention development,
+            pilot work, and now the effectiveness trial. If you’re 18–25 and living with Type 1 Diabetes, you can help steer what happens next.
+          </p>
 
-  <section class="section">
-    <h2>What is the YAP?</h2>
-    <p>We're a network of young adults with lived experience of Type 1 Diabetes. Co-design is at the heart of the D1 Now study – our voices and experiences help shape the research.</p>
-    <div class="benefit-line">It’s a chance to learn, lead, connect and make real impact.</div>
-  </section>
+          <div class="stats" aria-label="YAP impact numbers">
+            <div class="stat">
+              <div class="num">2</div>
+              <div class="lbl">Studies</div>
+            </div>
+            <div class="stat">
+              <div class="num">5+</div>
+              <div class="lbl">YAP-led projects</div>
+            </div>
+            <div class="stat">
+              <div class="num">15+</div>
+              <div class="lbl">Members</div>
+            </div>
+            <div class="stat">
+              <div class="num">20+</div>
+              <div class="lbl">Publications</div>
+            </div>
+          </div>
 
-  <section class="section">
-    <h2>What does being part of the YAP look like?</h2>
-    <div class="tiles">
-      <div class="tile" style="background:#EAE7F8;">
-        <img src="images/yap/meeting.png" alt="Meeting icon" />
-        <div>Monthly online meetings</div>
-      </div>
-      <div class="tile" style="background:#D3EAF7;">
-        <img src="images/yap/design.png" alt="Content icon" />
-        <div>Shaping content and communication</div>
-      </div>
-      <div class="tile" style="background:#FFF1CC;">
-        <img src="images/yap/recruitment.png" alt="Recruitment icon" />
-        <div>Helping with recruitment ideas</div>
-      </div>
-      <div class="tile" style="background:#FFE1D9;">
-        <img src="images/yap/payment.png" alt="Payment icon" />
-        <div>Paid for your time and input</div>
-      </div>
-    </div>
-  </section>
+          <div class="hero-badges" aria-label="YAP highlights">
+            <span class="badge">🧠 Guided by experience</span>
+            <span class="badge">🤝 Mentors + new members</span>
+            <span class="badge">🛠 Behind-the-scenes impact</span>
+          </div>
 
-  <section class="section benefit-tiles">
-    <h2>Why join the YAP?</h2>
-    <div class="tiles">
-      <div class="tile" style="background:#C1E2F7;">
-        <div>Build leadership skills</div>
-      </div>
-      <div class="tile" style="background:#CDEED9;">
-        <div>Connect with like minded”</div>
-      </div>
-      <div class="tile" style="background:#FDE2DC;">
-        <div>Learn about research and design</div>
-      </div>
-      <div class="tile" style="background:#EBDCF5;">
-        <div>Make a real impact in T1D care</div>
-      </div>
-    </div>
-  </section>
+          <div class="hero-ctas">
+            <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
+            <a class="btn secondary" href="#journey">See the 10+ year journey ↓</a>
+          </div>
+        </div>
 
-  <section class="testimonial-video">
-    <div class="testimonial">
-      “quote                                                    quote” – YAP member
-    </div>
-    <div class="video-embed">
-      <iframe src="https://www.youtube.com/embed/6QfDVa3Neoeo" allowfullscreen></iframe>
-    </div>
-  </section>
+        <div class="hero-aside" aria-label="YAP photo">
+          <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/about1.png" alt="Young adult outdoors" />
+          <div class="hero-aside-overlay">
+            <strong>YAP voice</strong>
+            <p id="heroQuote">“Being part of D1 Now feels like my real life is finally in the design.” — Aoife, 21</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="join-banner">
-    <h2>Want to join the YAP?</h2>
-    <p>We’d love to hear from you. Whether you’re curious, creative, or just want to make change – the YAP is open to you.</p>
-    <a href="#">Register interest</a>
-  </section>
+    <!-- ===== What is YAP ===== -->
+    <section class="wrap" id="what">
+      <h2 class="sec-title">What is the Young Adult Panel?</h2>
+      <p class="sec-lead">
+        The Young Adult Panel (YAP) is a group of young adults living with Type 1 Diabetes who collaborate with the D1 Now research team.
+        It’s not a one-off survey or focus group — it’s a long-term partnership where members contribute across the full research journey:
+        shaping studies, improving materials, interpreting findings, and helping share results in ways that land with real people.
+      </p>
 
+      <div class="grid-2">
+        <div class="card soft-outline">
+          <div class="chip">Guided by experience, driven by passion</div>
+          <div class="card-row">
+            <div class="icon-bubble">🌱</div>
+            <div>
+              <h3>Mentors support new members</h3>
+              <p>
+                Our panel has been active since 2014, and experienced members often step up as mentors.
+                They support new members so you can contribute in a way that feels comfortable and meaningful.
+              </p>
+              <button class="learn" type="button"
+                data-modal-title="Mentoring in the YAP"
+                data-modal-text="Some YAP members have been part of D1 Now from early intervention development through pilot work and into the current trial. New members can be paired with experienced members for support — from understanding how meetings work, to sharing ideas, to figuring out what type of involvement suits you best. You never have to ‘know research’ to be part of this — we build that together.">
+                Learn more ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card soft-outline">
+          <div class="chip">What makes it different</div>
+          <div class="card-row">
+            <div class="icon-bubble">🧩</div>
+            <div>
+              <h3>Long-term collaboration</h3>
+              <p>
+                YAP members help keep the work grounded in lived experience — not assumptions.
+                That includes language, design, priorities, and what feels realistic in clinic life.
+              </p>
+              <button class="learn" type="button"
+                data-modal-title="Not always straightforward — and that’s okay"
+                data-modal-text="Real-life involvement isn’t linear. People’s availability changes. Priorities shift between intervention development, pilot phases, and effectiveness trials. The YAP works because it’s flexible and honest: you can dip in and out, choose what you take on, and still make real contributions that shape decisions.">
+                Learn more ›
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why join ===== -->
+    <section class="wrap" id="whyjoin">
+      <h2 class="sec-title">Why join the YAP?</h2>
+      <p class="sec-lead">
+        Joining the YAP means becoming part of the study team. You’ll go behind the scenes and help drive change in how diabetes care is designed and delivered for young adults.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">✨</div>
+            <div>
+              <h3>Make a real difference</h3>
+              <p>Your input helps shape research and resources that can improve care and support.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🗣</div>
+            <div>
+              <h3>Be heard</h3>
+              <p>Keep young adults’ voices at the centre — in decisions, language, and priorities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🧠</div>
+            <div>
+              <h3>Build skills</h3>
+              <p>Co-design, communication, research insight, advocacy — skills that travel with you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card soft-outline" style="margin-top:16px">
+        <div class="chip">The full list</div>
+        <p>
+          You’ll have opportunities to impact real lives, develop new skills, connect with peers, boost your CV,
+          represent the study at events (like conferences), and potentially contribute to publications.
+        </p>
+        <button class="learn" type="button"
+          data-modal-title="Why join? (full list)"
+          data-modal-text="• Impact real lives: your contributions shape research that improves support for young adults with T1D.\n• Be heard: young adults’ voices stay at the forefront of research and advocacy.\n• Develop skills: hands-on experience with co-design, research, healthcare, and communication.\n• Connect with peers: meet people who get it (as much or as little as you want).\n• Boost your CV: meaningful involvement in real research work.\n• Be recognised: opportunities to represent the study and (where appropriate) contribute to publications and dissemination.">
+          Learn more ›
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== What's involved ===== -->
+    <section class="wrap" id="involved">
+      <h2 class="sec-title">What’s involved if you join?</h2>
+      <p class="sec-lead">
+        You don’t have to do everything — pick the areas you’re most interested in and where you can make the biggest impact.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🧪</div>
+            <div>
+              <h3>Shape research</h3>
+              <p>Bring your ideas and priorities into study design and delivery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">📝</div>
+            <div>
+              <h3>Make materials matter</h3>
+              <p>Help ensure info sheets, consent forms, and questionnaires are clear and usable.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">📊</div>
+            <div>
+              <h3>Get hands-on with data</h3>
+              <p>Support interpretation of findings — what matters, what’s surprising, what it means.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🌐</div>
+            <div>
+              <h3>Be a voice online</h3>
+              <p>Help shape website content, social posts, videos, and infographics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🤝</div>
+            <div>
+              <h3>Collaborate + learn</h3>
+              <p>Work alongside young adults, clinicians, and researchers — with mentoring built in.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🏅</div>
+            <div>
+              <h3>Be recognised</h3>
+              <p>Opportunities to contribute to dissemination and represent the project.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card soft-outline" style="margin-top:16px">
+        <div class="chip">Expanded view</div>
+        <p>
+          If you want the detailed breakdown (with examples), you can open the full “What’s involved” list below.
+        </p>
+        <button class="learn" type="button"
+          data-modal-title="What’s involved? (full list)"
+          data-modal-text="Examples of what YAP members might do:\n▶ Shape research: help decide what questions and outcomes matter.\n▶ Make materials matter: improve clarity and tone of info sheets, consent forms, questionnaires.\n▶ Get hands-on with data: share insights that help interpret findings.\n▶ Be a voice online: co-create website content, social media, videos, infographics.\n▶ Collaborate and learn: work with young adults, clinicians, and researchers.\n▶ Build your future: gain experience in research, writing, and patient advocacy.\n▶ Get appreciated: receive recognition for time and contributions (e.g., meetings, activities).\n\nYou don’t have to do it all — choose what suits you best.">
+          Learn more ›
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== 10+ year journey (kept, but made true to the real story) ===== -->
+    <section class="wrap" id="journey">
+      <h2 class="sec-title">A 10+ year partnership (not a straight line)</h2>
+      <p class="sec-lead">
+        The YAP has been with D1 Now from early intervention development, through pilot work, and into the current effectiveness trial.
+        This journey is iterative — learning, adapting, and improving over time.
+      </p>
+
+      <div class="journey" aria-label="YAP long-term journey">
+        <div class="step">
+          <strong>2014: Start</strong>
+          <p>YAP begins as a long-term PPI group to keep the project grounded in young adult experience.</p>
+        </div>
+        <div class="step">
+          <strong>Develop</strong>
+          <p>Co-create intervention ideas, tools, and language that reflect real clinic life and real life outside clinic.</p>
+        </div>
+        <div class="step">
+          <strong>Pilot</strong>
+          <p>Test what works in practice. Improve materials and delivery based on what actually happens.</p>
+        </div>
+        <div class="step">
+          <strong>Trial</strong>
+          <p>Support the effectiveness trial — including participant-facing resources and how results are shared.</p>
+        </div>
+        <div class="step">
+          <strong>Next</strong>
+          <p>Keep improving: new members join, mentors support, and the work evolves with what young adults need now.</p>
+        </div>
+      </div>
+
+      <div class="join-strip" id="join" style="margin-top:16px">
+        <div>
+          <strong>Interested in making a difference?</strong>
+          <p>Click “Join the YAP” and choose what type of involvement suits you.</p>
+        </div>
+        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="wrap" id="voices">
+      <h2 class="sec-title">What members say</h2>
+      <p class="sec-lead">A few snapshots of the vibe — honest, supportive, and impact-focused.</p>
+
+      <div class="testi-wrap" aria-label="YAP testimonials">
+        <div class="testi-row">
+          <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
+
+          <div class="testi-card">
+            <img id="testiPhoto" src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Testimonial portrait">
+            <div>
+              <div class="testi-quote" id="testiQuote">“The YAP gave me a voice — and the team listened.”</div>
+              <div class="testi-name" id="testiName">Chris, 23</div>
+            </div>
+          </div>
+
+          <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Meet the YAP (photos + modal bios) ===== -->
+    <section class="wrap" id="members">
+      <h2 class="sec-title">Meet the YAP</h2>
+      <p class="sec-lead">
+        Click a member card to see a short bio. (You can decide later whether this uses real names/photos, first names only, or anonymised profiles.)
+      </p>
+
+      <div class="member-grid" aria-label="YAP member cards">
+        <div class="member" role="button" tabindex="0"
+             data-name="Aoife"
+             data-role="YAP member • Mentor"
+             data-bio="Aoife has been involved in shaping youth-friendly language and helping the team spot when something feels too clinical. She supports new members to find a style of involvement that suits them."
+             data-link="#"
+             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png">
+          <div class="member-top">
+            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Aoife">
+            <div class="member-tag">Mentor</div>
+          </div>
+          <div class="member-body">
+            <div class="member-name">Aoife</div>
+            <div class="member-line">YAP member</div>
+            <div class="member-note">“Short, clear info makes the biggest difference.”</div>
+          </div>
+          <div class="member-open"><span>View bio</span><span class="dot">›</span></div>
+        </div>
+
+        <div class="member" role="button" tabindex="0"
+             data-name="Chris"
+             data-role="YAP member"
+             data-bio="Chris contributes across sessions by focusing on what feels realistic in day-to-day life with T1D, and helping make materials clearer and more respectful."
+             data-link="#"
+             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+          <div class="member-top">
+            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Chris">
+            <div class="member-tag">Member</div>
+          </div>
+          <div class="member-body">
+            <div class="member-name">Chris</div>
+            <div class="member-line">YAP member</div>
+            <div class="member-note">“I liked seeing our feedback become real changes.”</div>
+          </div>
+          <div class="member-open"><span>View bio</span><span class="dot">›</span></div>
+        </div>
+
+        <div class="member" role="button" tabindex="0"
+             data-name="Saoirse"
+             data-role="YAP member"
+             data-bio="Saoirse supports the project by stress-testing ideas: what’s confusing, what’s missing, and what would make someone actually use a resource when life is busy."
+             data-link="#"
+             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png">
+          <div class="member-top">
+            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png" alt="Saoirse">
+            <div class="member-tag">Member</div>
+          </div>
+          <div class="member-body">
+            <div class="member-name">Saoirse</div>
+            <div class="member-line">YAP member</div>
+            <div class="member-note">“It’s not about perfect diabetes — it’s about real life.”</div>
+          </div>
+          <div class="member-open"><span>View bio</span><span class="dot">›</span></div>
+        </div>
+
+        <div class="member" role="button" tabindex="0"
+             data-name="Liam"
+             data-role="YAP member"
+             data-bio="Liam focuses on making steps feel doable: clear signposting, fewer barriers, and making joining or taking part feel straightforward."
+             data-link="#"
+             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+          <div class="member-top">
+            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="Liam">
+            <div class="member-tag">Member</div>
+          </div>
+          <div class="member-body">
+            <div class="member-name">Liam</div>
+            <div class="member-line">YAP member</div>
+            <div class="member-note">“Clear steps made getting involved easy.”</div>
+          </div>
+          <div class="member-open"><span>View bio</span><span class="dot">›</span></div>
+        </div>
+      </div>
+
+      <div class="card soft-outline" style="margin-top:16px">
+        <div class="chip">Next step</div>
+        <p>
+          When you share the full YAP member list + preferred display style (photos vs initials, names vs first names),
+          we can generate the full grid consistently.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Stay in the loop ===== -->
+    <section class="wrap" id="loop">
+      <h2 class="sec-title">Stay in the loop</h2>
+      <p class="sec-lead">
+        Get updates on new resources, opportunities to join sessions, and what the YAP is working on next.
+      </p>
+
+      <div class="join-strip" style="margin-top:16px">
+        <div>
+          <strong>Newsletter updates</strong>
+          <p>Short and occasional — no spam.</p>
+        </div>
+        <form action="#" method="post" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0">
+          <label for="email" style="position:absolute;left:-9999px">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required
+                 style="padding:12px 14px;border-radius:12px;border:2px solid rgba(20,65,130,.18);min-width:260px;outline:none">
+          <button class="btn primary" type="submit" style="box-shadow:none">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
   <footer>
-    <div class="footer-left">
-      <div>
-        <img src="images/hrb-logo.png" alt="HRB Logo" />
-        <img src="images/nuig-logo.png" alt="NUIG Logo" />
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Get Help & Info</h4>
+        <a href="trial.html#join">Join the Trial</a>
+        <a href="#join" onclick="openJoinModal();return false;">Join YAP</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact the Team</a>
       </div>
-      <div>  </div>
-      <small>Website built using HRB funding</small>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        <a href="privacy.html">Privacy & Data Protection</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="gdpr.html">GDPR & Consent</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+      <div class="foot-col">
+        <h4>General</h4>
+        <a href="news.html">Latest News</a>
+        <a href="publications.html">Publications</a>
+        <a href="trial-sites.html">For Trial Sites</a>
+        <a href="#loop">Newsletter</a>
+      </div>
     </div>
-    <div class="footer-right">
-      <a href="#">Give feedback</a>
-      <a href="#">Privacy policy</a>
-      <a href="#">Accessibility</a>
-      <a href="#">Contact us</a>
+
+    <div class="foot-logos">
+      <div class="foot-logos-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
+        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
+      <div class="foot-social">
+        <a class="soc" href="#" aria-label="Facebook">f</a>
+        <a class="soc" href="#" aria-label="X">x</a>
+        <a class="soc" href="#" aria-label="Instagram">ig</a>
+        <a class="soc" href="#" aria-label="LinkedIn">in</a>
+      </div>
     </div>
   </footer>
 
+  <!-- Floating FAQ -->
+  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
+    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
+  </a>
+
+  <!-- ===== Join YAP Modal ===== -->
+  <div class="modal-bg" id="joinModalBg" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Join the YAP">
+      <div class="modal-top">
+        <div>
+          <h2>Join the Young Adult Panel</h2>
+          <p>Tell us what suits you. We’ll follow up with next steps and options.</p>
+        </div>
+        <button class="modal-close" type="button" aria-label="Close" onclick="closeJoinModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="panel">
+          <h3>Your details</h3>
+
+          <form id="joinForm" action="#" method="post">
+            <div class="form-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number" min="18" max="25" placeholder="18–25" required>
+              </div>
+            </div>
+
+            <label for="email2">Email</label>
+            <input id="email2" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="county">County (optional)</label>
+            <input id="county" name="county" type="text" placeholder="e.g., Galway">
+
+            <label for="how">How would you like to take part?</label>
+            <select id="how" name="how" required>
+              <option value="" selected disabled>Choose an option</option>
+              <option>Short online feedback (quick reviews)</option>
+              <option>Group sessions (online)</option>
+              <option>Group sessions (in-person if available)</option>
+              <option>I’m not sure yet — tell me options</option>
+            </select>
+
+            <label for="note">Anything you’d like us to know? (optional)</label>
+            <textarea id="note" name="note" placeholder="Access needs, timing preferences, topics you care about, etc."></textarea>
+
+            <div class="modal-actions">
+              <button class="btn-modal primary" type="submit">Send</button>
+              <button class="btn-modal ghost" type="button" onclick="closeJoinModal()">Not now</button>
+              <span class="small">By submitting, you’re asking us to contact you about joining YAP.</span>
+            </div>
+
+            <div class="success" id="joinSuccess" role="status" aria-live="polite">
+              Thanks — we’ve received your message. We’ll be in touch soon with next steps.
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>What happens next</h3>
+          <p class="small" style="margin:0 0 10px 0">
+            We’ll reply with involvement options, upcoming dates (if applicable), and a chance to ask questions.
+          </p>
+          <ul class="bullets">
+            <li>We’ll explain time commitment clearly.</li>
+            <li>You can choose how involved you want to be.</li>
+            <li>No pressure — you can say yes later.</li>
+          </ul>
+
+          <div class="card soft-outline" style="margin-top:12px">
+            <div class="chip">Privacy note</div>
+            <p class="small">
+              We only use your details to contact you about YAP involvement. You can ask to have your info deleted at any time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Generic “Learn more” Modal ===== -->
+  <div class="modal-bg" id="infoModalBg" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="More information">
+      <div class="modal-top">
+        <div>
+          <h2 id="infoTitle">More information</h2>
+          <p id="infoSub">Extra detail, without cluttering the page.</p>
+        </div>
+        <button class="modal-close" type="button" aria-label="Close" onclick="closeInfoModal()">×</button>
+      </div>
+      <div class="modal-body single">
+        <div class="panel">
+          <h3 style="margin-bottom:8px">Details</h3>
+          <p class="small" id="infoText" style="white-space:pre-line;margin:0"></p>
+          <div class="modal-actions">
+            <button class="btn-modal ghost" type="button" onclick="closeInfoModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Member Bio Modal ===== -->
+  <div class="modal-bg" id="bioModalBg" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Member bio">
+      <div class="modal-top">
+        <div class="bio-head">
+          <div class="bio-avatar"><img id="bioImg" src="" alt=""></div>
+          <div class="bio-meta">
+            <strong id="bioName">Name</strong>
+            <span id="bioRole">Role</span>
+          </div>
+        </div>
+        <button class="modal-close" type="button" aria-label="Close" onclick="closeBioModal()">×</button>
+      </div>
+      <div class="modal-body single">
+        <div class="panel">
+          <h3>Bio</h3>
+          <p class="small" id="bioText" style="margin:0;line-height:1.75"></p>
+          <div class="modal-actions">
+            <a class="btn-modal ghost" id="bioLink" href="#" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">
+              Profile link
+            </a>
+            <button class="btn-modal ghost" type="button" onclick="closeBioModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hero quote rotation
+    const heroQuotes = [
+      '“Being part of D1 Now feels like my real life is finally in the design.” — Aoife, 21',
+      '“The YAP gave me a voice — and the team listened.” — Chris, 23',
+      '“It’s not about perfect diabetes — it’s about real life.” — Saoirse, 19',
+      '“Clear steps made getting involved easy.” — Liam, 20'
+    ];
+    let hq = 0;
+    const heroQuoteEl = document.getElementById('heroQuote');
+    setInterval(() => {
+      hq = (hq + 1) % heroQuotes.length;
+      heroQuoteEl.textContent = heroQuotes[hq];
+    }, 6500);
+
+    // Testimonials carousel
+    (function(){
+      const testimonials = [
+        {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png"},
+        {quote:"“Clear info and kind people. That’s why I got involved.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png"},
+        {quote:"“Clear steps made getting involved easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png"},
+        {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png"}
+      ];
+      let i=0;
+      const q = document.getElementById('testiQuote');
+      const n = document.getElementById('testiName');
+      const p = document.getElementById('testiPhoto');
+      function show(idx){
+        const t=testimonials[idx];
+        q.textContent=t.quote;
+        n.textContent=t.name;
+        p.src=t.photo;
+      }
+      document.getElementById('nextTesti').onclick = ()=>{ i=(i+1)%testimonials.length; show(i); };
+      document.getElementById('prevTesti').onclick = ()=>{ i=(i-1+testimonials.length)%testimonials.length; show(i); };
+      setInterval(()=>{ i=(i+1)%testimonials.length; show(i); }, 5500);
+    })();
+
+    // ===== Modal helpers (Join) =====
+    const joinBg = document.getElementById('joinModalBg');
+    const joinForm = document.getElementById('joinForm');
+    const joinSuccess = document.getElementById('joinSuccess');
+    let lastFocus = null;
+
+    function openJoinModal(){
+      lastFocus = document.activeElement;
+      joinBg.classList.add('active');
+      joinBg.setAttribute('aria-hidden','false');
+      joinSuccess.classList.remove('show');
+      setTimeout(()=> document.getElementById('name').focus(), 50);
+    }
+    function closeJoinModal(){
+      joinBg.classList.remove('active');
+      joinBg.setAttribute('aria-hidden','true');
+      if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    }
+    window.openJoinModal = openJoinModal;
+    window.closeJoinModal = closeJoinModal;
+
+    joinBg.addEventListener('click', (e)=>{ if(e.target === joinBg) closeJoinModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === "Escape" && joinBg.classList.contains('active')) closeJoinModal(); });
+
+    joinForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      joinSuccess.classList.add('show');
+      joinForm.reset();
+    });
+
+    // ===== Learn more modal =====
+    const infoBg = document.getElementById('infoModalBg');
+    const infoTitle = document.getElementById('infoTitle');
+    const infoText = document.getElementById('infoText');
+
+    function openInfoModal(title, text){
+      lastFocus = document.activeElement;
+      infoTitle.textContent = title || "More information";
+      infoText.textContent = text || "";
+      infoBg.classList.add('active');
+      infoBg.setAttribute('aria-hidden','false');
+      setTimeout(()=> infoBg.querySelector('.modal-close').focus(), 50);
+    }
+    function closeInfoModal(){
+      infoBg.classList.remove('active');
+      infoBg.setAttribute('aria-hidden','true');
+      if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    }
+    window.closeInfoModal = closeInfoModal;
+
+    document.querySelectorAll('button.learn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        openInfoModal(btn.dataset.modalTitle, btn.dataset.modalText);
+      });
+    });
+
+    infoBg.addEventListener('click', (e)=>{ if(e.target === infoBg) closeInfoModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === "Escape" && infoBg.classList.contains('active')) closeInfoModal(); });
+
+    // ===== Member bio modal =====
+    const bioBg = document.getElementById('bioModalBg');
+    const bioImg = document.getElementById('bioImg');
+    const bioName = document.getElementById('bioName');
+    const bioRole = document.getElementById('bioRole');
+    const bioText = document.getElementById('bioText');
+    const bioLink = document.getElementById('bioLink');
+
+    function openBioModal(card){
+      lastFocus = document.activeElement;
+      const name = card.dataset.name || "Member";
+      const role = card.dataset.role || "YAP member";
+      const bio  = card.dataset.bio  || "";
+      const img  = card.dataset.img  || "";
+      const link = card.dataset.link || "#";
+
+      bioName.textContent = name;
+      bioRole.textContent = role;
+      bioText.textContent = bio;
+      bioImg.src = img;
+      bioImg.alt = name;
+      bioLink.href = link;
+
+      bioBg.classList.add('active');
+      bioBg.setAttribute('aria-hidden','false');
+      setTimeout(()=> bioBg.querySelector('.modal-close').focus(), 50);
+    }
+    function closeBioModal(){
+      bioBg.classList.remove('active');
+      bioBg.setAttribute('aria-hidden','true');
+      if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    }
+    window.closeBioModal = closeBioModal;
+
+    document.querySelectorAll('.member').forEach(card=>{
+      card.addEventListener('click', ()=> openBioModal(card));
+      card.addEventListener('keydown', (e)=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          openBioModal(card);
+        }
+      });
+    });
+
+    bioBg.addEventListener('click', (e)=>{ if(e.target === bioBg) closeBioModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === "Escape" && bioBg.classList.contains('active')) closeBioModal(); });
+
+    // Global ESC closes top-most open modal (simple priority)
+    window.addEventListener('keydown', (e)=>{
+      if(e.key !== "Escape") return;
+      if(bioBg.classList.contains('active')) return;   // handled above
+      if(infoBg.classList.contains('active')) return;  // handled above
+      if(joinBg.classList.contains('active')) return;  // handled above
+    });
+  </script>
 </body>
 </html>
