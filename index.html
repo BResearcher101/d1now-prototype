@@ -238,6 +238,20 @@
     .modal-close{position:absolute;top:10px;right:14px;font-size:1.6rem;border:none;background:transparent;cursor:pointer;color:#333}
   </style>
 </head>
+
+	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 <body>
   <!-- ===== Header ===== -->
   <header>
