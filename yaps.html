@@ -231,7 +231,7 @@
       max-width:66ch;
     }
 
-    /* Stats strip (requested content) */
+    /* Stats strip */
     .stats{
       margin:14px 0 16px 0;
       display:grid;
@@ -423,7 +423,7 @@
       .grid-2{grid-template-columns:1fr}
     }
 
-    /* ===== Long-term PPI Journey (kept, but made true to 10+ years) ===== */
+    /* ===== Long-term PPI Journey ===== */
     .journey{
       margin-top:16px;
       background:#fff;
@@ -504,7 +504,7 @@
     .testi-quote{font-weight:900;color:var(--footer-blue);line-height:1.35}
     .testi-name{margin-top:4px;color:#2a3f74;font-weight:800;font-size:.95rem}
 
-    /* ===== Meet the YAP (photos + click-to-open modal bio) ===== */
+    /* ===== Meet the YAP (photos + modal bios) ===== */
     .member-grid{
       margin-top:16px;
       display:grid;
@@ -530,10 +530,7 @@
       background:#f2f2f2;
       overflow:hidden;
     }
-    .member-top img{
-      width:100%;height:100%;
-      object-fit:cover;
-    }
+    .member-top img{width:100%;height:100%;object-fit:cover;}
     .member-tag{
       position:absolute;
       left:12px;top:12px;
@@ -565,7 +562,6 @@
       background:rgba(20,65,130,.08);
       display:flex;align-items:center;justify-content:center;
     }
-
     @media(max-width:1100px){.member-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:980px){.member-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:560px){.member-grid{grid-template-columns:1fr}}
@@ -605,7 +601,7 @@
     .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
     @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
 
-    /* ===== Modal base (used for Join + Learn More + Member Bio) ===== */
+    /* ===== Modal base ===== */
     .modal-bg{
       display:none;
       position:fixed;
@@ -703,10 +699,8 @@
     }
     .success.show{display:block}
 
-    /* Learn-more modal is single-column */
     .modal-body.single{grid-template-columns:1fr}
 
-    /* Member bio modal photo */
     .bio-head{
       display:flex;
       gap:14px;
@@ -754,15 +748,15 @@
             </div>
           </li>
 
+          <!-- UPDATED dropdown to match YAP requested list -->
           <li class="nav-item">
             <a class="nav-link active" href="yap.html">Young Adult Panel (YAP)</a>
             <div class="dropdown">
-              <a href="#what">What is YAP?</a>
-              <a href="#whyjoin">Why join?</a>
-              <a href="#involved">What’s involved?</a>
-              <a href="#journey">10+ year journey</a>
-              <a href="#members">Meet the YAP</a>
-              <a href="#join">How to join</a>
+              <a href="#members">Meet the Members</a>
+              <a href="#get-involved">Get Involved</a>
+              <a href="#testimonials">Testimonials &amp; Video</a>
+              <a href="#impact">YAP Impact</a>
+              <a href="yap-blogs.html">Blogs</a>
             </div>
           </li>
 
@@ -813,7 +807,7 @@
             </div>
             <div class="stat">
               <div class="num">5+</div>
-              <div class="lbl">YAP-led projects</div>
+              <div class="lbl">YAP led projects</div>
             </div>
             <div class="stat">
               <div class="num">15+</div>
@@ -833,7 +827,7 @@
 
           <div class="hero-ctas">
             <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
-            <a class="btn secondary" href="#journey">See the 10+ year journey ↓</a>
+            <a class="btn secondary" href="#impact">See YAP impact ↓</a>
           </div>
         </div>
 
@@ -847,7 +841,7 @@
       </div>
     </section>
 
-    <!-- ===== What is YAP ===== -->
+    <!-- ===== What is YAP (kept, but dropdown doesn’t need to link here) ===== -->
     <section class="wrap" id="what">
       <h2 class="sec-title">What is the Young Adult Panel?</h2>
       <p class="sec-lead">
@@ -869,7 +863,7 @@
               </p>
               <button class="learn" type="button"
                 data-modal-title="Mentoring in the YAP"
-                data-modal-text="Some YAP members have been part of D1 Now from early intervention development through pilot work and into the current trial. New members can be paired with experienced members for support — from understanding how meetings work, to sharing ideas, to figuring out what type of involvement suits you best. You never have to ‘know research’ to be part of this — we build that together.">
+                data-modal-text="Some YAP members have been part of D1 Now from early intervention development through pilot work and into the current trial. New members can be supported by experienced members — from understanding how meetings work, to sharing ideas, to finding what type of involvement suits you best. You never have to ‘know research’ to be part of this — we build that together.">
                 Learn more ›
               </button>
             </div>
@@ -897,206 +891,9 @@
       </div>
     </section>
 
-    <!-- ===== Why join ===== -->
-    <section class="wrap" id="whyjoin">
-      <h2 class="sec-title">Why join the YAP?</h2>
-      <p class="sec-lead">
-        Joining the YAP means becoming part of the study team. You’ll go behind the scenes and help drive change in how diabetes care is designed and delivered for young adults.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">✨</div>
-            <div>
-              <h3>Make a real difference</h3>
-              <p>Your input helps shape research and resources that can improve care and support.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🗣</div>
-            <div>
-              <h3>Be heard</h3>
-              <p>Keep young adults’ voices at the centre — in decisions, language, and priorities.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🧠</div>
-            <div>
-              <h3>Build skills</h3>
-              <p>Co-design, communication, research insight, advocacy — skills that travel with you.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card soft-outline" style="margin-top:16px">
-        <div class="chip">The full list</div>
-        <p>
-          You’ll have opportunities to impact real lives, develop new skills, connect with peers, boost your CV,
-          represent the study at events (like conferences), and potentially contribute to publications.
-        </p>
-        <button class="learn" type="button"
-          data-modal-title="Why join? (full list)"
-          data-modal-text="• Impact real lives: your contributions shape research that improves support for young adults with T1D.\n• Be heard: young adults’ voices stay at the forefront of research and advocacy.\n• Develop skills: hands-on experience with co-design, research, healthcare, and communication.\n• Connect with peers: meet people who get it (as much or as little as you want).\n• Boost your CV: meaningful involvement in real research work.\n• Be recognised: opportunities to represent the study and (where appropriate) contribute to publications and dissemination.">
-          Learn more ›
-        </button>
-      </div>
-    </section>
-
-    <!-- ===== What's involved ===== -->
-    <section class="wrap" id="involved">
-      <h2 class="sec-title">What’s involved if you join?</h2>
-      <p class="sec-lead">
-        You don’t have to do everything — pick the areas you’re most interested in and where you can make the biggest impact.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🧪</div>
-            <div>
-              <h3>Shape research</h3>
-              <p>Bring your ideas and priorities into study design and delivery.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">📝</div>
-            <div>
-              <h3>Make materials matter</h3>
-              <p>Help ensure info sheets, consent forms, and questionnaires are clear and usable.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">📊</div>
-            <div>
-              <h3>Get hands-on with data</h3>
-              <p>Support interpretation of findings — what matters, what’s surprising, what it means.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🌐</div>
-            <div>
-              <h3>Be a voice online</h3>
-              <p>Help shape website content, social posts, videos, and infographics.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🤝</div>
-            <div>
-              <h3>Collaborate + learn</h3>
-              <p>Work alongside young adults, clinicians, and researchers — with mentoring built in.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-row">
-            <div class="icon-bubble">🏅</div>
-            <div>
-              <h3>Be recognised</h3>
-              <p>Opportunities to contribute to dissemination and represent the project.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card soft-outline" style="margin-top:16px">
-        <div class="chip">Expanded view</div>
-        <p>
-          If you want the detailed breakdown (with examples), you can open the full “What’s involved” list below.
-        </p>
-        <button class="learn" type="button"
-          data-modal-title="What’s involved? (full list)"
-          data-modal-text="Examples of what YAP members might do:\n▶ Shape research: help decide what questions and outcomes matter.\n▶ Make materials matter: improve clarity and tone of info sheets, consent forms, questionnaires.\n▶ Get hands-on with data: share insights that help interpret findings.\n▶ Be a voice online: co-create website content, social media, videos, infographics.\n▶ Collaborate and learn: work with young adults, clinicians, and researchers.\n▶ Build your future: gain experience in research, writing, and patient advocacy.\n▶ Get appreciated: receive recognition for time and contributions (e.g., meetings, activities).\n\nYou don’t have to do it all — choose what suits you best.">
-          Learn more ›
-        </button>
-      </div>
-    </section>
-
-    <!-- ===== 10+ year journey (kept, but made true to the real story) ===== -->
-    <section class="wrap" id="journey">
-      <h2 class="sec-title">A 10+ year partnership (not a straight line)</h2>
-      <p class="sec-lead">
-        The YAP has been with D1 Now from early intervention development, through pilot work, and into the current effectiveness trial.
-        This journey is iterative — learning, adapting, and improving over time.
-      </p>
-
-      <div class="journey" aria-label="YAP long-term journey">
-        <div class="step">
-          <strong>2014: Start</strong>
-          <p>YAP begins as a long-term PPI group to keep the project grounded in young adult experience.</p>
-        </div>
-        <div class="step">
-          <strong>Develop</strong>
-          <p>Co-create intervention ideas, tools, and language that reflect real clinic life and real life outside clinic.</p>
-        </div>
-        <div class="step">
-          <strong>Pilot</strong>
-          <p>Test what works in practice. Improve materials and delivery based on what actually happens.</p>
-        </div>
-        <div class="step">
-          <strong>Trial</strong>
-          <p>Support the effectiveness trial — including participant-facing resources and how results are shared.</p>
-        </div>
-        <div class="step">
-          <strong>Next</strong>
-          <p>Keep improving: new members join, mentors support, and the work evolves with what young adults need now.</p>
-        </div>
-      </div>
-
-      <div class="join-strip" id="join" style="margin-top:16px">
-        <div>
-          <strong>Interested in making a difference?</strong>
-          <p>Click “Join the YAP” and choose what type of involvement suits you.</p>
-        </div>
-        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
-      </div>
-    </section>
-
-    <!-- ===== Testimonials ===== -->
-    <section class="wrap" id="voices">
-      <h2 class="sec-title">What members say</h2>
-      <p class="sec-lead">A few snapshots of the vibe — honest, supportive, and impact-focused.</p>
-
-      <div class="testi-wrap" aria-label="YAP testimonials">
-        <div class="testi-row">
-          <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
-
-          <div class="testi-card">
-            <img id="testiPhoto" src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Testimonial portrait">
-            <div>
-              <div class="testi-quote" id="testiQuote">“The YAP gave me a voice — and the team listened.”</div>
-              <div class="testi-name" id="testiName">Chris, 23</div>
-            </div>
-          </div>
-
-          <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Meet the YAP (photos + modal bios) ===== -->
+    <!-- ===== Meet the YAP (matches dropdown: Meet the Members) ===== -->
     <section class="wrap" id="members">
-      <h2 class="sec-title">Meet the YAP</h2>
+      <h2 class="sec-title">Meet the Members</h2>
       <p class="sec-lead">
         Click a member card to see a short bio. (You can decide later whether this uses real names/photos, first names only, or anonymised profiles.)
       </p>
@@ -1174,13 +971,162 @@
           <div class="member-open"><span>View bio</span><span class="dot">›</span></div>
         </div>
       </div>
+    </section>
+
+    <!-- ===== Get Involved (dropdown label) ===== -->
+    <section class="wrap" id="get-involved">
+      <h2 class="sec-title">Get Involved</h2>
+      <p class="sec-lead">
+        You don’t have to do everything — pick the areas you’re most interested in and where you can make the biggest impact.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">✨</div>
+            <div>
+              <h3>Make a real difference</h3>
+              <p>Your input helps shape research and resources that can improve care and support.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🧪</div>
+            <div>
+              <h3>Shape research</h3>
+              <p>Bring your ideas and priorities into study design and delivery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">📝</div>
+            <div>
+              <h3>Make materials matter</h3>
+              <p>Help ensure info sheets, consent forms, and questionnaires are clear and user-friendly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">📊</div>
+            <div>
+              <h3>Get hands-on with data</h3>
+              <p>Support interpretation of findings — what it means in real life.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🌐</div>
+            <div>
+              <h3>Be a voice online</h3>
+              <p>Help shape website content, social posts, videos, and infographics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-row">
+            <div class="icon-bubble">🏅</div>
+            <div>
+              <h3>Be recognised</h3>
+              <p>Opportunities to represent the study and (where appropriate) contribute to publications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="join-strip" style="margin-top:16px">
+        <div>
+          <strong>Ready to join?</strong>
+          <p>Click “Join YAP” and choose what type of involvement suits you.</p>
+        </div>
+        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials & Video (dropdown label) ===== -->
+    <section class="wrap" id="testimonials">
+      <h2 class="sec-title">Testimonials &amp; Video</h2>
+      <p class="sec-lead">
+        Honest reflections from members — and a space to add a short YAP-led video when it’s ready.
+      </p>
+
+      <div class="testi-wrap" aria-label="YAP testimonials">
+        <div class="testi-row">
+          <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
+
+          <div class="testi-card">
+            <img id="testiPhoto" src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Testimonial portrait">
+            <div>
+              <div class="testi-quote" id="testiQuote">“The YAP gave me a voice — and the team listened.”</div>
+              <div class="testi-name" id="testiName">Chris, 23</div>
+            </div>
+          </div>
+
+          <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
+        </div>
+      </div>
+
+      <!-- Video placeholder card -->
+      <div class="card soft-outline" style="margin-top:16px">
+        <div class="chip">Video (coming soon)</div>
+        <p style="margin:0;color:#223;line-height:1.7">
+          Add a short YAP-led explainer or “day in the life” video here.
+          When you’re ready, this can become an embedded video player with captions.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== YAP Impact (dropdown label) ===== -->
+    <section class="wrap" id="impact">
+      <h2 class="sec-title">YAP Impact</h2>
+      <p class="sec-lead">
+        The YAP has shaped D1 Now through intervention development, pilot work, and the current effectiveness trial — and the work continues.
+      </p>
+
+      <div class="journey" aria-label="YAP long-term journey">
+        <div class="step">
+          <strong>2014: Start</strong>
+          <p>A long-term PPI partnership begins — building trust and consistency over time.</p>
+        </div>
+        <div class="step">
+          <strong>Develop</strong>
+          <p>Co-create intervention ideas, tools, and language that reflect real clinic life.</p>
+        </div>
+        <div class="step">
+          <strong>Pilot</strong>
+          <p>Test what works in practice. Improve materials and delivery based on what happens.</p>
+        </div>
+        <div class="step">
+          <strong>Trial</strong>
+          <p>Support the effectiveness trial — including resources, recruitment materials, and dissemination.</p>
+        </div>
+        <div class="step">
+          <strong>Next</strong>
+          <p>New members join, mentors support, and the work adapts to what young adults need now.</p>
+        </div>
+      </div>
 
       <div class="card soft-outline" style="margin-top:16px">
-        <div class="chip">Next step</div>
+        <div class="chip">Keep this section alive</div>
         <p>
-          When you share the full YAP member list + preferred display style (photos vs initials, names vs first names),
-          we can generate the full grid consistently.
+          We can keep adding “You said / we did” examples here over time — so visitors can see real proof of co-design and change.
         </p>
+      </div>
+
+      <div class="join-strip" style="margin-top:16px">
+        <div>
+          <strong>Interested in being part of the next phase?</strong>
+          <p>Joining is simple — choose how you’d like to take part.</p>
+        </div>
+        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
       </div>
     </section>
 
@@ -1212,7 +1158,7 @@
       <div class="foot-col">
         <h4>Get Help & Info</h4>
         <a href="trial.html#join">Join the Trial</a>
-        <a href="#join" onclick="openJoinModal();return false;">Join YAP</a>
+        <a href="#get-involved" onclick="openJoinModal();return false;">Join YAP</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact the Team</a>
       </div>
@@ -1334,7 +1280,7 @@
     </div>
   </div>
 
-  <!-- ===== Generic “Learn more” Modal ===== -->
+  <!-- ===== Learn more Modal ===== -->
   <div class="modal-bg" id="infoModalBg" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-label="More information">
       <div class="modal-top">
@@ -1392,7 +1338,7 @@
     const heroQuotes = [
       '“Being part of D1 Now feels like my real life is finally in the design.” — Aoife, 21',
       '“The YAP gave me a voice — and the team listened.” — Chris, 23',
-      '“It’s not about perfect diabetes — it’s about real life.” — Saoirse, 19',
+      '“Clear info and kind people. That’s why I got involved.” — Saoirse, 19',
       '“Clear steps made getting involved easy.” — Liam, 20'
     ];
     let hq = 0;
@@ -1530,14 +1476,6 @@
 
     bioBg.addEventListener('click', (e)=>{ if(e.target === bioBg) closeBioModal(); });
     window.addEventListener('keydown', (e)=>{ if(e.key === "Escape" && bioBg.classList.contains('active')) closeBioModal(); });
-
-    // Global ESC closes top-most open modal (simple priority)
-    window.addEventListener('keydown', (e)=>{
-      if(e.key !== "Escape") return;
-      if(bioBg.classList.contains('active')) return;   // handled above
-      if(infoBg.classList.contains('active')) return;  // handled above
-      if(joinBg.classList.contains('active')) return;  // handled above
-    });
   </script>
 </body>
 </html>
