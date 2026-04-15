@@ -834,6 +834,54 @@
       font-size:.95rem;
     }
 
+    
+    /* ===== why more ===== */
+    .why-more{
+  margin-top:18px;
+  padding:20px 22px;
+}
+
+.why-more-intro{
+  margin:2px 0 14px 0;
+  color:#223;
+  line-height:1.7;
+  font-size:1rem;
+}
+
+.why-more-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 18px;
+  margin-top:4px;
+}
+
+.why-more-item{
+  position:relative;
+  padding-left:18px;
+  color:#223;
+  line-height:1.6;
+  font-weight:500;
+}
+
+.why-more-item::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--navy);
+  font-weight:800;
+}
+
+.why-more .learn{
+  margin-top:16px;
+}
+
+@media (max-width:720px){
+  .why-more-grid{
+    grid-template-columns:1fr;
+  }
+}
+    
     /* ===== CTA strip ===== */
     .join-strip{
       margin-top:18px;
@@ -1874,6 +1922,28 @@
           </div>
         </div>
       </div>
+      
+      <div class="why-more card soft-outline">
+  <div class="chip">More reasons to join</div>
+  <p class="why-more-intro">
+    Being part of the YAP can also give you chances to grow, connect, and represent work that matters.
+  </p>
+
+  <div class="why-more-grid">
+    <div class="why-more-item">Impact real lives through better research and support</div>
+    <div class="why-more-item">Develop new skills and confidence</div>
+    <div class="why-more-item">Connect with peers who understand the topic</div>
+    <div class="why-more-item">Strengthen your CV with meaningful involvement</div>
+    <div class="why-more-item">Represent the study at events and conferences</div>
+    <div class="why-more-item">Potentially contribute to publications and wider sharing</div>
+  </div>
+
+  <button class="learn" type="button"
+    data-modal-title="More reasons to join the YAP"
+    data-modal-text="Being part of the YAP can give you opportunities to impact real lives, develop new skills, connect with peers, strengthen your CV, represent the study at events such as conferences, and potentially contribute to publications and wider dissemination.">
+    Learn more ›
+  </button>
+</div>
     </section>
 
     <section class="wrap" id="involved">
@@ -1977,15 +2047,6 @@
         </div>
       </div>
 
-      <div class="join-strip" id="join">
-        <div>
-          <strong>Interested in joining?</strong>
-          <p>Tell us what kind of involvement might suit you, and we’ll follow up with options.</p>
-        </div>
-        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
-      </div>
-    </section>
-
     <section class="wrap" id="voices">
       <h2 class="sec-title">What members say</h2>
       <p class="sec-lead">
@@ -2009,6 +2070,15 @@
       </div>
     </section>
 
+            <div class="join-strip" id="join">
+        <div>
+          <strong>Interested in joining?</strong>
+          <p>Tell us what kind of involvement might suit you, and we’ll follow up with options.</p>
+        </div>
+        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
+      </div>
+    </section>
+      
     <section class="wrap" id="loop">
       <h2 class="sec-title">Stay in the loop</h2>
       <p class="sec-lead">
