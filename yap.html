@@ -979,27 +979,42 @@
     }
 
     /* ===== Floating FAQ ===== */
-    .floating-faq-img-link{
-      position:fixed;
-      right:36px;
-      bottom:90px;
-      z-index:100;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:72px;
-      height:72px;
-      text-decoration:none;
-    }
-    .faq-img-animated-small{
-      width:72px;
-      height:72px;
-      border-radius:14px;
-      display:block;
-      box-shadow:0 4px 18px rgba(20,65,130,.14);
-      animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
-      background:#fff;
-    }
+
+    .floating-join-btn{
+  position:fixed;
+  right:28px;
+  bottom:90px;
+  z-index:100;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 20px;
+  border-radius:999px;
+
+  background:var(--navy);
+  color:#fff;
+  font-family:Poppins,Inter,sans-serif;
+  font-weight:800;
+  font-size:1rem;
+
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(20,65,130,.25);
+
+  transition:transform .2s ease, box-shadow .2s ease;
+      animation:join-bounce 2s infinite ease-in-out;
+}
+
+.floating-join-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(20,65,130,.3);
+}
+    @keyframes join-bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+    
     @keyframes add-bounce{
       0%,100%{transform:translateY(0)}
       18%{transform:translateY(-10px)}
@@ -1182,6 +1197,11 @@
       font-weight:700;
       margin-top:2px;
     }
+    
+    #resources {
+  background: rgba(20,65,130,0.04);
+  border-radius: 18px;
+}
 
     /* ===== Responsive ===== */
     @media (max-width:1100px){
@@ -1415,7 +1435,14 @@
     min-height:220px;
   }
 }
-    
+  @media (max-width:720px){
+  .floating-join-btn{
+    right:14px;
+    bottom:80px;
+    padding:12px 16px;
+    font-size:.9rem;
+  }
+}  
     @media (max-width:720px){
   .jumpbar{
     margin-top:-30px;
@@ -1502,30 +1529,25 @@
   <div class="hero-inner">
     <div class="hero-card">
       <p class="hero-kicker">Young Adult Panel (YAP)</p>
-      <h1 class="hero-title">Built with young adults. Designed for real life.</h1>
+      <h1 class="hero-title">Shaped by young adults. Designed for real life.</h1>
 
       <p class="hero-sub">
-        The YAP is a group of young adults living with Type 1 Diabetes who help shape D1 Now pogramme,
-  from ideas and materials to research decisions and how the work is shared..
+        The YAP is a group of young adults living with Type 1 Diabetes who help shape D1 Now.
       </p>
-
+      <p class="hero-sub"></p>
       <div class="hero-badges">
-        <span class="badge">🧠 Led by lived experience</span>
-        <span class="badge">🤝 Sustainable mentorship Model</span>
-        <span class="badge">📣 Real influence on research</span>
+        <span class="badge">🧠 Led by lived experience </span>
+        <span class="badge">🤝 Sustainable mentorship Model </span>
+        <span class="badge">📣 Real influence on research </span>
       </div>
 
-      <div class="hero-ctas">
-        <button class="btn primary" type="button" onclick="openJoinModal()">Join the YAP</button>
-        <a class="btn secondary" href="#members">Meet the YAP ↓</a>
-      </div>
     </div>
 
     <div class="hero-side" aria-label="YAP video">
       <div class="hero-video-card">
         <div class="video-top">
           <p class="video-label"></p>
-          <h3 class="video-title">Here is a hort message from our YAP </h3>
+          <h3 class="video-title">Here is a short message from our YAP </h3>
         </div>
 
         <div class="video-wrapper hero-video-wrapper">
@@ -1598,7 +1620,7 @@
               <h3>Long-term collaboration</h3>
               <p>
                 YAP members help keep the work grounded in lived experience — not assumptions.
-                That includes language, design, priorities, and what feels realistic in clinic life. 
+                That includes language, design, priorities, and what feels realistic in clinic setting. 
               </p>
               <button class="learn" type="button"
                 data-modal-title="Not always straightforward — and that’s okay"
@@ -1643,9 +1665,9 @@
              data-role="YAP mentor"
              data-bio="Aoife has been involved over time and helps support newer members to find a way of contributing that feels comfortable and meaningful. Mentors are one of the strengths of the YAP model."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/yap/avatar-default.svg">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Aoife">
+            <img src="images/yap/avatar-default.svg" alt="Profile avatar" alt="Aoife">
             <div class="member-tag">Mentor</div>
           </div>
           <div class="member-body">
@@ -1661,9 +1683,9 @@
              data-role="YAP mentor"
              data-bio="This space can be used for another mentor profile once details and preferred display format are confirmed."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="YAP mentor">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png" alt="YAP mentor">
             <div class="member-tag">Mentor</div>
           </div>
           <div class="member-body">
@@ -1678,10 +1700,10 @@
      data-role="YAP mentor"
      data-bio="Emma has been part of the YAP for several years and now supports newer members to get comfortable sharing their perspectives."
      data-link="#"
-     data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+     data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png">
 
   <div class="member-top">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Emma">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png" alt="Emma">
     <div class="member-tag">Mentor</div>
   </div>
 
@@ -1701,10 +1723,10 @@
      data-role="YAP mentor"
      data-bio="Emma has been part of the YAP for several years and now supports newer members to get comfortable sharing their perspectives."
      data-link="#"
-     data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+     data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png">
 
   <div class="member-top">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Emma">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png" alt="Emma">
     <div class="member-tag">Mentor</div>
   </div>
 
@@ -1724,10 +1746,10 @@
      data-role="YAP mentor"
      data-bio="Emma has been part of the YAP for several years and now supports newer members to get comfortable sharing their perspectives."
      data-link="#"
-     data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+     data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png">
 
   <div class="member-top">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Emma">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png" alt="Emma">
     <div class="member-tag">Mentor</div>
   </div>
 
@@ -1748,10 +1770,10 @@
      data-role="YAP mentor"
      data-bio="Emma has been part of the YAP for several years and now supports newer members to get comfortable sharing their perspectives."
      data-link="#"
-     data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+     data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png">
 
   <div class="member-top">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Emma">
+    <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png" alt="Emma">
     <div class="member-tag">Mentor</div>
   </div>
 
@@ -1778,9 +1800,9 @@
              data-role="YAP member"
              data-bio="Chris contributes across sessions by focusing on what feels realistic in day-to-day life with T1D, and by helping make materials clearer and more respectful."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png" alt="Chris">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png" alt="Chris">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1796,9 +1818,9 @@
              data-role="YAP member"
              data-bio="Saoirse supports the project by stress-testing ideas: what’s confusing, what’s missing, and what would actually make someone use a resource when life is busy."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-3.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png" alt="Saoirse">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-3.png" alt="Saoirse">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1814,9 +1836,9 @@
              data-role="YAP member"
              data-bio="Liam focuses on making steps feel doable: clearer signposting, fewer barriers, and making getting involved feel more straightforward."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="Liam">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png" alt="Liam">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1832,9 +1854,9 @@
              data-role="YAP member"
              data-bio="Liam focuses on making steps feel doable: clearer signposting, fewer barriers, and making getting involved feel more straightforward."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="Liam">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png" alt="Liam">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1850,9 +1872,9 @@
              data-role="YAP member"
              data-bio="Liam focuses on making steps feel doable: clearer signposting, fewer barriers, and making getting involved feel more straightforward."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="Liam">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png" alt="Liam">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1868,9 +1890,9 @@
              data-role="YAP member"
              data-bio="Liam focuses on making steps feel doable: clearer signposting, fewer barriers, and making getting involved feel more straightforward."
              data-link="#"
-             data-img="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png">
+             data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png">
           <div class="member-top">
-            <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png" alt="Liam">
+            <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png" alt="Liam">
             <div class="member-tag">Member</div>
           </div>
           <div class="member-body">
@@ -1923,27 +1945,13 @@
         </div>
       </div>
       
-      <div class="why-more card soft-outline">
-  <div class="chip">More reasons to join</div>
-  <p class="why-more-intro">
-    Being part of the YAP can also give you chances to grow, connect, and represent work that matters.
-  </p>
 
-  <div class="why-more-grid">
-    <div class="why-more-item">Impact real lives through better research and support</div>
-    <div class="why-more-item">Develop new skills and confidence</div>
-    <div class="why-more-item">Connect with peers who understand the topic</div>
-    <div class="why-more-item">Strengthen your CV with meaningful involvement</div>
-    <div class="why-more-item">Represent the study at events and conferences</div>
-    <div class="why-more-item">Potentially contribute to publications and wider sharing</div>
-  </div>
-
-  <button class="learn" type="button"
+        <button class="learn" type="button"
     data-modal-title="More reasons to join the YAP"
     data-modal-text="Being part of the YAP can give you opportunities to impact real lives, develop new skills, connect with peers, strengthen your CV, represent the study at events such as conferences, and potentially contribute to publications and wider dissemination.">
     Learn more ›
   </button>
-</div>
+      
     </section>
 
     <section class="wrap" id="involved">
@@ -1967,8 +1975,8 @@
           <div class="card-row">
             <div class="icon-bubble">📝</div>
             <div>
-              <h3>Improve materials</h3>
-              <p>Make information sheets, forms, letters, and resources easier to understand and use.</p>
+              <h3>Work with others</h3>
+              <p>Collaborate with young adults, clinicians, and researchers in a supportive way.</p>
             </div>
           </div>
         </div>
@@ -1977,8 +1985,8 @@
           <div class="card-row">
             <div class="icon-bubble">🤝</div>
             <div>
-              <h3>Work with others</h3>
-              <p>Collaborate with young adults, clinicians, and researchers in a supportive way.</p>
+              <h3>Be recognised</h3>
+              <p>Opportunities to contribute to dissemination and represent the project.</p>
             </div>
           </div>
         </div>
@@ -2020,9 +2028,9 @@
         </div>
 
         <div class="timeline-card">
-          <div class="timeline-year">Dissemination & leadership</div>
+          <div class="timeline-year">Sharing, leadership & ongoing work</div>
           <p>
-            Members have contributed to conferences, abstracts, competitions, publications, invited talks, and wider dissemination. Two YAP members also sit on the study Steering Committee.
+            Members have contributed to conferences, abstracts, competitions, publications, invited talks, and wider dissemination. YAP members also sit on the study Steering Committee. YAP members are also actively involved in the current D1 Now trial.
           </p>
         </div>
       </div>
@@ -2058,7 +2066,7 @@
           <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
 
           <div class="testi-card">
-            <img id="testiPhoto" src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Testimonial portrait">
+            <img id="testiPhoto" src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png" alt="Testimonial portrait">
             <div>
               <div class="testi-quote" id="testiQuote">“The YAP gave me a voice — and the team listened.”</div>
               <div class="testi-name" id="testiName">Chris, 23</div>
@@ -2079,6 +2087,42 @@
       </div>
     </section>
       
+    <section class="wrap" id="resources">
+  <h2 class="sec-title">Looking to build a PPI group?</h2>
+
+  <p class="sec-lead">
+    The YAP has been working alongside the D1 Now study since 2014. 
+    Over that time, we’ve learned a lot about what helps make public and patient involvement meaningful, sustainable, and genuinely collaborative.
+  </p>
+
+  <div class="grid-2">
+    <div class="card soft-outline">
+      <div class="chip">What we’ve learned</div>
+      <h3>Experience built over time</h3>
+      <p>
+        From co-designing research to supporting long-term involvement, the YAP has helped shape a model of PPI that centres lived experience and real-world participation.
+      </p>
+            <a href="resources.html#yap" class="btn secondary" style="margin-top:12px;">
+        View Publications →
+      </a>
+    </div>
+
+    <div class="card soft-outline">
+      <div class="chip">Useful Resources</div>
+      <h3>Tools you can use</h3>
+      <p>
+        We’ve documented key learnings, templates, and approaches that may be helpful if you’re setting up or developing your own PPI group.
+      </p>
+
+      <a href="resources.html#yap" class="btn secondary" style="margin-top:12px;">
+        View resources →
+      </a>
+    </div>
+  </div>
+</section>
+    
+    
+    
     <section class="wrap" id="loop">
       <h2 class="sec-title">Stay in the loop</h2>
       <p class="sec-lead">
@@ -2143,9 +2187,10 @@
     </div>
   </footer>
 
-  <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
-  </a>
+  
+  <a href="#join" class="floating-join-btn">
+  Join the YAP →
+</a>
 
   <!-- Join Modal -->
   <div class="modal-bg" id="joinModalBg" aria-hidden="true">
@@ -2296,10 +2341,10 @@
     // Testimonials
     (function(){
       const testimonials = [
-        {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-2.png"},
-        {quote:"“Clear info and kind people. That’s why I got involved.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-3.png"},
-        {quote:"“Clear steps made getting involved easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-4.png"},
-        {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png"}
+        {quote:"“The YAP gave me a voice — and the team listened.”", name:"Chris, 23", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-2.png"},
+        {quote:"“Clear info and kind people. That’s why I got involved.”", name:"Saoirse, 19", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-3.png"},
+        {quote:"“Clear steps made getting involved easy.”", name:"Liam, 20", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-4.png"},
+        {quote:"“Being part of D1 Now feels like my real life is finally in the design.”", name:"Aoife, 21", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"}
       ];
       let i=0;
       const q=document.getElementById('testiQuote');
