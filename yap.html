@@ -2331,7 +2331,9 @@
       </div>
     </div>
   </div>
-
+<button class="access-btn" onclick="toggleSpeech()" id="readBtn">
+  🔊 Read aloud
+</button>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -2513,5 +2515,35 @@
       });
     }
   </script>
+  
+  <script>
+let speaking = false;
+let utterance;
+
+function toggleSpeech(){
+  if(speaking){
+    speechSynthesis.cancel();
+    speaking = false;
+    document.getElementById("readBtn").innerText = "🔊 Read aloud";
+    return;
+  }
+
+  const text = document.querySelector("main").innerText;
+
+  utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
+  speaking = true;
+
+  document.getElementById("readBtn").innerText = "⏹ Stop";
+
+  utterance.onend = () => {
+    speaking = false;
+    document.getElementById("readBtn").innerText = "🔊 Read aloud";
+  };
+}
+</script>
 </body>
 </html>
