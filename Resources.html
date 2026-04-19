@@ -722,6 +722,88 @@
       text-align:center;
     }
   }
+  
+  .poster-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.poster-thumb{
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  transition:transform .2s;
+  background:#fff;
+}
+
+.poster-thumb:hover{
+  transform:scale(1.03);
+}
+
+.poster-thumb img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+  
+  .modal-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(20,65,130,.35);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+}
+
+.modal-bg.active{
+  display:flex;
+}
+
+.modal{
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  max-width:520px;
+  width:90%;
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
+  position:relative;
+  animation:fadeIn .25s ease;
+}
+
+.modal h3{
+  margin-bottom:12px;
+  color:var(--footer-blue);
+}
+
+.modal p{
+  margin:8px 0;
+}
+
+.modal a{
+  color:var(--footer-blue);
+  font-weight:700;
+}
+
+.modal button{
+  position:absolute;
+  top:10px;
+  right:12px;
+  border:none;
+  background:none;
+  font-size:1.6rem;
+  cursor:pointer;
+  color:#444;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
 </style>
 </head>
 
@@ -858,41 +940,45 @@
 
       <div class="yap-band">
         <div class="blog-grid">
-          <article class="blog-card">
-            <h4>Why lived experience matters in research</h4>
-            <p>
-              A short reflection on how YAP members help keep the project grounded in real life, not assumptions.
-            </p>
-            <div class="resource-actions">
-              <a class="btn secondary" href="yap.html">Read on YAP page</a>
-            </div>
-          </article>
 
-          <article class="blog-card">
-            <h4>What it felt like to join the YAP</h4>
-            <p>
-              A youth-friendly perspective on getting involved, finding your voice, and shaping a project over time.
-            </p>
-            <div class="resource-actions">
-              <a class="btn secondary" href="yap.html">Read on YAP page</a>
-            </div>
-          </article>
+  <article class="blog-card">
+    <div class="tag">YAP Voice</div>
+    <h4>“I didn’t expect to be listened to”</h4>
+    <p>
+      One YAP member reflects on how being part of D1 Now changed how they see research — and their role in it.
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="blogs/blog-01.html">Read story</a>
+    </div>
+  </article>
 
-          <article class="blog-card">
-            <h4>Behind the scenes of co-design</h4>
-            <p>
-              A look at how ideas move from conversations into materials, tools, and real changes across the study.
-            </p>
-            <div class="resource-actions">
-              <a class="btn secondary" href="yap.html">Read on YAP page</a>
-            </div>
-          </article>
-        </div>
+  <article class="blog-card">
+    <div class="tag">Experience</div>
+    <h4>What it’s actually like to join YAP</h4>
+    <p>
+      A real, honest look at joining the panel — from first meeting nerves to finding your voice.
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="blogs/blog-02.html">Read story</a>
+    </div>
+  </article>
 
-        <div class="resource-actions" style="margin-top:18px">
-          <a class="btn" href="yap.html">See all YAP blogs</a>
-          <a class="btn secondary" href="faq.html">YAP FAQ</a>
-        </div>
+  <article class="blog-card">
+    <div class="tag">Behind the scenes</div>
+    <h4>From ideas to real change</h4>
+    <p>
+      How conversations in YAP meetings turned into tools, resources, and real changes in the trial.
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="blogs/blog-03.html">Read story</a>
+    </div>
+  </article>
+
+</div>
+<div class="resource-actions" style="margin-top:18px">
+  <button class="btn" onclick="openBlogModal()">View all blogs</button>
+  <a class="btn secondary" href="faq.html">YAP FAQ</a>
+</div>
       </div>
     </section>
 
@@ -969,39 +1055,23 @@
         Where appropriate, template materials can also be reused by other projects.
       </p>
 
-      <div class="grid-3">
-        <div class="resource-card">
-          <div class="tag">Conference output</div>
-          <h4>D1 Now conference poster</h4>
-          <p>
-            Poster version for conference display or project dissemination.
-          </p>
-          <div class="resource-actions">
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">View poster</a>
-          </div>
-        </div>
+      <div class="poster-gallery" id="posterGallery"></div>
+        
+<div class="poster-gallery" id="posterGallery"></div>
 
-        <div class="resource-card">
-          <div class="tag">Recruitment material</div>
-          <h4>Participant-facing poster</h4>
-          <p>
-            Clinic-friendly poster designed to support awareness and recruitment.
-          </p>
-          <div class="resource-actions">
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">Download poster</a>
-          </div>
-        </div>
+<div class="card soft" style="margin-top:18px">
+  <h4 style="color:var(--footer-blue)">Want to reuse these?</h4>
+  <p style="margin-top:8px">
+    These posters were designed for real-world use — from conferences to clinic spaces.
+    You can reuse or adapt them for your own project.
+  </p>
 
-        <div class="resource-card">
-          <div class="tag">Reusable template</div>
-          <h4>Poster template for other teams</h4>
-          <p>
-            A reusable poster format that other studies or PPI projects can adapt for their own work.
-          </p>
-          <div class="resource-actions">
-            <a class="btn" href="#" target="_blank" rel="noopener">Open OSF template</a>
-          </div>
-        </div>
+  <div class="resource-actions" style="margin-top:12px">
+    <a class="btn" href="#" target="_blank">Open OSF poster template</a>
+  </div>
+</div>       
+
+       
       </div>
     </section>
 
@@ -1300,6 +1370,79 @@
       }
     });
   }
+  
+  const BLOGS = [
+  {title:"I didn’t expect to be listened to", link:"blogs/blog-01.html"},
+  {title:"What it’s actually like to join YAP", link:"blogs/blog-02.html"},
+  {title:"From ideas to real change", link:"blogs/blog-03.html"}
+];
+
+function openBlogModal(){
+  const list = document.getElementById("blogList");
+  list.innerHTML = BLOGS.map(b =>
+    `<p><a href="${b.link}">${b.title}</a></p>`
+  ).join("");
+
+  document.getElementById("blogModal").classList.add("active");
+}
+
+function closeBlogModal(){
+  document.getElementById("blogModal").classList.remove("active");
+}
+  const POSTERS = [
+  {
+    thumb:"posters/poster1.jpg",
+    full:"posters/poster1.jpg"
+  },
+  {
+    thumb:"posters/poster2.jpg",
+    full:"posters/poster2.jpg"
+  },
+  {
+    thumb:"posters/poster3.jpg",
+    full:"posters/poster3.jpg"
+  }
+];
+
+function renderPosterGallery(){
+  const gallery = document.getElementById("posterGallery");
+
+  gallery.innerHTML = POSTERS.map(p => `
+    <div class="poster-thumb" onclick="openPoster('${p.full}')">
+      <img src="${p.thumb}" alt="Poster">
+    </div>
+  `).join("");
+}
+
+function openPoster(src){
+  document.getElementById("posterFull").src = src;
+  document.getElementById("posterDownload").href = src;
+  document.getElementById("posterModal").classList.add("active");
+}
+
+function closePoster(){
+  document.getElementById("posterModal").classList.remove("active");
+}
+
+renderPosterGallery();
 </script>
+  <!-- BLOG MODAL -->
+<div class="modal-bg" id="blogModal">
+  <div class="modal">
+    <button onclick="closeBlogModal()">×</button>
+    <h3>All YAP Blogs</h3>
+    <div id="blogList"></div>
+  </div>
+</div>
+  
+  <div class="modal-bg" id="posterModal">
+  <div class="modal">
+    <button onclick="closePoster()">×</button>
+    <img id="posterFull" style="width:100%;border-radius:12px">
+    <div style="margin-top:10px">
+      <a id="posterDownload" class="btn" download>Download</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
