@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="d1-accessibility.css">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -476,7 +475,6 @@ nav{
   }
 </script>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
   <!-- ===== Header ===== -->
   <header>
     <div class="header-container">
@@ -539,21 +537,17 @@ nav{
   </ul>
 </nav>
 
-<div class="header-actions">
-
-  <!-- NEW: Accessibility + Search -->
-  <div class="d1a-top-actions" data-d1a-top-actions></div>
-
-  <!-- EXISTING buttons -->
-  <button class="header-pill secondary" type="button" onclick="openJoinModal()">Join YAP</button>
-  <a class="header-pill" href="trial.html#join">Join Trial</a>
-
-</div>
+      <div class="header-actions">
+        <a class="header-pill secondary" href="#">Join YAP</a>
+        <a class="header-pill" href="#">Join Trial</a>
+      </div>
+    </div>
+	<div class="header-gradient-strip" aria-hidden="true"></div>
   </header>
 
 
   <!-- ===== Hero (unchanged sizes) ===== -->
- <main id="main-content" data-d1-main>
+  <main class="main-content">
     <div class="main-inner">
       <div class="img-col">
         <img id="mainCarouselImage"
@@ -802,6 +796,5 @@ nav{
   btn.onclick = ()=> isReading ? stop() : start();
 })();
 </script>
-<script src="d1-accessibility.js"></script>
 </body>
 </html>
