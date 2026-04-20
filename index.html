@@ -605,73 +605,8 @@ nav{
     </div>
   </section>
 
-  
-  
-  
-  <!-- ===== Expanded Footer ===== -->
-  <footer>
-    <!-- top columns -->
-    <div class="foot-top">
-      <div class="foot-col">
-        <h4>Get Help & Info</h4>
-        <a href="#">Join the Trial</a>
-        <a href="#">Join YAP</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact the Team</a>
-      </div>
-      <div class="foot-col">
-        <h4>Policies</h4>
-        <a href="#">Privacy & Data Protection</a>
-        <a href="#">Cookies</a>
-        <a href="#">GDPR & Consent</a>
-        <a href="#">Accessibility</a>
-      </div>
-      <div class="foot-col">
-        <h4>General</h4>
-        <a href="#">Latest News</a>
-        <a href="#">Publications</a>
-        <a href="#">For Trial Sites</a>
-        <a href="#">Newsletter</a>
-      </div>
-    </div>
+ 
 
-
-
-    <!-- bottom bar -->
-<div class="foot-bottom-new">
-
-  <!-- Line 1 -->
-  <div class="foot-line1">
-    © <span id="year"></span> D1 Now – All rights reserved |
-    Designed by <strong>D1 Now YAP & Dr Aswathi Surendran</strong>
-  </div>
-
-  <!-- Line 2 -->
-  <div class="foot-line2">
-    Funded by the Health Research Board (HRB), Ireland’s lead agency supporting health research.
-    Sponsored by University of Galway.
-  </div>
-
-  <!-- Line 3 -->
-  <div class="foot-line3">
-
-    <!-- LEFT: Logos -->
-    <div class="foot-logos-new">
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/HRB1_logo.svg" alt="HRB">
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/UoG_logo.svg" alt="University of Galway">
-    </div>
-
-    <!-- RIGHT: Social -->
-    <div class="foot-social">
-      <a class="soc" href="#">f</a>
-      <a class="soc" href="#">x</a>
-      <a class="soc" href="#">ig</a>
-      <a class="soc" href="#">in</a>
-    </div>
-
-  </div>
-</div>
-  </footer>
 
   <!-- Floating FAQ -->
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
@@ -795,6 +730,14 @@ nav{
 
   btn.onclick = ()=> isReading ? stop() : start();
 })();
+</script>
+<div id="footer"></div>
+<script>
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
 </script>
 </body>
 </html>
