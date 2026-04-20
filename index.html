@@ -66,7 +66,7 @@ nav{
   gap:18px;
   flex:1;
   justify-content:flex-start;
-  overflow-x:auto
+  overflow-x:auto;
     overflow-y:visible; 
 }
     .nav-list{
@@ -629,7 +629,10 @@ nav{
 
   <script>
     // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+	if(yearEl){
+	  yearEl.textContent = new Date().getFullYear();
+	}
 
     // Hero carousel
     const mainImageUrls = [
