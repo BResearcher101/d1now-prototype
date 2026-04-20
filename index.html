@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="d1-accessibility.css">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -35,7 +36,7 @@
   max-width:var(--maxw);
   display:flex;
   align-items:center;              /* critical: vertical alignment */
-  justify-content:flex-start;
+  justify-content:space-between;
   gap:18px;
 }
     .logo{
@@ -64,8 +65,10 @@ nav{
   display:flex;
   align-items:center;
   gap:18px;
-  flex:0 0 auto;   /* 🔥 critical fix */
-  min-width:0;     /* prevents overflow bugs */
+  flex:1;
+  justify-content:flex-start;
+  overflow-x:auto
+    overflow-y:visible; 
 }
     .nav-list{
       list-style:none;
@@ -81,8 +84,6 @@ nav{
       position:relative;
       display:flex;
       align-items:center;
-      padding-bottom:6px;
-      flex: 0 0 auto; 
     }
     .nav-item:not(:last-child)::after{
       content:"›";
@@ -105,7 +106,6 @@ nav{
       transition:background .2s, opacity .2s;
         height:42px;          /* SAME as logo height */
   line-height:1;
-      white-space: nowrap;
     }
     .nav-link:hover{
       background:rgba(255,255,255,.10);
@@ -127,10 +127,9 @@ nav{
 
         position:absolute;
 
-   /*top:calc(100% + 8px);   slight gap below nav */
+  top:calc(100% + 8px);   /* slight gap below nav */
 
- top:100%;
-margin-top:2px;
+ 
 
   box-shadow:0 10px 40px rgba(0,0,0,.18);
   padding:8px;
@@ -148,10 +147,7 @@ margin-top:2px;
     }
     .dropdown a:hover{background:#f0f3f9}
     .nav-item:hover .dropdown,
-.nav-item:focus-within .dropdown,
-.dropdown:hover{
-  display:block;
-}
+    .nav-item:focus-within .dropdown{display:block}
 
     /* Right CTAs: Join YAP + Join Trial (same colours family as now) */
     .header-actions{
@@ -194,7 +190,17 @@ margin-top:2px;
     #4facfe 100%    /* cyan */
   );
 }
-
+    /* Responsive: prevent crushing */
+    @media (max-width: 980px){
+      nav{overflow-x:auto}
+      .nav-item:not(:last-child)::after{margin:0 10px}
+    }
+    @media (max-width: 720px){
+      header{height:auto}
+      .header-container{flex-wrap:wrap; padding:12px 16px}
+      nav{order:3; width:100%; margin-left:0}
+      .header-actions{order:2; width:100%; justify-content:flex-end}
+    }
 
     /* ===== Hero (unchanged sizes/layout) ===== */
     .main-content{flex:1;display:flex;width:100%;background:var(--yellow);justify-content:center}
@@ -287,7 +293,19 @@ margin-top:2px;
 
 /* Social stays same */
 
+/* MOBILE */
+@media (max-width:720px){
 
+  .foot-line3{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .foot-logos-new img{
+    height:28px;
+  }
+
+}
     .foot-social{display:flex;gap:10px}
     .soc{width:36px;height:36px;border-radius:50%;background:#fff;color:#133a72;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none}
 
@@ -326,13 +344,15 @@ margin-top:2px;
   color:#fff;
   animation:none;
 }
-    /* Mobile display */
-    
-
-/* ===== CORRECTED MOBILE LAYOUT ===== */
+/* ===== FINAL MOBILE LAYOUT (CLEAN + STABLE) ===== */
 @media (max-width: 720px) {
-  
-  /* 1. Header: Force vertical column layout */
+
+  /* Prevent horizontal scroll issues */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
   header {
     display: flex !important;
     flex-direction: column !important;
@@ -342,104 +362,163 @@ margin-top:2px;
     height: auto !important;
   }
 
-  /* 2. Container: Force vertical stacking, NO wrapping */
   .header-container {
     flex-direction: column !important;
     align-items: stretch !important;
-    justify-content: flex-start !important; /* Critical: stops space-between */
+    justify-content: flex-start !important;
     gap: 16px !important;
-    padding: 0 !important;
     width: 100% !important;
-    flex-wrap: nowrap !important; /* Prevent accidental wrapping */
   }
 
-  /* 3. Logo: Top row */
   .logo {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
     width: 100% !important;
-    margin-bottom: 0 !important;
   }
 
   .logo-img {
     height: 40px !important;
-    width: auto !important;
   }
 
-  /* 4. Nav: Middle row (Horizontal Scroll) */
+  /* NAV SCROLL */
   nav {
     width: 100% !important;
     overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    margin: 0 !important;
-    padding: 8px 0 !important;
-    order: 2 !important;
-    flex: 0 0 auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 0;
   }
 
   .nav-list {
     display: flex !important;
-    flex-direction: row !important;
     gap: 12px !important;
-    white-space: nowrap !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    list-style: none !important;
-    width: max-content !important;
-  }
-
-  .nav-item {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
+    white-space: nowrap;
+    width: max-content;
   }
 
   .nav-link {
-    font-size: 0.85rem !important;
-    padding: 8px 12px !important;
-    height: auto !important;
-    line-height: 1.2 !important;
-    white-space: nowrap !important;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    height: auto;
   }
 
-  /* Hide separators */
   .nav-item:not(:last-child)::after {
-    display: none !important;
+    display: none;
   }
 
-  /* 5. Actions: Bottom row */
+  /* CTA BUTTONS */
   .header-actions {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin-top: 8px !important;
-    order: 3 !important;
-    flex: 0 0 auto !important;
+    display: flex;
+    gap: 10px;
   }
 
   .header-pill {
-    flex: 1 !important;
-    text-align: center !important;
-    font-size: 0.85rem !important;
-    padding: 10px 0 !important;
-    white-space: nowrap !important;
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 10px 0;
   }
 
-  /* 6. Hide Dropdowns */
+  /* Disable dropdowns on mobile */
   .dropdown {
     display: none !important;
-    visibility: hidden !important;
   }
-  
-  /* 7. Hide Gradient Strip */
+
   .header-gradient-strip {
-    display: none !important;
+    display: none;
+  }
+
+  /* ===== HERO FIX ===== */
+
+  .main-content {
+    width: 100%;
+  }
+
+  .main-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* IMAGE SECTION */
+  .img-col {
+    width: 100% !important;
+    height: 220px !important;
+    min-height: auto !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .main-carousel-img.big {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* TEXT SECTION */
+  .cta-col {
+    width: 100% !important;
+    padding: 24px 16px !important;
+    min-height: auto !important;
+  }
+
+  .main-headline {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .main-subline {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    padding: 16px 0;
+    font-size: 1rem;
+  }
+
+  /* ===== BELOW HERO ===== */
+
+  .add-wrap {
+    width: 100%;
+  }
+
+  .add-inner {
+    padding: 16px !important;
+  }
+
+  .add-newsletter {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .add-newsletter form {
+    width: 100%;
+  }
+
+  .add-newsletter input {
+    width: 100%;
+  }
+
+  /* ===== FOOTER ===== */
+
+  .foot-line3 {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ===== FLOATING BUTTONS ===== */
+
+  .floating-read-btn {
+    left: 12px;
+    bottom: 80px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .floating-faq-img-link {
+    right: 12px;
+    bottom: 80px;
   }
 }
-    
     /* Recruitment modal */
     .modal-bg{display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.45);align-items:center;justify-content:center;padding:12px}
     .modal-bg.active{display:flex}
@@ -448,8 +527,6 @@ margin-top:2px;
     .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}
     .modal-sign{background:var(--footer-blue);color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:700}
     .modal-close{position:absolute;top:10px;right:14px;font-size:1.6rem;border:none;background:transparent;cursor:pointer;color:#333}
-    
-    
   </style>
 </head>
 
@@ -465,9 +542,9 @@ margin-top:2px;
       }
     });
   }
- 
 </script>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
   <!-- ===== Header ===== -->
   <header>
     <div class="header-container">
@@ -530,17 +607,20 @@ margin-top:2px;
   </ul>
 </nav>
 
-      <div class="header-actions">
-        <a class="header-pill secondary" href="#">Join YAP</a>
-        <a class="header-pill" href="#">Join Trial</a>
-      </div>
-    </div>
-	<div class="header-gradient-strip" aria-hidden="true"></div>
+<div class="header-actions">
+
+  <!-- NEW: Accessibility + Search -->
+
+  <!-- EXISTING buttons -->
+  <button class="header-pill secondary" type="button" onclick="openJoinModal()">Join YAP</button>
+  <a class="header-pill" href="trial.html#join">Join Trial</a>
+
+</div>
   </header>
 
 
   <!-- ===== Hero (unchanged sizes) ===== -->
-  <main class="main-content">
+ <main id="main-content" data-d1-main>
     <div class="main-inner">
       <div class="img-col">
         <img id="mainCarouselImage"
@@ -598,8 +678,73 @@ margin-top:2px;
     </div>
   </section>
 
- 
+  
+  
+  
+  <!-- ===== Expanded Footer ===== -->
+  <footer>
+    <!-- top columns -->
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Get Help & Info</h4>
+        <a href="#">Join the Trial</a>
+        <a href="#">Join YAP</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact the Team</a>
+      </div>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        <a href="#">Privacy & Data Protection</a>
+        <a href="#">Cookies</a>
+        <a href="#">GDPR & Consent</a>
+        <a href="#">Accessibility</a>
+      </div>
+      <div class="foot-col">
+        <h4>General</h4>
+        <a href="#">Latest News</a>
+        <a href="#">Publications</a>
+        <a href="#">For Trial Sites</a>
+        <a href="#">Newsletter</a>
+      </div>
+    </div>
 
+
+
+    <!-- bottom bar -->
+<div class="foot-bottom-new">
+
+  <!-- Line 1 -->
+  <div class="foot-line1">
+    © <span id="year"></span> D1 Now – All rights reserved |
+    Designed by <strong>D1 Now YAP & Dr Aswathi Surendran</strong>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="foot-line2">
+    Funded by the Health Research Board (HRB), Ireland’s lead agency supporting health research.
+    Sponsored by University of Galway.
+  </div>
+
+  <!-- Line 3 -->
+  <div class="foot-line3">
+
+    <!-- LEFT: Logos -->
+    <div class="foot-logos-new">
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/HRB1_logo.svg" alt="HRB">
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/UoG_logo.svg" alt="University of Galway">
+    </div>
+
+    <!-- RIGHT: Social -->
+    <div class="foot-social">
+      <a class="soc" href="#">f</a>
+      <a class="soc" href="#">x</a>
+      <a class="soc" href="#">ig</a>
+      <a class="soc" href="#">in</a>
+    </div>
+
+  </div>
+</div>
+  </footer>
 
   <!-- Floating FAQ -->
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
@@ -613,7 +758,7 @@ margin-top:2px;
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup" role="dialog" aria-modal="true" aria-label="Recruitment poster">
       <button class="modal-close" onclick="document.getElementById('recruitmentModal').classList.remove('active')">×</button>
-      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/popup_trialRecruitment.svg" alt="D1 Now recruitment poster">
+      <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png" alt="D1 Now recruitment poster">
       <div class="modal-actions">
         <a class="modal-sign" href="#" target="_blank" rel="noopener">Sign up for the Trial</a>
       </div>
@@ -622,10 +767,7 @@ margin-top:2px;
 
   <script>
     // Year in footer
-    const yearEl = document.getElementById('year');
-	if(yearEl){
-	  yearEl.textContent = new Date().getFullYear();
-	}
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Hero carousel
     const mainImageUrls = [
@@ -679,12 +821,9 @@ margin-top:2px;
     })();
 
     // Show recruitment modal on load
-	window.addEventListener('load', ()=> {
-	  const modal = document.getElementById('recruitmentModal');
-	  if(modal){
-		modal.classList.add('active');
-	  }
-	});
+    window.addEventListener('DOMContentLoaded', ()=> {
+      document.getElementById('recruitmentModal').classList.add('active');
+    });
   </script>
   
   <!-- Floating Read Aloud -->
@@ -730,13 +869,6 @@ margin-top:2px;
   btn.onclick = ()=> isReading ? stop() : start();
 })();
 </script>
-<div id="footer"></div>
-<script>
-fetch("footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("footer").innerHTML = data;
-  });
-</script>
+<script src="d1-accessibility.js"></script>
 </body>
 </html>
