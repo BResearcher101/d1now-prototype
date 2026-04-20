@@ -1,0 +1,162 @@
+<!-- ===== STANDARD FOOTER ===== -->
+<style>
+footer{background:#144182;color:#fff}
+
+.foot-top{
+  max-width:1200px;
+  margin:0 auto;
+  padding:26px 18px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+}
+
+.foot-col h4{
+  margin:0 0 10px 0;
+  font-family:Poppins,Inter,sans-serif;
+  font-weight:700;
+}
+
+.foot-col a{
+  display:block;
+  color:#e9f0ff;
+  text-decoration:none;
+  margin:6px 0;
+}
+
+.foot-col a:hover{color:#cfe0ff}
+
+/* bottom */
+.foot-bottom-new{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.foot-line1{font-size:0.95rem;opacity:0.9}
+.foot-line2{font-size:0.9rem;opacity:0.8;line-height:1.4}
+
+.foot-line3{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:6px;
+}
+
+/* logos */
+.foot-logos-new{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.foot-logos-new img{
+  height:32px;
+  background:#fff;
+  padding:4px 6px;
+  border-radius:4px;
+}
+
+/* SOCIAL ICONS */
+.foot-social{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.foot-social a{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+}
+
+.foot-social img{
+  width:18px;
+  height:18px;
+}
+
+/* MOBILE */
+@media (max-width:720px){
+  .foot-top{grid-template-columns:1fr}
+  .foot-line3{flex-direction:column;gap:10px}
+  .foot-logos-new img{height:28px}
+}
+</style>
+
+<footer>
+
+  <!-- TOP -->
+  <div class="foot-top">
+    <div class="foot-col">
+      <h4>Get Help & Info</h4>
+      <a href="trial-participants.html">Join the Trial</a>
+      <a href="yap.html">Join YAP</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Policies</h4>
+      <a href="privacy.html">Privacy</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="gdpr.html">GDPR</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="news.html">News</a>
+      <a href="publications.html">Publications</a>
+      <a href="trial-sites.html">Trial Sites</a>
+      <a href="resources.html">Resources</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="foot-bottom-new">
+
+    <div class="foot-line1">
+      © <span id="year"></span> D1 Now | Designed with YAP
+    </div>
+
+    <div class="foot-line2">
+      Funded by the Health Research Board (HRB) and supported by University of Galway.
+    </div>
+
+    <div class="foot-line3">
+
+      <!-- logos -->
+      <div class="foot-logos-new">
+        <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/HRB1_logo.svg" alt="HRB">
+        <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/UoG_logo.svg" alt="University of Galway">
+      </div>
+
+      <!-- social -->
+      <div class="foot-social">
+
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linktree.svg"></a>
+        <a href="https://bsky.app"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bluesky.svg"></a>
+        <a href="https://mastodon.social"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mastodon.svg"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openaccess.svg"></a>
+
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
