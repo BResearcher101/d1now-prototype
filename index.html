@@ -683,9 +683,12 @@ nav{
     })();
 
     // Show recruitment modal on load
-    window.addEventListener('DOMContentLoaded', ()=> {
-      document.getElementById('recruitmentModal').classList.add('active');
-    });
+	window.addEventListener('load', ()=> {
+	  const modal = document.getElementById('recruitmentModal');
+	  if(modal){
+		modal.classList.add('active');
+	  }
+	});
   </script>
   
   <!-- Floating Read Aloud -->
