@@ -67,12 +67,27 @@
     .submit-btn:hover{
       background:#0AAFF3;
     }
+	
+
+	.back-home{
+	  display:inline-block;
+	  margin-bottom:20px;
+	  color:#144182;
+	  text-decoration:none;
+	  font-weight:bold;
+	}
+
+	.back-home:hover{
+	  text-decoration:underline;
+	}
 
   </style>
 </head>
 <body>
 
 <div class="form-container">
+
+<a href="index.html" class="back-home">← Return to Homepage</a>
 
   <h1>Join the Young Adult Panel (YAP)</h1>
 
@@ -91,6 +106,8 @@
   <form action="https://api.web3forms.com/submit" method="POST">
 
     <input type="hidden" name="access_key" value="69a7cef8-313a-45ac-8ccf-b715a1b69506">
+	
+	<input type="hidden" name="redirect" value="./index.html">
 
     <label>Your Name</label>
     <input type="text" name="name" required>
@@ -111,6 +128,8 @@
       Submit Interest
     </button>
 
+ <h1>Return to home page</h1>
+ 
   </form>
 
 </div>
