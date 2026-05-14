@@ -591,10 +591,17 @@ margin-top:2px;
       <!-- Newsletter -->
       <section class="add-newsletter add-card" aria-label="Subscribe for updates">
         <div><strong>Stay in the loop.</strong> Get updates on study progress & opportunities.</div>
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
-          <button type="submit">Subscribe</button>
-        </form>
+		<form onsubmit="subscribeEmail(event)">
+		  <input 
+			type="email" 
+			id="newsletter-email"
+			placeholder="you@example.com" 
+			aria-label="Email address" 
+			required
+		  >
+
+		  <button type="submit">Subscribe</button>
+		</form>
       </section>
     </div>
   </section>
@@ -688,6 +695,29 @@ margin-top:2px;
 	});
   </script>
   
+  <script>
+function subscribeEmail(event) {
+
+  event.preventDefault();
+
+  const email = document.getElementById("newsletter-email").value;
+
+  const subject = encodeURIComponent("D1 Now Newsletter Subscription");
+
+  const body = encodeURIComponent(
+    "Hello D1 Now team,\n\n" +
+    "I would like to subscribe to the D1 Now newsletter.\n\n" +
+    "Email: " + email
+  );
+
+  window.location.href =
+    "mailto:aswathisurendran08@gmail.com?subject=" +
+    subject +
+    "&body=" +
+    body;
+}
+</script>
+  
   <!-- Floating Read Aloud -->
   <script>
 (function () {
@@ -739,5 +769,6 @@ fetch("footer.html")
     document.getElementById("footer").innerHTML = data;
   });
 </script>
+
 </body>
 </html>
