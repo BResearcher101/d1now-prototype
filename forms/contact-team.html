@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enquiry form</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f5f7fb;
+      margin:0;
+      padding:40px 20px;
+    }
+
+    .form-container{
+      max-width:700px;
+      margin:auto;
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    h1{
+      color:#144182;
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#444;
+      line-height:1.6;
+    }
+
+    label{
+      display:block;
+      margin-top:20px;
+      font-weight:bold;
+      color:#222;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      padding:14px;
+      margin-top:8px;
+      border:1px solid #ccc;
+      border-radius:10px;
+      font-size:16px;
+      box-sizing:border-box;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .submit-btn{
+      margin-top:30px;
+      background:#144182;
+      color:white;
+      border:none;
+      padding:16px 24px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      width:100%;
+      transition:0.2s;
+    }
+
+    .submit-btn:hover{
+      background:#0AAFF3;
+    }
+
+    .back-home{
+      display:inline-block;
+      margin-bottom:20px;
+      color:#144182;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    .back-home:hover{
+      text-decoration:underline;
+    }
+
+    .checkbox-row{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .checkbox-row input{
+      width:auto;
+      margin-top:3px;
+    }
+
+    .checkbox-row label{
+      margin:0;
+      font-weight:normal;
+      line-height:1.5;
+    }
+
+    .privacy-note{
+      font-size:14px;
+      color:#555;
+      margin-top:20px;
+    }
+
+    .bottom-home-link{
+      text-align:center;
+      margin-top:25px;
+    }
+
+    .bottom-home-link a{
+      color:#144182;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .bottom-home-link a:hover{
+      text-decoration:underline;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+  <a href="../index.html" class="back-home">
+    ← Return to Homepage
+  </a>
+
+  <h1>Enquiry form</h1>
+
+  <p>
+    Thanks for your interest in the <strong>D1 Now study</strong>.
+  </p>
+
+  <p>
+    Share your query below.
+  </p>
+
+  <p class="privacy-note">
+    Your information will only be used to contact you about D1 Now activities and will be handled securely in line with GDPR requirements.
+  </p>
+
+  <form id="yap-form">
+
+    <input type="hidden" name="access_key" value="e8a9f1bc-65ee-448d-9ada-81bfb0b05ddc">
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Query</label>
+    <textarea id="message" name="message"></textarea>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="consent" required>
+      <label for="consent">
+        I agree to be contacted by the D1 Now team.
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn">
+      Submit Interest
+    </button>
+
+  </form>
+
+  <div class="bottom-home-link">
+    <a href="../index.html">Return to Homepage</a>
+  </div>
+
+</div>
+
+<script>
+document.getElementById("yap-form").addEventListener("submit", async function(e) {
+
+  e.preventDefault();
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: data
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      alert("Thank you for your interest in the D1 Now YAP.");
+
+      window.location.href = "../index.html";
+
+    } else {
+
+      alert("Something went wrong. Please try again.");
+
+    }
+
+  } catch(error) {
+
+    alert("Unable to submit form. Please try again later.");
+
+  }
+
+});
+</script>
+
+</body>
+</html>

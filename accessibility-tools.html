@@ -1,0 +1,238 @@
+<div id="accessibility-widget">
+
+  <button id="accessibility-toggle">
+    Accessibility
+  </button>
+
+  <div id="accessibility-panel">
+
+    <h3>Accessibility Options</h3>
+
+    <div class="access-group">
+      <strong>Text Size</strong><br>
+      <button onclick="changeTextSize(-1)">A-</button>
+      <button onclick="changeTextSize(1)">A+</button>
+    </div>
+
+    <div class="access-group">
+      <strong>Theme</strong><br>
+      <button onclick="setTheme('default')">Default</button>
+      <button onclick="setTheme('contrast')">High Contrast</button>
+      <button onclick="setTheme('dark')">Dark</button>
+      <button onclick="setTheme('sepia')">Sepia</button>
+    </div>
+
+    <div class="access-group">
+      <strong>Font</strong><br>
+      <button onclick="setFont('default')">Default</button>
+      <button onclick="setFont('dyslexia')">Dyslexia-friendly</button>
+    </div>
+
+  </div>
+
+</div>
+
+<button id="readAloudFloating" class="floating-read-btn" title="Read aloud">
+  🔊
+</button>
+
+<style>
+#accessibility-widget{
+  position:fixed;
+  left:24px;
+  bottom:170px;
+  z-index:9999;
+}
+
+#accessibility-toggle{
+  background:#144182;
+  color:white;
+  border:none;
+  border-radius:999px;
+  padding:14px 20px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+}
+
+#accessibility-panel{
+  display:none;
+  width:260px;
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-top:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.15);
+}
+
+#accessibility-panel.active{
+  display:block;
+}
+
+.access-group{
+  margin-top:18px;
+}
+
+.access-group button{
+  margin-top:8px;
+  margin-right:6px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#eef3fb;
+  cursor:pointer;
+}
+
+.floating-read-btn{
+  position:fixed;
+  left:24px;
+  bottom:90px;
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  border:none;
+  background:#fff;
+  box-shadow:0 4px 18px rgba(20,65,130,.14);
+  font-size:1.5rem;
+  cursor:pointer;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:readPulse 2s infinite;
+}
+
+@keyframes readPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
+
+.floating-read-btn.reading{
+  background:#ff9f1c;
+  color:#fff;
+  animation:none;
+}
+
+body.high-contrast{
+  background:black !important;
+  color:white !important;
+}
+
+body.dark-mode{
+  background:#1f1f1f !important;
+  color:#f2f2f2 !important;
+}
+
+body.sepia-mode{
+  background:#f4ecd8 !important;
+  color:#5b4636 !important;
+}
+
+body.dyslexia-font{
+  font-family:Arial, sans-serif;
+}
+
+@media (max-width:720px){
+  #accessibility-widget{
+    left:12px;
+    bottom:150px;
+  }
+
+  .floating-read-btn{
+    left:12px;
+    bottom:80px;
+    width:56px;
+    height:56px;
+  }
+}
+</style>
+
+<script>
+document.getElementById("accessibility-toggle")
+.addEventListener("click", function(){
+  document.getElementById("accessibility-panel")
+  .classList.toggle("active");
+});
+
+let currentFontSize = 100;
+
+function changeTextSize(change){
+  currentFontSize += change * 10;
+  document.body.style.fontSize = currentFontSize + "%";
+}
+
+function setTheme(theme){
+  document.body.classList.remove(
+    "high-contrast",
+    "dark-mode",
+    "sepia-mode"
+  );
+
+  if(theme === "contrast"){
+    document.body.classList.add("high-contrast");
+  }
+
+  if(theme === "dark"){
+    document.body.classList.add("dark-mode");
+  }
+
+  if(theme === "sepia"){
+    document.body.classList.add("sepia-mode");
+  }
+}
+
+function setFont(font){
+  document.body.classList.remove("dyslexia-font");
+
+  if(font === "dyslexia"){
+    document.body.classList.add("dyslexia-font");
+  }
+}
+
+/* Read aloud */
+(function () {
+  const btn = document.getElementById("readAloudFloating");
+
+  if (!btn || !("speechSynthesis" in window)) return;
+
+  let isReading = false;
+
+  function getText(){
+    let text = "";
+    const main = document.querySelector("main");
+    const extra = document.querySelector(".add-wrap");
+
+    if(main) text += main.innerText + " ";
+    if(extra) text += extra.innerText + " ";
+
+    return text.replace(/\s+/g," ").trim();
+  }
+
+  function start(){
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(getText());
+    utterance.lang = "en-IE";
+
+    utterance.onend = stop;
+
+    speechSynthesis.speak(utterance);
+
+    isReading = true;
+    btn.classList.add("reading");
+    btn.textContent = "■";
+  }
+
+  function stop(){
+    speechSynthesis.cancel();
+
+    isReading = false;
+    btn.classList.remove("reading");
+    btn.textContent = "🔊";
+  }
+
+  btn.onclick = function(){
+    isReading ? stop() : start();
+  };
+})();
+</script>

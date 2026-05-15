@@ -298,36 +298,7 @@ margin-top:2px;
     .faq-img-animated-small{width:72px;height:72px;border-radius:14px;display:block;box-shadow:0 4px 18px rgba(20,65,130,.14);animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);background:#fff}
     @keyframes add-bounce{0%,100%{transform:translateY(0)}18%{transform:translateY(-10px)}34%{transform:translateY(-4px)}}
 
-     /* Floating Read Aloud (left side) */
-.floating-read-btn{
-  position:fixed;
-  left:24px;
-  bottom:90px;
-  width:64px;
-  height:64px;
-  border-radius:16px;
-  border:none;
-  background:#fff;
-  box-shadow:0 4px 18px rgba(20,65,130,.14);
-  font-size:1.5rem;
-  cursor:pointer;
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  animation:readPulse 2s infinite;
-}
 
-@keyframes readPulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-}
-
-.floating-read-btn.reading{
-  background:#ff9f1c;
-  color:#fff;
-  animation:none;
-}
     /* Mobile display */
     
 
@@ -423,14 +394,6 @@ margin-top:2px;
     width: 100%;
   }
 
-  /* ===== FLOATING BUTTONS ===== */
-
-  .floating-read-btn {
-    left: 12px;
-    bottom: 80px;
-    width: 56px;
-    height: 56px;
-  }
 
   .floating-faq-img-link {
     right: 12px;
@@ -468,6 +431,8 @@ margin-top:2px;
 <body>
   <!-- ===== Header ===== -->
   <header>
+
+  
     <div class="header-container">
       <div class="logo">
   <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/d1now-logo.png" alt="D1 Now" class="logo-img">
@@ -510,7 +475,7 @@ margin-top:2px;
     <li class="nav-item">
       <a class="nav-link" href="trial.html">D1 Trial</a>
       <div class="dropdown">
-      <a href="trial-participants.html">For participants</a>
+      <a href="trial.html">For participants</a>
       <a href="trial-sites.html">For trial sites</a>
       </div>
     </li>
@@ -560,8 +525,8 @@ margin-top:2px;
 
       <div class="cta-col">
         <div class="add-yap-badge" title="Co-designed with the Young Adult Panel">YAP-designed</div>
-        <div class="main-headline">A community for young adults with Type 1 Diabetes in Ireland.</div>
-        <div class="main-subline">Built by and for you. Find support, join research, shape change.</div>
+        <div class="main-headline">Help shape the future of Type 1 Diabetes care in Ireland</div>
+        <div class="main-subline">Join research, share experiences, and help shape the future of care in Ireland</div>
         <div class="cta-vertical-btns">
 		<button class="cta-btn" onclick="window.location.href='forms/join-yap.html'">  Join YAP  </button>
 		<button class="cta-btn" onclick="window.location.href='forms/join-trial.html'">  Join Trial  </button>
@@ -578,10 +543,10 @@ margin-top:2px;
         <div class="add-testi-row">
           <button class="add-testi-btn" id="addPrevTesti" aria-label="Previous testimonial">‹</button>
           <div class="add-testi-card">
-            <img id="addTestiPhoto" src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Testimonial portrait">
+            <img id="addTestiPhoto" src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png" alt="Testimonial portrait">
             <div>
-              <div class="add-testi-quote" id="addTestiQuote">“Being part of D1 Now feels like my real life is finally in the design.”</div>
-              <div class="add-testi-name" id="addTestiName">Aoife, 21</div>
+              <div class="add-testi-quote" id="addTestiQuote">““…at the start, I was a bit sceptical…I didn’t want it to become a burden… It was actually completely the opposite, I felt like I had a bit of control then, rather than owing someone a favour.”</div>
+              <div class="add-testi-name" id="addTestiName">Pilot trial participant</div>
             </div>
           </div>
           <button class="add-testi-btn" id="addNextTesti" aria-label="Next testimonial">›</button>
@@ -613,10 +578,7 @@ margin-top:2px;
   <a href="faq.html" class="floating-faq-img-link" title="Read our FAQ">
     <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
   </a>
-<!-- Floating Read Aloud -->
-  <button id="readAloudFloating" class="floating-read-btn" title="Read aloud">
-  🔊
-</button>
+
   <!-- Recruitment Modal (restored) -->
   <div class="modal-bg" id="recruitmentModal">
     <div class="modal-popup" role="dialog" aria-modal="true" aria-label="Recruitment poster">
@@ -662,10 +624,10 @@ margin-top:2px;
     // Testimonials carousel
     (function(){
       const testimonials = [
-        {quote:"“…at the start, I was a bit sceptical…I didn’t want it to become a burden… It was actually completely the opposite, I felt like I had a bit of control then, rather than owing someone a favour”", name:"pilot trial participant"},
-        {quote:"“… the normal clinic, you get a different nurse and a different doctor every time…. she [support worker] stayed the same and I really like that… somebody knows your medical history ….”", name:"pilot trial participant"},
-        {quote:"“The D1 Now study has allowed me to continue helping others with Diabetes through the research we do and my role within the YAP team.”", name:"YAP member"},
-        {quote:"“I first got involved cause I wanted to know more about diabetes research but now I stay involved because of the opportunity to advocate for young people coming after me, and ensuring they get the best diabetes care possible.”", name:"YAP mentor"}
+        {quote:"“…at the start, I was a bit sceptical…I didn’t want it to become a burden… It was actually completely the opposite, I felt like I had a bit of control then, rather than owing someone a favour”", name:"pilot trial participant", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"},
+        {quote:"“… the normal clinic, you get a different nurse and a different doctor every time…. she [support worker] stayed the same and I really like that… somebody knows your medical history ….”", name:"pilot trial participant", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"},
+        {quote:"“The D1 Now study has allowed me to continue helping others with Diabetes through the research we do and my role within the YAP team.”", name:"YAP member", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"},
+        {quote:"“I first got involved cause I wanted to know more about diabetes research but now I stay involved because of the opportunity to advocate for young people coming after me, and ensuring they get the best diabetes care possible.”", name:"YAP mentor", photo:"https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/testi-1.png"}
       ];
       let i=0;
       const q = document.getElementById('addTestiQuote');
@@ -718,55 +680,24 @@ function subscribeEmail(event) {
 }
 </script>
   
-  <!-- Floating Read Aloud -->
-  <script>
-(function () {
-  const btn = document.getElementById("readAloudFloating");
 
-  if (!btn || !("speechSynthesis" in window)) return;
-
-  let isReading = false;
-
-  function getText(){
-    let text = "";
-    const main = document.querySelector("main");
-    const extra = document.querySelector(".add-wrap");
-
-    if(main) text += main.innerText + " ";
-    if(extra) text += extra.innerText + " ";
-
-    return text.replace(/\s+/g," ").trim();
-  }
-
-  function start(){
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(getText());
-    utterance.lang = "en-IE";
-
-    utterance.onend = stop;
-
-    speechSynthesis.speak(utterance);
-    isReading = true;
-    btn.classList.add("reading");
-    btn.textContent = "■";
-  }
-
-  function stop(){
-    speechSynthesis.cancel();
-    isReading = false;
-    btn.classList.remove("reading");
-    btn.textContent = "🔊";
-  }
-
-  btn.onclick = ()=> isReading ? stop() : start();
-})();
-</script>
 <div id="footer"></div>
 <script>
 fetch("footer.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("footer").innerHTML = data;
+  });
+</script>
+
+
+<div id="accessibility-tools"></div>
+
+<script>
+fetch('accessibility-tools.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('accessibility-tools').innerHTML = data;
   });
 </script>
 
