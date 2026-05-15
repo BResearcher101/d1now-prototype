@@ -697,7 +697,28 @@ fetch("footer.html")
 fetch('accessibility-tools.html')
   .then(response => response.text())
   .then(data => {
+
     document.getElementById('accessibility-tools').innerHTML = data;
+
+    // Execute scripts inside fetched HTML
+    const scripts = document
+      .getElementById('accessibility-tools')
+      .querySelectorAll('script');
+
+    scripts.forEach(oldScript => {
+
+      const newScript = document.createElement('script');
+
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
+      }
+
+      document.body.appendChild(newScript);
+
+    });
+
   });
 </script>
 
