@@ -6,26 +6,20 @@
 
   <div id="accessibility-panel">
 
-    <h3>Accessibility Options</h3>
+    <div class="access-row">
+      <button onclick="setFont('serif')">Serif</button>
+      <button onclick="setFont('sans')">Sans</button>
+    </div>
 
-    <div class="access-group">
-      <strong>Text Size</strong><br>
+    <div class="access-row">
+      <button onclick="setTheme('white')">White</button>
+      <button onclick="setTheme('sepia')">Sepia</button>
+      <button onclick="setTheme('night')">Night</button>
+    </div>
+
+    <div class="access-row text-size-row">
       <button onclick="changeTextSize(-1)">A-</button>
       <button onclick="changeTextSize(1)">A+</button>
-    </div>
-
-    <div class="access-group">
-      <strong>Theme</strong><br>
-      <button onclick="setTheme('default')">Default</button>
-      <button onclick="setTheme('contrast')">High Contrast</button>
-      <button onclick="setTheme('dark')">Dark</button>
-      <button onclick="setTheme('sepia')">Sepia</button>
-    </div>
-
-    <div class="access-group">
-      <strong>Font</strong><br>
-      <button onclick="setFont('default')">Default</button>
-      <button onclick="setFont('dyslexia')">Dyslexia-friendly</button>
     </div>
 
   </div>
@@ -57,30 +51,53 @@
 
 #accessibility-panel{
   display:none;
-  width:260px;
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  margin-top:12px;
-  box-shadow:0 8px 30px rgba(0,0,0,0.15);
+  background:#111;
+  color:#d6cbb5;
+  border:1px solid #555;
+  margin-top:10px;
+  width:200px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
 }
 
 #accessibility-panel.active{
   display:block;
 }
 
-.access-group{
-  margin-top:18px;
+.access-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid #444;
 }
 
-.access-group button{
-  margin-top:8px;
-  margin-right:6px;
-  padding:8px 12px;
+.access-row:last-child{
+  border-bottom:none;
+}
+
+.access-row button{
+  background:#111;
+  color:#d6cbb5;
   border:none;
-  border-radius:8px;
-  background:#eef3fb;
+  padding:12px 10px;
+  font-size:1rem;
   cursor:pointer;
+  border-right:1px solid #444;
+}
+
+.access-row button:last-child{
+  border-right:none;
+}
+
+.access-row button:hover{
+  background:#222;
+  color:#fff;
+}
+
+.access-row:nth-child(2){
+  grid-template-columns:1fr 1fr 1fr;
+}
+
+.text-size-row{
+  grid-template-columns:1fr 1fr;
 }
 
 .floating-read-btn{
@@ -113,23 +130,29 @@
   animation:none;
 }
 
-body.high-contrast{
-  background:black !important;
-  color:white !important;
+/* Theme modes */
+body.theme-white{
+  background:#ffffff !important;
+  color:#111111 !important;
 }
 
-body.dark-mode{
-  background:#1f1f1f !important;
-  color:#f2f2f2 !important;
-}
-
-body.sepia-mode{
+body.theme-sepia{
   background:#f4ecd8 !important;
   color:#5b4636 !important;
 }
 
-body.dyslexia-font{
-  font-family:Arial, sans-serif;
+body.theme-night{
+  background:#111111 !important;
+  color:#f2f2f2 !important;
+}
+
+/* Font modes */
+body.font-serif{
+  font-family:Georgia, "Times New Roman", serif !important;
+}
+
+body.font-sans{
+  font-family:Inter, Arial, sans-serif !important;
 }
 
 @media (max-width:720px){
@@ -163,29 +186,36 @@ function changeTextSize(change){
 
 function setTheme(theme){
   document.body.classList.remove(
-    "high-contrast",
-    "dark-mode",
-    "sepia-mode"
+    "theme-white",
+    "theme-sepia",
+    "theme-night"
   );
 
-  if(theme === "contrast"){
-    document.body.classList.add("high-contrast");
-  }
-
-  if(theme === "dark"){
-    document.body.classList.add("dark-mode");
+  if(theme === "white"){
+    document.body.classList.add("theme-white");
   }
 
   if(theme === "sepia"){
-    document.body.classList.add("sepia-mode");
+    document.body.classList.add("theme-sepia");
+  }
+
+  if(theme === "night"){
+    document.body.classList.add("theme-night");
   }
 }
 
 function setFont(font){
-  document.body.classList.remove("dyslexia-font");
+  document.body.classList.remove(
+    "font-serif",
+    "font-sans"
+  );
 
-  if(font === "dyslexia"){
-    document.body.classList.add("dyslexia-font");
+  if(font === "serif"){
+    document.body.classList.add("font-serif");
+  }
+
+  if(font === "sans"){
+    document.body.classList.add("font-sans");
   }
 }
 
