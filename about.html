@@ -781,6 +781,19 @@ width: 100%;
   cursor: pointer;
 }
 
+.view-bio{
+  display:block;
+  margin-top:8px;
+  font-weight:800;
+  color:var(--footer-blue);
+  font-size:.85rem;
+}
+
+.person-card:hover .view-bio{
+  color:var(--blue);
+  text-decoration:underline;
+}
+
 /* Responsive */
 @media (max-width: 980px){
   .team-core-grid{grid-template-columns: repeat(2, 1fr);}
@@ -1328,113 +1341,182 @@ The name <strong>D1 Now</strong> reflects a simple idea: young adults living wit
 
     <div class="team-core-grid">
       <!-- Person 1 -->
-      <button class="person-card"
-        data-name="Dr Jane Smith"
-        data-role="Principal Investigator"
-        data-bio="Jane leads the D1 Now programme and has over 15 years’ experience in diabetes research, youth engagement, and health service improvement."
-        data-link="https://example.com"
-        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Jane Smith">
-        <div class="person-info">
-          <strong>Dr Jane Smith</strong>
-          <span>Principal Investigator</span>
-        </div>
-      </button>
+	  
+	  <button class="person-card"
+		type="button"
+		data-name="Prof Sean Dinneen"
+		data-role="Principal Investigator"
+		data-bio="Professor Sean Dinneen, is Lead Applicant on the D1 Now Study. He is a professor of diabetic medicine and works jointly across the School of Medicine, NUI Galway and the Centre for Diabetes, Endocrinology and Metabolism, Galway University Hospitals. Since June 2016 he is HSE National Clinical Programme Lead for Diabetes.
+
+Over the past 10 years Prof Dinneen has secured research funding of nearly €3 million from the Health Research Board (HRB), Enterprise Ireland, Diabetes Ireland (through the Medical Research Charities Group) and the European Foundation for the Study of Diabetes. In addition he was part of successful bids which brought a School of Podiatry and a Clinical Research Facility to NUI Galway. He has acted as Principal Investigator on 3 multi-centre clinical trials through the HRB Clinical Research Facility Galway. His professional interests are in delivering programmes of self-management education for people with diabetes, developing optimal models of community-based diabetes care, improving the way we deliver care to young adults with type 1 diabetes and using information technology in new and innovative ways to improve diabetes care. "
+		data-link=" http://www.nuigalway.ie/our-research/people/medicine/seandinneen/"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/sd.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/sd.png" 
+		  alt="Prof Sean Dinneen">
+
+		<div class="person-info">
+		  <strong>Prof Sean Dinneen</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+	  
+	  
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
 
       <!-- Person 2 -->
-      <button class="person-card"
-        data-name="Prof John Murphy"
-        data-role="Co-Applicant"
-        data-bio="John is a consultant endocrinologist and academic, contributing clinical expertise and trial oversight to D1 Now."
-        data-link="https://example.com"
-        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Prof John Murphy">
-        <div class="person-info">
-          <strong>Prof John Murphy</strong>
-          <span>Co-Applicant</span>
-        </div>
-      </button>
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+
+
 
       <!-- Person 3 -->
-      <button class="person-card"
-        data-name="Dr Aoife Byrne"
-        data-role="Research Fellow"
-        data-bio="Aoife coordinates day-to-day delivery of the project and works closely with young adults and clinic teams."
-        data-link="https://example.com"
-        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Aoife Byrne">
-        <div class="person-info">
-          <strong>Dr Aoife Byrne</strong>
-          <span>Research Fellow</span>
-        </div>
-      </button>
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+
 
       <!-- Person 4 -->
-      <button class="person-card"
-        data-name="Ms Niamh O’Connor"
-        data-role="Project Manager"
-        data-bio="Niamh oversees coordination, communications, and stakeholder engagement across the D1 Now programme."
-        data-link="https://example.com"
-        data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-        <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Ms Niamh O’Connor">
-        <div class="person-info">
-          <strong>Ms Niamh O’Connor</strong>
-          <span>Project Manager</span>
-        </div>
-      </button>
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+
       
  <!-- Row 2 -->
-<button class="person-card"
-  data-name="Dr Mark O’Sullivan"
-  data-role="Co-Applicant"
-  data-bio="Mark contributes expertise in clinical diabetes care and implementation research."
-  data-link="https://example.com"
-  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Mark O’Sullivan">
-  <div class="person-info">
-    <strong>Dr Mark O’Sullivan</strong>
-    <span>Co-Applicant</span>
-  </div>
-</button>
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
 
-<button class="person-card"
-  data-name="Prof Helen Walsh"
-  data-role="Clinical Collaborator"
-  data-bio="Helen supports clinical integration of the D1 Now intervention across sites."
-  data-link="https://example.com"
-  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Prof Helen Walsh">
-  <div class="person-info">
-    <strong>Prof Helen Walsh</strong>
-    <span>Clinical Collaborator</span>
-  </div>
-</button>
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
 
-<button class="person-card"
-  data-name="Dr Paul Keane"
-  data-role="Health Psychologist"
-  data-bio="Paul brings behavioural science expertise to intervention development."
-  data-link="https://example.com"
-  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Dr Paul Keane">
-  <div class="person-info">
-    <strong>Dr Paul Keane</strong>
-    <span>Health Psychologist</span>
-  </div>
-</button>
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
 
-<button class="person-card"
-  data-name="Ms Laura Ní Bhraonáin"
-  data-role="Research Assistant"
-  data-bio="Laura supports data collection, coordination, and participant engagement."
-  data-link="https://example.com"
-  data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
-  <img src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" alt="Ms Laura Ní Bhraonáin">
-  <div class="person-info">
-    <strong>Ms Laura Ní Bhraonáin</strong>
-    <span>Research Assistant</span>
-  </div>
-</button>
+	  </button>
+
+
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+
+	  <button class="person-card"
+		type="button"
+		data-name="Dr Jane Smith"
+		data-role="Principal Investigator"
+		data-bio="Short bio placeholder to be added. This space will introduce the person’s role in D1 Now, their area of expertise, and how they contribute to the programme."
+		data-link="https://example.com"
+		data-img="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png">
+
+		<img 
+		  src="https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/about1.png" 
+		  alt="Dr Jane Smith">
+
+		<div class="person-info">
+		  <strong>Dr Jane Smith</strong>
+		  <span>Principal Investigator</span>
+		  <small class="view-bio">View bio →</small>
+		</div>
+
+	  </button>
+
+
+
+
     </div>
   </div>
 </section>
@@ -1571,38 +1653,48 @@ The name <strong>D1 Now</strong> reflects a simple idea: young adults living wit
       });
   </script>
 
+   <!-- ===== Profile ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-  <script>
-  
-    document.getElementById('year').textContent = new Date().getFullYear();
- 
+  const modal = document.getElementById("teamModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalName = document.getElementById("modalName");
+  const modalRole = document.getElementById("modalRole");
+  const modalBio = document.getElementById("modalBio");
+  const modalLink = document.getElementById("modalLink");
 
-  const modal = document.getElementById('teamModal');
-  const modalImg = document.getElementById('modalImg');
-  const modalName = document.getElementById('modalName');
-  const modalRole = document.getElementById('modalRole');
-  const modalBio = document.getElementById('modalBio');
-  const modalLink = document.getElementById('modalLink');
+  if (!modal || !modalImg || !modalName || !modalRole || !modalBio || !modalLink) {
+    return;
+  }
 
-  document.querySelectorAll('.person-card').forEach(card => {
-    card.addEventListener('click', () => {
+  document.querySelectorAll(".person-card").forEach(card => {
+    card.addEventListener("click", function () {
       modalImg.src = card.dataset.img;
-      modalName.textContent = card.dataset.name;
-      modalRole.textContent = card.dataset.role;
-      modalBio.textContent = card.dataset.bio;
-      modalLink.href = card.dataset.link;
-      modal.classList.add('active');
+      modalImg.alt = card.dataset.name;
+      modalName.textContent = card.dataset.name || "Team member";
+      modalRole.textContent = card.dataset.role || "D1 Now team";
+      modalBio.textContent = card.dataset.bio || "Bio placeholder to be added.";
+      modalLink.href = card.dataset.link || "#";
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
     });
   });
 
-  modal.addEventListener('click', e => {
-    if(e.target === modal || e.target.classList.contains('modal-close')){
-      modal.classList.remove('active');
+  function closeModal() {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal || e.target.classList.contains("modal-close")) {
+      closeModal();
     }
   });
 
-
-  </script>
+});
+</script>
   
    <!-- ===== accessibility ===== -->
   
