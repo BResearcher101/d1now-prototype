@@ -1,20 +1,32 @@
 <div id="accessibility-widget">
 
-  <button id="accessibility-toggle">
+  <button 
+    id="accessibility-toggle"
+    aria-label="Open accessibility options"
+    aria-expanded="false"
+    aria-controls="accessibility-panel"
+    aria-haspopup="true">
     Accessibility
   </button>
 
-  <div id="accessibility-panel">
+  <div 
+    id="accessibility-panel"
+    role="dialog"
+    aria-label="Accessibility options">
+
+    <button id="accessibility-close" aria-label="Close accessibility options">×</button>
 
     <div class="access-row">
-      <button onclick="setFont('serif')">Serif</button>
-      <button onclick="setFont('sans')">Sans</button>
+      <button data-font="serif" onclick="setFont('serif')">Serif</button>
+      <button data-font="sans" onclick="setFont('sans')">Sans</button>
     </div>
 
-    <div class="access-row">
-      <button onclick="setTheme('white')">White</button>
-      <button onclick="setTheme('sepia')">Sepia</button>
-      <button onclick="setTheme('night')">Night</button>
+    <div class="access-row theme-row">
+      <button data-theme="default" onclick="setTheme('default')">Default</button>
+      <button data-theme="white" onclick="setTheme('white')">White</button>
+      <button data-theme="sepia" onclick="setTheme('sepia')">Sepia</button>
+      <button data-theme="night" onclick="setTheme('night')">Night</button>
+      <button data-theme="contrast" onclick="setTheme('contrast')">High contrast</button>
     </div>
 
     <div class="access-row text-size-row">
@@ -22,11 +34,16 @@
       <button onclick="changeTextSize(1)">A+</button>
     </div>
 
+    <div class="access-row action-row">
+      <button onclick="toggleMotion()">Pause motion</button>
+      <button onclick="resetAccessibility()">Reset</button>
+    </div>
+
   </div>
 
 </div>
 
-<button id="readAloudFloating" class="floating-read-btn" title="Read aloud">
+<button id="readAloudFloating" class="floating-read-btn" title="Read aloud" aria-label="Read page aloud">
   🔊
 </button>
 
@@ -49,18 +66,37 @@
   box-shadow:0 4px 14px rgba(0,0,0,0.15);
 }
 
+#accessibility-toggle:focus,
+#accessibility-panel button:focus,
+.floating-read-btn:focus{
+  outline:4px solid #FDD560;
+  outline-offset:3px;
+}
+
 #accessibility-panel{
   display:none;
+  position:relative;
   background:#111;
   color:#d6cbb5;
   border:1px solid #555;
   margin-top:10px;
-  width:200px;
+  width:260px;
   box-shadow:0 8px 30px rgba(0,0,0,0.25);
 }
 
 #accessibility-panel.active{
   display:block;
+}
+
+#accessibility-close{
+  position:absolute;
+  top:6px;
+  right:8px;
+  background:transparent;
+  color:#fff;
+  border:none;
+  font-size:1.3rem;
+  cursor:pointer;
 }
 
 .access-row{
@@ -69,8 +105,20 @@
   border-bottom:1px solid #444;
 }
 
+.access-row:first-of-type{
+  margin-top:36px;
+}
+
 .access-row:last-child{
   border-bottom:none;
+}
+
+.theme-row{
+  grid-template-columns:1fr 1fr;
+}
+
+.action-row{
+  grid-template-columns:1fr 1fr;
 }
 
 .access-row button{
@@ -78,7 +126,7 @@
   color:#d6cbb5;
   border:none;
   padding:12px 10px;
-  font-size:1rem;
+  font-size:.95rem;
   cursor:pointer;
   border-right:1px solid #444;
 }
@@ -92,12 +140,10 @@
   color:#fff;
 }
 
-.access-row:nth-child(2){
-  grid-template-columns:1fr 1fr 1fr;
-}
-
-.text-size-row{
-  grid-template-columns:1fr 1fr;
+.access-row button.active{
+  background:#FDD560;
+  color:#144182;
+  font-weight:bold;
 }
 
 .floating-read-btn{
@@ -130,20 +176,141 @@
   animation:none;
 }
 
-/* Theme modes */
-body.theme-white{
+/* Stronger theme modes */
+body.theme-white,
+body.theme-white main,
+body.theme-white section{
   background:#ffffff !important;
   color:#111111 !important;
 }
 
-body.theme-sepia{
+body.theme-white .card,
+body.theme-white .tile,
+body.theme-white .resource-card,
+body.theme-white .faq-link-card,
+body.theme-white .blog-card,
+body.theme-white .video-card,
+body.theme-white .hero-card,
+body.theme-white .hero-side,
+body.theme-white .about-hero-card,
+body.theme-white .about-hero-img{
+  background:#ffffff !important;
+  color:#111111 !important;
+}
+
+body.theme-sepia,
+body.theme-sepia main,
+body.theme-sepia section{
   background:#f4ecd8 !important;
   color:#5b4636 !important;
 }
 
-body.theme-night{
+body.theme-sepia .card,
+body.theme-sepia .tile,
+body.theme-sepia .resource-card,
+body.theme-sepia .faq-link-card,
+body.theme-sepia .blog-card,
+body.theme-sepia .video-card,
+body.theme-sepia .hero-card,
+body.theme-sepia .hero-side,
+body.theme-sepia .about-hero-card,
+body.theme-sepia .about-hero-img{
+  background:#fbf3df !important;
+  color:#5b4636 !important;
+}
+
+body.theme-night,
+body.theme-night main,
+body.theme-night section{
   background:#111111 !important;
   color:#f2f2f2 !important;
+}
+
+body.theme-night .card,
+body.theme-night .tile,
+body.theme-night .resource-card,
+body.theme-night .faq-link-card,
+body.theme-night .blog-card,
+body.theme-night .video-card,
+body.theme-night .hero-card,
+body.theme-night .hero-side,
+body.theme-night .about-hero-card,
+body.theme-night .about-hero-img{
+  background:#1d1d1d !important;
+  color:#f2f2f2 !important;
+}
+
+body.theme-contrast,
+body.theme-contrast main,
+body.theme-contrast section{
+  background:#000000 !important;
+  color:#ffffff !important;
+}
+
+body.theme-contrast .card,
+body.theme-contrast .tile,
+body.theme-contrast .resource-card,
+body.theme-contrast .faq-link-card,
+body.theme-contrast .blog-card,
+body.theme-contrast .video-card,
+body.theme-contrast .hero-card,
+body.theme-contrast .hero-side,
+body.theme-contrast .about-hero-card,
+body.theme-contrast .about-hero-img{
+  background:#000000 !important;
+  color:#ffffff !important;
+  border:2px solid #ffffff !important;
+}
+
+body.theme-night h1,
+body.theme-night h2,
+body.theme-night h3,
+body.theme-night h4,
+body.theme-night p,
+body.theme-night li,
+body.theme-night span,
+body.theme-night strong,
+body.theme-night .lead,
+body.theme-night .hero-sub,
+body.theme-night .section-kicker,
+body.theme-night .video-caption,
+body.theme-night .person-info span,
+body.theme-night a{
+  color:#f2f2f2 !important;
+}
+
+body.theme-contrast h1,
+body.theme-contrast h2,
+body.theme-contrast h3,
+body.theme-contrast h4,
+body.theme-contrast p,
+body.theme-contrast li,
+body.theme-contrast span,
+body.theme-contrast strong,
+body.theme-contrast .lead,
+body.theme-contrast .hero-sub,
+body.theme-contrast .section-kicker,
+body.theme-contrast .video-caption,
+body.theme-contrast .person-info span,
+body.theme-contrast a{
+  color:#ffffff !important;
+}
+
+body.theme-sepia h1,
+body.theme-sepia h2,
+body.theme-sepia h3,
+body.theme-sepia h4,
+body.theme-sepia p,
+body.theme-sepia li,
+body.theme-sepia span,
+body.theme-sepia strong,
+body.theme-sepia .lead,
+body.theme-sepia .hero-sub,
+body.theme-sepia .section-kicker,
+body.theme-sepia .video-caption,
+body.theme-sepia .person-info span,
+body.theme-sepia a{
+  color:#5b4636 !important;
 }
 
 /* Font modes */
@@ -155,10 +322,23 @@ body.font-sans{
   font-family:Inter, Arial, sans-serif !important;
 }
 
+/* Pause motion */
+body.pause-motion *,
+body.pause-motion *::before,
+body.pause-motion *::after{
+  animation:none !important;
+  transition:none !important;
+  scroll-behaviour:auto !important;
+}
+
 @media (max-width:720px){
   #accessibility-widget{
     left:12px;
     bottom:150px;
+  }
+
+  #accessibility-panel{
+    width:240px;
   }
 
   .floating-read-btn{
@@ -171,37 +351,93 @@ body.font-sans{
 </style>
 
 <script>
-document.getElementById("accessibility-toggle")
-.addEventListener("click", function(){
-  document.getElementById("accessibility-panel")
-  .classList.toggle("active");
+const accessibilityToggle = document.getElementById("accessibility-toggle");
+const accessibilityPanel = document.getElementById("accessibility-panel");
+const accessibilityClose = document.getElementById("accessibility-close");
+
+let currentFontSize = Number(localStorage.getItem("d1nowFontSize")) || 100;
+let currentTheme = localStorage.getItem("d1nowTheme") || "default";
+let currentFont = localStorage.getItem("d1nowFont") || "sans";
+let motionPaused = localStorage.getItem("d1nowPauseMotion") === "true";
+
+function openAccessibilityPanel(){
+  accessibilityPanel.classList.add("active");
+  accessibilityToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeAccessibilityPanel(){
+  accessibilityPanel.classList.remove("active");
+  accessibilityToggle.setAttribute("aria-expanded", "false");
+  accessibilityToggle.focus();
+}
+
+accessibilityToggle.addEventListener("click", function(){
+  if(accessibilityPanel.classList.contains("active")){
+    closeAccessibilityPanel();
+  } else {
+    openAccessibilityPanel();
+  }
 });
 
-let currentFontSize = 100;
+accessibilityClose.addEventListener("click", closeAccessibilityPanel);
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && accessibilityPanel.classList.contains("active")){
+    closeAccessibilityPanel();
+  }
+});
+
+document.addEventListener("click", function(e){
+  if(
+    accessibilityPanel.classList.contains("active") &&
+    !document.getElementById("accessibility-widget").contains(e.target)
+  ){
+    accessibilityPanel.classList.remove("active");
+    accessibilityToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+function updateActiveButtons(){
+  document.querySelectorAll("[data-theme]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.theme === currentTheme);
+  });
+
+  document.querySelectorAll("[data-font]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.font === currentFont);
+  });
+}
 
 function changeTextSize(change){
   currentFontSize += change * 10;
+
+  if(currentFontSize < 80){
+    currentFontSize = 80;
+  }
+
+  if(currentFontSize > 160){
+    currentFontSize = 160;
+  }
+
   document.body.style.fontSize = currentFontSize + "%";
+  localStorage.setItem("d1nowFontSize", currentFontSize);
 }
 
 function setTheme(theme){
   document.body.classList.remove(
     "theme-white",
     "theme-sepia",
-    "theme-night"
+    "theme-night",
+    "theme-contrast"
   );
 
-  if(theme === "white"){
-    document.body.classList.add("theme-white");
+  currentTheme = theme;
+
+  if(theme !== "default"){
+    document.body.classList.add("theme-" + theme);
   }
 
-  if(theme === "sepia"){
-    document.body.classList.add("theme-sepia");
-  }
-
-  if(theme === "night"){
-    document.body.classList.add("theme-night");
-  }
+  localStorage.setItem("d1nowTheme", theme);
+  updateActiveButtons();
 }
 
 function setFont(font){
@@ -210,6 +446,8 @@ function setFont(font){
     "font-sans"
   );
 
+  currentFont = font;
+
   if(font === "serif"){
     document.body.classList.add("font-serif");
   }
@@ -217,7 +455,56 @@ function setFont(font){
   if(font === "sans"){
     document.body.classList.add("font-sans");
   }
+
+  localStorage.setItem("d1nowFont", font);
+  updateActiveButtons();
 }
+
+function toggleMotion(){
+  motionPaused = !motionPaused;
+  document.body.classList.toggle("pause-motion", motionPaused);
+  localStorage.setItem("d1nowPauseMotion", motionPaused);
+}
+
+function resetAccessibility(){
+  currentFontSize = 100;
+  currentTheme = "default";
+  currentFont = "sans";
+  motionPaused = false;
+
+  document.body.style.fontSize = "100%";
+  document.body.classList.remove(
+    "theme-white",
+    "theme-sepia",
+    "theme-night",
+    "theme-contrast",
+    "font-serif",
+    "font-sans",
+    "pause-motion"
+  );
+
+  localStorage.removeItem("d1nowFontSize");
+  localStorage.removeItem("d1nowTheme");
+  localStorage.removeItem("d1nowFont");
+  localStorage.removeItem("d1nowPauseMotion");
+
+  setFont("sans");
+  updateActiveButtons();
+}
+
+function applySavedAccessibility(){
+  document.body.style.fontSize = currentFontSize + "%";
+  setTheme(currentTheme);
+  setFont(currentFont);
+
+  if(motionPaused){
+    document.body.classList.add("pause-motion");
+  }
+
+  updateActiveButtons();
+}
+
+applySavedAccessibility();
 
 /* Read aloud */
 (function () {
@@ -251,6 +538,7 @@ function setFont(font){
     isReading = true;
     btn.classList.add("reading");
     btn.textContent = "■";
+    btn.setAttribute("aria-label", "Stop reading aloud");
   }
 
   function stop(){
@@ -259,6 +547,7 @@ function setFont(font){
     isReading = false;
     btn.classList.remove("reading");
     btn.textContent = "🔊";
+    btn.setAttribute("aria-label", "Read page aloud");
   }
 
   btn.onclick = function(){
