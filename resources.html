@@ -808,67 +808,10 @@
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="logo">D1 Now</div>
 
-      <nav aria-label="Primary">
-        <ul class="nav-list">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-            <div class="dropdown">
-              <a href="about.html#what">What is D1 Now?</a>
-              <a href="about.html#why">Why it matters</a>
-              <a href="about.html#approach">Our Approach</a>
-              <a href="about.html#team">Research & Team</a>
-              <a href="about.html#governance">Governance & Oversight</a>
-              <a href="about.html#impact">Outputs & Impact</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="yap.html">Young Adult Panel</a>
-            <div class="dropdown">
-              <a href="yap.html#what">What is YAP?</a>
-              <a href="yap.html#members">Meet the YAP</a>
-              <a href="yap.html#whyjoin">Why join?</a>
-              <a href="yap.html#journey">YAP journey</a>
-              <a href="yap.html#voices">Testimonials</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="trial.html">D1 Trial</a>
-            <div class="dropdown">
-              <a href="trial-participants.html">For Participants</a>
-              <a href="trial-sites.html">For Trial Sites</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="resources.html">Resources</a>
-            <div class="dropdown">
-              <a href="#yap-resources">YAP Blogs</a>
-              <a href="#videos">Videos & Stories</a>
-              <a href="#posters">Posters</a>
-              <a href="#research">Research</a>
-              <a href="#toolkits">Toolkits</a>
-              <a href="#faq-links">FAQ Links</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <a class="header-pill secondary" href="yap.html">Join YAP</a>
-        <a class="header-pill" href="trial-participants.html#join">Join Trial</a>
-      </div>
-    </div>
-    <div class="header-gradient-strip" aria-hidden="true"></div>
-  </header>
-
+  <!-- ===== Header ===== -->
+  <div id="site-header"></div>
+  
   <main>
     <!-- ===== HERO ===== -->
     <section class="hero" aria-label="Resources hero">
@@ -891,11 +834,11 @@
           <div class="stat-stack">
             <div class="hero-stat">
               <div class="num">3+</div>
-              <div class="lbl">Audience groups supported</div>
+              <div class="lbl">Audience groups</div>
             </div>
             <div class="hero-stat">
-              <div class="num">2</div>
-              <div class="lbl">Main reuse platforms</div>
+              <div class="num">Templates</div>
+              <div class="lbl">Ready to use resuable templates</div>
             </div>
             <div class="hero-stat">
               <div class="num">YAP</div>
@@ -909,7 +852,7 @@
           <div class="mini-pills">
             <span class="mini-pill">Reusable</span>
             <span class="mini-pill">Research-informed</span>
-            <span class="mini-pill">YAP-connected</span>
+            <span class="mini-pill">YAP-codesigned</span>
           </div>
         </div>
 
@@ -1295,57 +1238,35 @@
     </section>
   </main>
 
-  <!-- Floating FAQ -->
-  <a href="#faq-links" class="floating-faq-img-link" title="Jump to FAQ links">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
-  </a>
+
+
 
   <!-- ===== Footer ===== -->
-  <footer>
-    <div class="foot-top">
-      <div class="foot-col">
-        <h4>Get Help & Info</h4>
-        <a href="trial-participants.html">Join the Trial</a>
-        <a href="yap.html">Join YAP</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact the Team</a>
-      </div>
-      <div class="foot-col">
-        <h4>Policies</h4>
-        <a href="privacy.html">Privacy & Data Protection</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="gdpr.html">GDPR & Consent</a>
-        <a href="accessibility.html">Accessibility</a>
-      </div>
-      <div class="foot-col">
-        <h4>General</h4>
-        <a href="news.html">Latest News</a>
-        <a href="publications.html">Publications</a>
-        <a href="trial-sites.html">For Trial Sites</a>
-        <a href="resources.html">Resources</a>
-      </div>
-    </div>
+<div id="site-footer"></div>
+ <!-- ===== Header & Footer ===== -->
 
-    <div class="foot-logos">
-      <div class="foot-logos-inner">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/HRB_logo.png" alt="HRB">
-        <img src="https://www.universityofgalway.ie/themes/universityofgalway/images/logo.png" alt="University of Galway">
-      </div>
-    </div>
+  <script>
 
-    <div class="foot-bottom">
-      <div>© D1 Now <span id="year"></span>. All rights reserved.</div>
-      <div class="foot-social">
-        <a class="soc" href="#" aria-label="Facebook">f</a>
-        <a class="soc" href="#" aria-label="X">x</a>
-        <a class="soc" href="#" aria-label="Instagram">ig</a>
-        <a class="soc" href="#" aria-label="LinkedIn">in</a>
-      </div>
-    </div>
-  </footer>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-header").innerHTML = data;
+      });
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-footer").innerHTML = data;
+
+        const year = document.getElementById("year");
+        if (year) {
+          year.textContent = new Date().getFullYear();
+        }
+      });
+  </script>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+
 
   // Better small-screen dropdown behaviour
   if (window.matchMedia('(max-width: 720px)').matches) {
@@ -1426,6 +1347,39 @@ function closePoster(){
 
 renderPosterGallery();
 </script>
+
+<!-- ===== accessibility ===== -->
+
+<div id="accessibility-tools"></div>
+
+<script>
+fetch('accessibility-tools.html')
+  .then(response => response.text())
+  .then(data => {
+
+    document.getElementById('accessibility-tools').innerHTML = data;
+
+    const scripts = document
+      .getElementById('accessibility-tools')
+      .querySelectorAll('script');
+
+    scripts.forEach(oldScript => {
+
+      const newScript = document.createElement('script');
+
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
+      }
+
+      document.body.appendChild(newScript);
+
+    });
+
+  });
+</script>
+
   <!-- BLOG MODAL -->
 <div class="modal-bg" id="blogModal">
   <div class="modal">
