@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – Publications</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#0AAFF3;
+  --footer-blue:#144182;
+  --yellow:#FDD560;
+  --ink:#0b2b62;
+  --muted:#6b7aa5;
+  --soft-bg:#fffef7;
+  --white:#fff;
+  --line:rgba(20,65,130,.12);
+  --shadow:0 6px 28px rgba(0,0,0,0.08);
+  --maxw:1200px;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--footer-blue);
+  color:#111;
+  font-family:Inter,Arial,sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+main{
+  background:var(--soft-bg);
+  flex:1;
+}
+
+h1,h2,h3,h4{
+  font-family:Poppins,Inter,sans-serif;
+  color:var(--ink);
+  margin:0;
+}
+
+p{margin:0}
+
+a{
+  color:var(--footer-blue);
+  font-weight:800;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:26px 18px;
+}
+
+.hero{
+  background:var(--yellow);
+  padding:48px 18px;
+  border-bottom:8px solid rgba(20,65,130,.08);
+}
+
+.hero-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:32px;
+}
+
+.kicker{
+  color:var(--blue);
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.86rem;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-size:2.35rem;
+  line-height:1.15;
+  color:var(--footer-blue);
+}
+
+.hero p{
+  margin-top:14px;
+  max-width:850px;
+  line-height:1.75;
+  color:#233048;
+  font-size:1.05rem;
+}
+
+.jumpbar{
+  max-width:var(--maxw);
+  margin:-24px auto 0;
+  padding:0 18px;
+}
+
+.jumpbar-inner{
+  background:#fff;
+  box-shadow:var(--shadow);
+  border-radius:999px;
+  padding:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+}
+
+.jumpbar-inner a{
+  text-decoration:none;
+  background:rgba(20,65,130,.07);
+  color:var(--footer-blue);
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:.88rem;
+}
+
+.section-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.section-title h2{
+  color:var(--footer-blue);
+  font-size:1.7rem;
+}
+
+.section-kicker{
+  color:var(--muted);
+  font-weight:800;
+}
+
+.lead{
+  max-width:980px;
+  line-height:1.75;
+  color:#223;
+  margin-bottom:18px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.pub-card{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  border:2px solid rgba(20,65,130,.08);
+}
+
+.pub-card h3,
+.pub-card h4{
+  color:var(--footer-blue);
+}
+
+.pub-card p{
+  margin-top:8px;
+  line-height:1.65;
+  color:#223;
+}
+
+.tag{
+  display:inline-block;
+  background:#e8efff;
+  color:var(--footer-blue);
+  border-radius:999px;
+  padding:7px 11px;
+  font-weight:900;
+  font-size:.82rem;
+  margin-bottom:10px;
+}
+
+.btn{
+  display:inline-flex;
+  margin-top:14px;
+  background:var(--footer-blue);
+  color:#fff;
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+.btn.secondary{
+  background:rgba(20,65,130,.08);
+  color:var(--footer-blue);
+}
+
+.pub-list{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-top:18px;
+}
+
+.pub-list h3{
+  color:var(--footer-blue);
+  margin-bottom:12px;
+}
+
+.pub-list ol,
+.pub-list ul{
+  margin:0;
+  padding-left:22px;
+}
+
+.pub-list li{
+  margin-bottom:14px;
+  line-height:1.65;
+}
+
+.pub-list li:last-child{
+  margin-bottom:0;
+}
+
+.pub-year{
+  font-weight:900;
+  color:var(--footer-blue);
+}
+
+.small-note{
+  color:#5d6c8e;
+  font-size:.95rem;
+  margin-top:8px;
+  line-height:1.6;
+}
+
+@media(max-width:900px){
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:1.9rem;
+  }
+
+  .hero-inner{
+    padding:24px 18px;
+  }
+
+  .jumpbar-inner{
+    justify-content:flex-start;
+    border-radius:18px;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+  }
+
+  .jumpbar-inner a{
+    flex:0 0 auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Research, publications & dissemination</div>
+    <h1>D1 Now publications and outputs</h1>
+    <p>
+      This page brings together journal articles, protocols, conference outputs, oral presentations,
+      awards, and wider dissemination linked to D1 Now. The work spans young adult type 1 diabetes care,
+      patient and public involvement, intervention development, health psychology, implementation, and trial methods.
+    </p>
+  </div>
+</section>
+
+<div class="jumpbar">
+  <div class="jumpbar-inner">
+    <a href="#featured">Featured</a>
+    <a href="#journal">Journal articles</a>
+    <a href="#abstracts">Conference abstracts</a>
+    <a href="#presentations">Oral presentations</a>
+    <a href="#awards">Awards</a>
+    <a href="#media">Media & dissemination</a>
+  </div>
+</div>
+
+<section class="wrap" id="featured">
+  <div class="section-title">
+    <h2>Featured recent outputs</h2>
+    <div class="section-kicker">Latest work</div>
+  </div>
+
+  <p class="lead">
+    These recent outputs relate to the definitive D1 Now trial, recruitment and retention planning,
+    co-research, and process evaluation.
+  </p>
+
+  <div class="feature-grid">
+
+    <article class="pub-card">
+      <div class="tag">Protocol</div>
+      <h3>Evaluating the effectiveness of the D1 Now intervention to improve outcomes among young adults with type 1 diabetes: Protocol </h3>
+      <p>
+        Surendran A, Byrne M, Morrissey E, Alvarez-Iglesias A, Gillespie P, Hobbins A,
+        Sezgin D, Sreenan S, Devane D, Keighron C, Lowry M, Kunneman M, Doherty AM,
+        Site Collaborative Group, Dinneen SF.
+      </p>
+      <p class="small-note">medRxiv, 2025.</p>
+      <a class="btn secondary" href="https://www.medrxiv.org/content/10.1101/2025.11.11.25339994v1" target="_blank" rel="noopener">View article</a>
+    </article>
+
+    <article class="pub-card">
+      <div class="tag">Process evaluation</div>
+      <h3>Process evaluation protocol for the D1 Now cluster randomised controlled trial to improve outcomes for young adults with type 1 diabetes</h3>
+      <p>
+        Morrissey E, Sezgin D, Surendran A, D1 Now Young Adult Panel,
+        D1 Now Young Adult Panel Mentors, Dinneen S, Byrne M.
+      </p>
+      <p class="small-note">HRB Open Research, 2026.</p>
+      <a class="btn secondary" href="https://hrbopenresearch.org/articles/9-3" target="_blank" rel="noopener">View article</a>
+    </article>
+
+    <article class="pub-card">
+      <div class="tag">Conference output</div>
+      <h3>Empowering young people with diabetes: co-researching interventions for improved diabetes management</h3>
+      <p>
+        Keighron C, Morrissey E, Byrne M, Surendran A, Dinneen S.
+      </p>
+      <p class="small-note">Endocrine Abstracts, 2024.</p>
+      <a class="btn secondary" href="https://www.endocrine-abstracts.org/ea/0104/ea0104p175" target="_blank" rel="noopener">View abstract</a>
+    </article>
+
+  </div>
+</section>
+
+<section class="wrap" id="journal">
+  <div class="section-title">
+    <h2>Peer-reviewed journal articles</h2>
+    <div class="section-kicker">Evidence base</div>
+  </div>
+
+  <div class="pub-list">
+    <ol>
+      <li><span class="pub-year">2026.</span> Morrissey E, Sezgin D, Surendran A, D1 Now Young Adult Panel, D1 Now Young Adult Panel Mentors, Dinneen S, Byrne M. Process evaluation protocol for the D1 Now cluster randomised controlled trial to improve outcomes for young adults with type 1 diabetes. <em>HRB Open Research</em>. <a href="https://hrbopenresearch.org/articles/9-3" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2025.</span> Surendran A, Byrne M, Morrissey E, Alvarez-Iglesias A, Gillespie P, Hobbins A, Sezgin D, Sreenan S, Devane D, Keighron C, Lowry M, Kunneman M, Doherty AM, Site Collaborative Group, Dinneen SF. Evaluating the effectiveness of the D1 Now intervention to improve outcomes among young adults with type 1 diabetes: protocol for a cluster randomised controlled trial. <em>medRxiv</em>. <a href="https://www.medrxiv.org/content/10.1101/2025.11.11.25339994" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2022.</span> Morrissey EC, Dinneen SF, Lowry M, de Koning EJ, Kunneman M. Reimagining care for young adults living with type 1 diabetes. <em>Journal of Diabetes Investigation</em>. <a href="https://doi.org/10.1111/jdi.13824" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2022.</span> Morrissey EC, Byrne M, Casey B, Casey D, Gillespie P, Hobbins A, Newell J, McCarthy E, Roshan D, Sharma S, The D1 Now Young Adult Panel, Dinneen SF. Improving outcomes among young adults with type 1 diabetes: The D1 Now pilot cluster randomised controlled trial. <em>Pilot and Feasibility Studies</em>. <a href="https://pilotfeasibilitystudies.biomedcentral.com/articles/10.1186/s40814-022-00986-5" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2021.</span> Lowry M, Morrissey EC, Dinneen SF. Piloting an intervention to improve outcomes in young adults living with type 1 diabetes: The experience of the D1 Now support worker. <em>Frontiers in Clinical Diabetes and Healthcare</em>. <a href="https://www.frontiersin.org/articles/10.3389/fcdhc.2021.799589/full" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2021.</span> Morrissey EC, Casey B, Hynes L, The D1 Now Young Adult Panel, Dinneen SF, Byrne M. Supporting self-management and clinic attendance in young adults with type 1 diabetes: Development of the D1 Now intervention. <em>Pilot and Feasibility Studies</em>. <a href="https://pilotfeasibilitystudies.biomedcentral.com/articles/10.1186/s40814-021-00922-z" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2021.</span> Kenny E, O’Malley R, Roche K, Morrissey EC, Dinneen SF, Byrne M, Casey B. Diabetes distress instruments in adults with type 1 diabetes: A systematic review using the COSMIN checklist. <em>Diabetic Medicine</em>. <a href="https://pubmed.ncbi.nlm.nih.gov/33230846/" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2020.</span> Casey B, Byrne M, Casey D, Gillespie P, Hobbins A, Newell J, Morrissey EC, Dinneen SF. Improving outcomes among young adults with type 1 diabetes: The D1 Now randomised pilot study protocol. <em>Diabetic Medicine</em>. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/dme.14337" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2020.</span> Morrissey EC, Casey B, Dinneen SF, Lowry M, Byrne M. Diabetes distress in adolescents and young adults living with type 1 diabetes. <em>The Canadian Journal of Diabetes</em>. <a href="https://www.canadianjournalofdiabetes.com/article/S1499-2671(20)30068-X/fulltext" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2019.</span> McSharry J, Byrne M, Casey B, Dinneen SF, Fredrix M, Hynes L, Lake A, Morrissey EC. Behaviour change in diabetes: behavioural science advancement to support the use of theory. <em>Diabetic Medicine</em>. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/dme.14198" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2018.</span> Walsh DMJ, Hynes L, O’Hara H, McSharry J, D1 Now Young Adult Panel, Dinneen SF, Byrne M. Embedding a user-centred approach in the development of a complex behaviour change intervention. <em>HRB Open Research</em>. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6973524/" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2017.</span> O’Hara MC, Hynes L, O’Donnell M, et al. Strength in Numbers: an international consensus conference to develop a novel approach to care delivery for young adults with type 1 diabetes. <em>Research Involvement and Engagement</em>. <a href="https://researchinvolvement.biomedcentral.com/articles/10.1186/s40900-017-0076-9" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2017.</span> Byrne M, O’Connell A, Egan AM, Dinneen SF, Hynes L, O’Hara MC, Holt RIG, Willaing I, Vallis M, Hendrieckx C, Coyne I. A core outcomes set for clinical trials of interventions for young adults with type 1 diabetes. <em>Trials</em>. <a href="https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-017-2364-y" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2016.</span> O’Hara MC, Hynes L, O’Donnell M, Nery N, Byrne M, Heller SR, Dinneen SF. A systematic review of interventions to improve outcomes for young adults with type 1 diabetes. <em>Diabetic Medicine</em>. <a href="https://www.lenus.ie/bitstream/handle/10147/620898/SystematicReviewInterventionsImproveOutcomesYoungAdult.pdf?sequence=1&isAllowed=y" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2016.</span> Hynes L, Byrne M, Dinneen SF, McGuire B, O’Donnell M, McSharry J. Barriers and facilitators associated with attendance at hospital diabetes clinics among young adults with type 1 diabetes. <em>Pediatric Diabetes</em>. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/pedi.12198" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2015.</span> Hynes L, Byrne M, Casey D, Dinneen SF, O’Hara MC. “It makes a difference, coming here”: A qualitative exploration of clinic attendance among young adults with type 1 diabetes. <em>British Journal of Health Psychology</em>. <a href="https://bpspsychub.onlinelibrary.wiley.com/doi/abs/10.1111/bjhp.12145" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="pub-year">2014.</span> Casey R, O’Hara MC, Cunningham A, Wall D, Geoghegan R, Hynes L, McGuire B, Gately M, Bell M, Dinneen SF. Young adult type 1 diabetes care in the West of Ireland: an audit of hospital practice. <em>QJM</em>. <a href="https://bpspsychub.onlinelibrary.wiley.com/doi/abs/10.1111/bjhp.12145" target="_blank" rel="noopener">View article</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="abstracts">
+  <div class="section-title">
+    <h2>Conference abstracts and trial-related outputs</h2>
+    <div class="section-kicker">Selected abstracts</div>
+  </div>
+
+  <div class="pub-list">
+    <ol>
+      <li><span class="pub-year">2024.</span> Casey C, Lakshminarayanan A, Cunningham A, Surendran A, Dinneen S. Planning for recruitment and retention in the D1 Now randomised controlled trial: a re-audit of a young adult cohort with type 1 diabetes. <em>Endocrine Abstracts</em>.</li>
+
+      <li><span class="pub-year">2024.</span> Keighron C, Morrissey E, Byrne M, Surendran A, Dinneen S. Empowering young people with diabetes: co-researching interventions for improved diabetes management. <em>Endocrine Abstracts</em>.</li>
+
+      <li><span class="pub-year">SWAT.</span> Branded gift and letter from PPI group to enhance questionnaire response rate in a randomised trial. <a href="https://www.qub.ac.uk/sites/TheNorthernIrelandNetworkforTrialsMethodologyResearch/FileStore/Filetoupload,998532,en.pdf" target="_blank" rel="noopener">View SWAT document</a></li>
+
+      <li><span class="pub-year">2016.</span> Hynes L, O’Hara MC, Jordan V, Hutchinson C, O’Dea F, Byrne M, Dinneen SF. Strength In Numbers Hackathon: using a technology-focused brainstorming activity to engage stakeholders in intervention development. <em>The European Health Psychologist</em>.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="presentations">
+  <div class="section-title">
+    <h2>Selected oral presentations</h2>
+    <div class="section-kicker">Talks and invited presentations</div>
+  </div>
+
+  <div class="pub-list">
+    <ol>
+      <li><span class="pub-year">2021.</span> Morrissey EC, Byrne M, Lowry M, McCarthy E, Casey B, Casey D, Dinneen SF. Improving outcomes for young adults with type 1 diabetes: The D1 Now pilot randomised controlled trial. Irish Endocrine Society Conference.</li>
+
+      <li><span class="pub-year">2021.</span> Kelleher S, Young Adult Panel member. Impact and importance of PPI: A personal experience. CÚRAM Annual Summit.</li>
+
+      <li><span class="pub-year">2021.</span> Dinneen SF, Morrissey EC, Kelleher S. Reimagining young adult diabetes care through high-quality public and patient involvement. HRB Ones2Watch Conference. <a href="https://www.youtube.com/watch?v=nsdbK9q_oDw" target="_blank" rel="noopener">Watch presentation</a></li>
+
+      <li><span class="pub-year">2019.</span> Casey B, Keighron C. How To Create Impact with Patient and Public Involvement: The D1 Now Example. Elsevier Researcher Academy Webinar.</li>
+
+      <li><span class="pub-year">2018.</span> Conway S, O’Donnell M, Hynes L, O’Hara MC, D1 Now Young Adult Panel, Keighron C, Caulfield A, Duffy C, Long M, Mullins M, Tonra G, Dinneen SF. Tale of a Patient and Public Involvement Journey. 4th Annual SPHeRE Conference.</li>
+
+      <li><span class="pub-year">2016.</span> Dinneen S, Keighron C. Re-imagining young adult diabetes care. Health Research Board Primary Care CTNI PPI in Research Conference.</li>
+
+      <li><span class="pub-year">2015.</span> Keighron C. Formation of a type 1 diabetes Young Adult Panel as an example of patient engagement in healthcare research. NUI Galway Threesis Competition.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="awards">
+  <div class="section-title">
+    <h2>Awards and recognition</h2>
+    <div class="section-kicker">Impact</div>
+  </div>
+
+  <div class="pub-list">
+    <ol>
+	
+      <li><span class="pub-year">2021.</span> NUI Galway President’s Award for Societal Impact awarded to Prof Sean Dinneen, Prof Molly Byrne, Dr Eimear Morrissey and the D1 Now Young Adult Panel for work shifting health research towards more inclusive patient involvement.</li>
+
+      <li><span class="pub-year">2016.</span> Mary Clare O’Hara won the HSE Open Access Research Award in the Clinical Strategy and Programmes category for work on the systematic review.</li>
+
+      <li><span class="pub-year">2016.</span> Strength in Numbers consensus conference poster presentation won the Pat Barron Perpetual Trophy for Education.</li>
+
+      <li><span class="pub-year">2016.</span> A theory-based qualitative approach to intervention development won the MSD Sponsored Perpetual Trophy for Science.</li>
+
+      <li><span class="pub-year">2015.</span> Systematic review of interventions to improve outcomes for young adults with type 1 diabetes won the Pat Barron Perpetual Trophy for Education.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="media">
+  <div class="section-title">
+    <h2>Media, press and wider dissemination</h2>
+    <div class="section-kicker">Public engagement</div>
+  </div>
+
+  <div class="pub-list">
+    <ol>
+      <li>Health Research Board. Public and patient involvement helps young people with type 1 diabetes. HRB Annual Report, 2021. <a href="https://hrb.ie/publications" target="_blank" rel="noopener">View source</a></li>
+
+      <li>Young Adults Drive Diabetes Research. <em>Irish Examiner</em>, 2018. <a href="https://www.irishexaminer.com/breakingnews/ireland/young-adults-drive-diabetes-research-forward-862922.html" target="_blank" rel="noopener">View article</a></li>
+
+      <li>RTE Brainstorm. Helping young people to deal with Type 1 diabetes, 2018. <a href="https://www.rte.ie/brainstorm/2018/0214/940637-helping-young-people-to-deal-with-type-1-diabetes/" target="_blank" rel="noopener">View article</a></li>
+
+      <li>TheJournal.ie. After a death, young people band together to get the best care for their diabetes, 2017. <a href="https://www.thejournal.ie/young-people-type-one-diabetes-d1-now-3749018-Dec2017/" target="_blank" rel="noopener">View article</a></li>
+
+      <li>Irish Medical Times. New approaches needed to deliver care for young adults with diabetes, 2016.</li>
+
+      <li>Galway Advertiser. New approaches needed for young adults with diabetes, local research shows, 2016.</li>
+
+      <li>NUI Galway Health Psychology Blog. Experiences of Patient Involvement in the Development of an Intervention for Young Adults with T1D, 2016.</li>
+
+      <li>Strength In Numbers Conference: Teaming up to improve the health of young adults with type 1 diabetes. Saolta e-Newsletter, 2016.</li>
+
+      <li>Galway Advertiser. Young People with Type 1 Diabetes Sought for Youth Panel, 2014.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("site-header").innerHTML = data;
+  });
+
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("site-footer").innerHTML = data;
+    const year = document.getElementById("year");
+    if(year){
+      year.textContent = new Date().getFullYear();
+    }
+  });
+</script>
+
+<div id="accessibility-tools"></div>
+
+<script>
+fetch("accessibility-tools.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("accessibility-tools").innerHTML = data;
+
+    const scripts = document
+      .getElementById("accessibility-tools")
+      .querySelectorAll("script");
+
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement("script");
+
+      if(oldScript.src){
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
+      }
+
+      document.body.appendChild(newScript);
+    });
+  });
+</script>
+
+</body>
+</html>
