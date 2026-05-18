@@ -207,6 +207,156 @@ details p{
   color:var(--footer-blue);
 }
 
+/* ===== HEADER STYLES ===== */
+
+header{
+  background:var(--footer-blue);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px 16px 34px;
+  position:relative;
+}
+
+.header-container{
+  width:100%;
+  max-width:var(--maxw);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.logo{
+  font-family:Poppins,Inter,sans-serif;
+  font-weight:800;
+  font-size:2rem;
+  letter-spacing:1px;
+  color:#fff;
+  white-space:nowrap;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex:1;
+  justify-content:flex-start;
+  margin-left:12px;
+}
+
+.nav-list{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:0;
+  margin:0;
+  padding:0;
+  flex-wrap:nowrap;
+}
+
+.nav-item{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+.nav-item:not(:last-child)::after{
+  content:"›";
+  color:rgba(255,255,255,0.75);
+  font-weight:800;
+  margin:0 12px;
+}
+
+.nav-link{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.95rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:8px 6px;
+  border-radius:10px;
+  display:inline-flex;
+  align-items:center;
+  transition:background .2s;
+}
+
+.nav-link:hover{
+  background:rgba(255,255,255,.10);
+}
+
+.dropdown{
+  position:absolute;
+  left:0;
+  top:100%;
+  min-width:240px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:8px;
+  margin-top:10px;
+  display:none;
+  z-index:100;
+}
+
+.dropdown a{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#111;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.dropdown a:hover{
+  background:#f3f6fb;
+}
+
+.nav-item:hover .dropdown,
+.nav-item:focus-within .dropdown{
+  display:block;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.header-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--blue);
+  color:#fff;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.header-pill.secondary{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+}
+
+.header-gradient-strip{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:6px;
+  background:linear-gradient(
+    90deg,
+    #ff7a18 0%,
+    #ffd84d 35%,
+    #8fd3f4 70%,
+    #4facfe 100%
+  );
+}
+
 @media(max-width:760px){
   .hero h1{
     font-size:1.85rem;
