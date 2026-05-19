@@ -245,6 +245,95 @@ a{
   line-height:1.6;
 }
 
+/* ===== Simple local header ===== */
+
+.simple-header{
+  background:var(--footer-blue);
+  padding:18px 24px;
+  border-bottom:5px solid var(--yellow);
+}
+
+.simple-header-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.simple-logo{
+  color:#fff;
+  text-decoration:none;
+  font-family:Poppins,Inter,sans-serif;
+  font-size:1.5rem;
+  font-weight:800;
+}
+
+.simple-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.simple-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  transition:background .2s ease;
+}
+
+.simple-nav a:hover{
+  background:rgba(255,255,255,.22);
+}
+
+/* ===== Simple footer ===== */
+
+.simple-footer{
+  background:var(--footer-blue);
+  color:#fff;
+  margin-top:60px;
+}
+
+.simple-footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px 24px;
+  text-align:center;
+  font-size:.95rem;
+  opacity:.9;
+}
+
+/* Mobile */
+
+@media (max-width:720px){
+
+  .simple-header{
+    padding:16px 14px;
+  }
+
+  .simple-header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .simple-nav{
+    width:100%;
+  }
+
+  .simple-nav a{
+    font-size:.92rem;
+  }
+
+  .simple-footer-inner{
+    padding:16px 14px;
+  }
+}
+
 @media(max-width:900px){
   .feature-grid{
     grid-template-columns:1fr;
@@ -308,7 +397,21 @@ a{
 
 <body>
 
-<div id="site-header"></div>
+<!-- ===== Simple local header ===== -->
+<header class="simple-header">
+  <div class="simple-header-inner">
+
+    <a href="../index.html" class="simple-logo">
+      D1 Now
+    </a>
+
+    <nav class="simple-nav" aria-label="Page navigation">
+      <a href="../resources.html">← Resources</a>
+      <a href="../index.html">Home</a>
+    </nav>
+
+  </div>
+</header>
 
 <main>
 
@@ -526,52 +629,14 @@ a{
 
 </main>
 
-<div id="site-footer"></div>
 
-<script>
-fetch("../header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("site-header").innerHTML = data;
-  });
 
-fetch("../footer.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("site-footer").innerHTML = data;
-
-    const year = document.getElementById("year");
-    if(year){
-      year.textContent = new Date().getFullYear();
-    }
-  });
-</script>
-
-<div id="accessibility-tools"></div>
-
-<script>
-fetch("../accessibility-tools.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("accessibility-tools").innerHTML = data;
-
-    const scripts = document
-      .getElementById("accessibility-tools")
-      .querySelectorAll("script");
-
-    scripts.forEach(oldScript => {
-      const newScript = document.createElement("script");
-
-      if(oldScript.src){
-        newScript.src = oldScript.src;
-      } else {
-        newScript.textContent = oldScript.textContent;
-      }
-
-      document.body.appendChild(newScript);
-    });
-  });
-</script>
+<!-- ===== Simple local footer ===== -->
+<footer class="simple-footer">
+  <div class="simple-footer-inner">
+    D1 Now publications and dissemination outputs
+  </div>
+</footer>
 
 </body>
 </html>
