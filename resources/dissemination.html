@@ -269,6 +269,40 @@ a{
     flex:0 0 auto;
   }
 }
+
+/* Fix publication list layout */
+.pub-list ol,
+.pub-list ul{
+  display:block !important;
+  columns:auto !important;
+  column-count:auto !important;
+  list-style-position:outside;
+  padding-left:1.4rem;
+}
+
+.pub-list li{
+  display:list-item !important;
+  width:100% !important;
+  max-width:100% !important;
+  margin-bottom:16px;
+  line-height:1.7;
+  font-weight:500;
+}
+
+.pub-list li a{
+  display:inline;
+}
+
+/* Make long publication text readable */
+.pub-list{
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+.pub-year{
+  display:inline;
+  margin-right:4px;
+}
 </style>
 </head>
 
@@ -495,16 +529,17 @@ a{
 <div id="site-footer"></div>
 
 <script>
-fetch("header.html")
+fetch("../header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("site-header").innerHTML = data;
   });
 
-fetch("footer.html")
+fetch("../footer.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("site-footer").innerHTML = data;
+
     const year = document.getElementById("year");
     if(year){
       year.textContent = new Date().getFullYear();
@@ -515,7 +550,7 @@ fetch("footer.html")
 <div id="accessibility-tools"></div>
 
 <script>
-fetch("accessibility-tools.html")
+fetch("../accessibility-tools.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("accessibility-tools").innerHTML = data;
