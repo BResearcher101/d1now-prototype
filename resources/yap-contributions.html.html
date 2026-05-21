@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – YAP Contributions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#0AAFF3;
+  --footer-blue:#144182;
+  --yellow:#FDD560;
+  --ink:#0b2b62;
+  --muted:#6b7aa5;
+  --soft-bg:#fffef7;
+  --white:#fff;
+  --shadow:0 6px 28px rgba(0,0,0,0.08);
+  --maxw:1200px;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--footer-blue);
+  color:#111;
+  font-family:Inter,Arial,sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+main{
+  background:var(--soft-bg);
+  flex:1;
+}
+
+h1,h2,h3,h4{
+  font-family:Poppins,Inter,sans-serif;
+  color:var(--ink);
+  margin:0;
+}
+
+p{margin:0}
+
+a{
+  color:var(--footer-blue);
+  font-weight:800;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:26px 18px;
+}
+
+.hero{
+  background:var(--yellow);
+  padding:48px 18px;
+  border-bottom:8px solid rgba(20,65,130,.08);
+}
+
+.hero-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:32px;
+}
+
+.kicker{
+  color:var(--blue);
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.86rem;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-size:2.35rem;
+  line-height:1.15;
+  color:var(--footer-blue);
+}
+
+.hero p{
+  margin-top:14px;
+  max-width:900px;
+  line-height:1.75;
+  color:#233048;
+  font-size:1.05rem;
+}
+
+.jumpbar{
+  max-width:var(--maxw);
+  margin:-24px auto 0;
+  padding:0 18px;
+}
+
+.jumpbar-inner{
+  background:#fff;
+  box-shadow:var(--shadow);
+  border-radius:999px;
+  padding:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+}
+
+.jumpbar-inner a{
+  text-decoration:none;
+  background:rgba(20,65,130,.07);
+  color:var(--footer-blue);
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:.88rem;
+}
+
+.section-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.section-title h2{
+  color:var(--footer-blue);
+  font-size:1.7rem;
+}
+
+.section-kicker{
+  color:var(--muted);
+  font-weight:800;
+}
+
+.lead{
+  max-width:980px;
+  line-height:1.75;
+  color:#223;
+  margin-bottom:18px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  border:2px solid rgba(20,65,130,.08);
+}
+
+.card h3,
+.card h4{
+  color:var(--footer-blue);
+}
+
+.card p{
+  margin-top:8px;
+  line-height:1.65;
+  color:#223;
+}
+
+.tag{
+  display:inline-block;
+  background:#e8efff;
+  color:var(--footer-blue);
+  border-radius:999px;
+  padding:7px 11px;
+  font-weight:900;
+  font-size:.82rem;
+  margin-bottom:10px;
+}
+
+.btn{
+  display:inline-flex;
+  margin-top:14px;
+  background:var(--footer-blue);
+  color:#fff;
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+.btn.secondary{
+  background:rgba(20,65,130,.08);
+  color:var(--footer-blue);
+}
+
+.output-list{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-top:18px;
+}
+
+.output-list ol,
+.output-list ul{
+  display:block !important;
+  columns:auto !important;
+  column-count:auto !important;
+  list-style-position:outside;
+  padding-left:22px;
+  margin:0;
+}
+
+.output-list li{
+  display:list-item !important;
+  width:100% !important;
+  margin-bottom:14px;
+  line-height:1.65;
+}
+
+.output-list li:last-child{
+  margin-bottom:0;
+}
+
+.year{
+  font-weight:900;
+  color:var(--footer-blue);
+}
+
+.note{
+  background:var(--yellow);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  line-height:1.7;
+}
+
+.simple-header{
+  background:var(--footer-blue);
+  padding:18px 24px;
+  border-bottom:5px solid var(--yellow);
+}
+
+.simple-header-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.simple-logo{
+  color:#fff;
+  text-decoration:none;
+  font-family:Poppins,Inter,sans-serif;
+  font-size:1.5rem;
+  font-weight:800;
+}
+
+.simple-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.simple-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+}
+
+.simple-footer{
+  background:var(--footer-blue);
+  color:#fff;
+  margin-top:60px;
+}
+
+.simple-footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px 24px;
+  text-align:center;
+  font-size:.95rem;
+  opacity:.9;
+}
+
+@media(max-width:900px){
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:1.9rem;
+  }
+
+  .hero-inner{
+    padding:24px 18px;
+  }
+
+  .jumpbar-inner{
+    justify-content:flex-start;
+    border-radius:18px;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+  }
+
+  .jumpbar-inner a{
+    flex:0 0 auto;
+  }
+
+  .simple-header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="simple-header">
+  <div class="simple-header-inner">
+    <a href="index.html" class="simple-logo">D1 Now</a>
+    <nav class="simple-nav" aria-label="Page navigation">
+      <a href="../yap.html">← Back to YAP</a>
+	  <a href="../resources.html#yap-resources">YAP Blog</a>
+      <a href="../resources.html">← Resources</a>
+      <a href="../index.html">Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Young Adult Panel contributions</div>
+    <h1>How the YAP has shaped D1 Now</h1>
+    <p>
+      Since 2014, the Young Adult Panel has helped shape D1 Now through research design,
+      intervention development, trial materials, dissemination, publications, public engagement,
+      grants, workshops, and wider advocacy. This page brings those contributions together in one place.
+    </p>
+  </div>
+</section>
+
+<div class="jumpbar">
+  <div class="jumpbar-inner">
+    <a href="#overview">Overview</a>
+    <a href="#research">Research design</a>
+    <a href="#publications">Publications</a>
+    <a href="#presentations">Presentations</a>
+    <a href="#media">Media</a>
+    <a href="#grants">Grants</a>
+    <a href="#awards">Awards</a>
+    <a href="#workshops">Workshops</a>
+  </div>
+</div>
+
+<section class="wrap" id="overview">
+  <div class="section-title">
+    <h2>At a glance</h2>
+    <div class="section-kicker">Long-term partnership</div>
+  </div>
+
+  <p class="lead">
+    The YAP is not a one-off consultation group. Members have contributed across multiple phases of D1 Now,
+    from early intervention development to pilot work, trial planning, dissemination and implementation learning.
+  </p>
+
+  <div class="feature-grid">
+    <article class="card">
+      <div class="tag">Since 2014</div>
+      <h3>Long-standing involvement</h3>
+      <p>
+        YAP members have been involved in D1 Now for over a decade, helping keep the work grounded in young adult lived experience.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="tag">Research influence</div>
+      <h3>From materials to decisions</h3>
+      <p>
+        Members have shaped topic guides, participant letters, consent forms, information sheets, questionnaires and interpretation of findings.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="tag">Dissemination</div>
+      <h3>Sharing the work widely</h3>
+      <p>
+        YAP members have contributed to publications, conferences, invited talks, workshops, media features and public engagement.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap" id="research">
+  <div class="section-title">
+    <h2>Research and study design contributions - Highlights</h2>
+    <div class="section-kicker">Co-design in practice</div>
+  </div>
+
+  <div class="output-list">
+    <ul>
+      <li>Helped develop qualitative topic guides used in D1 Now research.</li>
+      <li>Reviewed and shaped participant invitation letters, consent forms and information sheets.</li>
+      <li>Contributed to questionnaire design and interpretation of qualitative and quantitative findings.</li>
+      <li>Designed a Study Within A Trial on whether a branded gift and letter from a PPI group could improve questionnaire response rates.</li>
+      <li>Contributed to trial recruitment, participant-facing materials, website design, and communication approaches.</li>
+      <li>Supported study leadership and oversight, including representation on study steering structures.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="wrap" id="publications">
+  <div class="section-title">
+    <h2>Journal articles and written outputs (Selected studies)</h2>
+    <div class="section-kicker">YAP authorship and input</div>
+  </div>
+
+  <div class="output-list">
+    <ol>
+      <li><span class="year">2022.</span> Improving outcomes among young adults with type 1 diabetes: The D1 Now pilot cluster randomised controlled trial. <em>Pilot and Feasibility Studies</em>. <a href="https://pilotfeasibilitystudies.biomedcentral.com/articles/10.1186/s40814-022-00986-5" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="year">2021.</span> Supporting self-management and clinic attendance in young adults with type 1 diabetes: Development of the D1 Now intervention. <em>Pilot and Feasibility Studies</em>. <a href="https://pilotfeasibilitystudies.biomedcentral.com/articles/10.1186/s40814-021-00922-z" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="year">2018.</span> Embedding a user-centred approach in the development of a complex behaviour change intervention. <em>HRB Open Research</em>. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6973524/" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="year">2017.</span> Strength in Numbers: An international consensus conference to develop a novel approach to care delivery for young adults with type 1 diabetes. <em>Research Involvement and Engagement</em>. <a href="https://researchinvolvement.biomedcentral.com/articles/10.1186/s40900-017-0076-9" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="year">2017.</span> Formation of a type 1 diabetes young adult patient and public involvement panel to develop a health behaviour change intervention. <em>Research Involvement and Engagement</em>. <a href="https://www.lenus.ie/handle/10147/622630" target="_blank" rel="noopener">View article</a></li>
+
+      <li><span class="year">SWAT.</span> Branded gift and letter from PPI group to enhance questionnaire response rate in a randomised trial. <a href="https://www.qub.ac.uk/sites/TheNorthernIrelandNetworkforTrialsMethodologyResearch/FileStore/Filetoupload,998532,en.pdf" target="_blank" rel="noopener">View SWAT document</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="presentations">
+  <div class="section-title">
+    <h2>Conference presentations and invited talks</h2>
+    <div class="section-kicker">Youth voice in public spaces</div>
+  </div>
+
+  <div class="output-list">
+    <ol>
+      <li>Kelleher S. How can we meaningfully include PPI in our research? 11th Annual DREAM Symposium, Manitoba, Canada.</li>
+      <li>Kelleher S. Impact and importance of PPI: A personal experience. CÚRAM Annual Summit, 2021.</li>
+      <li>Dinneen SF, Morrissey EC, Kelleher S. Reimagining young adult diabetes care through high-quality public and patient involvement. HRB Ones2Watch Conference, 2021. <a href="https://www.youtube.com/watch?v=nsdbK9q_oDw" target="_blank" rel="noopener">Watch presentation</a></li>
+      <li>Kelleher S. The D1 Now intervention: My experience as a student in research. UCC Research Technology Society Student Research Conference, 2021.</li>
+      <li>Ciara Duffy and Cameron Keighron in conversation with Dr Bláthín Casey. 5 years on, 5 years more? Young adults share their PPI story. PPI Conference, 2019.</li>
+      <li>Casey B and Keighron C. How To Create Impact with Patient and Public Involvement: The D1 Now Example. Elsevier Researcher Academy Webinar, 2019.</li>
+      <li>Conway S, O’Donnell M, Hynes L, O’Hara MC, D1 Now Young Adult Panel, et al. Tale of a Patient and Public Involvement Journey. 4th Annual SPHeRE Conference, 2018.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="media">
+  <div class="section-title">
+    <h2>Media, documentary and public engagement</h2>
+    <div class="section-kicker">Sharing the story</div>
+  </div>
+
+  <div class="feature-grid">
+    <article class="card">
+      <div class="tag">Documentary</div>
+      <h3>The Patient Effect</h3>
+      <p>
+        A documentary highlighting patient involvement and the role of young adults in shaping D1 Now.
+      </p>
+      <a class="btn secondary" href="https://primarycaretrials.ie/the-patient-effect/" target="_blank" rel="noopener">View documentary</a>
+    </article>
+
+    <article class="card">
+      <div class="tag">Video</div>
+      <h3>Hearing from the Young Adult Panel</h3>
+      <p>
+        A short video featuring YAP members discussing their involvement and what the work means to them.
+      </p>
+      <a class="btn secondary" href="https://www.youtube.com/watch?v=6QfDVa3N39I&t=3s" target="_blank" rel="noopener">Watch video</a>
+    </article>
+
+    <article class="card">
+      <div class="tag">Case study</div>
+      <h3>Shaping Diabetes Care</h3>
+      <p>
+        University of Galway case study on D1 Now and young adult involvement in diabetes research.
+      </p>
+      <a class="btn secondary" href="https://www.universityofgalway.ie/ppi/case-studies/d1now/" target="_blank" rel="noopener">View case study</a>
+    </article>
+  </div>
+</section>
+
+<section class="wrap" id="grants">
+  <div class="section-title">
+    <h2>Grant applications</h2>
+    <div class="section-kicker">Recognised partnership</div>
+  </div>
+
+  <div class="output-list">
+    <ol>
+      <li><span class="year">HRB KTA-2024-013.</span> From Insight to Impact: Re-designing our study website with the D1 Now Young Adult Panel. Role: co-applicants.</li>	
+      <li><span class="year">HRB DIFA-2023-018.</span> The D1 Now intervention to improve outcomes in young adults living with type 1 diabetes: A definitive cluster randomised controlled trial. Role: co-applicants.</li>
+      <li><span class="year">HRB DIFA-2017-034.</span> Improving outcomes for young adults with type 1 diabetes in Ireland: The D1 Now feasibility and cluster randomised pilot study. Role: collaborators.</li>
+
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="awards">
+  <div class="section-title">
+    <h2>Awards and recognition</h2>
+    <div class="section-kicker">Impact</div>
+  </div>
+
+  <div class="output-list">
+    <ol>
+      <li><span class="year">2021.</span> NUI Galway President's Award for Societal Impact. <a href="https://www.nuigalway.ie/institutionalresearchoffice/presidentsawards/#tab5" target="_blank" rel="noopener">Read more</a></li>
+      <li>Recognition through HRB, PPI, research and public engagement platforms for modelling meaningful young adult involvement in health research.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap" id="workshops">
+  <div class="section-title">
+    <h2>Workshops and wider activities</h2>
+    <div class="section-kicker">Supporting others</div>
+  </div>
+
+  <div class="output-list">
+    <ol>
+      <li>DSMA 2022: Encouraging Patient and Public Involvement and Engagement.</li>
+      <li>DSMA 2022: Psychologising Diabetes Care: An Impossible Task?</li>
+      <li>Keighron C. Improving health outcomes through service user involvement: Development of young diabetes services. Annual Health Promotion Conference, NUI Galway, 2018.</li>
+      <li>IDF Youth Lab involvement - Cameron & Siofra.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="note">
+    <strong>In short:</strong> YAP contributions have shaped not just individual materials, but the direction,
+    tone, priorities, and public impact of D1 Now. This page can be updated as new outputs, talks,
+    publications and resources are added.
+  </div>
+</section>
+
+</main>
+
+<footer class="simple-footer">
+  <div class="simple-footer-inner">
+    D1 Now Young Adult Panel contributions
+  </div>
+</footer>
+
+</body>
+</html>
