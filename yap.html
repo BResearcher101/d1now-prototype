@@ -1107,6 +1107,43 @@
   border-radius: 18px;
 }
 
+/* Floating Join YAP button */
+.floating-join-btn{
+  position:fixed;
+  right:28px;
+  bottom:90px;
+  z-index:100;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 20px;
+  border-radius:999px;
+
+  background:var(--navy);
+  color:#fff;
+  font-family:Poppins,Inter,sans-serif;
+  font-weight:800;
+  font-size:1rem;
+
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(20,65,130,.25);
+
+  transition:transform .2s ease, box-shadow .2s ease;
+  animation:join-bounce 2s infinite ease-in-out;
+}
+
+.floating-join-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(20,65,130,.3);
+}
+
+@keyframes join-bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+
     /* ===== Responsive ===== */
 	
 	
@@ -1921,7 +1958,8 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
 
       <button class="learn" type="button"
         data-modal-title="What YAP members have done"
-        data-modal-text="• Helped design topic guides for interviews and focus groups.
+        data-modal-text="• Co-design the D1 Now intervention 
+				• Helped design topic guides for interviews and focus groups.
 				• Reviewed invitation letters, consent forms and participant information sheets.
 				• Contributed to questionnaires and study materials.
 				• Helped interpret findings from a young adult perspective.
@@ -1936,35 +1974,39 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
     <section class="wrap" id="journey">
       <h2 class="sec-title">The YAP journey</h2>
       <p class="sec-lead">
-        YAP members have been involved in every aspect of the D1 Now study since the group formed in 2014. Over time, they have helped shape not only this study, but wider thinking around sustainable and meaningful PPI.
+         Since 2014, YAP members have worked as partners in D1 Now, helping move the project from early ideas to intervention development, pilot testing and the current trial. YAP members have helped shape what the research asks, how the intervention works, how young adults are invited and supported, and how the learning is shared. 
       </p>
 
       <div class="timeline" aria-label="YAP journey timeline">
         <div class="timeline-card">
           <div class="timeline-year">2014</div>
+		  <h3>Forming the YAP</h3>
           <p>
-            The YAP was formed and began meeting regularly, with communication continuing between sessions through online groups, email, messaging, and shared documents.
+            The YAP was formed as a group of young adults living with type 1 diabetes working as partners with the D1 Now research team. From the beginning, members were involved in meetings, study planning and decisions about how the project should work. 
           </p>
         </div>
 
         <div class="timeline-card">
           <div class="timeline-year">Research design</div>
+		  <h3>Shaping D1 Now</h3>
           <p>
-            Members helped develop topic guides, participant letters, consent forms, information sheets, questionnaires, and interpretation of both qualitative and quantitative findings.
+            YAP helped the team understand what young adults needed from diabetes care. They contributed to the development of the D1 Now intervention, including the focus on better clinic conversations, support between appointments and stronger relationships with diabetes teams.
           </p>
         </div>
 
         <div class="timeline-card">
-          <div class="timeline-year">Pilot & SWAT</div>
+          <div class="timeline-year">Pilot testing</div>
+		  <h3>Learning what works in practice</h3>
           <p>
-            During the 2020 pilot trial, YAP members designed a Study Within A Trial investigating whether a branded gift and letter from a PPI group could improve questionnaire response rates.
+            During the D1 Now pilot, YAP members continued to shape how the study was delivered and shared. They also designed a Study Within A Trial exploring whether a branded gift and letter from a PPI group could improve questionnaire response rates.
           </p>
         </div>
 
         <div class="timeline-card">
-          <div class="timeline-year">Sharing, leadership & ongoing work</div>
+          <div class="timeline-year">Current trial</div>
+		  <h3>Continuing the work</h3>
           <p>
-            Members have contributed to conferences, abstracts, competitions, publications, invited talks, and wider dissemination. YAP members also sit on the study Steering Committee. YAP members are also actively involved in the current D1 Now trial.
+            YAP members remain involved in the current D1 Now trial, including through study discussions, dissemination, mentoring and leadership. The group continues to bring lived experience into decisions about how the research is designed, communicated and carried forward.
           </p>
         </div>
       </div>
@@ -1983,11 +2025,13 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
             <div class="chip">Why this matters beyond D1 Now</div>
             <h3>A more sustainable PPI model</h3>
             <p>
-              The YAP has helped shift traditional health research culture toward one that includes the patient voice in a more meaningful way. Having been in place since 2014, it is one of Ireland’s longest-standing and most recognised PPI panels, living out the principle of <strong>“Nothing about us, without us.”</strong>
+As original YAP members moved beyond the 18 to 25 age group, the panel developed a mentorship model that makes space for new voices while giving experienced members a meaningful next role. They continue as mentors and collaborators, sharing what they have learned, supporting newer members and staying connected to work they helped build.
             </p>
           </div>
         </div>
       </div>
+
+
 
 
 
