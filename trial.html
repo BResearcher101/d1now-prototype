@@ -237,7 +237,7 @@
 
   /* ===== Wrappers ===== */
   .wrap{max-width:var(--maxw); margin:0 auto; padding:22px 18px}
-  .lead{max-width:980px; color:#223; margin-top:8px; line-height:1.7}
+  .lead{max-width:none; width:100%; color:#223; margin-top:8px; line-height:1.7}
 
   .section-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
   .section-kicker{color:var(--muted);font-weight:700}
@@ -262,6 +262,69 @@
   }
   .tile h4{margin:0;color:var(--footer-blue);font-weight:900}
   .tile p{margin:6px 0 0 0;color:#445;line-height:1.55}
+  
+  
+  /* ===== Participant quotes ===== */
+.quote-section{
+  margin-top:10px;
+}
+
+.quote-grid{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+}
+
+.quote-card{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:20px;
+  border-left:6px solid var(--yellow);
+  position:relative;
+}
+
+.quote-card::before{
+  content:"“";
+  position:absolute;
+  top:8px;
+  right:18px;
+  font-family:Poppins,Inter,sans-serif;
+  font-size:4rem;
+  line-height:1;
+  color:rgba(20,65,130,.10);
+  font-weight:800;
+}
+
+.quote-card blockquote{
+  margin:0;
+  color:#223;
+  line-height:1.75;
+  font-size:1.02rem;
+  font-weight:600;
+  position:relative;
+  z-index:1;
+}
+
+.quote-card cite{
+  display:block;
+  margin-top:12px;
+  color:var(--footer-blue);
+  font-style:normal;
+  font-weight:900;
+  font-family:Poppins,Inter,sans-serif;
+}
+
+@media (max-width:720px){
+  .quote-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quote-card{
+    padding:18px;
+  }
+}
 
   /* ===== Participants at a glance (4 compact tiles) ===== */
   .glance-row{
@@ -556,6 +619,14 @@
     .site-grid{grid-template-columns:repeat(2, 1fr)}
     .two-col{grid-template-columns:1fr}
   }
+  
+  @media (max-width:720px){
+  .lead{
+    font-size:1rem;
+    line-height:1.65;
+  }
+}
+
   @media (max-width:560px){
     .glance-row{grid-template-columns:1fr}
     .site-grid{grid-template-columns:1fr}
@@ -605,6 +676,8 @@
         </div>
       </div>
     </section>
+	
+
 
     <!-- ===== SECTION 1: ABOUT THE TRIAL ===== -->
     <section class="wrap" id="about-trial">
@@ -720,11 +793,40 @@ The study focuses on a stage of care that can be difficult for many young adults
       </div>
     </section>
 
+    <!-- ===== Quotes ===== -->	
+	
+	<section class="wrap quote-section" id="participant-quotes">
+  <div class="section-title">
+    <h2>What previous participants told us</h2>
+    <div class="section-kicker">Participant voices</div>
+  </div>
+
+  <p class="lead">
+    These quotes are from young adults who took part in the earlier D1 Now pilot trial.
+  </p>
+
+  <div class="quote-grid" aria-label="Pilot participant quotes">
+    <article class="quote-card">
+      <blockquote>
+        I personally found it very beneficial… getting this new structure and especially…the first question asking, "what would you like to discuss today"
+      </blockquote>
+      <cite>Pilot trial participant 006</cite>
+    </article>
+
+    <article class="quote-card">
+      <blockquote>
+        … the normal clinic, you get a different nurse and a different doctor every time…. she [support worker] stayed the same and I really like that… somebody knows your medical history ….
+      </blockquote>
+      <cite>Pilot trial participant 005</cite>
+    </article>
+  </div>
+</section>
+
     <!-- ===== HOW IT WORKS ===== -->
     <section class="wrap journey" id="journey">
       <h2>How it works</h2>
 	    <p class="lead">
-    D1 Now is designed to fit with your usual diabetes clinic visits. It runs alongside your usual care. Over about one year, the study will usually run across three regular clinic visits. At the first and final study visits, we will ask you to complete questionnaires and provide a blood sample.
+    D1 Now is designed to fit with your usual diabetes clinic visits. It runs alongside your usual care. Over about one year, the study will usually run across three regular clinic visits.
 	<br>
     If your clinic is in the intervention group, you may also receive the D1 Now intervention as part of your clinic care. Some participants may be invited to take part in an optional interview afterwards. Your clinic team will confirm what this means at your site.
 	</p>
@@ -807,7 +909,7 @@ The study focuses on a stage of care that can be difficult for many young adults
     <section class="wrap" id="sites">
       <div class="section-title">
         <h2>Participating sites</h2>
-        <div class="section-kicker">Names only</div>
+        <div class="section-kicker">Locations</div>
       </div>
       <p class="clinic-note">
         Site names only (details live in the <a href="trial-sites.html" style="color:var(--footer-blue);font-weight:900">Trial sites</a> hub).
@@ -933,7 +1035,7 @@ The study focuses on a stage of care that can be difficult for many young adults
             <li>[Name] — Programme Manager</li>
             <li>[Name] — Site Coordinator</li>
           </ul>
-          <div class="quote">You can find more details in the 'About' page.</div>
+          <div class="quote">You can find more details in the  <a href="about.html">'About'</a> Section.</div>
         </div>
 
         <!-- Downloads -->
