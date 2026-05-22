@@ -825,6 +825,20 @@
   justify-content:center;
 }
 
+.hero-ctas{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:4px;
+}
+
+@media (max-width:720px){
+  .hero-ctas .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+
 /* Mobile reusable header fix: make only the header nav horizontally scrollable */
 @media (max-width:720px){
   html,
@@ -936,8 +950,18 @@
           <div class="hero-note">
             Built with young adults through the Young Adult Panel (YAP), and designed to keep growing over time.
           </div>
-        </div>
+		  <div class="hero-ctas">
+			  <a class="btn" href="resources/dissemination.html">
+				View dissemination outputs
+			  </a>
 
+			  <a class="btn secondary" href="resources/yap-contributions.html">
+				View YAP contributions
+			  </a>
+			</div>
+
+        </div>
+		
         <div class="hero-side">
           <h3>At a glance</h3>
           <div class="stat-stack">
