@@ -507,51 +507,145 @@ function applySavedAccessibility(){
 applySavedAccessibility();
 
 /* Read aloud */
+
+
+
+/* Read aloud */
 (function () {
   const btn = document.getElementById("readAloudFloating");
 
   if (!btn || !("speechSynthesis" in window)) return;
 
   let isReading = false;
+  let chunks = [];
+  let currentChunk = 0;
 
   function getText(){
     let text = "";
     const main = document.querySelector("main");
-    const extra = document.querySelector(".add-wrap");
 
-    if(main) text += main.innerText + " ";
-    if(extra) text += extra.innerText + " ";
+    if(main){
+      text += main.innerText + " ";
+    }
 
-    return text.replace(/\s+/g," ").trim();
+    return text.replace(/\s+/g, " ").trim();
+  }
+
+  function splitText(text){
+    const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+    const parts = [];
+    let part = "";
+
+    sentences.forEach(sentence => {
+      if((part + sentence).length > 900){
+        parts.push(part.trim());
+        part = sentence;
+      } else {
+        part += " " + sentence;
+      }
+    });
+
+    if(part.trim()){
+      parts.push(part.trim());
+    }
+
+    return parts;
+  }
+
+  function chooseVoice(){
+    const voices = speechSynthesis.getVoices();
+
+    return voices.find(v => v.lang === "en-IE") ||
+           voices.find(v => v.lang === "en-GB") ||
+           voices.find(v => v.lang === "en-US") ||
+           voices.find(v => v.lang && v.lang.startsWith("en")) ||
+           voices[0] ||
+           null;
+  }
+
+  function speakNext(){
+    if(!isReading || currentChunk >= chunks.length){
+      stop();
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(chunks[currentChunk]);
+    const voice = chooseVoice();
+
+    if(voice){
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    } else {
+      utterance.lang = "en-GB";
+    }
+
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    utterance.onend = function(){
+      currentChunk += 1;
+      speakNext();
+    };
+
+    utterance.onerror = function(){
+      stop();
+      alert("Read aloud could not start on this browser. Please check that your device volume is on and that speech voices are enabled.");
+    };
+
+    speechSynthesis.speak(utterance);
+
+    setTimeout(() => {
+      if(speechSynthesis.paused){
+        speechSynthesis.resume();
+      }
+    }, 250);
   }
 
   function start(){
     speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(getText());
-    utterance.lang = "en-IE";
+    const text = getText();
 
-    utterance.onend = stop;
+    if(!text){
+      alert("No readable page text was found.");
+      return;
+    }
 
-    speechSynthesis.speak(utterance);
-
+    chunks = splitText(text);
+    currentChunk = 0;
     isReading = true;
+
     btn.classList.add("reading");
     btn.textContent = "■";
     btn.setAttribute("aria-label", "Stop reading aloud");
+
+    speakNext();
   }
 
   function stop(){
     speechSynthesis.cancel();
 
     isReading = false;
+    currentChunk = 0;
+    chunks = [];
+
     btn.classList.remove("reading");
     btn.textContent = "🔊";
     btn.setAttribute("aria-label", "Read page aloud");
   }
 
-  btn.onclick = function(){
-    isReading ? stop() : start();
+  btn.addEventListener("click", function(){
+    if(isReading){
+      stop();
+    } else {
+      start();
+    }
+  });
+
+  speechSynthesis.onvoiceschanged = function(){
+    speechSynthesis.getVoices();
   };
 })();
+
 </script>
