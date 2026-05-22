@@ -825,6 +825,54 @@
   justify-content:center;
 }
 
+/* Mobile reusable header fix: allow nav to scroll inside the header */
+@media (max-width:720px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  #site-header,
+  #site-header header,
+  header,
+  .header-container{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  #site-header .header-container,
+  .header-container{
+    flex-wrap:wrap;
+  }
+
+  #site-header nav,
+  nav{
+    order:3;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin-left:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  #site-header .nav-list,
+  .nav-list{
+    flex-wrap:nowrap;
+    min-width:max-content;
+  }
+
+  #site-header .nav-item,
+  .nav-item{
+    flex:0 0 auto;
+  }
+}
+
+
 @media (max-width:720px){
   .modal-bg{
     padding:10px;
@@ -906,7 +954,7 @@
 
         <div class="jumpbar" aria-label="Jumpstart resources">
           <div class="jumpbar-inner">
-            <a href="#yap-resources">YAP voices</a>
+            <a href="#yap-resources">YAP Blogs</a>
             <a href="#videos">Videos</a>
             <a href="#toolkits">Toolkits</a>
             <a href="#posters">Posters</a>
@@ -931,6 +979,8 @@
     Toolkits & reusable resources
   </a>
   section below.
+  </br>
+  Get a glimpse into the documentry, awards, publications etc that YAP has been involved in. Click here to find the detailed summary <a href="resources/yap-contributions.html">here</a>. 
       </p>
 
       <div class="yap-band">

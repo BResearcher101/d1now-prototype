@@ -357,6 +357,55 @@ nav{
   );
 }
 
+
+/* Mobile reusable header fix: allow nav to scroll inside the header */
+@media (max-width:720px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  #site-header,
+  #site-header header,
+  header,
+  .header-container{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  #site-header .header-container,
+  .header-container{
+    flex-wrap:wrap;
+  }
+
+  #site-header nav,
+  nav{
+    order:3;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin-left:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  #site-header .nav-list,
+  .nav-list{
+    flex-wrap:nowrap;
+    min-width:max-content;
+  }
+
+  #site-header .nav-item,
+  .nav-item{
+    flex:0 0 auto;
+  }
+}
+
+
 @media(max-width:760px){
   .hero h1{
     font-size:1.85rem;
