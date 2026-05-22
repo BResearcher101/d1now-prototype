@@ -100,6 +100,7 @@
       margin-left:12px;
       overflow-x:auto;
       overflow-y:visible;
+	  overflow:visible;
       -webkit-overflow-scrolling:touch;
     }
     .nav-list{
@@ -1482,7 +1483,7 @@
 </p>
 
 <div class="hero-badges">
-  <span class="badge">🧠 Led by Lived experience</span>
+  <span class="badge">🧠 Led by lived experience</span>
   <span class="badge">🤝 Sustainable mentorship Model </span>
   <span class="badge">📣 Real impact on research</span>
     <span class="badge">🤝 Flexible long term partnership</span>
@@ -1527,7 +1528,7 @@
 
     
 
-    <section class="wrap" id="what">
+    <section class="wrap" id="what-heading">
       <p>&nbsp;</p>
       <h2 class="sec-title">What is the Young Adult Panel?</h2>
     </section>
@@ -1556,9 +1557,10 @@
      <section class="wrap" id="what">   
              <p class="sec-lead">
         The Young Adult Panel, or YAP, is a group of young adults living with type 1 diabetes who work with the D1 Now team as partners in the research. 
-    YAP have played an important role in shifting the culture of traditional health research to one that is inclusive of the patient voice. 
-	</br>
-	Having been in place since 2014, YAP have helped shape the research, resources, trial materials and decisions behind D1 Now, making sure the work stays grounded in real life.
+		Having been in place since 2014, YAP have helped shape the research, resources, trial materials and decisions behind D1 Now, making sure the work stays grounded in real life.
+    They have helped shift D1 Now towards a more inclusive approach to research, where young adults’ lived experiences shape decisions from the beginning. 
+	<br>
+	
      </p>
       <div class="grid-2">
         <div class="card soft-outline">
@@ -1569,7 +1571,7 @@
               <h3>Long-term collaboration</h3>
               <p>
                     YAP members are involved across the project, from early ideas to real outputs. We help shape the questions, wording, design, study materials and what feels realistic for young adults in clinic and everyday life.
-					</br>
+					<br>
 					You can find the detailed summary <a href="resources/yap-contributions.html">here</a>
               </p>
 			  <button class="learn" type="button"
@@ -1623,7 +1625,7 @@
              data-name="Hannah Dunning"
              data-role="YAP mentor"
              data-bio="Hi! I'm Hannah. I am 23 years old and am currently in my fourth year studying Early Childhood Education in Marino Institute of Education. 
-</br>			 
+<br>			 
 I was diagnosed with type 1 diabetes 9 years ago. Since then I have been learning to balance my health and lifestyle to lead a higher quality of life. Having attended clinics for almost a decade I understand the difference between quality of clinics and understand the sometimes small changes which can make a big impact! This is why I joined the Young Adult Panel last year, to help make these small changes."
              data-link="#"
              data-img="images/yap/hd.png">
@@ -2053,28 +2055,7 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
         </div>
       </div>
 
-    <section class="wrap" id="voices">
-      <h2 class="sec-title">What members say</h2>
-      <p class="sec-lead">
-        A few snapshots of what being part of the YAP feels like.
-      </p>
 
-      <div class="testi-wrap" aria-label="YAP testimonials">
-        <div class="testi-row">
-          <button class="testi-btn" id="prevTesti" aria-label="Previous testimonial">‹</button>
-
-          <div class="testi-card">
-            <img id="testiPhoto" src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/testi-1.png" alt="Testimonial portrait">
-            <div>
-              <div class="testi-quote" id="testiQuote">“The YAP gave me a voice — and the team listened.”</div>
-              <div class="testi-name" id="testiName">Chris, 23</div>
-            </div>
-          </div>
-
-          <button class="testi-btn" id="nextTesti" aria-label="Next testimonial">›</button>
-        </div>
-      </div>
-    </section>
 
 	<div class="join-strip" id="join">
 	  <div>
@@ -2131,7 +2112,8 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
     <section class="wrap" id="loop">
       <h2 class="sec-title">Publication Summary</h2>
       <p class="sec-lead">
-        Get a glimpse into the documentry, awards, publications etc that YAP has been involved in. Click here to find the detailed summary <a href="resources/yap-contributions.html">here</a>
+        Get a glimpse into the documentry, awards, publications etc that YAP has been involved in. Click here to find the detailed summary <a href="resources/yap-contributions.html">here</a>. 
+		To read the YAP blogs <a href="resources.html#yap-resources">click here</a>.
       </p>
     </section>
   </main>
@@ -2199,48 +2181,7 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
   <script>
 
 
-    // Hero quotes
-    const heroQuotes = [
-      '“…at the start, I was a bit sceptical…I didn’t want it to become a burden… It was actually completely the opposite, I felt like I had a bit of control then, rather than owing someone a favour” — pilot trial participant',
-      '“… the normal clinic, you get a different nurse and a different doctor every time…. she [support worker] stayed the same and I really like that… somebody knows your medical history ….” — pilot trial participant',
-      '“The D1 Now study has allowed me to continue helping others with Diabetes through the research we do and my role within the YAP team.” — YAP member',
-      '“I first got involved cause I wanted to know more about diabetes research but now I stay involved because of the opportunity to advocate for young people coming after me, and ensuring they get the best diabetes care possible” — YAP Member'
-    ];
-    let hq = 0;
-    const heroQuoteEl = document.getElementById('heroQuote');
-    setInterval(() => {
-      hq = (hq + 1) % heroQuotes.length;
-      heroQuoteEl.textContent = heroQuotes[hq];
-    }, 6500);
 
-    // Testimonials
-    (function(){
-      const testimonials = [
-       {quote:"“…at the start, I was a bit sceptical…I didn’t want it to become a burden… It was actually completely the opposite, I felt like I had a bit of control then, rather than owing someone a favour”", name:"pilot trial participant", photo:"images/testimonial-avatar-default.png"},
-        {quote:"“… the normal clinic, you get a different nurse and a different doctor every time…. she [support worker] stayed the same and I really like that… somebody knows your medical history ….”", name:"pilot trial participant", photo:"images/testimonial-avatar-default.png"},
-        {quote:"“The D1 Now study has allowed me to continue helping others with Diabetes through the research we do and my role within the YAP team.”", name:"YAP member", photo:"images/testimonial-avatar-default.png"},
-        {quote:"“I first got involved cause I wanted to know more about diabetes research but now I stay involved because of the opportunity to advocate for young people coming after me, and ensuring they get the best diabetes care possible.”", name:"YAP mentor", photo:"images/testimonial-avatar-default"}
-      ];
-      let i=0;
-      const q=document.getElementById('testiQuote');
-      const n=document.getElementById('testiName');
-      const p=document.getElementById('testiPhoto');
-
-      function show(idx){
-        const t=testimonials[idx];
-        q.textContent=t.quote;
-        n.textContent=t.name;
-        p.src=t.photo;
-      }
-
-      const nextBtn=document.getElementById('nextTesti');
-      const prevBtn=document.getElementById('prevTesti');
-
-      if(nextBtn) nextBtn.onclick=()=>{ i=(i+1)%testimonials.length; show(i); };
-      if(prevBtn) prevBtn.onclick=()=>{ i=(i-1+testimonials.length)%testimonials.length; show(i); };
-
-      setInterval(()=>{ i=(i+1)%testimonials.length; show(i); }, 5500);
-    })();
 
     // Join modal
 // Join modal removed because Join YAP now links to forms/join-yap.html
@@ -2278,34 +2219,38 @@ if (joinBg && joinForm && joinSuccess) {
 }
 
     // Info modal
-    const infoBg = document.getElementById('infoModalBg');
-    const infoTitle = document.getElementById('infoTitle');
-    const infoText = document.getElementById('infoText');
+const infoBg = document.getElementById('infoModalBg');
+const infoTitle = document.getElementById('infoTitle');
+const infoText = document.getElementById('infoText');
 
-    function openInfoModal(title, text){
-      lastFocus = document.activeElement;
-      infoTitle.textContent = title || 'More information';
-      infoText.textContent = text || '';
-      infoBg.classList.add('active');
-      infoBg.setAttribute('aria-hidden','false');
-      setTimeout(()=>infoBg.querySelector('.modal-close').focus(), 50);
-    }
-    function closeInfoModal(){
-      infoBg.classList.remove('active');
-      infoBg.setAttribute('aria-hidden','true');
-      if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-    }
-    window.closeInfoModal = closeInfoModal;
+if (infoBg && infoTitle && infoText) {
+  function openInfoModal(title, text){
+    lastFocus = document.activeElement;
+    infoTitle.textContent = title || 'More information';
+    infoText.textContent = text || '';
+    infoBg.classList.add('active');
+    infoBg.setAttribute('aria-hidden','false');
+    setTimeout(()=>infoBg.querySelector('.modal-close').focus(), 50);
+  }
 
-    document.querySelectorAll('button.learn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        openInfoModal(btn.dataset.modalTitle, btn.dataset.modalText);
-      });
+  function closeInfoModal(){
+    infoBg.classList.remove('active');
+    infoBg.setAttribute('aria-hidden','true');
+    if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  window.closeInfoModal = closeInfoModal;
+
+  document.querySelectorAll('button.learn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      openInfoModal(btn.dataset.modalTitle, btn.dataset.modalText);
     });
+  });
 
-    infoBg.addEventListener('click', (e)=>{
-      if(e.target === infoBg) closeInfoModal();
-    });
+  infoBg.addEventListener('click', (e)=>{
+    if(e.target === infoBg) closeInfoModal();
+  });
+}
 
     // Member bios
     const bioBg = document.getElementById('bioModalBg');
