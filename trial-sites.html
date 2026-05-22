@@ -575,7 +575,7 @@
     <!-- ===== Friendly intro (no tiles) ===== -->
     <section class="wrap" id="intro">
       <div class="section-title">
-        <h2>Welcome, site teams 👋</h2>
+        <h2>Welcome, site teams </h2>
         <div class="section-kicker">Quick start</div>
       </div>
       <p class="lead">
@@ -589,6 +589,16 @@ This page brings together practical information for clinics and research teams t
         <h2>Overview of the trial</h2>
         <div class="section-kicker">Scope</div>
       </div>
+	  
+	  
+	   <div class="card" style="margin-top:18px">
+        <p>
+          The D1 Now Definitive Trial is a HRB funded cluster randomised controlled trial evaluating the effectiveness and cost-effectiveness of the D1 Now intervention compared with standard care. The primary objective is to assess whether D1 Now reduces HbA1c levels among young adults living with Type 1 Diabetes.
+		<br>
+		The trial also examines clinical outcomes, patient-reported psychosocial outcomes, implementation and delivery, trial processes, participant experiences, and cost-effectiveness. 
+        </p>
+      </div>
+	  
 
       <div class="grid-3" aria-label="Trial overview tiles">
         <div class="tile">
@@ -614,13 +624,7 @@ This page brings together practical information for clinics and research teams t
         </div>
       </div>
 
-      <div class="card" style="margin-top:18px">
-        <p>
-          The D1 Now Definitive Trial is a cluster randomised controlled trial evaluating the effectiveness and cost-effectiveness of the D1 Now intervention compared with standard care. The primary objective is to assess whether D1 Now reduces HbA1c levels among young adults living with Type 1 Diabetes.
-		<br>
-		The trial also examines clinical outcomes, patient-reported psychosocial outcomes, implementation and delivery, trial processes, participant experiences, and cost-effectiveness. 
-        </p>
-      </div>
+
     </section>
 
     <!-- ===== How it works (participant-style tabs) ===== -->
@@ -652,7 +656,7 @@ This page brings together practical information for clinics and research teams t
 				Before recruitment begins, each site completes the required approvals, agreements, training and delegation steps. The study team will provide site materials, training and guidance before activation.
             </p>
           </div>
-          <img id="jImg" src="images/trialsite/siteprofile.png?q=80&w=1200&auto=format&fit=crop" alt="Site set-up">
+          <img id="jImg" src="images/trialsite/setup.png?q=80&w=1200&auto=format&fit=crop" alt="Site set-up">
         </div>
       </div>
     </section>
@@ -671,12 +675,12 @@ This page brings together practical information for clinics and research teams t
         <div class="resp-card">
           <h4>What sites teams do</h4>
           <ul>
+			  <li>Support D1 Now study staff working at the site, including agreed local access, induction, supervision and role arrangements where applicable.</li>
 			  <li>Complete the necssary training and support setting up the study.</li>
 			  <li>Help identify young adults who may be eligible through the approved local screening process.</li>
-			  <li>Share approved study information and support the consent pathway.</li>
-			  <li>Complete first and final study visit steps using the agreed site workflow.</li>
 			  <li>Support trial procedures during routine young adult diabetes clinic care.</li>
 			  <li>Enter required study information into the approved systems and documentation.</li>
+			  <li>Coordinate local laboratory processes for blood sample collection, temporary storage and transfer.</li>
 
           </ul>
         </div>
@@ -714,7 +718,7 @@ This page brings together practical information for clinics and research teams t
         <p style="margin-top:12px">
           D1 Now is delivered within a structured ethics, governance and data protection framework. These arrangements are in place to protect young adults taking part in the trial, support site teams, and ensure that study activity is carried out consistently across participating centres.
 
-In practice, this means::
+In practice, this means:
         </p>
 
         <ul style="margin-top:10px;line-height:1.9;color:#223">
@@ -727,101 +731,239 @@ In practice, this means::
 			</ul>
 
         <p style="margin-top:10px;color:#445">
-          (When you’re ready, we can add your exact ethics reference(s), approvals, and policy links here.)
+            Site teams should follow the approved protocol, ethics approval conditions, data protection arrangements, site agreements, SOPs and trial-specific guidance. Current approval references and site-specific documents will be added here when finalised for publication.
         </p>
       </div>
     </section>
 
-    <!-- ===== Participating centres (team-style cards + PI modal) ===== -->
-    <section class="wrap" id="sites">
-      <div class="section-title">
-        <h2>Participating centres</h2>
-        <div class="section-kicker">Click a site for PI details</div>
+  <!-- ===== Participating centres (team-style cards + PI modal) ===== -->
+<section class="wrap" id="sites">
+  <div class="section-title">
+    <h2>Participating centres</h2>
+    <div class="section-kicker">Click a site for details</div>
+  </div>
+
+  <p class="lead">
+    D1 Now is being delivered across participating diabetes centres in the Republic of Ireland and Northern Ireland. Each centre has a local Site PI who supports study oversight and local delivery.
+  </p>
+
+  <div class="team-grid" id="siteGrid" aria-label="Site cards">
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Mater Misericordiae University Hospital"
+         data-pi="Dr Nigel Glynn"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>MMUH</span></div>
+      <div class="team-body">
+        <div class="team-site">Mater Misericordiae University Hospital</div>
+        <div class="team-pi">Dr Nigel Glynn</div>
+        <div class="team-role">Local Site PI</div>
       </div>
-      <p class="lead">
-        For D1 Now, centres are already recruited. For future trials, this section can show both “participating sites” and “sites interested”.
-      </p>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
 
-      <div class="team-grid" id="siteGrid" aria-label="Site cards">
-        <!-- Replace with real names + PI info. Initials auto-render in circle. -->
-        <div class="team-card" role="button" tabindex="0"
-             data-site="Galway University Hospitals"
-             data-pi="Dr. [Name]"
-             data-role="Local Site PI"
-             data-bio="Local clinical lead for trial delivery at this centre. Supports implementation and oversight."
-             data-email="sitepi@hospital.ie"
-             data-link="#">
-          <div class="team-photo"><span>GUH</span></div>
-          <div class="team-body">
-            <div class="team-site">Galway University Hospitals</div>
-            <div class="team-pi">Dr. [Name]</div>
-            <div class="team-role">Local Site PI</div>
-          </div>
-          <div class="team-open">
-            <span>View details</span><span class="dot">›</span>
-          </div>
-        </div>
-
-        <div class="team-card" role="button" tabindex="0"
-             data-site="(Add Site 2)"
-             data-pi="Dr. [Name]"
-             data-role="Local Site PI"
-             data-bio="Short description of the PI role and how to contact them locally."
-             data-email="site2@hospital.ie"
-             data-link="#">
-          <div class="team-photo"><span>S2</span></div>
-          <div class="team-body">
-            <div class="team-site">(Add Site 2)</div>
-            <div class="team-pi">Dr. [Name]</div>
-            <div class="team-role">Local Site PI</div>
-          </div>
-          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
-        </div>
-
-        <div class="team-card" role="button" tabindex="0"
-             data-site="(Add Site 3)"
-             data-pi="Dr. [Name]"
-             data-role="Local Site PI"
-             data-bio="Short description of the PI role and how to contact them locally."
-             data-email="site3@hospital.ie"
-             data-link="#">
-          <div class="team-photo"><span>S3</span></div>
-          <div class="team-body">
-            <div class="team-site">(Add Site 3)</div>
-            <div class="team-pi">Dr. [Name]</div>
-            <div class="team-role">Local Site PI</div>
-          </div>
-          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
-        </div>
-
-        <div class="team-card" role="button" tabindex="0"
-             data-site="(Add Site 4)"
-             data-pi="Dr. [Name]"
-             data-role="Local Site PI"
-             data-bio="Short description of the PI role and how to contact them locally."
-             data-email="site4@hospital.ie"
-             data-link="#">
-          <div class="team-photo"><span>S4</span></div>
-          <div class="team-body">
-            <div class="team-site">(Add Site 4)</div>
-            <div class="team-pi">Dr. [Name]</div>
-            <div class="team-role">Local Site PI</div>
-          </div>
-          <div class="team-open"><span>View details</span><span class="dot">›</span></div>
-        </div>
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Galway University Hospital"
+         data-pi="Prof Sean Dinneen"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>GUH</span></div>
+      <div class="team-body">
+        <div class="team-site">Galway University Hospital</div>
+        <div class="team-pi">Prof Sean Dinneen</div>
+        <div class="team-role">Local Site PI</div>
       </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
 
-      <div class="card" style="margin-top:18px">
-        <p>
-          Want this to scale cleanly for all 12 centres? We can generate the full set once you paste your site list + PI names.
-        </p>
+    <div class="team-card" role="button" tabindex="0"
+         data-site="St Columcille’s Hospital"
+         data-pi="Dr Wan Aizad Wan Mahmood"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>SCH</span></div>
+      <div class="team-body">
+        <div class="team-site">St Columcille’s Hospital</div>
+        <div class="team-pi">Dr Wan Aizad Wan Mahmood</div>
+        <div class="team-role">Local Site PI</div>
       </div>
-    </section>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
 
-    <!-- ===== Downloads ===== -->
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Midland Regional Hospital Mullingar"
+         data-pi="Prof Shu Hoashi"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>RHM</span></div>
+      <div class="team-body">
+        <div class="team-site">Midland Regional Hospital Mullingar</div>
+        <div class="team-pi">Prof Shu Hoashi</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Cork University Hospital"
+         data-pi="Dr Maura Moriarty"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>CUH</span></div>
+      <div class="team-body">
+        <div class="team-site">Cork University Hospital</div>
+        <div class="team-pi">Dr Maura Moriarty</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="University Hospital Waterford"
+         data-pi="Dr Triona O’Shea"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>UHW</span></div>
+      <div class="team-body">
+        <div class="team-site">University Hospital Waterford</div>
+        <div class="team-pi">Dr Triona O’Shea</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="University Hospital Limerick"
+         data-pi="Dr Eoin Noctor"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>UHL</span></div>
+      <div class="team-body">
+        <div class="team-site">University Hospital Limerick</div>
+        <div class="team-pi">Dr Eoin Noctor</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Connolly Hospital Blanchardstown"
+         data-pi="Prof Seamus Sreenan"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>CHB</span></div>
+      <div class="team-body">
+        <div class="team-site">Connolly Hospital Blanchardstown</div>
+        <div class="team-pi">Prof Seamus Sreenan</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Sligo University Hospital"
+         data-pi="Dr Siobhan Bacon"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>SUH</span></div>
+      <div class="team-body">
+        <div class="team-site">Sligo University Hospital</div>
+        <div class="team-pi">Dr Siobhan Bacon</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Beaumont Hospital"
+         data-pi="Prof Diarmuid Smith"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>BH</span></div>
+      <div class="team-body">
+        <div class="team-site">Beaumont Hospital</div>
+        <div class="team-pi">Prof Diarmuid Smith</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="St Vincent’s University Hospital"
+         data-pi="Prof Ronan Canavan"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>SVUH</span></div>
+      <div class="team-body">
+        <div class="team-site">St Vincent’s University Hospital</div>
+        <div class="team-pi">Prof Ronan Canavan</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="St James’s Hospital"
+         data-pi="Dr Niamh Phelan"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>SJH</span></div>
+      <div class="team-body">
+        <div class="team-site">St James’s Hospital</div>
+        <div class="team-pi">Dr Niamh Phelan</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+    <div class="team-card" role="button" tabindex="0"
+         data-site="Tallaght University Hospital"
+         data-pi="Dr Kevin Moore"
+         data-role="Local Site PI"
+         data-bio="Local site team details to be updated."
+         data-email="To be updated"
+         data-link="#">
+      <div class="team-photo"><span>TUH</span></div>
+      <div class="team-body">
+        <div class="team-site">Tallaght University Hospital</div>
+        <div class="team-pi">Dr Kevin Moore</div>
+        <div class="team-role">Local Site PI</div>
+      </div>
+      <div class="team-open"><span>View details</span><span class="dot">›</span></div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ===== Downloads  ===== -->
     <section class="wrap" id="downloads">
       <div class="section-title">
-        <h2>Downloads</h2>
+        <h2>Downloads (Not yet available)</h2>
         <div class="section-kicker">Site resources</div>
       </div>
 
@@ -846,69 +988,109 @@ In practice, this means::
       </div>
     </section>
 
-    <!-- ===== Contacts ===== -->
-    <section class="wrap" id="contacts">
-      <div class="section-title">
-        <h2>Contacts</h2>
-        <div class="section-kicker">Who to email</div>
-      </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3 style="margin-bottom:8px">Study team contacts</h3>
-          <p><strong>Trial coordination:</strong> <span style="color:#445">trial@d1now.ie (placeholder)</span></p>
-          <p style="margin-top:6px"><strong>Data & reporting:</strong> <span style="color:#445">data@d1now.ie (placeholder)</span></p>
-          <p style="margin-top:6px"><strong>Intervention support:</strong> <span style="color:#445">support@d1now.ie (placeholder)</span></p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="mailto:trial@d1now.ie">Email trial team</a>
-            <a class="btn secondary" href="#faq">Read site FAQ</a>
-          </div>
-        </div>
+<section class="wrap" id="contacts">
+  <div class="section-title">
+    <h2>Contacts & key study information</h2>
+    <div class="section-kicker">Who to contact</div>
+  </div>
 
-        <div class="card">
-          <h3 style="margin-bottom:8px">New staff joining mid-trial?</h3>
-          <p>
-            Start with the <strong>Training & Quick Guides</strong> download above. If you’re unsure who your local site
-            contact is, email the trial coordination address and we’ll route you.
-          </p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn secondary" href="#how">How it works</a>
-            <a class="btn secondary" href="#roles">Responsibilities</a>
-            <a class="btn secondary" href="#ethics">Ethics & governance</a>
-          </div>
-        </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="margin-bottom:8px">Study team contacts</h3>
+
+      <p>
+        <strong>Trial coordination:</strong>
+        <span style="color:#445">d1now@universityofgalway.ie</span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Programme Manager:</strong>
+        <span style="color:#445">TBD</span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Trial coordinator:</strong>
+        <span style="color:#445">TBD</span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Governance or site documentation:</strong>
+        <span style="color:#445">[add governance contact]</span>
+      </p>
+	  
+	  <p style="margin-top:6px">
+        <strong>Sponsor:</strong>
+        <span style="color:#445">University of Galway</span>
+      </p>
+	  
+	  	  <p style="margin-top:6px">
+        <strong>Funder:</strong>
+        <span style="color:#445">Health Research Board, Ireland</span>
+      </p>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="mailto:d1now@universityofgalway.ie">Email trial team</a>
+        <a class="btn secondary" href="FAQ.html#clinics">Read clinic FAQ</a>
       </div>
-    </section>
+	  
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:8px">Key study information</h3>
+
+      <p>
+        <strong>Trial registration:</strong>
+        <span style="color:#445"><a href="https://www.isrctn.com/ISRCTN28944606" target="_blank" rel="noopener">ISRCTN28944606</a></span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Study protocol:</strong>
+        <a href="https://www.medrxiv.org/content/10.1101/2025.11.11.25339994v1" target="_blank" rel="noopener">View protocol</a>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Primary data controller:</strong>
+        <span style="color:#445">University of Galway</span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Data management:</strong>
+        <span style="color:#445">Clinical Research Facility Galway, using approved REDCap study systems.</span>
+      </p>
+
+      <p style="margin-top:6px">
+        <strong>Ethics and approvals:</strong>
+        <span style="color:#445">Current approval references and site-specific approval details to be added.</span>
+      </p>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn secondary" href="#downloads">View downloads</a>
+        <a class="btn secondary" href="#ethics">Ethics & governance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- ===== FAQ ===== -->
-    <section class="wrap" id="faq">
-      <div class="section-title">
-        <h2>Site FAQ</h2>
-        <div class="section-kicker">Quick answers</div>
-      </div>
+<section class="wrap" id="faq">
+  <div class="section-title">
+    <h2>Site FAQ</h2>
+    <div class="section-kicker">More questions</div>
+  </div>
 
-      <details>
-        <summary>What support is provided to sites? <span>+</span></summary>
-        <p>
-          Training, materials, and a named study contact. The goal is to reduce burden and keep delivery consistent across centres.
-        </p>
-      </details>
+  <div class="card">
+    <p>
+      Check out the FAQ page for more details. You can find all the peer reviewed resources, including the study protocol in the resources.
+    </p>
 
-      <details>
-        <summary>Can centres already using an agenda-setting tool participate? <span>+</span></summary>
-        <p>
-          Potentially — it depends on how the tool aligns with the trial model and what’s needed for consistent delivery.
-          Contact the study team to discuss.
-        </p>
-      </details>
-
-      <details>
-        <summary>Will previous involvement in the pilot affect recruitment? <span>+</span></summary>
-        <p>
-          It may shape readiness, but participation depends on the trial design and recruitment plan. The study team can advise.
-        </p>
-      </details>
-    </section>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="FAQ.html#clinics">Go to clinic FAQ</a>
+      <a class="btn secondary" href="resources.html">resources</a>
+    </div>
+  </div>
+</section>
   </main>
 
   <!-- ===== Site PI Modal ===== -->
@@ -997,49 +1179,49 @@ In practice, this means::
 		  activation: {
 			title: "Site activation",
 			text: "Before recruitment begins, each site completes the required approvals, agreements, training and delegation steps. The study team will provide site materials, training and guidance before activation.",
-			img: "images/trialsite/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/setup.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  screening: {
 			title: "Pre-screening and identifying potential participants",
 			text: "Potential participants are identified through the approved local screening process. Only authorised site staff, or approved study staff working under local site arrangements, should access records for eligibility checks.",
-			img: "images/trialsite/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/screening.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  consent: {
 			title: "Participant information and consent",
 			text: "Interested young adults receive the approved study information and have time to ask questions. Consent is voluntary and completed using the approved study process before any study data are collected.",
-			img: "images/trialsite/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/consent.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  baseline: {
 			title: "First study visit",
 			text: "At the first study visit, the participant completes baseline questionnaires and provides a blood sample. Study data are recorded using the participant study ID and entered through the approved study systems.",
-			img: "images/trialsite/photo-1580281657527-47a6b0d0c7b1?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/baseline.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  delivery: {
 			title: "Trial delivery",
 			text: "The study runs alongside routine young adult diabetes clinic care over about one year. Sites follow the procedures for their allocated group, including D1 Now intervention delivery where applicable.",
-			img: "images/trialsite/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/delivery.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  data: {
 			title: "Data, documentation and fidelity",
 			text: "Site teams complete study records, REDCap entries and trial documentation according to the approved workflow. Identifiable information stays within the agreed site and consent systems, while research data are handled using participant study IDs.",
-			img: "images/trialsite/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/data.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  qualitative: {
 			title: "Optional qualitative interviews",
 			text: "Some participants, and where applicable staff members, may be invited to take part in optional interviews. These interviews are separate from routine care and require separate consent.",
-			img: "images/trialsite/photo-1551836022-8b2858c9c69b?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/followup.png?q=80&w=1200&auto=format&fit=crop"
 		  },
 
 		  close: {
 			title: "Close-out and archiving",
 			text: "At the end of site participation, records, logs and outstanding queries are reviewed. Site files, consent records and study data are managed according to the approved close-out and retention procedures.",
-			img: "images/trialsite/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
+			img: "images/trialsite/close.png?q=80&w=1200&auto=format&fit=crop"
 		  }
 		};
 
