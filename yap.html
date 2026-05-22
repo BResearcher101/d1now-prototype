@@ -92,17 +92,16 @@
       margin-right:8px;
     }
 
-    nav{
-      display:flex;
-      align-items:center;
-      flex:1;
-      justify-content:flex-start;
-      margin-left:12px;
-      overflow-x:auto;
-      overflow-y:visible;
+	nav{
+	  display:flex;
+	  align-items:center;
+	  flex:1;
+	  justify-content:flex-start;
+	  margin-left:12px;
 	  overflow:visible;
-      -webkit-overflow-scrolling:touch;
-    }
+	  min-width:0;
+	}
+    
     .nav-list{
       list-style:none;
       display:flex;
@@ -780,60 +779,6 @@
       padding:18px;
     }
 
-    /* ===== Testimonials ===== */
-    .testi-wrap{
-      margin-top:16px;
-      background:var(--yellow);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
-    }
-    .testi-row{
-      display:grid;
-      grid-template-columns:56px 1fr 56px;
-      align-items:center;
-      gap:10px;
-    }
-    .testi-btn{
-      width:44px;
-      height:44px;
-      border:none;
-      border-radius:50%;
-      background:var(--navy);
-      color:#fff;
-      cursor:pointer;
-      box-shadow:0 6px 18px rgba(20,65,130,.14);
-      font-size:1.2rem;
-    }
-    .testi-card{
-      background:#fff;
-      border-radius:16px;
-      padding:14px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-      min-height:92px;
-    }
-    .testi-card img{
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid #fff;
-      background:#f2f2f2;
-    }
-    .testi-quote{
-      font-weight:800;
-      color:var(--navy);
-      line-height:1.35;
-    }
-    .testi-name{
-      margin-top:4px;
-      color:#2a3f74;
-      font-weight:700;
-      font-size:.95rem;
-    }
 
     
     /* ===== why more ===== */
@@ -979,49 +924,7 @@
       text-decoration:none;
     }
 
-    /* ===== Floating FAQ ===== */
-
-    .floating-join-btn{
-  position:fixed;
-  right:28px;
-  bottom:90px;
-  z-index:100;
-
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:14px 20px;
-  border-radius:999px;
-
-  background:var(--navy);
-  color:#fff;
-  font-family:Poppins,Inter,sans-serif;
-  font-weight:800;
-  font-size:1rem;
-
-  text-decoration:none;
-  box-shadow:0 10px 30px rgba(20,65,130,.25);
-
-  transition:transform .2s ease, box-shadow .2s ease;
-      animation:join-bounce 2s infinite ease-in-out;
-}
-
-.floating-join-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 34px rgba(20,65,130,.3);
-}
-    @keyframes join-bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
-}
     
-    @keyframes add-bounce{
-      0%,100%{transform:translateY(0)}
-      18%{transform:translateY(-10px)}
-      34%{transform:translateY(-4px)}
-    }
-
     /* ===== Modals ===== */
     .modal-bg{
       display:none;
@@ -1205,6 +1108,33 @@
 }
 
     /* ===== Responsive ===== */
+	
+	
+	/* Mobile header fix: only the header nav scrolls, not the full page */
+@media (max-width:720px){
+  header,
+  .header-container{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  nav{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .nav-list{
+    flex-wrap:nowrap;
+    min-width:max-content;
+  }
+}
+	
+	
     @media (max-width:1100px){
       .member-grid{grid-template-columns:repeat(2,1fr)}
     }
@@ -1315,16 +1245,7 @@
         flex-direction:column;
         align-items:flex-start;
       }
-      .floating-faq-img-link{
-        right:12px;
-        bottom:80px;
-        width:56px;
-        height:56px;
-      }
-      .faq-img-animated-small{
-        width:56px;
-        height:56px;
-      }
+
       .foot-logos-inner img{
         height:28px;
       }
@@ -2134,7 +2055,6 @@ Both myself and my younger sister are type 1 and getting involved in the YAP is 
       <div class="modal-top">
         <div>
           <h2 id="infoTitle">More information</h2>
-          <p>Extra detail, without cluttering the page.</p>
         </div>
         <button class="modal-close" type="button" aria-label="Close" onclick="closeInfoModal()">×</button>
       </div>
