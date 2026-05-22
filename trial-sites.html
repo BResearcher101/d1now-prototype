@@ -1132,7 +1132,7 @@ In practice, this means:
 
   <!-- Floating FAQ -->
   <a href="#faq" class="floating-faq-img-link" title="Jump to Site FAQ">
-    <img src="https://raw.githubusercontent.com/startrial/startrial-prototype/main/images/faq.png" alt="FAQ" class="faq-img-animated-small">
+    <img src="images/faq.png" alt="FAQ" class="faq-img-animated-small">
   </a>
 
   <!-- ===== Footer ===== -->
@@ -1292,6 +1292,31 @@ In practice, this means:
 </script>
 
  
+   <!-- ===== header & footer ===== -->
+  
+
+
+   <script>
+
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-header").innerHTML = data;
+      });
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-footer").innerHTML = data;
+
+        const year = document.getElementById("year");
+        if (year) {
+          year.textContent = new Date().getFullYear();
+        }
+      });
+  </script>
+
+  
    <!-- ===== accessibility ===== -->
   
   <div id="accessibility-tools"></div>
