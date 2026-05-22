@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D1 Now – Resources & Impact</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#0AAFF3;
+    --footer-blue:#144182;
+    --yellow:#FDD560;
+    --ink:#0b2b62;
+    --muted:#6b7aa5;
+    --soft-bg:#fffef7;
+    --white:#fff;
+    --line:rgba(20,65,130,.12);
+    --soft-blue:#eef5ff;
+    --shadow:0 6px 28px rgba(0,0,0,0.08);
+    --maxw:1200px;
+    --radius:16px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--footer-blue);
+    color:#111;
+    font-family:Inter,system-ui,Arial,sans-serif;
+    scroll-behavior:smooth;
+  }
+  body{min-height:100vh;display:flex;flex-direction:column}
+  main{background:var(--soft-bg);flex:1}
+  h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;color:var(--ink);margin:0}
+  p{margin:0}
+  a{text-decoration:none}
+  section{scroll-margin-top:140px}
+
+  /* ========================= HEADER ========================= */
+  header{
+    background:var(--footer-blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px 16px 34px;
+    position:relative;
+  }
+  .header-container{
+    width:100%;
+    max-width:var(--maxw);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+  .logo{
+    font-family:Poppins,Inter,sans-serif;
+    font-weight:800;
+    font-size:2rem;
+    letter-spacing:1px;
+    color:#fff;
+    white-space:nowrap;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex:1;
+    justify-content:flex-start;
+    margin-left:12px;
+  }
+  .nav-list{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:0;
+    margin:0;
+    padding:0;
+    flex-wrap:nowrap;
+  }
+  .nav-item{position:relative;display:flex;align-items:center;}
+  .nav-item:not(:last-child)::after{
+    content:"›";
+    color:rgba(255,255,255,0.75);
+    font-weight:800;
+    margin:0 12px;
+    transform:translateY(-1px);
+  }
+  .nav-link{
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    font-size:0.98rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:8px 6px;
+    border-radius:10px;
+    display:inline-flex;
+    align-items:center;
+    transition:background .2s, opacity .2s;
+    white-space:nowrap;
+  }
+  .nav-link:hover,
+  .nav-link.active{background:rgba(255,255,255,.10);opacity:.98}
+  .dropdown{
+    position:absolute;
+    left:0;
+    top:100%;
+    min-width:260px;
+    background:#fff;
+    color:#111;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:8px;
+    margin-top:10px;
+    display:none;
+    z-index:50;
+  }
+  .dropdown a{
+    display:block;
+    text-decoration:none;
+    color:#111;
+    padding:10px 12px;
+    border-radius:8px;
+    font-weight:800;
+    white-space:nowrap;
+  }
+  .dropdown a:hover{background:#f0f3f9}
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown{display:block}
+
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:flex-end;
+    white-space:nowrap;
+  }
+  .header-pill{
+    display:inline-block;
+    text-decoration:none;
+    color:#fff;
+    background:var(--blue);
+    padding:10px 16px;
+    border-radius:999px;
+    font-weight:800;
+    font-family:Poppins,Inter,sans-serif;
+    box-shadow:0 6px 18px rgba(10,175,243,.18);
+  }
+  .header-pill.secondary{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.26);
+    box-shadow:0 6px 18px rgba(20,65,130,.10);
+  }
+  .header-pill:hover{filter:brightness(1.06)}
+  .header-gradient-strip{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(90deg,#ff7a18 0%,#ffd84d 35%,#8fd3f4 70%,#4facfe 100%);
+  }
+  @media (max-width:980px){
+    nav{overflow-x:auto}
+    .nav-item:not(:last-child)::after{margin:0 10px}
+  }
+  @media (max-width:720px){
+    .header-container{flex-wrap:wrap}
+    nav{order:3;width:100%;margin-left:0}
+    .header-actions{order:2;width:100%;justify-content:flex-end}
+  }
+
+  /* ========================= HERO ========================= */
+  .hero{
+    background:var(--yellow);
+    position:relative;
+    overflow:visible;
+    display:flex;
+    justify-content:center;
+    border-bottom:8px solid rgba(20,65,130,.06);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:-20% -10% auto auto;
+    height:340px;
+    width:340px;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+    transform:rotate(16deg);
+  }
+  .hero-inner{
+    width:100%;
+    max-width:var(--maxw);
+    display:grid;
+    grid-template-columns:1.35fr .95fr;
+    gap:18px;
+    min-height:420px;
+    padding:24px 18px 88px 18px;
+    position:relative;
+  }
+  .hero-card,
+  .hero-side{
+    background:#fff;
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .hero-card{
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:14px;
+  }
+  .hero-kicker{
+    font-size:.88rem;
+    font-weight:900;
+    color:var(--blue);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .hero-title{
+    font-size:2.35rem;
+    line-height:1.14;
+    color:var(--footer-blue);
+    max-width:15ch;
+  }
+  .hero-sub{
+    font-size:1.08rem;
+    color:#233048;
+    line-height:1.72;
+    max-width:62ch;
+  }
+  .hero-note{
+    margin-top:4px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:rgba(20,65,130,.06);
+    border:1px solid rgba(20,65,130,.08);
+    color:#31446e;
+    line-height:1.6;
+    font-weight:600;
+  }
+
+  .hero-side{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:14px;
+    background:linear-gradient(180deg,#fff 0%, #f9fbff 100%);
+  }
+  .hero-side .stat-stack{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .hero-stat{
+    background:rgba(20,65,130,.06);
+    border:1px solid rgba(20,65,130,.08);
+    border-radius:16px;
+    padding:14px;
+  }
+  .hero-stat .num{
+    font-family:Poppins,Inter,sans-serif;
+    font-size:1.9rem;
+    line-height:1.05;
+    font-weight:800;
+    color:var(--footer-blue);
+  }
+  .hero-stat .lbl{
+    margin-top:6px;
+    color:#223;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .hero-side h3{
+    color:var(--footer-blue);
+    font-size:1.1rem;
+  }
+  .hero-side p{
+    color:#223;
+    line-height:1.65;
+  }
+  .hero-side .mini-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .mini-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 12px;
+    border-radius:999px;
+    background:#e8efff;
+    color:var(--footer-blue);
+    font-weight:800;
+    font-family:Poppins,Inter,sans-serif;
+    font-size:.9rem;
+  }
+
+  /* ===== Jumpbar ===== */
+  .jumpbar{
+    position:absolute;
+    left:50%;
+    bottom:-30px;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:var(--maxw);
+    padding:0 18px;
+    z-index:10;
+  }
+  .jumpbar-inner{
+    background:rgba(238,242,248,.92);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(20,65,130,.08);
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
+    border-radius:999px;
+    padding:10px 14px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .jumpbar-inner a{
+    text-decoration:none;
+    font-weight:800;
+    color:var(--footer-blue);
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.9rem;
+    letter-spacing:.03em;
+    transition:all .2s ease;
+  }
+  .jumpbar-inner a:hover{
+    background:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,.06);
+  }
+
+  /* ===== Layout ===== */
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:24px 18px;
+  }
+  .first-wrap{
+    margin-top:60px;
+  }
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .section-kicker{
+    color:var(--muted);
+    font-weight:700;
+  }
+  .lead{
+    max-width:980px;
+    color:#223;
+    margin-top:8px;
+    line-height:1.75;
+  }
+
+  /* ===== Reusable cards ===== */
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:16px;
+  }
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:16px;
+  }
+  .card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card.soft{
+    border:2px solid rgba(20,65,130,.10);
+    box-shadow:none;
+    background:#fff;
+  }
+  .card h3,
+  .card h4{
+    color:var(--footer-blue);
+  }
+  .card p{
+    margin-top:8px;
+    color:#223;
+    line-height:1.68;
+  }
+
+  .resource-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+    border:2px solid rgba(20,65,130,.08);
+    position:relative;
+    overflow:hidden;
+  }
+  .resource-card::after{
+    content:"";
+    position:absolute;
+    right:-46px;
+    bottom:-46px;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(253,213,96,.22);
+  }
+  .resource-card .tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 10px;
+    border-radius:999px;
+    background:#e8efff;
+    color:var(--footer-blue);
+    font-weight:900;
+    font-family:Poppins,Inter,sans-serif;
+    font-size:.84rem;
+    margin-bottom:10px;
+    position:relative;
+    z-index:1;
+  }
+  .resource-card h4{
+    position:relative;
+    z-index:1;
+    color:var(--footer-blue);
+    font-size:1.1rem;
+  }
+  .resource-card p{
+    position:relative;
+    z-index:1;
+    margin-top:8px;
+    color:#223;
+    line-height:1.65;
+  }
+  .resource-actions{
+    position:relative;
+    z-index:1;
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .btn{
+    background:var(--footer-blue);
+    color:#fff;
+    padding:12px 16px;
+    border-radius:999px;
+    font-weight:800;
+    font-family:Poppins,Inter,sans-serif;
+    box-shadow:0 8px 20px rgba(20,65,130,.12);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    cursor:pointer;
+  }
+  .btn:hover{background:var(--blue)}
+  .btn.secondary{
+    background:rgba(20,65,130,.08);
+    color:var(--footer-blue);
+    box-shadow:none;
+  }
+  .btn.secondary:hover{background:rgba(10,175,243,.18)}
+
+  /* ===== YAP section ===== */
+  .yap-band{
+    background:linear-gradient(180deg,#fff 0%, #fffdf5 100%);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:18px;
+    margin-top:16px;
+  }
+  .blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:16px;
+  }
+  .blog-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+    border:2px solid rgba(20,65,130,.08);
+  }
+  .blog-card h4{
+    color:var(--footer-blue);
+    font-size:1.08rem;
+  }
+  .blog-card p{
+    margin-top:8px;
+    color:#223;
+    line-height:1.65;
+  }
+
+  /* ===== Events ===== */
+  .event-empty{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .event-state{
+    padding:14px 16px;
+    border-radius:14px;
+    background:rgba(20,65,130,.06);
+    color:#1f3472;
+    font-weight:700;
+    line-height:1.6;
+  }
+
+  /* ===== Videos ===== */
+  .video-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:16px;
+  }
+  .video-card{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:16px;
+  }
+  .video-frame{
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:14px;
+    overflow:hidden;
+    background:#000;
+  }
+  .video-frame iframe{
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .video-card h4{margin-top:12px;color:var(--footer-blue)}
+  .video-card p{margin-top:6px;color:#223;line-height:1.65}
+
+  /* ===== FAQ links ===== */
+  .faq-links{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:16px;
+  }
+  .faq-link-card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:18px;
+    border:2px solid rgba(20,65,130,.08);
+  }
+  .faq-link-card h4{color:var(--footer-blue)}
+  .faq-link-card p{margin-top:8px;color:#223;line-height:1.65}
+
+  /* ===== Footer ===== */
+  footer{background:var(--footer-blue);color:#fff}
+  .foot-top{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:26px 18px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:24px;
+  }
+  .foot-col h4{
+    margin:0 0 10px 0;
+    font-family:Poppins,Inter,sans-serif;
+    font-weight:800;
+    color:#fff;
+  }
+  .foot-col a{
+    display:block;
+    color:#e9f0ff;
+    text-decoration:none;
+    margin:6px 0;
+    font-weight:700;
+  }
+  .foot-col a:hover{color:#cfe0ff}
+  .foot-logos{
+    background:#133a72;
+    display:flex;
+    justify-content:center;
+  }
+  .foot-logos-inner{
+    max-width:var(--maxw);
+    width:100%;
+    padding:12px 18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    align-items:center;
+    justify-content:center;
+  }
+  .foot-logos-inner img{
+    height:36px;
+    background:#fff;
+    border-radius:4px;
+    padding:3px 6px;
+  }
+  .foot-bottom{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .foot-social{display:flex;gap:10px}
+  .soc{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#fff;
+    color:#133a72;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    text-decoration:none;
+  }
+
+  /* ===== Floating FAQ ===== */
+  .floating-faq-img-link{
+    position:fixed;
+    right:36px;
+    bottom:90px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:72px;
+    height:72px;
+    text-decoration:none;
+  }
+  .faq-img-animated-small{
+    width:72px;
+    height:72px;
+    border-radius:14px;
+    display:block;
+    box-shadow:0 4px 18px rgba(20,65,130,.14);
+    animation:add-bounce 1.5s infinite cubic-bezier(.65,1.7,.53,.67);
+    background:#fff;
+  }
+  @keyframes add-bounce{
+    0%,100%{transform:translateY(0)}
+    18%{transform:translateY(-10px)}
+    34%{transform:translateY(-4px)}
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:1000px){
+    .hero-inner{grid-template-columns:1fr;padding-bottom:96px}
+    .grid-3,
+    .grid-2,
+    .blog-grid,
+    .video-grid,
+    .faq-links{
+      grid-template-columns:1fr;
+    }
+  }
+  @media (max-width:720px){
+    header{padding:18px 12px 24px}
+    .wrap{padding:22px 12px}
+    .hero-inner{padding:18px 12px 118px 12px}
+    .hero-card{padding:22px 18px}
+    .hero-title{font-size:1.95rem;max-width:none}
+    .hero-sub,.lead{font-size:1rem}
+    .jumpbar{
+      bottom:-42px;
+      padding:0 12px;
+    }
+    .jumpbar-inner{
+      border-radius:22px;
+      justify-content:flex-start;
+      gap:8px;
+      padding:12px;
+    }
+    .jumpbar-inner a{
+      font-size:.85rem;
+      padding:8px 10px;
+    }
+    .first-wrap{margin-top:82px}
+    .floating-faq-img-link{
+      right:12px;
+      bottom:80px;
+      width:56px;
+      height:56px;
+    }
+    .faq-img-animated-small{
+      width:56px;
+      height:56px;
+    }
+    .foot-top{
+      grid-template-columns:1fr;
+    }
+    .foot-bottom{
+      flex-direction:column;
+      gap:12px;
+      text-align:center;
+    }
+  }
+  
+  .poster-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.poster-thumb{
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+  transition:transform .2s;
+  background:#fff;
+}
+
+.poster-thumb:hover{
+  transform:scale(1.03);
+}
+
+.poster-thumb img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+  
+.modal-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(20,65,130,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+  padding:18px;
+}
+
+.modal-bg.active{
+  display:flex;
+}
+
+.modal{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  width:min(92vw, 620px);
+  max-height:92vh;
+  overflow:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
+  position:relative;
+}
+
+.modal.poster-modal{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.modal.poster-modal img{
+  max-width:100%;
+  max-height:72vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:12px;
+  display:block;
+}
+
+.modal h3{
+  margin-bottom:12px;
+  color:var(--footer-blue);
+}
+
+.modal p{
+  margin:8px 0;
+}
+
+.modal a{
+  color:var(--footer-blue);
+  font-weight:700;
+}
+
+.modal-close-btn{
+  position:absolute;
+  top:8px;
+  right:10px;
+  border:none;
+  background:#fff;
+  font-size:1.8rem;
+  cursor:pointer;
+  color:#144182;
+  z-index:3;
+}
+
+.poster-download-wrap{
+  margin-top:14px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.hero-small-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:4px;
+}
+
+.hero-small-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 12px;
+  border-radius:999px;
+  background:rgba(20,65,130,.08);
+  color:var(--footer-blue);
+  font-family:Poppins,Inter,sans-serif;
+  font-size:.9rem;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.hero-small-actions a:first-child{
+  background:var(--footer-blue);
+  color:#fff;
+}
+
+.hero-small-actions a:hover{
+  background:var(--blue);
+  color:#fff;
+}
+
+@media (max-width:720px){
+  .hero-small-actions{
+    flex-direction:column;
+  }
+
+  .hero-small-actions a{
+    width:100%;
+  }
+}
+
+/* Mobile reusable header fix: make only the header nav horizontally scrollable */
+@media (max-width:720px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  #site-header,
+  #site-header header,
+  #site-header .header-container{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  #site-header .header-container{
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  #site-header nav{
+    order:3;
+    flex:0 0 100%;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    margin-left:0;
+
+    display:block;
+    overflow-x:scroll;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-x;
+  }
+
+  #site-header .nav-list{
+    display:inline-flex;
+    flex-wrap:nowrap;
+    width:max-content;
+    min-width:max-content;
+    padding-bottom:4px;
+  }
+
+  #site-header .nav-item{
+    flex:0 0 auto;
+  }
+
+  #site-header .nav-link{
+    white-space:nowrap;
+  }
+
+  #site-header .header-actions{
+    order:2;
+    width:100%;
+    justify-content:flex-end;
+  }
+}
+
+
+@media (max-width:720px){
+  .modal-bg{
+    padding:10px;
+    align-items:flex-start;
+  }
+
+  .modal{
+    width:96vw;
+    max-height:94vh;
+    margin-top:10px;
+    padding:14px;
+  }
+
+  .modal.poster-modal img{
+    max-height:70vh;
+  }
+
+  .poster-download-wrap .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+  <!-- ===== Header ===== -->
+  <div id="site-header"></div>
+  
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Resources hero">
+      <div class="hero-inner">
+        <div class="hero-card">
+          <div class="hero-kicker">Resources & Impact</div>
+          <h1 class="hero-title">Tools, outputs, and learning designed to be reused</h1>
+          <p class="hero-sub">
+            This hub brings together D1 Now resources, stories, and outputs that can support participants,
+            clinics, researchers, and future studies. Many of these materials were developed with reusability in mind,
+            so they can help shape future PPI work, trials, and youth engagement projects.
+          </p>
+          <div class="hero-note">
+            Built with young adults through the Young Adult Panel (YAP), and designed to keep growing over time.
+          </div>
+		  		<div class="hero-small-actions">
+  <a href="resources/dissemination.html">View dissemination outputs</a>
+  <a href="resources/yap-contributions.html">View YAP contributions</a>
+</div>
+        </div>
+		
+
+
+        <div class="hero-side">
+          <h3>At a glance</h3>
+          <div class="stat-stack">
+            <div class="hero-stat">
+              <div class="num">3+</div>
+              <div class="lbl">Audience groups</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">Templates</div>
+              <div class="lbl">Ready to use resuable templates</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">YAP</div>
+              <div class="lbl">Youth-led content included</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">Live</div>
+              <div class="lbl">Growing resource hub</div>
+            </div>
+          </div>
+          <div class="mini-pills">
+            <span class="mini-pill">Reusable</span>
+            <span class="mini-pill">Research-informed</span>
+            <span class="mini-pill">YAP-codesigned</span>
+          </div>
+        </div>
+
+        <div class="jumpbar" aria-label="Jumpstart resources">
+          <div class="jumpbar-inner">
+            <a href="#yap-resources">YAP Blogs</a>
+            <a href="#videos">Videos</a>
+            <a href="#toolkits">Toolkits</a>
+            <a href="#posters">Posters</a>
+            <a href="#dissemination">Dissemination</a>
+            <a href="#participant-resources">Participant info</a>
+            <a href="#clinic-resources">Reusable templates</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== YAP BLOGS ===== -->
+    <section class="wrap first-wrap" id="yap-resources">
+      <div class="section-title">
+        <h2>From the Young Adult Panel (YAP)</h2>
+        <div class="section-kicker">Youth voice</div>
+      </div>
+      <p class="lead">
+        Real experiences, ideas, and reflections from young adults involved in D1 Now. This section highlights
+        the latest YAP blog content, while the full archive can live on the YAP page.   Additional reusable templates, PPI-supporting guidelines, and practical supporting materials are available in the
+  <a href="#toolkits" style="font-weight:800;color:var(--footer-blue);">
+    Toolkits & reusable resources
+  </a>
+  section below.
+  </br>
+  Get a glimpse into the documentry, awards, publications etc that YAP has been involved in. Click here to find the detailed summary <a href="resources/yap-contributions.html">here</a>. 
+      </p>
+
+      <div class="yap-band">
+        <div class="blog-grid">
+
+  <article class="blog-card">
+    <div class="tag">YAP Voice</div>
+    <h4>“We, the YAP, have become the change that our ”</h4>
+    <p>
+      We, the YAP, have become the change that our generation of young adults living with type 1 diabetes needs.
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="./resources/blog/blog_01.html">Read story</a>
+    </div>
+  </article>
+
+  <article class="blog-card">
+    <div class="tag">Experience</div>
+    <h4>Adjusting to Life with Type 1 Diabetes - A Personal Journey</h4>
+    <p>
+      Up until now, whenever anyone asked what it’s like to live with type 1 diabetes (T1D) - my autom... 
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="./resources/blog/blog_06.html">Read story</a>
+    </div>
+  </article>
+
+  <article class="blog-card">
+    <div class="tag">Experience</div>
+    <h4>10 Years with T1D</h4>
+    <p>
+      Coming up on 10 years of type one diabetes(T1D), you can’t help
+    </p>
+    <div class="resource-actions">
+      <a class="btn secondary" href="./resources/blog/blog_07.html">Read story</a>
+    </div>
+  </article>
+
+</div>
+<div class="resource-actions" style="margin-top:18px">
+  <button class="btn" onclick="openBlogModal()">View all blogs</button>
+  <a class="btn secondary" href="faq.html">YAP FAQ</a>
+</div>
+      </div>
+    </section>
+
+    <!-- ===== EVENTS ===== -->
+    <section class="wrap" id="events">
+      <div class="section-title">
+        <h2>Events</h2>
+        <div class="section-kicker">Upcoming events</div>
+      </div>
+      <p class="lead">
+        This section will be updated when there is an event to share, such as a workshop, conference presentation, or public engagement activity.
+      </p>
+
+      <div class="card" style="margin-top:16px">
+        <div class="event-empty">
+          <div class="event-state">
+            No upcoming events are listed right now. Check back later for updates.
+          </div>
+          <a class="btn secondary" href="#posters">See posters instead</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIDEOS ===== -->
+    <section class="wrap" id="videos">
+      <div class="section-title">
+        <h2>Videos & stories</h2>
+        <div class="section-kicker">Human side of the work</div>
+      </div>
+      <p class="lead">
+        Check out our videos on YAP journey.
+      </p>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame">
+            <iframe
+              src="https://player.vimeo.com/video/367628357?h=8b4eebe66a"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4>The Patient Effect</h4>
+          <p>
+            A documentary featuring the Young Adult Panel and showing how young adults have shaped and influenced the research.
+          </p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/6QfDVa3N39I"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4>Short message from our YAP</h4>
+          <p>
+            A brief introduction to why young adults got involved and what they see as the value of this work.
+          </p>
+        </div>
+		
+		<div class="video-card">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/yuu0KGXKEA8"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4>The D1 Now Study: Origins, Current Work, and Hackathon Experience</h4>
+          <p>
+            A documentary featuring the Young Adult Panel and showing how young adults have shaped and influenced the research.
+          </p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/RRzK_TnOMvw"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4> Public Involvement in Research </h4>
+          <p>
+            A module on the impact of PPI in research.
+          </p>
+        </div>
+		
+      </div>
+    </section>
+
+    <!-- ===== POSTERS ===== -->
+    <section class="wrap" id="posters">
+      <div class="section-title">
+        <h2>Posters & visual outputs</h2>
+        <div class="section-kicker">Share and reuse</div>
+      </div>
+      <p class="lead">
+        Posters developed through D1 Now can support dissemination, recruitment, and knowledge sharing.
+        Where appropriate, template materials can also be reused by other projects.
+      </p>
+
+      <div class="poster-gallery" id="posterGallery"></div>
+        
+<div class="card soft" style="margin-top:18px">
+  <h4 style="color:var(--footer-blue)">Want to reuse these?</h4>
+  <p style="margin-top:8px">
+    These posters were designed for real-world use - from conferences to clinic spaces.
+    You can reuse or adapt them for your own project.
+  </p>
+
+  <div class="resource-actions" style="margin-top:12px">
+    <a class="btn" href="https://osf.io/w7asf" target="_blank">Open OSF poster template</a>
+  </div>
+</div>       
+
+       
+      </div>
+    </section>
+
+<!-- ===== Dissemination ===== -->
+<section class="wrap" id="dissemination">
+  <div class="section-title">
+    <h2>Dissemination</h2>
+    <div class="section-kicker">Evidence & outputs</div>
+  </div>
+
+  <p class="lead">
+    Research outputs from D1 Now contribute to a growing evidence base around youth-centred diabetes care,
+    public and patient involvement, intervention development, and implementation research.
+    Publications, conference outputs, media coverage, and dissemination materials are available below.
+  </p>
+
+  <div class="grid-3">
+
+    <!-- Publications -->
+    <div class="resource-card">
+      <div class="tag">Publications</div>
+
+      <h4>Peer-reviewed research outputs</h4>
+
+      <p>
+        Explore journal articles, trial protocols, conference abstracts,
+        and research outputs developed through D1 Now and the Young Adult Panel.
+      </p>
+
+      <div class="resource-actions">
+        <a class="btn secondary" href="./resources/dissemination.html#journal">
+          View publications
+        </a>
+      </div>
+    </div>
+
+    <!-- Media / News -->
+    <div class="resource-card">
+      <div class="tag">Media & news</div>
+
+      <h4>Press, public engagement, and dissemination</h4>
+
+      <p>
+        Read news articles, interviews, podcasts, blog features,
+        and wider dissemination activities connected to the programme.
+      </p>
+
+      <div class="resource-actions">
+        <a class="btn secondary" href="./resources/dissemination.html#media">
+          View media coverage
+        </a>
+      </div>
+    </div>
+
+    <!-- Full dissemination -->
+    <div class="resource-card">
+      <div class="tag">Dissemination hub</div>
+
+      <h4>Full dissemination and outputs archive</h4>
+
+      <p>
+        Browse the full collection of publications, presentations,
+        awards, conference outputs, and wider dissemination activities.
+      </p>
+
+      <div class="resource-actions">
+        <a class="btn" href="./resources/dissemination.html">
+          Open dissemination page
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ===== TOOLS / TOOLKITS ===== -->
+    <section class="wrap" id="toolkits">
+      <div class="section-title">
+        <h2>Toolkits & reusable resources (Work in Progress)</h2>
+        <div class="section-kicker">Designed for future work</div>
+      </div>
+      <p class="lead">
+        This section is still being developed. Once the resources are finalised and reviewed, we will share reusable guides,
+    templates, and supporting materials through GitHub or OSF so they can support future trials, PPI initiatives,
+    and youth engagement work.
+      </p>
+
+      <div class="grid-3">
+        <div class="resource-card">
+          <div class="tag">Guide</div>
+          <h4>Co-design guideline</h4>
+          <p>
+            A practical guide to support teams planning youth-centred co-design or collaborative development work.
+        The final version will be shared on OSF once reviewed.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="https://osf.io/qyw3p/overview" target="_blank" rel="noopener">View on OSF</a>
+            <a class="btn secondary" href="#" target="_blank" rel="noopener">Download PDF(TBD) </a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="tag">Governance</div>
+          <h4>Trial terms of reference</h4>
+          <p>
+             Supporting documents for setting up trial governance structure, including governance,
+        role descriptions, and practical working templates. Final materials will be shared on OSF.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="https://osf.io/u9rm2/overview" target="_blank" rel="noopener">Open on OSF</a>
+			<a class="btn secondary" href="https://osf.io/9wb7q/overview" target="_blank" rel="noopener">YAP ToRS</a>
+			
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="tag">Toolkit</div>
+          <h4>How-to toolkit repository</h4>
+          <p>
+            A GitHub repository will be made available once the website template has been finalised and reviewed.
+        This will support other teams who want to adapt the D1 Now website structure or design approach.
+          </p>
+          <div class="resource-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Open repository</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARTICIPANT RESOURCES ===== -->
+    <section class="wrap" id="participant-resources">
+      <div class="section-title">
+        <h2>Participant resources (not yet available)</h2>
+        <div class="section-kicker">Clear and accessible</div>
+      </div>
+      <p class="lead">
+        Key materials for young adults who want to understand the trial, what taking part involves, and where to start. (Not yet available)
+      </p>
+
+      <div class="grid-2">
+        <div class="resource-card">
+          <div class="tag">Start here</div>
+          <h4>Participant summary</h4>
+          <p>
+            Documents will be uploaded once they are finalised.
+          </p>
+          <div class="resource-actions">
+            <a class="btn" href="#" target="_blank" rel="noopener">Download summary</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="tag">More detail</div>
+          <h4>Participant information materials</h4>
+          <p>
+            Full information sheets, posters, and supporting documents for those who want a deeper look.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="trial-participants.html">Go to participant page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLINIC RESOURCES ===== -->
+    <section class="wrap" id="clinic-resources">
+      <div class="section-title">
+        <h2>Reusable templates (not yet available)</h2>
+        <div class="section-kicker">For delivery teams</div>
+      </div>
+      <p class="lead">
+        Practical materials for site teams and clinic staff, including packs, quick guides, and recruitment materials. (Not yet available)
+      </p>
+
+      <div class="grid-3">
+        <div class="resource-card">
+          <div class="tag">Start here</div>
+          <h4>Site pack</h4>
+          <p>
+            Core site materials, templates, and guidance used to support delivery.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="#" target="_blank" rel="noopener">Download site pack</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="tag">New staff</div>
+          <h4>Quick guides</h4>
+          <p>
+            Shorter how-to resources designed to help staff get up to speed quickly.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="#" target="_blank" rel="noopener">Open quick guides</a>
+          </div>
+        </div>
+
+        <div class="resource-card">
+          <div class="tag">Recruitment</div>
+          <h4>Clinic-facing recruitment materials</h4>
+          <p>
+            Materials that support awareness and conversations about the trial in site settings.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="#" target="_blank" rel="noopener">View materials</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ LINKS ===== -->
+    <section class="wrap" id="faq-links">
+      <div class="section-title">
+        <h2>FAQ links</h2>
+        <div class="section-kicker">Quick entry points</div>
+      </div>
+      <p class="lead">
+        Use these links to go straight to the most relevant frequently asked questions.
+      </p>
+
+      <div class="faq-links">
+        <div class="faq-link-card">
+          <h4>YAP FAQ</h4>
+          <p>
+            Questions about the Young Adult Panel, what it is, and how people get involved.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="faq.html">Open YAP FAQ</a>
+          </div>
+        </div>
+
+        <div class="faq-link-card">
+          <h4>Participant FAQ</h4>
+          <p>
+            Questions about joining the trial, eligibility, and what taking part involves.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="faq.html">Open participant FAQ</a>
+          </div>
+        </div>
+
+        <div class="faq-link-card">
+          <h4>Clinic FAQ</h4>
+          <p>
+            Questions for site teams and clinics supporting trial delivery.
+          </p>
+          <div class="resource-actions">
+            <a class="btn secondary" href="faq.html">Open clinic FAQ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+  <!-- ===== Footer ===== -->
+<div id="site-footer"></div>
+ <!-- ===== Header & Footer ===== -->
+
+  <script>
+
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-header").innerHTML = data;
+      });
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("site-footer").innerHTML = data;
+
+        const year = document.getElementById("year");
+        if (year) {
+          year.textContent = new Date().getFullYear();
+        }
+      });
+  </script>
+
+<script>
+
+
+
+
+ 
+  
+  const BLOGS = [
+  {title:"Blog 01", link:"./resources/blog/blog_01.html"},
+  {title:"Blog 02", link:"./resources/blog/blog_02.html"},
+  {title:"Blog 03", link:"./resources/blog/blog_03.html"},
+  {title:"Blog 04", link:"./resources/blog/blog_04.html"},
+  {title:"Blog 05", link:"./resources/blog/blog_05.html"},
+  {title:"Blog 06", link:"./resources/blog/blog_06.html"},
+  {title:"Blog 07", link:"./resources/blog/blog_07.html"},
+  {title:"Blog 08", link:"./resources/blog/blog_08.html"},
+  {title:"Blog 09", link:"./resources/blog/blog_09.html"},
+  {title:"Blog 10", link:"./resources/blog/blog_10.html"}
+  
+];
+
+function openBlogModal(){
+  const list = document.getElementById("blogList");
+  list.innerHTML = BLOGS.map(b =>
+    `<p><a href="${b.link}">${b.title}</a></p>`
+  ).join("");
+
+  document.getElementById("blogModal").classList.add("active");
+}
+
+function closeBlogModal(){
+  document.getElementById("blogModal").classList.remove("active");
+}
+  const POSTERS = [
+  {
+    thumb:"/d1now-prototype/images/resources/poster1.png",
+    full:"/d1now-prototype/images/resources/poster1.png"
+  },
+  {
+    thumb:"/d1now-prototype/images/resources/poster2.png",
+    full:"/d1now-prototype/images/resources/poster2.png"
+  },
+  {
+    thumb:"/d1now-prototype/images/resources/poster3.png",
+    full:"/d1now-prototype/images/resources/poster3.png"
+  }
+];
+
+function renderPosterGallery(){
+  const gallery = document.getElementById("posterGallery");
+
+  gallery.innerHTML = POSTERS.map(p => `
+    <div class="poster-thumb" onclick="openPoster('${p.full}')">
+      <img src="${p.thumb}" alt="Poster">
+    </div>
+  `).join("");
+}
+
+function openPoster(src){
+  document.getElementById("posterFull").src = src;
+  document.getElementById("posterDownload").href = src;
+  document.getElementById("posterModal").classList.add("active");
+}
+
+function closePoster(){
+  document.getElementById("posterModal").classList.remove("active");
+}
+
+renderPosterGallery();
+</script>
+
+<!-- ===== accessibility ===== -->
+
+<div id="accessibility-tools"></div>
+
+<script>
+fetch('accessibility-tools.html')
+  .then(response => response.text())
+  .then(data => {
+
+    document.getElementById('accessibility-tools').innerHTML = data;
+
+    const scripts = document
+      .getElementById('accessibility-tools')
+      .querySelectorAll('script');
+
+    scripts.forEach(oldScript => {
+
+      const newScript = document.createElement('script');
+
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
+      }
+
+      document.body.appendChild(newScript);
+
+    });
+
+  });
+</script>
+
+  <!-- BLOG MODAL -->
+<div class="modal-bg" id="blogModal">
+  <div class="modal">
+    <button onclick="closeBlogModal()">×</button>
+    <h3>All YAP Blogs</h3>
+    <div id="blogList"></div>
+  </div>
+</div>
+  
+<div class="modal-bg" id="posterModal">
+  <div class="modal poster-modal">
+    <button class="modal-close-btn" onclick="closePoster()" aria-label="Close poster">×</button>
+
+    <img id="posterFull" alt="Poster preview">
+
+    <div class="poster-download-wrap">
+      <a id="posterDownload" class="btn" download>Download poster</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
