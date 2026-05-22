@@ -825,7 +825,7 @@
   justify-content:center;
 }
 
-/* Mobile reusable header fix: allow nav to scroll inside the header */
+/* Mobile reusable header fix: make only the header nav horizontally scrollable */
 @media (max-width:720px){
   html,
   body{
@@ -836,39 +836,52 @@
 
   #site-header,
   #site-header header,
-  header,
-  .header-container{
+  #site-header .header-container{
     width:100%;
     max-width:100%;
     min-width:0;
   }
 
-  #site-header .header-container,
-  .header-container{
+  #site-header .header-container{
+    display:flex;
     flex-wrap:wrap;
   }
 
-  #site-header nav,
-  nav{
+  #site-header nav{
     order:3;
+    flex:0 0 100%;
     width:100%;
     max-width:100%;
     min-width:0;
     margin-left:0;
-    overflow-x:auto;
+
+    display:block;
+    overflow-x:scroll;
     overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
+    touch-action:pan-x;
   }
 
-  #site-header .nav-list,
-  .nav-list{
+  #site-header .nav-list{
+    display:inline-flex;
     flex-wrap:nowrap;
+    width:max-content;
     min-width:max-content;
+    padding-bottom:4px;
   }
 
-  #site-header .nav-item,
-  .nav-item{
+  #site-header .nav-item{
     flex:0 0 auto;
+  }
+
+  #site-header .nav-link{
+    white-space:nowrap;
+  }
+
+  #site-header .header-actions{
+    order:2;
+    width:100%;
+    justify-content:flex-end;
   }
 }
 
@@ -1427,29 +1440,9 @@
 <script>
 
 
-  // Better small-screen dropdown behaviour
-  if (window.matchMedia('(max-width: 720px)').matches) {
-    document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
-      const parent = link.parentElement;
-      const dropdown = parent.querySelector('.dropdown');
-      if (!dropdown) return;
 
-      link.addEventListener('click', function(e){
-        const isOpen = dropdown.style.display === 'block';
-        document.querySelectorAll('.dropdown').forEach(d => d.style.display = '');
-        if (!isOpen) {
-          e.preventDefault();
-          dropdown.style.display = 'block';
-        }
-      });
-    });
 
-    document.addEventListener('click', function(e){
-      if (!e.target.closest('.nav-item')) {
-        document.querySelectorAll('.dropdown').forEach(d => d.style.display = '');
-      }
-    });
-  }
+ 
   
   const BLOGS = [
   {title:"Blog 01", link:"./resources/blog/blog_01.html"},
